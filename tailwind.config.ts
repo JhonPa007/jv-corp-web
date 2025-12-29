@@ -8,6 +8,9 @@ const config: Config = {
     ],
     theme: {
         extend: {
+            fontFamily: {
+                agency: ["var(--font-agency)"],
+            },
             colors: {
                 barberia: {
                     dark: "#1A1A1A",

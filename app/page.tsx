@@ -5,14 +5,14 @@ export default function Home() {
   return (
     <main className="min-h-[calc(100vh-64px)] flex flex-col">
       {/* Hero Section */}
-      <section className="flex-1 flex flex-col justify-center items-center text-center p-8 bg-zinc-900 text-white relative overflow-hidden">
+      <section className="flex-1 flex flex-col justify-center items-center text-center p-8 bg-barberia-dark text-white relative overflow-hidden">
         <div className="absolute inset-0 z-0 opacity-20">
           {/* Placeholder for background image if desired */}
           {/* <Image src="/hero-bg.jpg" alt="Background" fill className="object-cover" /> */}
         </div>
 
         <div className="z-10 max-w-4xl space-y-6">
-          <h1 className="text-5xl md:text-7xl font-bold tracking-tighter text-barberia-gold">
+          <h1 className="text-5xl md:text-7xl font-agency font-bold tracking-wider text-barberia-gold">
             Estilo y Elegancia
           </h1>
           <p className="text-xl md:text-2xl text-gray-300 max-w-2xl mx-auto">
