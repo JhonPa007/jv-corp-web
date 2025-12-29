@@ -1,5 +1,7 @@
 import ServiceList from "../components/ServiceList";
 
+export const dynamic = "force-dynamic";
+
 export default function ServicesPage() {
     return (
         <div className="container mx-auto py-12 px-4">
