@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { FaTiktok, FaFacebook, FaInstagram } from "react-icons/fa";
 
 export default function Footer() {
     return (
@@ -27,9 +28,15 @@ export default function Footer() {
                     <div className="flex flex-col gap-2 text-right">
                         <span className="text-xs font-bold opacity-50 uppercase tracking-widest">Síguenos</span>
                         <div className="flex gap-4 text-sm">
-                            <a href="https://www.tiktok.com/@jvbarberia?lang=es-419" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
-                            <a href="https://www.facebook.com/BarberiaAbancay" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
-                            <a href="https://www.instagram.com/jvstudio_formen/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+                            <a href="https://www.tiktok.com/@jvbarberia?lang=es-419" target="_blank" rel="noopener noreferrer" className="text-barberia-gold hover:text-white transition-colors text-2xl" aria-label="TikTok">
+                                <FaTiktok />
+                            </a>
+                            <a href="https://www.facebook.com/BarberiaAbancay" target="_blank" rel="noopener noreferrer" className="text-barberia-gold hover:text-white transition-colors text-2xl" aria-label="Facebook">
+                                <FaFacebook />
+                            </a>
+                            <a href="https://www.instagram.com/jvstudio_formen/" target="_blank" rel="noopener noreferrer" className="text-barberia-gold hover:text-white transition-colors text-2xl" aria-label="Instagram">
+                                <FaInstagram />
+                            </a>
                         </div>
                     </div>
 
