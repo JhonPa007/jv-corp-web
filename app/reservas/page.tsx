@@ -1,44 +1,53 @@
+
 import { prisma } from "../lib/prisma";
-import BookingServiceSelector from "../components/BookingServiceSelector";
+import BookingWizard from "../components/BookingWizard";
 
 export const dynamic = "force-dynamic";
 
-async function getServices() {
+async function getData() {
     try {
-        const services = await prisma.servicios.findMany({
-            where: { activo: true },
-            include: { categorias_servicios: true },
-            orderBy: { nombre: 'asc' }
-        });
-        return services;
+        const [services, staff] = await Promise.all([
+            prisma.servicios.findMany({
+                where: { activo: true },
+                include: { categorias_servicios: true },
+                orderBy: { nombre: 'asc' }
+            }),
+            prisma.empleados.findMany({
+                where: { activo: true },
+                orderBy: { nombres: 'asc' }
+            })
+        ]);
+        return { services, staff };
     } catch (error) {
-        console.error("Error loading services for booking:", error);
-        return [];
+        console.error("Error loading booking data:", error);
+        return { services: [], staff: [] };
     }
 }
 
 export default async function ReservasPage() {
-    const services = await getServices();
+    const { services, staff } = await getData();
 
     return (
         <div className="flex flex-col min-h-screen bg-salon-beige">
-            <div className="bg-barberia-dark py-16 px-4 text-center border-b-4 border-barberia-gold">
-                <h1 className="text-5xl md:text-6xl font-agency font-bold text-barberia-gold tracking-wider">
-                    RESERVA TU CITA
+            {/* Header */}
+            <div className="bg-barberia-dark pt-12 pb-24 px-4 text-center">
+                <h1 className="text-4xl md:text-5xl font-agency font-bold text-barberia-gold tracking-wider mb-2">
+                    RESERVA TU EXPERIENCIA
                 </h1>
-                <p className="text-xl text-gray-300 mt-4 max-w-2xl mx-auto">
-                    Selecciona tu servicio y horario preferido. La excelencia te espera.
+                <p className="text-gray-400 text-lg">
+                    Calidad y estilo en cada detalle.
                 </p>
             </div>
 
-            <div className="flex-1 container mx-auto p-4 md:p-8 flex flex-col items-center">
+            {/* Main Content (Wizard) - Negative margin to overlap header like standard modern UIs */}
+            <div className="flex-1 container mx-auto px-4 -mt-16 mb-12">
                 {services.length > 0 ? (
-                    <BookingServiceSelector services={services} />
+                    <BookingWizard services={services} staff={staff} />
                 ) : (
-                    <div className="bg-white p-8 rounded-lg shadow-xl max-w-md w-full text-center border border-gray-100">
+                    <div className="bg-white p-8 rounded-xl shadow-xl max-w-md w-full text-center border border-gray-100 mx-auto mt-8">
                         <h2 className="text-xl font-bold text-red-600 mb-4">Error de Conexión</h2>
                         <p className="text-gray-600 mb-4">
-                            No pudimos cargar la lista de servicios. Por favor contáctanos directamente.
+                            No pudimos cargar los datos de reserva.
                         </p>
                         <a
                             href="https://wa.me/51965432443"

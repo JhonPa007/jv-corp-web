@@ -34,8 +34,8 @@ export default async function ServiceList() {
                 // Barbería: Dark (#1A1A1A), Gold (#D4AF37)
                 // Salón: Beige (#EBDECF), White (#FFFFFF)
                 const cardStyle = isBarberia
-                    ? "bg-barberia-dark text-barberia-gold border-barberia-gold"
-                    : "bg-salon-white text-gray-900 border-salon-beige";
+                    ? "bg-[#0f0f0f] text-[#D4AF37] border-barberia-gold shadow-gold/20"
+                    : "bg-white text-gray-900 border-salon-beige";
 
                 return (
                     <div
