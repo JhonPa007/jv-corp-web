@@ -1,0 +1,750 @@
+generator client {
+  provider = "prisma-client"
+  output   = "../app/generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model ajustes_pago {
+  id            Int           @id @default(autoincrement())
+  empleado_id   Int
+  fecha         DateTime      @db.Date
+  tipo          String        @db.VarChar(50)
+  monto         Decimal       @db.Decimal(10, 2)
+  descripcion   String
+  estado        String        @default("Pendiente") @db.VarChar(50)
+  colaboradores colaboradores @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_ajuste_colaborador")
+}
+
+model ausencias_empleado {
+  id                  Int       @id @default(autoincrement())
+  empleado_id         Int
+  fecha_hora_inicio   DateTime  @db.Timestamp(6)
+  fecha_hora_fin      DateTime  @db.Timestamp(6)
+  tipo_ausencia       String?   @default("Permiso") @db.VarChar(100)
+  descripcion         String?
+  aprobado            Boolean?  @default(true)
+  fecha_creacion      DateTime? @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime? @default(now()) @db.Timestamp(6)
+  empleados           empleados @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model bono_reglas {
+  id                   Int     @id @default(autoincrement())
+  bono_id              Int
+  tipo_regla           String  @db.VarChar(50)
+  operador             String  @default(">=") @db.VarChar(10)
+  valor_objetivo       Decimal @db.Decimal(10, 2)
+  servicio_id_asociado Int?
+  bonos                bonos   @relation(fields: [bono_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_regla_bono")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model bonos {
+  id             Int           @id @default(autoincrement())
+  nombre         String        @unique @db.VarChar(150)
+  descripcion    String?
+  monto_bono     Decimal       @db.Decimal(10, 2)
+  activo         Boolean       @default(true)
+  fecha_creacion DateTime?     @default(now()) @db.Timestamp(6)
+  bono_reglas    bono_reglas[]
+}
+
+model caja_sesiones {
+  id                                          Int          @id @default(autoincrement())
+  usuario_id                                  Int
+  sucursal_id                                 Int?
+  fecha_apertura                              DateTime?    @default(now()) @db.Timestamp(6)
+  fecha_cierre                                DateTime?    @db.Timestamp(6)
+  monto_inicial                               Decimal      @default(0.00) @db.Decimal(10, 2)
+  total_ventas_efectivo                       Decimal?     @default(0.00) @db.Decimal(10, 2)
+  total_ventas_digital                        Decimal?     @default(0.00) @db.Decimal(10, 2)
+  total_gastos                                Decimal?     @default(0.00) @db.Decimal(10, 2)
+  monto_final_real                            Decimal?     @db.Decimal(10, 2)
+  diferencia                                  Decimal?     @db.Decimal(10, 2)
+  estado                                      String?      @default("Abierta") @db.VarChar(20)
+  notas_cierre                                String?
+  destino_remanente                           String?      @default("Caja") @db.VarChar(50)
+  estado_entrega                              String?      @default("N/A") @db.VarChar(50)
+  sucursales                                  sucursales?  @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados                                   empleados    @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  comisiones                                  comisiones[]
+  gastos                                      gastos[]
+  ventas_ventas_caja_idTocaja_sesiones        ventas[]     @relation("ventas_caja_idTocaja_sesiones")
+  ventas_ventas_caja_sesion_idTocaja_sesiones ventas[]     @relation("ventas_caja_sesion_idTocaja_sesiones")
+
+  @@index([estado_entrega], map: "idx_caja_entrega")
+  @@index([usuario_id, estado], map: "idx_caja_usuario_estado")
+}
+
+model campanas {
+  id                  Int       @id @default(autoincrement())
+  nombre              String    @unique @db.VarChar(150)
+  descripcion         String?
+  fecha_inicio        DateTime  @db.Date
+  fecha_fin           DateTime  @db.Date
+  tipo_regla          String    @db.VarChar(50)
+  valor_regla         Decimal   @default(0.00) @db.Decimal(10, 2)
+  activo              Boolean?  @default(true)
+  fecha_creacion      DateTime? @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime? @default(now()) @db.Timestamp(6)
+  ventas              ventas[]
+
+  @@index([activo, fecha_inicio, fecha_fin], map: "idx_campanas_activas")
+}
+
+model categorias_gastos {
+  id          Int      @id @default(autoincrement())
+  nombre      String   @unique @db.VarChar(100)
+  descripcion String?
+  gastos      gastos[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model categorias_productos {
+  id                  Int         @id @default(autoincrement())
+  nombre              String      @unique @db.VarChar(100)
+  descripcion         String?
+  fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
+  activo              Boolean?    @default(true)
+  productos           productos[]
+}
+
+model categorias_servicios {
+  id                  Int         @id @default(autoincrement())
+  nombre              String      @unique @db.VarChar(100)
+  descripcion         String?
+  fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
+  servicios           servicios[]
+}
+
+model cliente_comunicaciones {
+  id                            Int       @id @default(autoincrement())
+  cliente_id                    Int
+  tipo_comunicacion             String    @db.VarChar(50)
+  a_o_aplicable                 Int       @map("año_aplicable")
+  fecha_envio                   DateTime? @default(now()) @db.Timestamp(6)
+  registrado_por_colaborador_id Int
+  clientes                      clientes  @relation(fields: [cliente_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  empleados                     empleados @relation(fields: [registrado_por_colaborador_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model cliente_membresias {
+  id               Int              @id @default(autoincrement())
+  cliente_id       Int
+  plan_id          Int
+  venta_id         Int
+  fecha_inicio     DateTime         @db.Date
+  fecha_fin        DateTime         @db.Date
+  estado           String           @default("Activa") @db.VarChar(20)
+  clientes         clientes         @relation(fields: [cliente_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_clientemembresia_cliente")
+  membresia_planes membresia_planes @relation(fields: [plan_id], references: [id], onUpdate: NoAction, map: "fk_clientemembresia_plan")
+  ventas           ventas           @relation(fields: [venta_id], references: [id], onUpdate: NoAction, map: "fk_clientemembresia_venta")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model clientes {
+  id                                             Int                      @id @default(autoincrement())
+  razon_social_nombres                           String                   @db.VarChar(255)
+  apellidos                                      String?                  @db.VarChar(255)
+  tipo_documento                                 String?                  @db.VarChar(5)
+  numero_documento                               String?                  @unique @db.VarChar(15)
+  email                                          String?                  @unique @db.VarChar(100)
+  telefono                                       String?                  @db.VarChar(20)
+  direccion                                      String?                  @db.VarChar(255)
+  fecha_nacimiento                               DateTime?                @db.Date
+  notas_adicionales                              String?
+  puntos_fidelidad                               Int?                     @default(0)
+  fecha_registro                                 DateTime?                @default(now()) @db.Timestamp(6)
+  apoderado_id                                   Int?
+  genero                                         String?                  @default("Masculino") @db.VarChar(20)
+  preferencia_servicio                           String?                  @default("Barberia") @db.VarChar(20)
+  sucursal_id                                    Int?
+  cumpleanos_validado                            Boolean?                 @default(false)
+  rechazo_dato_cumpleanos                        Boolean?                 @default(false)
+  cliente_comunicaciones                         cliente_comunicaciones[]
+  cliente_membresias                             cliente_membresias[]
+  clientes                                       clientes?                @relation("clientesToclientes", fields: [apoderado_id], references: [id], onUpdate: NoAction)
+  other_clientes                                 clientes[]               @relation("clientesToclientes")
+  sucursales                                     sucursales?              @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  reservas                                       reservas[]
+  ventas_ventas_cliente_receptor_idToclientes    ventas[]                 @relation("ventas_cliente_receptor_idToclientes")
+  ventas_ventas_cliente_facturacion_idToclientes ventas[]                 @relation("ventas_cliente_facturacion_idToclientes")
+
+  @@index([apoderado_id], map: "idx_cliente_apoderado")
+  @@index([genero], map: "idx_clientes_genero")
+  @@index([preferencia_servicio], map: "idx_clientes_preferencia")
+  @@index([sucursal_id], map: "idx_clientes_sucursal")
+  @@index([telefono], map: "idx_clientes_telefono")
+  @@index([telefono], map: "idx_telefono")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model colaboradores {
+  id                  Int            @id @default(autoincrement())
+  nombres             String         @db.VarChar(100)
+  apellidos           String         @db.VarChar(100)
+  nombre_display      String?        @db.VarChar(100)
+  email               String?        @unique @db.VarChar(100)
+  rol_id              Int?
+  password            String?        @db.VarChar(255)
+  telefono            String?        @db.VarChar(20)
+  sueldo_base         Decimal?       @default(0.00) @db.Decimal(10, 2)
+  contrato_id         Int?
+  sucursal_id         Int?
+  fecha_contratacion  DateTime?      @db.Date
+  activo              Boolean?       @default(true)
+  notas               String?
+  fecha_creacion      DateTime?      @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime?      @default(now()) @db.Timestamp(6)
+  dni                 String?        @unique @db.VarChar(15)
+  fecha_nacimiento    DateTime?      @db.Date
+  foto_url            String?        @db.VarChar(255)
+  ajustes_pago        ajustes_pago[]
+  roles               roles?         @relation(fields: [rol_id], references: [id], onUpdate: NoAction, map: "fk_colaborador_rol")
+  sucursales          sucursales?    @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_colaborador_sucursal")
+}
+
+model comisiones {
+  id                  Int            @id @default(autoincrement())
+  venta_item_id       Int?
+  empleado_id         Int
+  monto_comision      Decimal        @db.Decimal(10, 2)
+  estado              String?        @default("Pendiente") @db.VarChar(20)
+  fecha_generacion    DateTime?      @default(now()) @db.Timestamp(6)
+  fecha_pago          DateTime?      @db.Timestamp(6)
+  pago_caja_sesion_id Int?
+  empleados           empleados      @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  caja_sesiones       caja_sesiones? @relation(fields: [pago_caja_sesion_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  venta_items         venta_items?   @relation(fields: [venta_item_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@index([estado, empleado_id], map: "idx_comision_estado")
+}
+
+model configuracion_sistema {
+  id                      Int      @id @default(autoincrement())
+  nombre_empresa          String?  @default("JV Studio") @db.VarChar(100)
+  tema_seleccionado       String?  @default("default") @db.VarChar(20)
+  color_primario          String?  @default("#ffc107") @db.VarChar(20)
+  color_secundario        String?  @default("#3a3a3a") @db.VarChar(20)
+  color_fondo             String?  @default("#212529") @db.VarChar(20)
+  color_texto             String?  @default("#ffffff") @db.VarChar(20)
+  color_sidebar_fondo     String?  @default("#ffffff") @db.VarChar(20)
+  color_sidebar_texto     String?  @default("#3a3a3a") @db.VarChar(20)
+  color_navbar_fondo      String?  @default("#1a1a1a") @db.VarChar(20)
+  ruc_empresa             String?  @db.VarChar(11)
+  razon_social            String?  @db.VarChar(255)
+  direccion_fiscal        String?
+  ubigeo                  String?  @db.VarChar(6)
+  usuario_sol             String?  @db.VarChar(50)
+  clave_sol               String?  @db.VarChar(50)
+  entorno_sunat           String?  @default("BETA") @db.VarChar(20)
+  clave_certificado       String?  @db.VarChar(100)
+  sueldo_minimo_vital     Decimal? @default(1130.00) @db.Decimal(10, 2)
+  porcentaje_fondo_global Decimal? @default(5.00) @db.Decimal(5, 2)
+}
+
+model configuracion_sucursal {
+  id                      Int        @id @default(autoincrement())
+  sucursal_id             Int        @unique
+  agenda_intervalo        String?    @default("00:15:00") @db.VarChar(10)
+  agenda_color_bloqueo    String?    @default("#ffecec") @db.VarChar(20)
+  agenda_color_habilitado String?    @default("#ffffff") @db.VarChar(20)
+  agenda_color_reserva    String?    @default("#6c63ff") @db.VarChar(20)
+  agenda_color_completado String?    @default("#198754") @db.VarChar(20)
+  app_fuente              String?    @default("Inter") @db.VarChar(50)
+  sucursales              sucursales @relation(fields: [sucursal_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model empleado_sucursales {
+  empleado_id Int
+  sucursal_id Int
+  empleados   empleados  @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  sucursales  sucursales @relation(fields: [sucursal_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([empleado_id, sucursal_id])
+}
+
+model empleados {
+  id                                                                   Int                      @id @default(autoincrement())
+  nombres                                                              String                   @db.VarChar(100)
+  apellidos                                                            String                   @db.VarChar(100)
+  nombre_display                                                       String?                  @db.VarChar(100)
+  email                                                                String?                  @unique @db.VarChar(100)
+  rol_id                                                               Int?
+  password                                                             String?                  @db.VarChar(255)
+  telefono                                                             String?                  @db.VarChar(20)
+  sueldo_base                                                          Decimal?                 @default(0.00) @db.Decimal(10, 2)
+  contrato_id                                                          Int?
+  sucursal_id                                                          Int?
+  fecha_contratacion                                                   DateTime?                @db.Date
+  activo                                                               Boolean?                 @default(true)
+  notas                                                                String?
+  fecha_creacion                                                       DateTime?                @default(now()) @db.Timestamp(6)
+  fecha_actualizacion                                                  DateTime?                @default(now()) @db.Timestamp(6)
+  dni                                                                  String?                  @unique @db.VarChar(15)
+  fecha_nacimiento                                                     DateTime?                @db.Date
+  realiza_servicios                                                    Boolean?                 @default(true)
+  tipo_salario                                                         String?                  @default("Comisionista") @db.VarChar(50)
+  meta_activacion_mensual                                              Decimal?                 @default(4000.00) @db.Decimal(10, 2)
+  porcentaje_fondo                                                     Decimal?                 @default(5.00) @db.Decimal(5, 2)
+  saldo_fondo_acumulado                                                Decimal?                 @default(0.00) @db.Decimal(10, 2)
+  estado_fondo                                                         String?                  @default("Activo") @db.VarChar(20)
+  modalidad_pago                                                       String?                  @default("Sueldo_Fijo") @db.VarChar(20)
+  sueldo_fijo_mensual                                                  Decimal?                 @default(0.00) @db.Decimal(10, 2)
+  porcentaje_productos                                                 Decimal?                 @default(10.00) @db.Decimal(5, 2)
+  frecuencia_pago                                                      String?                  @default("Mensual") @db.VarChar(20)
+  ausencias_empleado                                                   ausencias_empleado[]
+  caja_sesiones                                                        caja_sesiones[]
+  cliente_comunicaciones                                               cliente_comunicaciones[]
+  comisiones                                                           comisiones[]
+  empleado_sucursales                                                  empleado_sucursales[]
+  roles                                                                roles?                   @relation(fields: [rol_id], references: [id], onUpdate: NoAction)
+  gastos_gastos_empleado_beneficiario_idToempleados                    gastos[]                 @relation("gastos_empleado_beneficiario_idToempleados")
+  gastos_gastos_registrado_por_colaborador_idToempleados               gastos[]                 @relation("gastos_registrado_por_colaborador_idToempleados")
+  gastos_gastos_usuario_idToempleados                                  gastos[]                 @relation("gastos_usuario_idToempleados")
+  horarios_empleado                                                    horarios_empleado[]
+  horarios_extra                                                       horarios_extra[]
+  ingresos_academia                                                    ingresos_academia[]
+  movimientos_caja                                                     movimientos_caja[]
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados movimientos_fondo[]      @relation("movimientos_fondo_creado_por_usuario_idToempleados")
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados           movimientos_fondo[]      @relation("movimientos_fondo_empleado_idToempleados")
+  planillas                                                            planillas[]
+  propinas_propinas_empleado_idToempleados                             propinas[]               @relation("propinas_empleado_idToempleados")
+  propinas_propinas_registrado_porToempleados                          propinas[]               @relation("propinas_registrado_porToempleados")
+  reservas                                                             reservas[]
+  ventas                                                               ventas[]
+}
+
+model esquema_comisiones {
+  id           Int      @id @default(autoincrement())
+  nombre_nivel String?  @db.VarChar(50)
+  monto_minimo Decimal  @db.Decimal(10, 2)
+  monto_maximo Decimal? @db.Decimal(10, 2)
+  porcentaje   Decimal  @db.Decimal(5, 2)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model estilos {
+  id             Int       @id @default(autoincrement())
+  nombre         String    @unique @db.VarChar(150)
+  descripcion    String?
+  foto_path      String?   @db.VarChar(255)
+  activo         Boolean   @default(true)
+  fecha_creacion DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model gastos {
+  id                                                        Int               @id @default(autoincrement())
+  sucursal_id                                               Int
+  categoria_gasto_id                                        Int
+  caja_sesion_id                                            Int?
+  fecha                                                     DateTime          @default(dbgenerated("CURRENT_DATE")) @db.Date
+  descripcion                                               String
+  monto                                                     Decimal           @db.Decimal(10, 2)
+  metodo_pago                                               String?           @default("Efectivo de Caja") @db.VarChar(50)
+  comprobante_tipo                                          String?           @db.VarChar(50)
+  comprobante_serie                                         String?           @db.VarChar(20)
+  comprobante_numero                                        String?           @db.VarChar(20)
+  registrado_por_colaborador_id                             Int?
+  fecha_registro                                            DateTime?         @default(now()) @db.Timestamp(6)
+  empleado_beneficiario_id                                  Int?
+  comprobante_ruc_emisor                                    String?           @db.VarChar(11)
+  comprobante_razon_social_emisor                           String?           @db.VarChar(255)
+  deducido_en_planilla_id                                   Int?
+  usuario_id                                                Int?
+  tipo                                                      String?           @db.VarChar(50)
+  caja_sesiones                                             caja_sesiones?    @relation(fields: [caja_sesion_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  categorias_gastos                                         categorias_gastos @relation(fields: [categoria_gasto_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  planillas                                                 planillas?        @relation(fields: [deducido_en_planilla_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados_gastos_empleado_beneficiario_idToempleados      empleados?        @relation("gastos_empleado_beneficiario_idToempleados", fields: [empleado_beneficiario_id], references: [id], onUpdate: NoAction)
+  empleados_gastos_registrado_por_colaborador_idToempleados empleados?        @relation("gastos_registrado_por_colaborador_idToempleados", fields: [registrado_por_colaborador_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  sucursales                                                sucursales        @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados_gastos_usuario_idToempleados                    empleados?        @relation("gastos_usuario_idToempleados", fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model horarios_empleado {
+  id                  Int       @id @default(autoincrement())
+  empleado_id         Int
+  dia_semana          Int
+  hora_inicio         DateTime  @db.Time(6)
+  hora_fin            DateTime  @db.Time(6)
+  fecha_creacion      DateTime? @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime? @default(now()) @db.Timestamp(6)
+  empleados           empleados @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model horarios_extra {
+  id          Int         @id @default(autoincrement())
+  empleado_id Int
+  sucursal_id Int?
+  fecha       DateTime    @db.Date
+  hora_inicio DateTime    @db.Time(6)
+  hora_fin    DateTime    @db.Time(6)
+  motivo      String?
+  creado_en   DateTime?   @default(now()) @db.Timestamp(6)
+  empleados   empleados   @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  sucursales  sucursales? @relation(fields: [sucursal_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model ingresos_academia {
+  id                     Int        @id @default(autoincrement())
+  empleado_instructor_id Int?
+  alumno_nombre          String?    @db.VarChar(100)
+  monto_mensualidad      Decimal    @db.Decimal(10, 2)
+  fecha_pago             DateTime?  @default(dbgenerated("CURRENT_DATE")) @db.Date
+  comision_instructor    Decimal?   @db.Decimal(10, 2)
+  observaciones          String?
+  empleados              empleados? @relation(fields: [empleado_instructor_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model marcas {
+  id                  Int         @id @default(autoincrement())
+  nombre              String      @unique @db.VarChar(100)
+  descripcion         String?
+  activo              Boolean?    @default(true)
+  fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
+  productos           productos[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model membresia_planes {
+  id                  Int                  @id @default(autoincrement())
+  nombre              String               @unique @db.VarChar(150)
+  precio              Decimal              @db.Decimal(10, 2)
+  duracion_dias       Int
+  activo              Boolean              @default(true)
+  fecha_actualizacion DateTime?            @default(now()) @db.Timestamp(6)
+  cliente_membresias  cliente_membresias[]
+}
+
+model movimientos_caja {
+  id             Int        @id @default(autoincrement())
+  tipo           String?    @db.VarChar(20)
+  monto          Decimal?   @db.Decimal(10, 2)
+  concepto       String?    @db.VarChar(255)
+  metodo_pago    String?    @db.VarChar(50)
+  fecha          DateTime?  @default(now()) @db.Timestamp(6)
+  usuario_id     Int?
+  caja_sesion_id Int?
+  sucursal_id    Int?
+  empleados      empleados? @relation(fields: [usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model movimientos_fondo {
+  id                                                           Int        @id @default(autoincrement())
+  empleado_id                                                  Int?
+  tipo_movimiento                                              String     @db.VarChar(20)
+  monto                                                        Decimal    @db.Decimal(10, 2)
+  fecha                                                        DateTime?  @default(now()) @db.Timestamp(6)
+  motivo                                                       String?    @db.VarChar(255)
+  creado_por_usuario_id                                        Int?
+  empleados_movimientos_fondo_creado_por_usuario_idToempleados empleados? @relation("movimientos_fondo_creado_por_usuario_idToempleados", fields: [creado_por_usuario_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados_movimientos_fondo_empleado_idToempleados           empleados? @relation("movimientos_fondo_empleado_idToempleados", fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([empleado_id], map: "idx_movimientos_empleado")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model paquete_servicios_items {
+  id                                                               Int       @id @default(autoincrement())
+  paquete_servicio_id                                              Int
+  item_servicio_id                                                 Int
+  servicios_paquete_servicios_items_item_servicio_idToservicios    servicios @relation("paquete_servicios_items_item_servicio_idToservicios", fields: [item_servicio_id], references: [id], onUpdate: NoAction, map: "fk_item")
+  servicios_paquete_servicios_items_paquete_servicio_idToservicios servicios @relation("paquete_servicios_items_paquete_servicio_idToservicios", fields: [paquete_servicio_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_paquete")
+
+  @@unique([paquete_servicio_id, item_servicio_id])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model permisos {
+  id           Int            @id @default(autoincrement())
+  nombre       String         @unique @db.VarChar(50)
+  descripcion  String?        @db.VarChar(255)
+  rol_permisos rol_permisos[]
+}
+
+model planillas {
+  id                       Int        @id @default(autoincrement())
+  empleado_id              Int?
+  fecha_generacion         DateTime?  @default(now()) @db.Timestamp(6)
+  periodo_inicio           DateTime?  @db.Date
+  periodo_fin              DateTime?  @db.Date
+  total_servicios_vendidos Decimal?   @db.Decimal(10, 2)
+  porcentaje_aplicado      Decimal?   @db.Decimal(5, 2)
+  pago_servicios           Decimal?   @db.Decimal(10, 2)
+  pago_productos           Decimal?   @db.Decimal(10, 2)
+  pago_fijo_o_bonos        Decimal?   @db.Decimal(10, 2)
+  descuentos               Decimal?   @db.Decimal(10, 2)
+  total_a_pagar            Decimal?   @db.Decimal(10, 2)
+  estado                   String?    @default("Pendiente") @db.VarChar(20)
+  fecha_inicio_periodo     DateTime?  @db.Date
+  fecha_fin_periodo        DateTime?  @db.Date
+  total_pagado             Decimal?   @db.Decimal(10, 2)
+  gastos                   gastos[]
+  empleados                empleados? @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ventas                   ventas[]
+}
+
+model plantillas_whatsapp {
+  id          Int     @id @default(autoincrement())
+  tipo        String  @unique @db.VarChar(50)
+  contenido   String
+  descripcion String? @db.VarChar(255)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model productos {
+  id                      Int                  @id @default(autoincrement())
+  nombre                  String               @db.VarChar(150)
+  descripcion             String?
+  marca_id                Int?
+  codigo_barras           String?              @unique @db.VarChar(100)
+  categoria_id            Int
+  precio_compra           Decimal?             @db.Decimal(10, 2)
+  precio_venta            Decimal              @db.Decimal(10, 2)
+  comision_vendedor_monto Decimal?             @db.Decimal(10, 2)
+  stock_actual            Int                  @default(0)
+  stock_minimo            Int?                 @default(0)
+  unidad_medida           String?              @db.VarChar(50)
+  proveedor_id            Int?
+  contenido_neto_valor    Decimal?             @db.Decimal(10, 2)
+  imagen_url              String?              @db.VarChar(255)
+  activo                  Boolean?             @default(true)
+  fecha_creacion          DateTime?            @default(now()) @db.Timestamp(6)
+  fecha_actualizacion     DateTime?            @default(now()) @db.Timestamp(6)
+  categorias_productos    categorias_productos @relation(fields: [categoria_id], references: [id], onUpdate: NoAction, map: "fk_producto_categoria_prod")
+  marcas                  marcas?              @relation(fields: [marca_id], references: [id], onUpdate: NoAction, map: "fk_producto_marca")
+  proveedores             proveedores?         @relation(fields: [proveedor_id], references: [id], onUpdate: NoAction, map: "fk_producto_proveedor")
+  venta_items             venta_items[]
+}
+
+model propinas {
+  id                                           Int        @id @default(autoincrement())
+  empleado_id                                  Int?
+  monto                                        Decimal    @db.Decimal(10, 2)
+  metodo_pago                                  String?    @db.VarChar(50)
+  fecha_registro                               DateTime?  @default(now()) @db.Timestamp(6)
+  entregado_al_barbero                         Boolean?   @default(false)
+  fecha_entrega                                DateTime?  @db.Timestamp(6)
+  venta_asociada_id                            Int?
+  registrado_por                               Int?
+  empleados_propinas_empleado_idToempleados    empleados? @relation("propinas_empleado_idToempleados", fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados_propinas_registrado_porToempleados empleados? @relation("propinas_registrado_porToempleados", fields: [registrado_por], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  ventas                                       ventas?    @relation(fields: [venta_asociada_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model proveedores {
+  id                  Int         @id @default(autoincrement())
+  nombre_empresa      String      @unique @db.VarChar(150)
+  ruc                 String?     @unique @db.VarChar(11)
+  nombre_contacto     String?     @db.VarChar(100)
+  telefono            String?     @db.VarChar(50)
+  email               String?     @unique @db.VarChar(100)
+  direccion           String?
+  ciudad              String?     @db.VarChar(100)
+  pais                String?     @db.VarChar(100)
+  notas               String?
+  activo              Boolean?    @default(true)
+  fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
+  fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
+  productos           productos[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model reservas {
+  id                  Int        @id @default(autoincrement())
+  cliente_id          Int
+  empleado_id         Int
+  servicio_id         Int
+  sucursal_id         Int
+  fecha_hora_inicio   DateTime   @db.Timestamp(6)
+  fecha_hora_fin      DateTime   @db.Timestamp(6)
+  estado              String     @default("Programada") @db.VarChar(50)
+  notas_cliente       String?
+  notas_internas      String?
+  precio_cobrado      Decimal?   @db.Decimal(10, 2)
+  fecha_actualizacion DateTime?  @default(now()) @db.Timestamp(6)
+  clientes            clientes   @relation(fields: [cliente_id], references: [id], onUpdate: NoAction, map: "fk_reserva_cliente")
+  servicios           servicios  @relation(fields: [servicio_id], references: [id], onUpdate: NoAction, map: "fk_reserva_servicio")
+  sucursales          sucursales @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_reserva_sucursal")
+  empleados           empleados  @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservas_empleados")
+  ventas              ventas[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model rol_permisos {
+  rol_id     Int
+  permiso_id Int
+  permisos   permisos @relation(fields: [permiso_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_rolpermiso_permiso")
+  roles      roles    @relation(fields: [rol_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_rolpermiso_rol")
+
+  @@id([rol_id, permiso_id])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model roles {
+  id            Int             @id @default(autoincrement())
+  nombre        String          @unique @db.VarChar(50)
+  descripcion   String?
+  colaboradores colaboradores[]
+  empleados     empleados[]
+  rol_permisos  rol_permisos[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model series_comprobantes {
+  id               Int        @id @default(autoincrement())
+  sucursal_id      Int
+  tipo_comprobante String     @db.VarChar(50)
+  serie            String     @db.VarChar(10)
+  ultimo_numero    Int        @default(0)
+  activo           Boolean?   @default(true)
+  sucursales       sucursales @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_serie_sucursal")
+
+  @@unique([sucursal_id, tipo_comprobante])
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model servicios {
+  id                                                                             Int                       @id @default(autoincrement())
+  nombre                                                                         String                    @db.VarChar(150)
+  descripcion                                                                    String?
+  duracion_minutos                                                               Int
+  precio                                                                         Decimal                   @db.Decimal(10, 2)
+  categoria_id                                                                   Int
+  activo                                                                         Boolean?                  @default(true)
+  fecha_creacion                                                                 DateTime?                 @default(now()) @db.Timestamp(6)
+  fecha_actualizacion                                                            DateTime?                 @default(now()) @db.Timestamp(6)
+  porcentaje_comision_extra                                                      Decimal?                  @db.Decimal(5, 2)
+  es_paquete                                                                     Boolean                   @default(false)
+  costo_insumos                                                                  Decimal                   @default(0.00) @db.Decimal(10, 2)
+  cargo_fijo_produccion                                                          Decimal?                  @db.Decimal(10, 2)
+  paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios    paquete_servicios_items[] @relation("paquete_servicios_items_item_servicio_idToservicios")
+  paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios paquete_servicios_items[] @relation("paquete_servicios_items_paquete_servicio_idToservicios")
+  reservas                                                                       reservas[]
+  categorias_servicios                                                           categorias_servicios      @relation(fields: [categoria_id], references: [id], onUpdate: NoAction, map: "fk_servicio_categoria")
+  venta_items                                                                    venta_items[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model sucursales {
+  id                           Int                     @id @default(autoincrement())
+  nombre                       String                  @unique @db.VarChar(100)
+  direccion                    String?
+  ciudad                       String?                 @db.VarChar(100)
+  telefono                     String?                 @db.VarChar(50)
+  email                        String?                 @db.VarChar(100)
+  codigo_establecimiento_sunat String?                 @db.VarChar(10)
+  activo                       Boolean?                @default(true)
+  fecha_creacion               DateTime?               @default(now()) @db.Timestamp(6)
+  fecha_actualizacion          DateTime?               @default(now()) @db.Timestamp(6)
+  facebook_url                 String?                 @db.VarChar(255)
+  instagram_url                String?                 @db.VarChar(255)
+  tiktok_url                   String?                 @db.VarChar(255)
+  whatsapp_numero              String?                 @db.VarChar(20)
+  caja_sesiones                caja_sesiones[]
+  clientes                     clientes[]
+  colaboradores                colaboradores[]
+  configuracion_sucursal       configuracion_sucursal?
+  empleado_sucursales          empleado_sucursales[]
+  gastos                       gastos[]
+  horarios_extra               horarios_extra[]
+  reservas                     reservas[]
+  series_comprobantes          series_comprobantes[]
+  ventas                       ventas[]
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model venta_items {
+  id                     Int          @id @default(autoincrement())
+  venta_id               Int
+  servicio_id            Int?
+  producto_id            Int?
+  cantidad               Int          @default(1)
+  precio_unitario_venta  Decimal      @db.Decimal(10, 2)
+  subtotal_item_neto     Decimal      @db.Decimal(10, 2)
+  valor_produccion       Decimal      @default(0.00) @db.Decimal(10, 2)
+  es_trabajo_extra       Boolean?     @default(false)
+  es_hora_extra          Boolean      @default(false)
+  subtotal_item_bruto    Decimal      @default(0.00) @db.Decimal(10, 2)
+  descuento_item_monto   Decimal      @default(0.00) @db.Decimal(10, 2)
+  descripcion_item_venta String?      @db.VarChar(255)
+  notas_item             String?
+  usado_como_beneficio   Boolean?     @default(false)
+  comisiones             comisiones[]
+  productos              productos?   @relation(fields: [producto_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_producto")
+  servicios              servicios?   @relation(fields: [servicio_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_servicio")
+  ventas                 ventas       @relation(fields: [venta_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_ventaitem_venta")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model venta_pagos {
+  id              Int       @id @default(autoincrement())
+  venta_id        Int
+  metodo_pago     String    @db.VarChar(50)
+  monto           Decimal   @db.Decimal(10, 2)
+  referencia_pago String?   @db.VarChar(100)
+  fecha_pago      DateTime? @default(now()) @db.Timestamp(6)
+  ventas          ventas    @relation(fields: [venta_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_pago_venta")
+}
+
+/// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+model ventas {
+  id                                                 Int                  @id @default(autoincrement())
+  reserva_id                                         Int?
+  cliente_receptor_id                                Int?
+  empleado_id                                        Int
+  sucursal_id                                        Int
+  fecha_venta                                        DateTime             @default(now()) @db.Timestamp(6)
+  monto_final_venta                                  Decimal              @db.Decimal(10, 2)
+  estado_pago                                        String               @default("Pagado") @db.VarChar(50)
+  tipo_comprobante                                   String?              @db.VarChar(50)
+  serie_comprobante                                  String?              @db.VarChar(10)
+  numero_comprobante                                 String?              @db.VarChar(20)
+  fecha_actualizacion                                DateTime?            @default(now()) @db.Timestamp(6)
+  nota_venta_origen_id                               Int?                 @unique
+  subtotal_servicios                                 Decimal              @default(0.00) @db.Decimal(10, 2)
+  subtotal_productos                                 Decimal              @default(0.00) @db.Decimal(10, 2)
+  cliente_facturacion_id                             Int?
+  descuento_monto                                    Decimal              @default(0.00) @db.Decimal(10, 2)
+  monto_impuestos                                    Decimal              @default(0.00) @db.Decimal(10, 2)
+  campana_id                                         Int?
+  estado_sunat                                       String?              @default("Pendiente") @db.VarChar(50)
+  cdr_sunat_path                                     String?              @db.VarChar(255)
+  xml_firmado_hash                                   String?              @db.VarChar(255)
+  caja_sesion_id                                     Int?
+  notas_venta                                        String?
+  caja_id                                            Int?
+  estado                                             String?              @default("Completada") @db.VarChar(20)
+  pago_nomina_id                                     Int?
+  cliente_membresias                                 cliente_membresias[]
+  propinas                                           propinas[]
+  venta_items                                        venta_items[]
+  venta_pagos                                        venta_pagos[]
+  clientes_ventas_cliente_receptor_idToclientes      clientes?            @relation("ventas_cliente_receptor_idToclientes", fields: [cliente_receptor_id], references: [id], onUpdate: NoAction, map: "fk_venta_cliente")
+  empleados                                          empleados            @relation(fields: [empleado_id], references: [id], onUpdate: NoAction, map: "fk_venta_empleado")
+  reservas                                           reservas?            @relation(fields: [reserva_id], references: [id], onUpdate: NoAction, map: "fk_venta_reserva")
+  sucursales                                         sucursales           @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_venta_sucursal")
+  caja_sesiones_ventas_caja_idTocaja_sesiones        caja_sesiones?       @relation("ventas_caja_idTocaja_sesiones", fields: [caja_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  caja_sesiones_ventas_caja_sesion_idTocaja_sesiones caja_sesiones?       @relation("ventas_caja_sesion_idTocaja_sesiones", fields: [caja_sesion_id], references: [id], onUpdate: NoAction)
+  campanas                                           campanas?            @relation(fields: [campana_id], references: [id], onUpdate: NoAction)
+  clientes_ventas_cliente_facturacion_idToclientes   clientes?            @relation("ventas_cliente_facturacion_idToclientes", fields: [cliente_facturacion_id], references: [id], onUpdate: NoAction)
+  planillas                                          planillas?           @relation(fields: [pago_nomina_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+
+  @@index([campana_id], map: "idx_venta_campana")
+  @@index([cliente_facturacion_id], map: "idx_venta_cliente_facturacion")
+  @@index([caja_sesion_id], map: "idx_ventas_caja_sesion")
+}
