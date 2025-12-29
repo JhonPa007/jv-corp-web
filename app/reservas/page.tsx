@@ -20,7 +20,7 @@ export default function ReservasPage() {
                         Por favor contáctanos vía WhatsApp para agendar:
                     </p>
                     <a
-                        href="https://wa.me/51999999999"
+                        href="https://wa.me/51965432443"
                         target="_blank"
                         className="inline-block mt-4 px-6 py-3 bg-[#25D366] text-white font-bold rounded-full hover:bg-[#128C7E] transition-colors"
                     >

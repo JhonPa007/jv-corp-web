@@ -24,6 +24,15 @@ export default function Footer() {
                         </Link>
                     </div>
 
+                    <div className="flex flex-col gap-2 text-right">
+                        <span className="text-xs font-bold opacity-50 uppercase tracking-widest">Síguenos</span>
+                        <div className="flex gap-4 text-sm">
+                            <a href="https://www.tiktok.com/@jvbarberia?lang=es-419" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">TikTok</a>
+                            <a href="https://www.facebook.com/BarberiaAbancay" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Facebook</a>
+                            <a href="https://www.instagram.com/jvstudio_formen/" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Instagram</a>
+                        </div>
+                    </div>
+
                     <div className="text-sm opacity-60 text-gray-500">
                         &copy; {new Date().getFullYear()} JV Corp. Todos los derechos reservados.
                     </div>
