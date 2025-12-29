@@ -28,7 +28,7 @@ export default async function ServiceList() {
                         className={`p-6 rounded-lg shadow-md border ${cardStyle} transition-transform hover:scale-105`}
                     >
                         <div className="flex justify-between items-start mb-2">
-                            <h3 className="text-xl font-bold">{service.nombre}</h3>
+                            <h3 className="text-xl font-agency font-bold tracking-wide">{service.nombre}</h3>
                             <span className="text-sm px-2 py-1 rounded-full opacity-80 border border-current">
                                 {categoryName}
                             </span>
@@ -41,7 +41,7 @@ export default async function ServiceList() {
                                 <span className="text-sm opacity-75">Duración</span>
                                 <span className="font-semibold">{service.duracion_minutos} min</span>
                             </div>
-                            <div className="text-2xl font-bold">
+                            <div className="text-3xl font-agency font-bold">
                                 ${Number(service.precio).toFixed(2)}
                             </div>
                         </div>
