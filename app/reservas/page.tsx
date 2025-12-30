@@ -14,6 +14,9 @@ async function getData() {
             }),
             prisma.empleados.findMany({
                 where: { activo: true },
+                include: {
+                    roles: true
+                },
                 orderBy: { nombres: 'asc' }
             })
         ]);

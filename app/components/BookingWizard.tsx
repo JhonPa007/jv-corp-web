@@ -3,7 +3,7 @@
 import { useState, useMemo } from "react";
 import { format, addDays, startOfToday, isSameDay } from "date-fns";
 import { es } from "date-fns/locale";
-import { FaWhatsapp, FaCalendarAlt, FaUser, FaCut, FaCheckCircle, FaArrowLeft, FaStar } from "react-icons/fa";
+import { FaWhatsapp, FaUser, FaCheckCircle, FaArrowLeft, FaStar } from "react-icons/fa";
 
 type Step = "service" | "staff" | "time" | "confirm";
 
@@ -38,10 +38,12 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
         if (!selectedService || !selectedStaff || !selectedDate || !selectedTime) return "#";
 
         const dateStr = format(selectedDate, "EEEE d 'de' MMMM", { locale: es });
+        const staffName = selectedStaff.any ? "Cualquier Profesional" : `${selectedStaff.nombres}`;
+
         const message = `Hola JV Studio, quisiera confirmar una reserva:
         
 ✂️ *Servicio*: ${selectedService.nombre}
-👤 *Profesional*: ${selectedStaff.nombres} ${selectedStaff.apellidos}
+👤 *Profesional*: ${staffName}
 📅 *Fecha*: ${dateStr}
 ⏰ *Hora*: ${selectedTime}
 
@@ -62,10 +64,6 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         key={service.id}
                         onClick={() => {
                             setSelectedService(service);
-                            // Auto-advance is optional, but often nice. Let's keep manual next or explicit click.
-                            // For this UI, let's select and require "Next" button click or double click? 
-                            // Fresha usually advances on click. Let's auto-advance for smoother flow.
-                            setSelectedService(service);
                             setTimeout(() => setCurrentStep("staff"), 200);
                         }}
                         className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex justify-between items-center group
@@ -75,13 +73,13 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                             }`}
                     >
                         <div>
-                            <h3 className="font-bold text-lg text-barberia-dark">{service.nombre}</h3>
+                            <h3 className="font-bold text-lg text-gray-900">{service.nombre}</h3>
                             <p className="text-sm text-gray-500">{service.duracion_minutos} min</p>
                             {service.descripcion && <p className="text-sm text-gray-400 mt-1">{service.descripcion}</p>}
                         </div>
                         <div className="text-right">
-                            <span className="font-bold text-lg text-barberia-dark block">{formatPrice(service.precio)}</span>
-                            <div className={`mt-2 w-6 h-6 rounded-full border-2 flex items-center justify-center
+                            <span className="font-bold text-lg text-gray-900 block">{formatPrice(service.precio)}</span>
+                            <div className={`mt-2 w-6 h-6 rounded-full border-2 flex items-center justify-center ml-auto
                                 ${selectedService?.id === service.id ? "border-barberia-gold bg-barberia-gold text-white" : "border-gray-300"}
                              `}>
                                 {selectedService?.id === service.id && <FaCheckCircle size={14} />}
@@ -94,77 +92,92 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     );
 
     // 2. Staff Selection
-    const StaffSelection = () => (
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold mb-6 text-barberia-dark">Elige tu Profesional</h2>
+    const StaffSelection = () => {
+        // Filter logic
+        const relevantStaff = staff.filter(employee => {
+            if (!employee.roles) return true;
 
-            {/* Option "Any Professional" */}
-            <div
-                onClick={() => {
-                    setSelectedStaff({ id: 'any', nombres: "Cualquier", apellidos: "Profesional", any: true });
-                    setTimeout(() => setCurrentStep("time"), 200);
-                }}
-                className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
-                    ${selectedStaff?.any
-                        ? "border-barberia-gold bg-amber-50"
-                        : "border-gray-100 hover:border-gray-300 bg-white"
-                    }`}
-            >
-                <div className="w-12 h-12 rounded-full bg-barberia-dark text-barberia-gold flex items-center justify-center font-bold">
-                    JV
-                </div>
-                <div>
-                    <h3 className="font-bold text-lg text-barberia-dark">Cualquier Profesional</h3>
-                    <p className="text-sm text-gray-500">Para máxima disponibilidad</p>
-                </div>
-            </div>
+            const roleName = (employee.roles.nombre || "").toLowerCase();
+            const serviceCategory = (selectedService?.categorias_servicios?.nombre || "").toLowerCase();
 
-            <div className="grid gap-4">
-                {staff.map((employee) => (
-                    <div
-                        key={employee.id}
-                        onClick={() => {
-                            setSelectedStaff(employee);
-                            setTimeout(() => setCurrentStep("time"), 200);
-                        }}
-                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
-                             ${selectedStaff?.id === employee.id && !selectedStaff?.any
-                                ? "border-barberia-gold bg-amber-50"
-                                : "border-gray-100 hover:border-gray-300 bg-white"
-                            }`}
-                    >
-                        <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative">
-                            {/* Placeholder for avatar */}
-                            <FaUser className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
-                        </div>
-                        <div>
-                            <div className="flex items-center gap-2">
-                                <h3 className="font-bold text-lg text-barberia-dark">{employee.nombres} {employee.apellidos}</h3>
-                                <div className="flex text-yellow-400 text-xs gap-0.5">
-                                    <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
-                                </div>
-                            </div>
-                            <p className="text-sm text-gray-500">{employee.nombre_display || "Estilista Profesional"}</p>
-                        </div>
+            if (serviceCategory.includes("barber")) {
+                return roleName.includes("barber") || roleName.includes("general");
+            }
+            // For salon, we can be more permissive or strict. Let's start with showing non-barbers or everyone.
+            // If we just return true, user sees everyone. That's safer for now.
+            return true;
+        });
+
+        const displayStaff = relevantStaff.length > 0 ? relevantStaff : staff;
+
+        return (
+            <div className="space-y-4">
+                <h2 className="text-2xl font-bold mb-6 text-barberia-dark">Elige tu Profesional</h2>
+
+                <div
+                    onClick={() => {
+                        setSelectedStaff({ id: 'any', nombres: "Cualquier", apellidos: "Profesional", any: true });
+                        setTimeout(() => setCurrentStep("time"), 200);
+                    }}
+                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
+                        ${selectedStaff?.any
+                            ? "border-barberia-gold bg-amber-50"
+                            : "border-gray-100 hover:border-gray-300 bg-white"
+                        }`}
+                >
+                    <div className="w-12 h-12 rounded-full bg-barberia-dark text-barberia-gold flex items-center justify-center font-bold">
+                        JV
                     </div>
-                ))}
+                    <div>
+                        <h3 className="font-bold text-lg text-gray-900">Cualquier Profesional</h3>
+                        <p className="text-sm text-gray-500">Para máxima disponibilidad</p>
+                    </div>
+                </div>
+
+                <div className="grid gap-4">
+                    {displayStaff.map((employee) => (
+                        <div
+                            key={employee.id}
+                            onClick={() => {
+                                setSelectedStaff(employee);
+                                setTimeout(() => setCurrentStep("time"), 200);
+                            }}
+                            className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
+                                 ${selectedStaff?.id === employee.id && !selectedStaff?.any
+                                    ? "border-barberia-gold bg-amber-50"
+                                    : "border-gray-100 hover:border-gray-300 bg-white"
+                                }`}
+                        >
+                            <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative flex-shrink-0">
+                                <FaUser className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
+                            </div>
+                            <div>
+                                <div className="flex items-center gap-2">
+                                    <h3 className="font-bold text-lg text-gray-900">{employee.nombres} {employee.apellidos}</h3>
+                                    <div className="flex text-yellow-400 text-xs gap-0.5">
+                                        <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                                    </div>
+                                </div>
+                                <p className="text-sm font-semibold text-barberia-gold uppercase tracking-wide">
+                                    {employee.roles?.nombre || "Estilista Profesional"}
+                                </p>
+                            </div>
+                        </div>
+                    ))}
+                </div>
             </div>
-        </div>
-    );
+        );
+    };
 
     // 3. Time Selection
     const TimeSelection = () => {
-        // Generate next 7 days
         const days = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(startOfToday(), i)), []);
-
-        // Mock time slots
         const timeSlots = ["10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "14:00", "15:00", "16:00", "16:30", "17:00", "18:00", "19:00"];
 
         return (
             <div className="space-y-6">
                 <h2 className="text-2xl font-bold text-barberia-dark">Fecha y Hora</h2>
 
-                {/* Date Slider */}
                 <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
                     {days.map((day) => {
                         const isSelected = isSameDay(day, selectedDate);
@@ -186,7 +199,6 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                     })}
                 </div>
 
-                {/* Time Grid */}
                 <div>
                     <h3 className="font-bold text-gray-700 mb-4">{format(selectedDate, "EEEE d 'de' MMMM", { locale: es })}</h3>
                     <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
@@ -212,7 +224,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
         );
     };
 
-    // 4. Confirmation (Actually, mostly handled by summary, but maybe a final view)
+    // 4. Confirmation
     const ConfirmationStep = () => (
         <div className="text-center py-8">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
@@ -275,7 +287,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         {selectedService ? (
                             <div className="flex justify-between items-start text-sm">
                                 <span className="text-gray-600">{selectedService.nombre}</span>
-                                <span className="font-bold">{formatPrice(selectedService.precio)}</span>
+                                <span className="font-bold text-gray-900">{formatPrice(selectedService.precio)}</span>
                             </div>
                         ) : (
                             <p className="text-sm text-gray-400 italic">Selecciona un servicio...</p>
@@ -283,13 +295,17 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
 
                         {selectedStaff && (
                             <div className="flex justify-between items-start text-sm">
-                                <span className="text-gray-600">Profesional: {selectedStaff.nombres}</span>
+                                <span className="text-gray-600">
+                                    Profesional: <span className="font-medium text-barberia-dark">{selectedStaff.any ? "Cualquiera" : selectedStaff.nombres}</span>
+                                </span>
                             </div>
                         )}
 
                         {(selectedTime && currentStep !== 'service' && currentStep !== 'staff') && (
                             <div className="flex justify-between items-start text-sm">
-                                <span className="text-gray-600">Fecha: {format(selectedDate, "d MMM", { locale: es })} {selectedTime}</span>
+                                <span className="text-gray-600">
+                                    Fecha: <span className="font-medium text-barberia-dark">{format(selectedDate, "d MMM", { locale: es })} {selectedTime}</span>
+                                </span>
                             </div>
                         )}
 
