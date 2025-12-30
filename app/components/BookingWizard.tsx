@@ -38,7 +38,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
         if (!selectedService || !selectedStaff || !selectedDate || !selectedTime) return "#";
 
         const dateStr = format(selectedDate, "EEEE d 'de' MMMM", { locale: es });
-        const staffName = selectedStaff.any ? "Cualquier Profesional" : `${selectedStaff.nombres}`;
+        const staffName = selectedStaff.any ? "Cualquier Profesional" : `${selectedStaff.nombre_display || selectedStaff.nombres}`;
 
         const message = `Hola JV Studio, quisiera confirmar una reserva:
         
@@ -151,7 +151,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                             </div>
                             <div>
                                 <div className="flex items-center gap-2">
-                                    <h3 className="font-bold text-lg text-gray-900">{employee.nombres} {employee.apellidos}</h3>
+                                    <h3 className="font-bold text-lg text-gray-900">{employee.nombre_display || employee.nombres}</h3>
                                     <div className="flex text-yellow-400 text-xs gap-0.5">
                                         <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                                     </div>
@@ -294,7 +294,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         {selectedStaff && (
                             <div className="flex justify-between items-start text-sm">
                                 <span className="text-gray-600">
-                                    Profesional: <span className="font-medium text-barberia-dark">{selectedStaff.any ? "Cualquiera" : selectedStaff.nombres}</span>
+                                    Profesional: <span className="font-medium text-barberia-dark">{selectedStaff.any ? "Cualquiera" : (selectedStaff.nombre_display || selectedStaff.nombres)}</span>
                                 </span>
                             </div>
                         )}
