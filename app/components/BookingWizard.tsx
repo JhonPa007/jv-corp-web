@@ -3,8 +3,8 @@
 import { useState, useMemo } from "react";
 import { format, addDays, startOfToday, isSameDay } from "date-fns";
 import { es } from "date-fns/locale";
-import { FaWhatsapp, FaUser, FaCheckCircle, FaArrowLeft, FaStar, FaIdCard, FaEnvelope, FaPhone, FaCalendarAlt, FaUserEdit } from "react-icons/fa";
-import { registerClientForBooking } from "../actions/booking-actions";
+import { FaWhatsapp, FaUser, FaCheckCircle, FaArrowLeft, FaStar, FaIdCard, FaEnvelope, FaPhone, FaCalendarAlt, FaUserEdit, FaClock } from "react-icons/fa";
+import { registerClientForBooking, getAvailableTimeSlots, createReservation } from "../actions/booking-actions";
 
 type Step = "service" | "staff" | "time" | "client" | "confirm";
 
@@ -29,6 +29,9 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     });
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [clientError, setClientError] = useState<string | null>(null);
+    const [availableSlots, setAvailableSlots] = useState<string[]>([]);
+    const [isLoadingSlots, setIsLoadingSlots] = useState(false);
+    const [reservationId, setReservationId] = useState<number | null>(null);
 
     // --- Helpers ---
     const formatPrice = (price: number) => `S/ ${Number(price).toFixed(2)}`;
@@ -48,32 +51,47 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     };
 
     const handleClientSubmit = async () => {
+        // Just move to confirmation step, don't create reservation yet.
+        // Or validate client data locally first?
         if (!clientData.nombres || !clientData.telefono || !clientData.email || !clientData.fecha_nacimiento) {
             setClientError("Por favor completa los campos obligatorios (*)");
             return;
         }
+        setClientError(null);
+        setCurrentStep("confirm");
+    };
+
+    const handleCreateReservation = async () => {
+        if (!selectedService || !selectedStaff || !selectedDate || !selectedTime) return;
 
         setIsSubmitting(true);
-        setClientError(null);
-
         try {
-            const birthDate = new Date(clientData.fecha_nacimiento);
-            const result = await registerClientForBooking({
-                ...clientData,
-                fecha_nacimiento: !isNaN(birthDate.getTime()) ? birthDate : undefined
+            const result = await createReservation({
+                client: {
+                    ...clientData,
+                    fecha_nacimiento: clientData.fecha_nacimiento ? new Date(clientData.fecha_nacimiento) : undefined
+                },
+                serviceId: selectedService.id,
+                staffId: selectedStaff.any ? 'any' : selectedStaff.id,
+                date: selectedDate,
+                time: selectedTime,
+                servicePrice: Number(selectedService.precio)
             });
 
-            if (result.success) {
-                setCurrentStep("confirm");
+            if (result.success && result.reservationId) {
+                setReservationId(result.reservationId);
+                // Success state handled in render
             } else {
-                setClientError(result.error || "Error al registrar cliente");
+                // Show error somewhere? For now allow retry or show generic alert
+                alert(result.error || "No se pudo crear la reserva. Por favor intenta nuevamente.");
             }
-        } catch (err) {
-            setClientError("Ocurrió un error inesperado.");
+        } catch (error) {
+            console.error(error);
+            alert("Ocurrió un error al procesar tu reserva.");
         } finally {
             setIsSubmitting(false);
         }
-    };
+    }
 
     const getWhatsAppLink = () => {
         if (!selectedService || !selectedStaff || !selectedDate || !selectedTime) return "#";
@@ -214,7 +232,27 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     // 3. Time Selection
     const TimeSelection = () => {
         const days = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(startOfToday(), i)), []);
-        const timeSlots = ["10:00", "10:30", "11:00", "11:30", "12:00", "13:00", "14:00", "15:00", "16:00", "16:30", "17:00", "18:00", "19:00"];
+
+        // Use Effect for fetching slots
+        const [slots, setSlots] = useState<string[]>([]);
+        const [loading, setLoading] = useState(false);
+
+        // We use a key to force re-render or just standard useEffect
+        useMemo(() => {
+            const fetchSlots = async () => {
+                if (!selectedService) return;
+                setLoading(true);
+                setSlots([]); // Clear prev
+
+                const staffId = selectedStaff?.any ? 'any' : selectedStaff?.id;
+                if (!staffId) return;
+
+                const fetchedSlots = await getAvailableTimeSlots(selectedDate, staffId, selectedService.duracion_minutos);
+                setSlots(fetchedSlots);
+                setLoading(false);
+            };
+            fetchSlots();
+        }, [selectedDate, selectedStaff, selectedService]);
 
         return (
             <div className="space-y-6">
@@ -243,24 +281,36 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
 
                 <div>
                     <h3 className="font-bold text-gray-700 mb-4">{format(selectedDate, "EEEE d 'de' MMMM", { locale: es })}</h3>
-                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                        {timeSlots.map((time) => (
-                            <button
-                                key={time}
-                                onClick={() => {
-                                    setSelectedTime(time);
-                                    setTimeout(() => setCurrentStep("confirm"), 200);
-                                }}
-                                className={`py-3 px-2 rounded-lg border text-sm font-semibold transition-all
-                                    ${selectedTime === time
-                                        ? "bg-barberia-gold border-barberia-gold text-white shadow-md"
-                                        : "bg-white border-gray-200 text-gray-700 hover:border-barberia-gold hover:text-barberia-gold"
-                                    }`}
-                            >
-                                {time}
-                            </button>
-                        ))}
-                    </div>
+
+                    {loading ? (
+                        <div className="flex items-center gap-2 text-gray-500 py-8 justify-center">
+                            <FaClock className="animate-spin" /> Buscando espacios disponibles...
+                        </div>
+                    ) : slots.length === 0 ? (
+                        <div className="text-center py-8 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+                            <p className="text-gray-500">No hay horarios disponibles para esta fecha.</p>
+                            <p className="text-sm text-gray-400 mt-1">Intenta con otra fecha o profesional.</p>
+                        </div>
+                    ) : (
+                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                            {slots.map((time) => (
+                                <button
+                                    key={time}
+                                    onClick={() => {
+                                        setSelectedTime(time);
+                                        setTimeout(() => setCurrentStep("client"), 200); // Skip directly to client? Flow is Service->Staff->Time->Client->Confirm
+                                    }}
+                                    className={`py-3 px-2 rounded-lg border text-sm font-semibold transition-all
+                                        ${selectedTime === time
+                                            ? "bg-barberia-gold border-barberia-gold text-white shadow-md"
+                                            : "bg-white border-gray-200 text-gray-700 hover:border-barberia-gold hover:text-barberia-gold"
+                                        }`}
+                                >
+                                    {time}
+                                </button>
+                            ))}
+                        </div>
+                    )}
                 </div>
             </div>
         );
@@ -387,27 +437,77 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     );
 
     // 5. Confirmation
-    const ConfirmationStep = () => (
-        <div className="text-center py-8">
-            <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                <FaCheckCircle className="text-4xl text-green-500" />
-            </div>
-            <h2 className="text-3xl font-bold text-barberia-dark mb-4">¡Todo listo!</h2>
-            <p className="text-gray-600 max-w-md mx-auto mb-8">
-                Tienes todos los detalles seleccionados. Haz clic en el botón de abajo para finalizar tu reserva vía WhatsApp.
-            </p>
+    const ConfirmationStep = () => {
+        if (reservationId) {
+            return (
+                <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
+                    <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <FaCheckCircle className="text-5xl text-green-500" />
+                    </div>
+                    <h2 className="text-3xl font-bold text-barberia-dark mb-4">¡Reserva Confirmada!</h2>
+                    <p className="text-gray-600 max-w-md mx-auto mb-8">
+                        Tu cita ha sido agendada con éxito. Te esperamos el <strong>{format(selectedDate, "d 'de' MMMM", { locale: es })}</strong> a las <strong>{selectedTime}</strong>.
+                    </p>
+                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 max-w-sm mx-auto mb-8 text-left">
+                        <p className="text-sm text-gray-500 mb-1">Código de Reserva</p>
+                        <p className="text-xl font-mono font-bold text-gray-900">#{reservationId}</p>
+                    </div>
+                    <button
+                        onClick={() => window.location.reload()}
+                        className="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-black transition-all"
+                    >
+                        Hacer otra reserva
+                    </button>
+                </div>
+            );
+        }
 
-            <a
-                href={getWhatsAppLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-3 bg-[#25D366] text-white px-8 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-[#128C7E] hover:scale-105 transition-all w-full md:w-auto justify-center"
-            >
-                <FaWhatsapp className="text-2xl" />
-                Enviar Reserva por WhatsApp
-            </a>
-        </div>
-    );
+        return (
+            <div className="text-center py-8">
+                <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <FaCalendarAlt className="text-4xl text-barberia-gold" />
+                </div>
+                <h2 className="text-3xl font-bold text-barberia-dark mb-4">Confirmar Detalle</h2>
+                <p className="text-gray-600 max-w-md mx-auto mb-8">
+                    Por favor revisa los detalles de tu reserva antes de confirmar.
+                </p>
+
+                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 max-w-md mx-auto mb-8 space-y-4">
+                    <div className="flex justify-between border-b pb-2 border-gray-200">
+                        <span className="text-gray-500">Servicio</span>
+                        <span className="font-bold text-gray-900">{selectedService?.nombre}</span>
+                    </div>
+                    <div className="flex justify-between border-b pb-2 border-gray-200">
+                        <span className="text-gray-500">Profesional</span>
+                        <span className="font-bold text-gray-900">{selectedStaff?.any ? "Cualquiera" : (selectedStaff?.nombre_display || selectedStaff?.nombres)}</span>
+                    </div>
+                    <div className="flex justify-between border-b pb-2 border-gray-200">
+                        <span className="text-gray-500">Fecha y Hora</span>
+                        <span className="font-bold text-gray-900">{format(selectedDate, "d MMM", { locale: es })} - {selectedTime}</span>
+                    </div>
+                    <div className="flex justify-between pt-2">
+                        <span className="font-bold text-lg">Total a Pagar</span>
+                        <span className="font-bold text-lg text-barberia-gold">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
+                    </div>
+                </div>
+
+                <button
+                    onClick={handleCreateReservation}
+                    disabled={isSubmitting}
+                    className="w-full md:w-auto inline-flex items-center gap-3 bg-barberia-dark text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-black hover:scale-105 transition-all justify-center"
+                >
+                    {isSubmitting ? (
+                        <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            Confirmando...
+                        </>
+                    ) : (
+                        "Confirmar Reserva"
+                    )}
+                </button>
+            </div>
+        );
+    };
 
     return (
         <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto w-full">
