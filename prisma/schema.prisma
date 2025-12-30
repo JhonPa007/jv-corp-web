@@ -277,6 +277,7 @@ model empleados {
   id                                                                   Int                      @id @default(autoincrement())
   nombres                                                              String                   @db.VarChar(100)
   apellidos                                                            String                   @db.VarChar(100)
+  profesion                                                            String?                  @db.VarChar(100)
   nombre_display                                                       String?                  @db.VarChar(100)
   email                                                                String?                  @unique @db.VarChar(100)
   rol_id                                                               Int?

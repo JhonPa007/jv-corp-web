@@ -95,16 +95,14 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     const StaffSelection = () => {
         // Filter logic
         const relevantStaff = staff.filter(employee => {
-            if (!employee.roles) return true;
-
-            const roleName = (employee.roles.nombre || "").toLowerCase();
+            // Use profesion if available, otherwise role, otherwise empty
+            const jobTitle = (employee.profesion || employee.roles?.nombre || "").toLowerCase();
             const serviceCategory = (selectedService?.categorias_servicios?.nombre || "").toLowerCase();
 
             if (serviceCategory.includes("barber")) {
-                return roleName.includes("barber") || roleName.includes("general");
+                return jobTitle.includes("barber") || jobTitle.includes("general");
             }
-            // For salon, we can be more permissive or strict. Let's start with showing non-barbers or everyone.
-            // If we just return true, user sees everyone. That's safer for now.
+            // For salon, default to showing them if checking specific roles fails or just show all
             return true;
         });
 
@@ -159,7 +157,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                                     </div>
                                 </div>
                                 <p className="text-sm font-semibold text-barberia-gold uppercase tracking-wide">
-                                    {employee.roles?.nombre || "Estilista Profesional"}
+                                    {employee.profesion || employee.roles?.nombre || "Estilista Profesional"}
                                 </p>
                             </div>
                         </div>
