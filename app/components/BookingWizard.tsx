@@ -20,7 +20,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
 
     // --- Helpers ---
-    const formatPrice = (price: number) => `$${Number(price).toFixed(2)}`;
+    const formatPrice = (price: number) => `S/ ${Number(price).toFixed(2)}`;
 
     const nextStep = () => {
         if (currentStep === "service" && selectedService) setCurrentStep("staff");
@@ -102,7 +102,6 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
             if (serviceCategory.includes("barber")) {
                 return jobTitle.includes("barber") || jobTitle.includes("general");
             }
-            // For salon, default to showing them if checking specific roles fails or just show all
             return true;
         });
 
@@ -110,8 +109,9 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
 
         return (
             <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6 text-barberia-dark">Elige tu Profesional</h2>
+                <h2 className="text-2xl font-bold mb-6 text-black">Elige tu Profesional</h2>
 
+                {/* Option "Any Professional" */}
                 <div
                     onClick={() => {
                         setSelectedStaff({ id: 'any', nombres: "Cualquier", apellidos: "Profesional", any: true });
@@ -156,7 +156,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                                         <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
                                     </div>
                                 </div>
-                                <p className="text-sm font-semibold text-barberia-gold uppercase tracking-wide">
+                                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
                                     {employee.profesion || employee.roles?.nombre || "Estilista Profesional"}
                                 </p>
                             </div>
@@ -308,9 +308,9 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         )}
 
                         <div className="pt-4 mt-4 border-t border-gray-100 flex justify-between items-center">
-                            <span className="font-bold text-lg text-barberia-dark">Total</span>
-                            <span className="font-bold text-2xl text-barberia-dark">
-                                {selectedService ? formatPrice(selectedService.precio) : "$0.00"}
+                            <span className="font-bold text-lg text-gray-800">Total</span>
+                            <span className="font-bold text-2xl text-gray-800">
+                                {selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}
                             </span>
                         </div>
                     </div>
