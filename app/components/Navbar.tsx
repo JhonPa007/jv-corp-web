@@ -2,7 +2,7 @@ import Link from "next/link";
 
 export default function Navbar() {
     return (
-        <nav className="bg-barberia-dark text-barberia-gold p-4 sticky top-0 z-50 shadow-lg border-b border-barberia-gold/20">
+        <nav className="bg-black text-white p-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-3xl font-agency font-bold tracking-wider hover:opacity-90 transition-opacity">
                     JV STUDIO

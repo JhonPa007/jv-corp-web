@@ -23,7 +23,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
             <Link
               href="/services"
-              className="px-8 py-4 bg-barberia-gold text-black font-bold rounded-full hover:bg-white transition-colors text-lg"
+              className="px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-gray-200 transition-colors text-lg"
             >
               Ver Servicios
             </Link>
@@ -47,7 +47,7 @@ export default function Home() {
         <div className="bg-salon-beige text-bg-salon-white p-16 flex flex-col justify-center items-center text-center">
           <h2 className="text-4xl font-bold mb-4 text-gray-900">Salón</h2>
           <p className="mb-8 text-gray-700">Estlismo, coloración y tratamientos de belleza premium.</p>
-          <Link href="/services" className="underline underline-offset-4 text-gray-900 hover:text-black">Explorar Salón &rarr;</Link>
+          <Link href="/services" className="underline underline-offset-4 text-pink-500 font-bold hover:text-pink-700">Explorar Salón &rarr;</Link>
         </div>
       </section>
     </main>
