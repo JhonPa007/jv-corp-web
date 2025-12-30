@@ -174,12 +174,12 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             }
 
             if (isSlotAvailable) {
-                slots.push(format(slotStart, 'HH:mm'));
+                // User requested AM/PM format (e.g. "9:00 AM")
+                slots.push(format(slotStart, 'h:mm a'));
             }
 
-            // Next slot: 30 min steps? Or service specific?
-            // Usually agenda steps are 30 mins even if service is 45.
-            currentTime = addMinutes(currentTime, 30);
+            // Next slot: 5 min steps as requested
+            currentTime = addMinutes(currentTime, 5);
         }
 
         return slots;
@@ -195,7 +195,7 @@ export async function createReservation(data: {
     serviceId: number;
     staffId: number | 'any';
     date: Date; // passed as ISO string usually?
-    time: string; // "14:30"
+    time: string; // "9:00 AM"
     servicePrice: number;
 }) {
     try {
@@ -209,10 +209,10 @@ export async function createReservation(data: {
         // 2. Resolve Staff
         let assignedStaffId = data.staffId;
         const reservationDate = new Date(data.date);
-        const [hours, minutes] = data.time.split(':').map(Number);
 
-        const startDateTime = new Date(reservationDate);
-        startDateTime.setHours(hours, minutes, 0, 0);
+        // Parse "9:00 AM" format back to Date
+        // We use the reservationDate as the base to ensure correct day
+        const startDateTime = parse(data.time, 'h:mm a', reservationDate);
 
         // We need service duration to know end time
         const service = await prisma.servicios.findUnique({ where: { id: data.serviceId } });
