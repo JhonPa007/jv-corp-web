@@ -24,7 +24,7 @@ export default function Home() {
             Exclusividad y Estilo
           </h2>
           <h1 className="text-6xl md:text-8xl font-agency font-bold tracking-wide text-white mb-6">
-            <span className="text-barberia-gold">JV</span> BARBERSHOP
+            <span className="text-barberia-gold">JV</span> STUDIO
           </h1>
           <p className="text-xl md:text-2xl text-gray-200 max-w-2xl mx-auto font-light leading-relaxed">
             Donde la tradición del afeitado clásico se encuentra con el lujo moderno.
