@@ -35,7 +35,7 @@ export default function Home() {
           <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
             <Link
               href="/reservas"
-              className="px-10 py-5 bg-barberia-gold text-black font-bold text-lg hover:bg-white transition-all duration-300 uppercase tracking-wider"
+              className="px-10 py-5 border border-white/30 backdrop-blur-sm text-white font-bold text-lg hover:bg-white hover:text-black transition-all duration-300 uppercase tracking-wider"
             >
               Reservar Cita
             </Link>
