@@ -3,6 +3,8 @@ import { prisma } from "../../lib/prisma";
 import { serviceCategories } from "../../lib/servicesData";
 import { notFound } from "next/navigation";
 
+export const dynamic = "force-dynamic";
+
 // Generate static params for the defined categories
 export function generateStaticParams() {
     return serviceCategories.map((cat) => ({
@@ -18,23 +20,19 @@ export default async function CategoryPage({ params }: { params: { category: str
     }
 
     // Attempt to fetch services matching the category title
-    // Note: We are using 'contains' to be more flexible, or we could require exact match if DB is clean.
-    // Given the user manual list, we'll try to match the title.
-    let services: any[] = [];
-    try {
-        services = await prisma.servicios.findMany({
-            where: {
-                activo: true,
-                categorias_servicios: {
-                    nombre: {
-                        contains: categoryData.title, // e.g. "Corte de Cabello"
-                    }
+    const services = await prisma.servicios.findMany({
+        where: {
+            activo: true,
+            categorias_servicios: {
+                nombre: {
+                    contains: categoryData.title,
                 }
             }
-        });
-    } catch (e) {
+        }
+    }).catch((e) => {
         console.error("Error fetching services", e);
-    }
+        return [];
+    });
 
     return (
         <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-12">
