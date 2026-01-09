@@ -20,7 +20,7 @@ export default async function CategoryPage({ params }: { params: { category: str
     // Attempt to fetch services matching the category title
     // Note: We are using 'contains' to be more flexible, or we could require exact match if DB is clean.
     // Given the user manual list, we'll try to match the title.
-    let services = [];
+    let services: any[] = [];
     try {
         services = await prisma.servicios.findMany({
             where: {
