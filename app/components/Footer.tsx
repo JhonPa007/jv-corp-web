@@ -7,7 +7,7 @@ export default function Footer() {
             <div className="container mx-auto px-4 py-8">
                 <div className="flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="text-center md:text-left">
-                        <h2 className="text-2xl font-agency font-bold tracking-wider mb-2">JV STUDIO</h2>
+                        <h2 className="text-2xl font-agency font-bold tracking-wider mb-2">JV BARBERSHOP</h2>
                         <p className="text-sm opacity-80 text-gray-400">
                             Excelencia en cada detalle.
                         </p>

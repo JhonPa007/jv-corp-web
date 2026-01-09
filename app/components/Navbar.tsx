@@ -5,7 +5,7 @@ export default function Navbar() {
         <nav className="bg-black text-white p-4 sticky top-0 z-50 shadow-lg border-b border-white/10">
             <div className="container mx-auto flex justify-between items-center">
                 <Link href="/" className="text-3xl font-agency font-bold tracking-wider hover:opacity-90 transition-opacity">
-                    JV STUDIO
+                    JV BARBERSHOP
                 </Link>
                 <div className="flex gap-6 font-medium">
                     <Link href="/" className="hover:text-white transition-colors">
