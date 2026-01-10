@@ -16,15 +16,27 @@ export default function Navbar() {
                     </div>
                     <span className="text-3xl font-agency font-bold tracking-wider">JV STUDIO</span>
                 </Link>
-                <div className="flex gap-6 font-medium">
-                    <Link href="/" className="hover:text-white transition-colors">
-                        Inicio
+                <div className="hidden md:flex gap-8 font-medium font-agency tracking-wider text-lg items-center">
+                    <Link href="/" className="hover:text-barberia-gold transition-colors">
+                        INICIO
                     </Link>
-                    <Link href="/services" className="hover:text-white transition-colors">
-                        Servicios
+                    <Link href="/nosotros" className="hover:text-barberia-gold transition-colors">
+                        NOSOTROS
                     </Link>
-                    <Link href="/reservas" className="hover:text-white transition-colors">
-                        Reservas
+                    <Link href="/services" className="hover:text-barberia-gold transition-colors">
+                        SERVICIOS
+                    </Link>
+                    <Link href="/staff" className="hover:text-barberia-gold transition-colors">
+                        STAFF
+                    </Link>
+                    <Link href="/tienda" className="hover:text-barberia-gold transition-colors">
+                        TIENDA
+                    </Link>
+                    <Link href="/contacto" className="hover:text-barberia-gold transition-colors">
+                        CONTACTO
+                    </Link>
+                    <Link href="/reservas" className="bg-barberia-gold text-black px-6 py-2 rounded-sm font-bold hover:bg-white transition-colors">
+                        RESERVAR
                     </Link>
                 </div>
             </div>
