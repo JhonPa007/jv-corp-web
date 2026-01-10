@@ -61,7 +61,7 @@ const ClientIdentityStep = ({
     if (mode === 'options') {
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-                <h2 className="text-2xl font-bold text-barberia-dark mb-2">¡Bienvenido!</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">¡Bienvenido!</h2>
                 <p className="text-gray-500 text-sm mb-6">Para continuar, cuéntanos:</p>
 
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -97,9 +97,8 @@ const ClientIdentityStep = ({
                 <div className="flex items-center gap-2 mb-4">
                     <button onClick={() => setMode('options')} className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1">
                         <FaArrowLeft /> Atrás
-                    </button>
                 </div>
-                <h2 className="text-2xl font-bold text-barberia-dark mb-2">Buscar Cliente</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">Buscar Cliente</h2>
                 <p className="text-gray-500 text-sm mb-6">Ingresa tu DNI, Teléfono o Email para encontrarte.</p>
 
                 <div className="relative">
@@ -108,12 +107,12 @@ const ClientIdentityStep = ({
                         value={searchTerm}
                         onChange={(e) => setSearchTerm(e.target.value)}
                         placeholder="DNI, Celular o Correo"
-                        className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold outline-none"
+                        className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold outline-none text-gray-900 placeholder:text-gray-500"
                     />
                     <button
                         onClick={handleSearch}
                         disabled={isSearching || !searchTerm}
-                        className="absolute right-2 top-2 bottom-2 bg-barberia-dark text-white px-6 rounded-lg font-bold hover:bg-black transition-colors disabled:opacity-50"
+                        className="absolute right-2 top-2 bottom-2 bg-gray-900 text-white px-6 rounded-lg font-bold hover:bg-black transition-colors disabled:opacity-50"
                     >
                         {isSearching ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : 'Buscar'}
                     </button>
@@ -140,7 +139,7 @@ const ClientIdentityStep = ({
     if (mode === 'confirm_identity') {
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
-                <h2 className="text-2xl font-bold text-barberia-dark mb-2">¿Eres tú?</h2>
+                <h2 className="text-2xl font-bold text-gray-900 mb-2">¿Eres tú?</h2>
                 <div className="bg-green-50 border border-green-200 p-6 rounded-xl flex items-center gap-4">
                     <div className="w-16 h-16 bg-green-200 text-green-700 rounded-full flex items-center justify-center font-bold text-2xl">
                         {clientData.nombres.charAt(0)}
@@ -161,7 +160,7 @@ const ClientIdentityStep = ({
                     </button>
                     <button
                         onClick={onNext}
-                        className="p-4 rounded-xl bg-barberia-gold text-white font-bold hover:bg-yellow-600 shadow-lg"
+                        className="p-4 rounded-xl bg-gray-900 text-white font-bold hover:bg-black shadow-lg"
                     >
                         Sí, continuar
                     </button>
@@ -194,7 +193,7 @@ const ClientRegistrationForm = ({ data, onChange, error, isSubmitting, onSubmit 
     // For now simple form
     return (
         <div className="space-y-6">
-            <h2 className="text-2xl font-bold text-barberia-dark mb-2">Tus Datos</h2>
+            <h2 className="text-2xl font-bold text-gray-900 mb-2">Tus Datos</h2>
             <p className="text-gray-500 text-sm mb-6">Necesitamos estos datos para confirmar tu cita.</p>
 
             {error && (
@@ -431,7 +430,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     // 1. Service Selection
     const ServiceSelection = () => (
         <div className="space-y-4">
-            <h2 className="text-2xl font-bold mb-6 text-barberia-dark">Selecciona un Servicio</h2>
+            <h2 className="text-2xl font-bold mb-6 text-gray-900">Selecciona un Servicio</h2>
             <div className="grid gap-4">
                 {services.map((service) => (
                     <div
@@ -568,7 +567,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
 
         return (
             <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-barberia-dark">Fecha y Hora</h2>
+                <h2 className="text-2xl font-bold text-gray-900">Fecha y Hora</h2>
 
                 <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
                     {days.map((day) => {
@@ -639,7 +638,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                     <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
                         <FaCheckCircle className="text-5xl text-green-500" />
                     </div>
-                    <h2 className="text-3xl font-bold text-barberia-dark mb-4">¡Reserva Confirmada!</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 mb-4">¡Reserva Confirmada!</h2>
                     <p className="text-gray-600 max-w-md mx-auto mb-8">
                         Tu cita ha sido agendada con éxito. Te esperamos el <strong>{format(selectedDate, "d 'de' MMMM", { locale: es })}</strong> a las <strong>{selectedTime}</strong>.
                     </p>
@@ -662,7 +661,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                 <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
                     <FaCalendarAlt className="text-4xl text-barberia-gold" />
                 </div>
-                <h2 className="text-3xl font-bold text-barberia-dark mb-4">Confirmar Detalle</h2>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">Confirmar Detalle</h2>
                 <p className="text-gray-600 max-w-md mx-auto mb-8">
                     Por favor revisa los detalles de tu reserva antes de confirmar.
                 </p>
@@ -681,7 +680,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         <span className="font-bold text-gray-900">{format(selectedDate, "d MMM", { locale: es })} - {selectedTime}</span>
                     </div>
                     <div className="flex justify-between pt-2">
-                        <span className="font-bold text-lg">Total a Pagar</span>
+                        <span className="font-bold text-lg text-gray-900">Total a Pagar</span>
                         <span className="font-bold text-lg text-barberia-gold">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
                     </div>
                 </div>
@@ -689,7 +688,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                 <button
                     onClick={handleCreateReservation}
                     disabled={isSubmitting}
-                    className="w-full md:w-auto inline-flex items-center gap-3 bg-barberia-dark text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-black hover:scale-105 transition-all justify-center"
+                    className="w-full md:w-auto inline-flex items-center gap-3 bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-black hover:scale-105 transition-all justify-center"
                 >
                     {isSubmitting ? (
                         <>
