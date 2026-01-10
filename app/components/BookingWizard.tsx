@@ -95,7 +95,10 @@ const ClientIdentityStep = ({
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <div className="flex items-center gap-2 mb-4">
-                    <button onClick={() => setMode('options')} className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1">
+                    <button
+                        onClick={() => setMode('options')}
+                        className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1"
+                    >
                         <FaArrowLeft /> Atrás
                     </button>
                 </div>
