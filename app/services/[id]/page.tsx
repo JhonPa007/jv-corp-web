@@ -32,20 +32,42 @@ export default async function CategoryPage({ params }: { params: Promise<{ id: s
         return [];
     });
 
+    // Helper for images (duplicate from main page until we have DB images)
+    const getCategoryImage = (categoryName: string) => {
+        const name = categoryName.toLowerCase();
+        if (name.includes("corte")) return "/images/service-beard-luxury.png";
+        if (name.includes("experiencia")) return "/images/hero-luxury-barber.png";
+        if (name.includes("facial")) return "/images/hero-luxury-barber.png"; // Fallback or specific
+        return "/images/service-beard-luxury.png";
+    };
+
     return (
-        <div className="min-h-screen bg-[#0a0a0a] text-white pt-24 pb-12">
-            <div className="container mx-auto px-4">
-                <div className="mb-12">
-                    <Link href="/services" className="text-barberia-gold hover:text-white transition-colors mb-4 inline-block font-agency tracking-wider">
+        <div className="min-h-screen bg-[#0a0a0a] text-white">
+            {/* Hero with Image */}
+            <div className="relative h-[40vh] min-h-[300px] w-full flex items-end pb-12">
+                <div className="absolute inset-0">
+                    <img
+                        src={getCategoryImage(categoryData.nombre)}
+                        alt={categoryData.nombre}
+                        className="w-full h-full object-cover opacity-40"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0a0a0a] via-[#0a0a0a]/50 to-transparent" />
+                </div>
+
+                <div className="container mx-auto px-4 relative z-10">
+                    <Link href="/services" className="text-barberia-gold hover:text-white transition-colors mb-4 inline-block font-agency tracking-wider text-sm">
                         ← VOLVER A SERVICIOS
                     </Link>
-                    <h1 className="text-5xl md:text-7xl font-agency font-bold text-white mb-4 uppercase">
+                    <h1 className="text-4xl md:text-6xl font-agency font-bold text-white mb-2 uppercase">
                         {categoryData.nombre}
                     </h1>
-                    <p className="text-xl text-gray-400 max-w-2xl font-light">
-                        {categoryData.descripcion || "Servicios exclusivos."}
-                    </p>
                 </div>
+            </div>
+
+            <div className="container mx-auto px-4 pb-24">
+                <p className="text-lg text-gray-400 max-w-2xl font-light mb-12">
+                    {categoryData.descripcion || "Servicios exclusivos."}
+                </p>
 
                 {services.length > 0 ? (
                     <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">

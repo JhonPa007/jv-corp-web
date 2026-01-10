@@ -27,7 +27,7 @@ export default async function ServicesPage() {
     return (
         <div className="container mx-auto py-24 px-4 bg-[#0a0a0a] min-h-screen">
             <div className="text-center mb-16 space-y-4">
-                <h1 className="text-5xl md:text-7xl font-agency font-bold text-barberia-gold tracking-wider">
+                <h1 className="text-4xl md:text-5xl font-agency font-bold text-barberia-gold tracking-wider">
                     NUESTROS SERVICIOS
                 </h1>
                 <p className="text-xl text-gray-400 max-w-2xl mx-auto font-light">
