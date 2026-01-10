@@ -12,6 +12,12 @@ async function getStaff() {
                 // Optional: Only show staff with photos? Or show placeholders?
                 // Let's show all active staff, placeholders if needed.
             },
+            select: {
+                id: true,
+                nombres: true,
+                apellidos: true,
+                profesion: true
+            },
             orderBy: { nombres: 'asc' }
         });
         return staff;
@@ -43,7 +49,7 @@ export default async function StaffPage() {
                                 {/* Image Container */}
                                 <div className="h-[400px] w-full relative grayscale group-hover:grayscale-0 transition-all duration-500">
                                     <Image
-                                        src={member.foto_url || "/images/hero-luxury-barber.png"} // Fallback image needed
+                                        src={"/images/hero-luxury-barber.png"} // Fallback image needed
                                         alt={member.nombres}
                                         fill
                                         className="object-cover"

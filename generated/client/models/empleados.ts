@@ -57,6 +57,7 @@ export type EmpleadosMinAggregateOutputType = {
   nombres: string | null
   apellidos: string | null
   profesion: string | null
+  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -89,6 +90,7 @@ export type EmpleadosMaxAggregateOutputType = {
   nombres: string | null
   apellidos: string | null
   profesion: string | null
+  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -121,6 +123,7 @@ export type EmpleadosCountAggregateOutputType = {
   nombres: number
   apellidos: number
   profesion: number
+  foto_url: number
   nombre_display: number
   email: number
   rol_id: number
@@ -181,6 +184,7 @@ export type EmpleadosMinAggregateInputType = {
   nombres?: true
   apellidos?: true
   profesion?: true
+  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -213,6 +217,7 @@ export type EmpleadosMaxAggregateInputType = {
   nombres?: true
   apellidos?: true
   profesion?: true
+  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -245,6 +250,7 @@ export type EmpleadosCountAggregateInputType = {
   nombres?: true
   apellidos?: true
   profesion?: true
+  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -364,6 +370,7 @@ export type EmpleadosGroupByOutputType = {
   nombres: string
   apellidos: string
   profesion: string | null
+  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -419,6 +426,7 @@ export type empleadosWhereInput = {
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
   profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   email?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
@@ -471,6 +479,7 @@ export type empleadosOrderByWithRelationInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   profesion?: Prisma.SortOrderInput | Prisma.SortOrder
+  foto_url?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_display?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   rol_id?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -528,6 +537,7 @@ export type empleadosWhereUniqueInput = Prisma.AtLeast<{
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
   profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
   password?: Prisma.StringNullableFilter<"empleados"> | string | null
@@ -578,6 +588,7 @@ export type empleadosOrderByWithAggregationInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   profesion?: Prisma.SortOrderInput | Prisma.SortOrder
+  foto_url?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_display?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   rol_id?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -618,6 +629,7 @@ export type empleadosScalarWhereWithAggregatesInput = {
   nombres?: Prisma.StringWithAggregatesFilter<"empleados"> | string
   apellidos?: Prisma.StringWithAggregatesFilter<"empleados"> | string
   profesion?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
+  foto_url?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableWithAggregatesFilter<"empleados"> | number | null
@@ -649,6 +661,7 @@ export type empleadosCreateInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -700,6 +713,7 @@ export type empleadosUncheckedCreateInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -750,6 +764,7 @@ export type empleadosUpdateInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -801,6 +816,7 @@ export type empleadosUncheckedUpdateInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -852,6 +868,7 @@ export type empleadosCreateManyInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -883,6 +900,7 @@ export type empleadosUpdateManyMutationInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -914,6 +932,7 @@ export type empleadosUncheckedUpdateManyInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -951,6 +970,7 @@ export type empleadosCountOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   profesion?: Prisma.SortOrder
+  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -996,6 +1016,7 @@ export type empleadosMaxOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   profesion?: Prisma.SortOrder
+  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -1028,6 +1049,7 @@ export type empleadosMinOrderByAggregateInput = {
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
   profesion?: Prisma.SortOrder
+  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -1415,6 +1437,7 @@ export type empleadosCreateWithoutAusencias_empleadoInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1465,6 +1488,7 @@ export type empleadosUncheckedCreateWithoutAusencias_empleadoInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1530,6 +1554,7 @@ export type empleadosUpdateWithoutAusencias_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1580,6 +1605,7 @@ export type empleadosUncheckedUpdateWithoutAusencias_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1629,6 +1655,7 @@ export type empleadosCreateWithoutCaja_sesionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1679,6 +1706,7 @@ export type empleadosUncheckedCreateWithoutCaja_sesionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1744,6 +1772,7 @@ export type empleadosUpdateWithoutCaja_sesionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1794,6 +1823,7 @@ export type empleadosUncheckedUpdateWithoutCaja_sesionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1843,6 +1873,7 @@ export type empleadosCreateWithoutCliente_comunicacionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1893,6 +1924,7 @@ export type empleadosUncheckedCreateWithoutCliente_comunicacionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1958,6 +1990,7 @@ export type empleadosUpdateWithoutCliente_comunicacionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2008,6 +2041,7 @@ export type empleadosUncheckedUpdateWithoutCliente_comunicacionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2057,6 +2091,7 @@ export type empleadosCreateWithoutComisionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2107,6 +2142,7 @@ export type empleadosUncheckedCreateWithoutComisionesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2172,6 +2208,7 @@ export type empleadosUpdateWithoutComisionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2222,6 +2259,7 @@ export type empleadosUncheckedUpdateWithoutComisionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2271,6 +2309,7 @@ export type empleadosCreateWithoutEmpleado_sucursalesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2321,6 +2360,7 @@ export type empleadosUncheckedCreateWithoutEmpleado_sucursalesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2386,6 +2426,7 @@ export type empleadosUpdateWithoutEmpleado_sucursalesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2436,6 +2477,7 @@ export type empleadosUncheckedUpdateWithoutEmpleado_sucursalesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2485,6 +2527,7 @@ export type empleadosCreateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2535,6 +2578,7 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_empleado_beneficiario_i
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2589,6 +2633,7 @@ export type empleadosCreateWithoutGastos_gastos_registrado_por_colaborador_idToe
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2639,6 +2684,7 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_registrado_por_colabora
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2693,6 +2739,7 @@ export type empleadosCreateWithoutGastos_gastos_usuario_idToempleadosInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2743,6 +2790,7 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_usuario_idToempleadosIn
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2808,6 +2856,7 @@ export type empleadosUpdateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2858,6 +2907,7 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_empleado_beneficiario_i
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2918,6 +2968,7 @@ export type empleadosUpdateWithoutGastos_gastos_registrado_por_colaborador_idToe
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2968,6 +3019,7 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_registrado_por_colabora
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3028,6 +3080,7 @@ export type empleadosUpdateWithoutGastos_gastos_usuario_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3078,6 +3131,7 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_usuario_idToempleadosIn
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3127,6 +3181,7 @@ export type empleadosCreateWithoutHorarios_empleadoInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3177,6 +3232,7 @@ export type empleadosUncheckedCreateWithoutHorarios_empleadoInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3242,6 +3298,7 @@ export type empleadosUpdateWithoutHorarios_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3292,6 +3349,7 @@ export type empleadosUncheckedUpdateWithoutHorarios_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3341,6 +3399,7 @@ export type empleadosCreateWithoutHorarios_extraInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3391,6 +3450,7 @@ export type empleadosUncheckedCreateWithoutHorarios_extraInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3456,6 +3516,7 @@ export type empleadosUpdateWithoutHorarios_extraInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3506,6 +3567,7 @@ export type empleadosUncheckedUpdateWithoutHorarios_extraInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3555,6 +3617,7 @@ export type empleadosCreateWithoutIngresos_academiaInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3605,6 +3668,7 @@ export type empleadosUncheckedCreateWithoutIngresos_academiaInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3670,6 +3734,7 @@ export type empleadosUpdateWithoutIngresos_academiaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3720,6 +3785,7 @@ export type empleadosUncheckedUpdateWithoutIngresos_academiaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3769,6 +3835,7 @@ export type empleadosCreateWithoutMovimientos_cajaInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3819,6 +3886,7 @@ export type empleadosUncheckedCreateWithoutMovimientos_cajaInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3884,6 +3952,7 @@ export type empleadosUpdateWithoutMovimientos_cajaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3934,6 +4003,7 @@ export type empleadosUncheckedUpdateWithoutMovimientos_cajaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3983,6 +4053,7 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4033,6 +4104,7 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_c
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4087,6 +4159,7 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4137,6 +4210,7 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_e
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4202,6 +4276,7 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4252,6 +4327,7 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_c
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4312,6 +4388,7 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4362,6 +4439,7 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_e
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4411,6 +4489,7 @@ export type empleadosCreateWithoutPlanillasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4461,6 +4540,7 @@ export type empleadosUncheckedCreateWithoutPlanillasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4526,6 +4606,7 @@ export type empleadosUpdateWithoutPlanillasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4576,6 +4657,7 @@ export type empleadosUncheckedUpdateWithoutPlanillasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4625,6 +4707,7 @@ export type empleadosCreateWithoutPropinas_propinas_empleado_idToempleadosInput 
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4675,6 +4758,7 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_empleado_idToemplea
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4729,6 +4813,7 @@ export type empleadosCreateWithoutPropinas_propinas_registrado_porToempleadosInp
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4779,6 +4864,7 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_registrado_porToemp
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4844,6 +4930,7 @@ export type empleadosUpdateWithoutPropinas_propinas_empleado_idToempleadosInput 
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4894,6 +4981,7 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_empleado_idToemplea
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4954,6 +5042,7 @@ export type empleadosUpdateWithoutPropinas_propinas_registrado_porToempleadosInp
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5004,6 +5093,7 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_registrado_porToemp
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5053,6 +5143,7 @@ export type empleadosCreateWithoutReservasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5103,6 +5194,7 @@ export type empleadosUncheckedCreateWithoutReservasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -5168,6 +5260,7 @@ export type empleadosUpdateWithoutReservasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5218,6 +5311,7 @@ export type empleadosUncheckedUpdateWithoutReservasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5267,6 +5361,7 @@ export type empleadosCreateWithoutRolesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5317,6 +5412,7 @@ export type empleadosUncheckedCreateWithoutRolesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5396,6 +5492,7 @@ export type empleadosScalarWhereInput = {
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
   profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   email?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
@@ -5427,6 +5524,7 @@ export type empleadosCreateWithoutVentasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5477,6 +5575,7 @@ export type empleadosUncheckedCreateWithoutVentasInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -5542,6 +5641,7 @@ export type empleadosUpdateWithoutVentasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5592,6 +5692,7 @@ export type empleadosUncheckedUpdateWithoutVentasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5642,6 +5743,7 @@ export type empleadosCreateManyRolesInput = {
   nombres: string
   apellidos: string
   profesion?: string | null
+  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5672,6 +5774,7 @@ export type empleadosUpdateWithoutRolesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5722,6 +5825,7 @@ export type empleadosUncheckedUpdateWithoutRolesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5772,6 +5876,7 @@ export type empleadosUncheckedUpdateManyWithoutRolesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
   profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5996,6 +6101,7 @@ export type empleadosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   nombres?: boolean
   apellidos?: boolean
   profesion?: boolean
+  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6049,6 +6155,7 @@ export type empleadosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   nombres?: boolean
   apellidos?: boolean
   profesion?: boolean
+  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6082,6 +6189,7 @@ export type empleadosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   nombres?: boolean
   apellidos?: boolean
   profesion?: boolean
+  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6115,6 +6223,7 @@ export type empleadosSelectScalar = {
   nombres?: boolean
   apellidos?: boolean
   profesion?: boolean
+  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6142,7 +6251,7 @@ export type empleadosSelectScalar = {
   frecuencia_pago?: boolean
 }
 
-export type empleadosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "profesion" | "nombre_display" | "email" | "rol_id" | "password" | "telefono" | "sueldo_base" | "contrato_id" | "sucursal_id" | "fecha_contratacion" | "activo" | "notas" | "fecha_creacion" | "fecha_actualizacion" | "dni" | "fecha_nacimiento" | "realiza_servicios" | "tipo_salario" | "meta_activacion_mensual" | "porcentaje_fondo" | "saldo_fondo_acumulado" | "estado_fondo" | "modalidad_pago" | "sueldo_fijo_mensual" | "porcentaje_productos" | "frecuencia_pago", ExtArgs["result"]["empleados"]>
+export type empleadosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "profesion" | "foto_url" | "nombre_display" | "email" | "rol_id" | "password" | "telefono" | "sueldo_base" | "contrato_id" | "sucursal_id" | "fecha_contratacion" | "activo" | "notas" | "fecha_creacion" | "fecha_actualizacion" | "dni" | "fecha_nacimiento" | "realiza_servicios" | "tipo_salario" | "meta_activacion_mensual" | "porcentaje_fondo" | "saldo_fondo_acumulado" | "estado_fondo" | "modalidad_pago" | "sueldo_fijo_mensual" | "porcentaje_productos" | "frecuencia_pago", ExtArgs["result"]["empleados"]>
 export type empleadosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ausencias_empleado?: boolean | Prisma.empleados$ausencias_empleadoArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.empleados$caja_sesionesArgs<ExtArgs>
@@ -6202,6 +6311,7 @@ export type $empleadosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     nombres: string
     apellidos: string
     profesion: string | null
+    foto_url: string | null
     nombre_display: string | null
     email: string | null
     rol_id: number | null
@@ -6674,6 +6784,7 @@ export interface empleadosFieldRefs {
   readonly nombres: Prisma.FieldRef<"empleados", 'String'>
   readonly apellidos: Prisma.FieldRef<"empleados", 'String'>
   readonly profesion: Prisma.FieldRef<"empleados", 'String'>
+  readonly foto_url: Prisma.FieldRef<"empleados", 'String'>
   readonly nombre_display: Prisma.FieldRef<"empleados", 'String'>
   readonly email: Prisma.FieldRef<"empleados", 'String'>
   readonly rol_id: Prisma.FieldRef<"empleados", 'Int'>

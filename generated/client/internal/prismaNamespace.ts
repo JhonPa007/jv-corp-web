@@ -4011,6 +4011,7 @@ export const EmpleadosScalarFieldEnum = {
   nombres: 'nombres',
   apellidos: 'apellidos',
   profesion: 'profesion',
+  foto_url: 'foto_url',
   nombre_display: 'nombre_display',
   email: 'email',
   rol_id: 'rol_id',

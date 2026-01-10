@@ -22,7 +22,11 @@ async function getData() {
                     activo: true,
                     realiza_servicios: true
                 },
-                include: {
+                select: {
+                    id: true,
+                    nombres: true,
+                    nombre_display: true,
+                    profesion: true,
                     roles: true
                 },
                 orderBy: { nombres: 'asc' }
