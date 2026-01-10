@@ -24,8 +24,8 @@ export default function ContactoPage() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-agency font-bold text-white mb-2">UBICACIÓN</h3>
-                                <p className="text-gray-400 text-lg">Jr. Andahuaylas 216</p>
-                                <p className="text-gray-500 text-sm">Cercado de Lima, Perú</p>
+                                <p className="text-gray-400 text-lg">Jr Andahuaylas 216</p>
+                                <p className="text-gray-500 text-sm">Abancay, Apurimac</p>
                             </div>
                         </div>
 
@@ -48,7 +48,7 @@ export default function ContactoPage() {
                             </div>
                             <div>
                                 <h3 className="text-xl font-agency font-bold text-white mb-2">CORREO ELECTRÓNICO</h3>
-                                <p className="text-gray-400 text-lg">contacto@jvstudio.com</p>
+                                <p className="text-gray-400 text-lg">contacto@barberia.jvcorp.pe</p>
                             </div>
                         </div>
 
@@ -70,7 +70,7 @@ export default function ContactoPage() {
                     {/* Google Map */}
                     <div className="h-[600px] w-full bg-[#111] border border-white/10 rounded-lg overflow-hidden relative">
                         <iframe
-                            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3901.9961748265077!2d-77.0298912!3d-12.0480667!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9105c8b6bd270389%3A0x6b772ad39e2b028!2sJr.%20Andahuaylas%20216%2C%20Lima%2015001!5e0!3m2!1sen!2spe!4v1709999999999!5m2!1sen!2spe"
+                            src="https://maps.google.com/maps?q=Jr%20Andahuaylas%20216%2C%20Abancay%2C%20Apurimac&t=&z=15&ie=UTF8&iwloc=&output=embed"
                             width="100%"
                             height="100%"
                             style={{ border: 0, filter: 'grayscale(100%) invert(92%) contrast(83%)' }}

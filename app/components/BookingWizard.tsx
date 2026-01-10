@@ -749,7 +749,7 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                         </div>
                         <div>
                             <h4 className="font-bold text-gray-900">JV Studio</h4>
-                            <p className="text-xs text-gray-500">Jr. Andahuaylas 216</p>
+                            <p className="text-xs text-gray-500">Jr Andahuaylas 216, Abancay, Apurimac</p>
                         </div>
                     </div>
 
