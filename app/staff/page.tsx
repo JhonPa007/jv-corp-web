@@ -8,6 +8,7 @@ async function getStaff() {
         const staff = await prisma.empleados.findMany({
             where: {
                 activo: true,
+                realiza_servicios: true
                 // Optional: Only show staff with photos? Or show placeholders?
                 // Let's show all active staff, placeholders if needed.
             },
