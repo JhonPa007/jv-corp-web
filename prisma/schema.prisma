@@ -122,6 +122,7 @@ model categorias_servicios {
   descripcion         String?
   fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
   fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
+  activo              Boolean?    @default(true)
   servicios           servicios[]
 }
 

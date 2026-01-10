@@ -9,6 +9,9 @@ export default async function ServiceList() {
             },
             where: {
                 activo: true,
+                categorias_servicios: {
+                    activo: true
+                }
             },
         });
     } catch (error) {

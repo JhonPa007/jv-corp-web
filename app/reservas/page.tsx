@@ -8,7 +8,12 @@ async function getData() {
     try {
         const [services, staff] = await Promise.all([
             prisma.servicios.findMany({
-                where: { activo: true },
+                where: {
+                    activo: true,
+                    categorias_servicios: {
+                        activo: true
+                    }
+                },
                 include: { categorias_servicios: true },
                 orderBy: { nombre: 'asc' }
             }),

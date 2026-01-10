@@ -17,7 +17,9 @@ export default async function ServicesPage() {
     let categories: any[] = [];
     try {
         categories = await prisma.categorias_servicios.findMany({
-            // Assuming categories are used if they have services, or just list all
+            where: {
+                activo: true
+            },
             orderBy: { nombre: 'asc' }
         });
     } catch (e) {
