@@ -4,7 +4,8 @@ import { useState, useMemo, useEffect } from "react";
 import { format, addDays, startOfToday, isSameDay } from "date-fns";
 import { es } from "date-fns/locale";
 import { FaWhatsapp, FaUser, FaCheckCircle, FaArrowLeft, FaStar, FaIdCard, FaEnvelope, FaPhone, FaCalendarAlt, FaUserEdit, FaClock } from "react-icons/fa";
-import { registerClientForBooking, getAvailableTimeSlots, createReservation } from "../actions/booking-actions";
+import { registerClientForBooking, getAvailableTimeSlots, createReservation, searchClient } from "../actions/booking-actions";
+
 import { useSearchParams } from "next/navigation";
 
 type Step = "service" | "staff" | "time" | "client" | "confirm";
@@ -15,123 +16,300 @@ interface BookingWizardProps {
 }
 
 // Extracted for performance and focus management
-const ClientRegistrationForm = ({ data, onChange, error, isSubmitting, onSubmit }: any) => (
-    <div className="space-y-6">
-        <h2 className="text-2xl font-bold text-barberia-dark mb-2">Tus Datos</h2>
-        <p className="text-gray-500 text-sm mb-6">Necesitamos estos datos para confirmar tu cita.</p>
+// 4. Client Identity & Registration
+const ClientIdentityStep = ({
+    clientData,
+    setClientData,
+    onNext,
+    isSubmitting,
+    clientError,
+    setClientError
+}: any) => {
+    const [mode, setMode] = useState<'options' | 'search' | 'register' | 'confirm_identity'>('options');
+    const [searchTerm, setSearchTerm] = useState('');
+    const [isSearching, setIsSearching] = useState(false);
+    const [searchMessage, setSearchMessage] = useState<string | null>(null);
 
-        {error && (
-            <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-200">
-                {error}
-            </div>
-        )}
+    const handleSearch = async () => {
+        if (!searchTerm.trim()) return;
+        setIsSearching(true);
+        setSearchMessage(null);
+        try {
+            const result = await searchClient(searchTerm);
+            if (result.success && result.client) {
+                // Found!
+                setClientData({
+                    nombres: result.client.razon_social_nombres,
+                    apellidos: result.client.apellidos || '',
+                    dni: result.client.numero_documento || '',
+                    telefono: result.client.telefono,
+                    email: result.client.email,
+                    fecha_nacimiento: result.client.fecha_nacimiento ? new Date(result.client.fecha_nacimiento).toISOString().split('T')[0] : ''
+                });
+                setMode('confirm_identity');
+            } else {
+                setSearchMessage("No encontramos un cliente con esos datos. ¿Deseas registrarte?");
+            }
+        } catch (error) {
+            console.error(error);
+            setSearchMessage("Error al buscar. Inténtalo de nuevo.");
+        } finally {
+            setIsSearching(false);
+        }
+    };
 
-        <div className="grid gap-4">
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Nombres *</label>
-                    <div className="relative">
-                        <FaUserEdit className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="text"
-                            className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            placeholder="Ej: Juan"
-                            value={data.nombres}
-                            onChange={e => onChange({ ...data, nombres: e.target.value })}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Apellidos</label>
-                    <div className="relative">
-                        <FaUserEdit className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="text"
-                            className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            placeholder="Ej: Perez"
-                            value={data.apellidos}
-                            onChange={e => onChange({ ...data, apellidos: e.target.value })}
-                        />
-                    </div>
-                </div>
-            </div>
+    if (mode === 'options') {
+        return (
+            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+                <h2 className="text-2xl font-bold text-barberia-dark mb-2">¡Bienvenido!</h2>
+                <p className="text-gray-500 text-sm mb-6">Para continuar, cuéntanos:</p>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">DNI (Opcional)</label>
-                    <div className="relative">
-                        <FaIdCard className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="text"
-                            className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            placeholder="8 dígitos"
-                            maxLength={8}
-                            value={data.dni}
-                            onChange={e => onChange({ ...data, dni: e.target.value })}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Fecha de Nacimiento *</label>
-                    <div className="relative">
-                        <input
-                            type="date"
-                            className="w-full pl-4 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            value={data.fecha_nacimiento}
-                            onChange={e => onChange({ ...data, fecha_nacimiento: e.target.value })}
-                        />
-                    </div>
-                </div>
-            </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <button
+                        onClick={() => setMode('register')}
+                        className="p-6 rounded-xl border-2 border-gray-100 hover:border-barberia-gold hover:bg-amber-50 transition-all text-left group"
+                    >
+                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 mb-4 group-hover:bg-barberia-gold group-hover:text-white transition-colors">
+                            <FaUserEdit size={20} />
+                        </div>
+                        <h3 className="font-bold text-lg text-gray-900 mb-1">Soy Nuevo</h3>
+                        <p className="text-sm text-gray-500">Quiero registrar mis datos por primera vez.</p>
+                    </button>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Teléfono / WhatsApp *</label>
-                    <div className="relative">
-                        <FaPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="tel"
-                            className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            placeholder="Ej: 999888777"
-                            value={data.telefono}
-                            onChange={e => onChange({ ...data, telefono: e.target.value })}
-                        />
-                    </div>
-                </div>
-                <div>
-                    <label className="block text-sm font-bold text-gray-700 mb-1">Email *</label>
-                    <div className="relative">
-                        <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
-                        <input
-                            type="email"
-                            className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
-                            placeholder="cliente@ejemplo.com"
-                            value={data.email}
-                            onChange={e => onChange({ ...data, email: e.target.value })}
-                        />
-                    </div>
+                    <button
+                        onClick={() => setMode('search')}
+                        className="p-6 rounded-xl border-2 border-gray-100 hover:border-barberia-gold hover:bg-amber-50 transition-all text-left group"
+                    >
+                        <div className="w-12 h-12 bg-gray-100 rounded-full flex items-center justify-center text-gray-500 mb-4 group-hover:bg-barberia-dark group-hover:text-white transition-colors">
+                            <FaUser size={20} />
+                        </div>
+                        <h3 className="font-bold text-lg text-gray-900 mb-1">Ya soy Cliente</h3>
+                        <p className="text-sm text-gray-500">Tengo una cuenta registrada.</p>
+                    </button>
                 </div>
             </div>
-        </div>
+        );
+    }
 
-        <div className="pt-4">
-            <button
-                onClick={onSubmit}
-                disabled={isSubmitting}
-                className="w-full bg-barberia-gold text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:bg-yellow-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
-            >
-                {isSubmitting ? (
-                    <>
-                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                        Procesando...
-                    </>
-                ) : (
-                    "Continuar a Confirmación"
+    if (mode === 'search') {
+        return (
+            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+                <div className="flex items-center gap-2 mb-4">
+                    <button onClick={() => setMode('options')} className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1">
+                        <FaArrowLeft /> Atrás
+                    </button>
+                </div>
+                <h2 className="text-2xl font-bold text-barberia-dark mb-2">Buscar Cliente</h2>
+                <p className="text-gray-500 text-sm mb-6">Ingresa tu DNI, Teléfono o Email para encontrarte.</p>
+
+                <div className="relative">
+                    <input
+                        type="text"
+                        value={searchTerm}
+                        onChange={(e) => setSearchTerm(e.target.value)}
+                        placeholder="DNI, Celular o Correo"
+                        className="w-full p-4 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold outline-none"
+                    />
+                    <button
+                        onClick={handleSearch}
+                        disabled={isSearching || !searchTerm}
+                        className="absolute right-2 top-2 bottom-2 bg-barberia-dark text-white px-6 rounded-lg font-bold hover:bg-black transition-colors disabled:opacity-50"
+                    >
+                        {isSearching ? <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" /> : 'Buscar'}
+                    </button>
+                </div>
+
+                {searchMessage && (
+                    <div className="bg-amber-50 border border-amber-200 p-4 rounded-xl text-amber-800 text-sm flex gap-3 items-start">
+                        <div className="mt-0.5 text-lg">⚠️</div>
+                        <div>
+                            <p className="font-bold mb-1">Resultado</p>
+                            <p>{searchMessage}</p>
+                            {searchMessage.includes("registrarse") && (
+                                <button onClick={() => setMode('register')} className="mt-2 text-barberia-dark underline font-bold">
+                                    Ir a Registro
+                                </button>
+                            )}
+                        </div>
+                    </div>
                 )}
-            </button>
+            </div>
+        );
+    }
+
+    if (mode === 'confirm_identity') {
+        return (
+            <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
+                <h2 className="text-2xl font-bold text-barberia-dark mb-2">¿Eres tú?</h2>
+                <div className="bg-green-50 border border-green-200 p-6 rounded-xl flex items-center gap-4">
+                    <div className="w-16 h-16 bg-green-200 text-green-700 rounded-full flex items-center justify-center font-bold text-2xl">
+                        {clientData.nombres.charAt(0)}
+                    </div>
+                    <div>
+                        <h3 className="font-bold text-lg text-gray-900">{clientData.nombres} {clientData.apellidos}</h3>
+                        <p className="text-sm text-gray-600">{clientData.email}</p>
+                        <p className="text-sm text-gray-600">{clientData.telefono}</p>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-2 gap-4">
+                    <button
+                        onClick={() => setMode('search')}
+                        className="p-4 rounded-xl border border-gray-300 text-gray-600 font-bold hover:bg-gray-50"
+                    >
+                        No soy yo
+                    </button>
+                    <button
+                        onClick={onNext}
+                        className="p-4 rounded-xl bg-barberia-gold text-white font-bold hover:bg-yellow-600 shadow-lg"
+                    >
+                        Sí, continuar
+                    </button>
+                </div>
+            </div>
+        );
+    }
+
+    // Default: Register
+    return (
+        <div className="animate-in fade-in slide-in-from-right-4 duration-300">
+            <div className="flex items-center gap-2 mb-4">
+                <button onClick={() => setMode('options')} className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1">
+                    <FaArrowLeft /> Cambiar
+                </button>
+            </div>
+            <ClientRegistrationForm
+                data={clientData}
+                onChange={setClientData}
+                error={clientError}
+                isSubmitting={isSubmitting}
+                onSubmit={onNext}
+            />
         </div>
-    </div>
-);
+    );
+}
+
+const ClientRegistrationForm = ({ data, onChange, error, isSubmitting, onSubmit }: any) => {
+    // We could add onBlur validation here if verifyClient is passed
+    // For now simple form
+    return (
+        <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-barberia-dark mb-2">Tus Datos</h2>
+            <p className="text-gray-500 text-sm mb-6">Necesitamos estos datos para confirmar tu cita.</p>
+
+            {error && (
+                <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-200 flex items-center gap-2">
+                    <span>⚠️</span> {error}
+                </div>
+            )}
+
+            <div className="grid gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Nombres *</label>
+                        <div className="relative">
+                            <FaUserEdit className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="text"
+                                className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="Ej: Juan"
+                                value={data.nombres}
+                                onChange={e => onChange({ ...data, nombres: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Apellidos</label>
+                        <div className="relative">
+                            <FaUserEdit className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="text"
+                                className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="Ej: Perez"
+                                value={data.apellidos}
+                                onChange={e => onChange({ ...data, apellidos: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">DNI (Opcional)</label>
+                        <div className="relative">
+                            <FaIdCard className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="text"
+                                className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="8 dígitos"
+                                maxLength={8}
+                                value={data.dni}
+                                onChange={e => onChange({ ...data, dni: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Fecha de Nacimiento *</label>
+                        <div className="relative">
+                            <input
+                                type="date"
+                                className="w-full pl-4 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                value={data.fecha_nacimiento}
+                                onChange={e => onChange({ ...data, fecha_nacimiento: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Teléfono / WhatsApp *</label>
+                        <div className="relative">
+                            <FaPhone className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="tel"
+                                className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="Ej: 999888777"
+                                value={data.telefono}
+                                onChange={e => onChange({ ...data, telefono: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                    <div>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Email *</label>
+                        <div className="relative">
+                            <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="email"
+                                className="w-full pl-10 p-3 border border-gray-200 rounded-xl focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-gray-900"
+                                placeholder="cliente@ejemplo.com"
+                                value={data.email}
+                                onChange={e => onChange({ ...data, email: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div className="pt-4">
+                <button
+                    onClick={onSubmit}
+                    disabled={isSubmitting}
+                    className="w-full bg-barberia-gold text-white font-bold py-4 rounded-xl shadow-lg hover:shadow-xl hover:bg-yellow-600 transition-all disabled:opacity-70 disabled:cursor-not-allowed flex items-center justify-center gap-2"
+                >
+                    {isSubmitting ? (
+                        <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            Procesando...
+                        </>
+                    ) : (
+                        "Continuar a Confirmación"
+                    )}
+                </button>
+            </div>
+        </div>
+    );
+};
 
 export default function BookingWizard({ services, staff }: BookingWizardProps) {
     const searchParams = useSearchParams();
@@ -545,12 +723,13 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                     {currentStep === "staff" && <StaffSelection />}
                     {currentStep === "time" && <TimeSelection />}
                     {currentStep === "client" && (
-                        <ClientRegistrationForm
-                            data={clientData}
-                            onChange={setClientData}
-                            error={clientError}
+                        <ClientIdentityStep
+                            clientData={clientData}
+                            setClientData={setClientData}
+                            onNext={handleClientSubmit}
                             isSubmitting={isSubmitting}
-                            onSubmit={handleClientSubmit}
+                            clientError={clientError}
+                            setClientError={setClientError}
                         />
                     )}
                     {currentStep === "confirm" && <ConfirmationStep />}

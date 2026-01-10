@@ -278,3 +278,26 @@ export async function createReservation(data: {
         return { success: false, error: "No se pudo crear la reserva: " + (error as Error).message };
     }
 }
+
+export async function searchClient(term: string) {
+    try {
+        const client = await prisma.clientes.findFirst({
+            where: {
+                OR: [
+                    { numero_documento: term },
+                    { email: term }, // Exact match
+                    { telefono: { contains: term } } // Allow partial validation? Better exact for security/precision? Let's try exact or contains.
+                    // Actually, for "Registration check", exact is better to avoid false positives. 
+                    // But for "Search", maybe we want flexibility. Given the request: "ingrese su dni, telefono o correo", let's do exact or strict contains.
+                ]
+            }
+        });
+
+        if (!client) return { success: false, client: null };
+
+        return { success: true, client };
+    } catch (error) {
+        console.error("Error searching client:", error);
+        return { success: false, error: "Error al buscar cliente" };
+    }
+}
