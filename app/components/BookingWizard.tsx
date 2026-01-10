@@ -1,10 +1,11 @@
 "use client";
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect } from "react";
 import { format, addDays, startOfToday, isSameDay } from "date-fns";
 import { es } from "date-fns/locale";
 import { FaWhatsapp, FaUser, FaCheckCircle, FaArrowLeft, FaStar, FaIdCard, FaEnvelope, FaPhone, FaCalendarAlt, FaUserEdit, FaClock } from "react-icons/fa";
 import { registerClientForBooking, getAvailableTimeSlots, createReservation } from "../actions/booking-actions";
+import { useSearchParams } from "next/navigation";
 
 type Step = "service" | "staff" | "time" | "client" | "confirm";
 
@@ -133,11 +134,25 @@ const ClientRegistrationForm = ({ data, onChange, error, isSubmitting, onSubmit 
 );
 
 export default function BookingWizard({ services, staff }: BookingWizardProps) {
+    const searchParams = useSearchParams();
+    const preSelectedServiceId = searchParams.get("serviceId");
+
     const [currentStep, setCurrentStep] = useState<Step>("service");
     const [selectedService, setSelectedService] = useState<any | null>(null);
     const [selectedStaff, setSelectedStaff] = useState<any | null>(null);
     const [selectedDate, setSelectedDate] = useState<Date>(startOfToday());
     const [selectedTime, setSelectedTime] = useState<string | null>(null);
+
+    // Auto-select service if present in URL
+    useEffect(() => {
+        if (preSelectedServiceId && services.length > 0) {
+            const service = services.find(s => s.id === Number(preSelectedServiceId));
+            if (service) {
+                setSelectedService(service);
+                setCurrentStep("staff");
+            }
+        }
+    }, [preSelectedServiceId, services]);
     const [clientData, setClientData] = useState({
         nombres: '',
         apellidos: '',

@@ -63,7 +63,7 @@ export default async function CategoryPage({ params }: { params: { id: string } 
                                 </p>
                                 <div className="flex justify-between items-center text-sm text-gray-500 border-t border-white/5 pt-4">
                                     <span>{service.duracion_minutos} min</span>
-                                    <Link href="/reservas" className="text-white hover:text-barberia-gold transition-colors uppercase font-bold tracking-wider text-xs">
+                                    <Link href={`/reservas?serviceId=${service.id}`} className="text-white hover:text-barberia-gold transition-colors uppercase font-bold tracking-wider text-xs">
                                         Reservar
                                     </Link>
                                 </div>
