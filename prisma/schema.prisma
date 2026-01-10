@@ -279,6 +279,7 @@ model empleados {
   nombres                                                              String                   @db.VarChar(100)
   apellidos                                                            String                   @db.VarChar(100)
   profesion                                                            String?                  @db.VarChar(100)
+  foto_url                                                             String?                  @db.VarChar(255)
   nombre_display                                                       String?                  @db.VarChar(100)
   email                                                                String?                  @unique @db.VarChar(100)
   rol_id                                                               Int?
