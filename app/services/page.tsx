@@ -1,6 +1,6 @@
 import Link from "next/link";
 import Image from "next/image";
-import { prisma } from "../../lib/prisma";
+import { prisma } from "../lib/prisma";
 
 // Helper for category images (since DB doesn't have them yet)
 const getCategoryImage = (categoryName: string) => {
