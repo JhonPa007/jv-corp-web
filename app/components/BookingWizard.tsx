@@ -97,6 +97,7 @@ const ClientIdentityStep = ({
                 <div className="flex items-center gap-2 mb-4">
                     <button onClick={() => setMode('options')} className="text-sm text-gray-500 hover:text-barberia-dark flex items-center gap-1">
                         <FaArrowLeft /> Atrás
+                    </button>
                 </div>
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">Buscar Cliente</h2>
                 <p className="text-gray-500 text-sm mb-6">Ingresa tu DNI, Teléfono o Email para encontrarte.</p>
