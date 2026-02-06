@@ -92,7 +92,10 @@ export const ModelName = {
   sucursales: 'sucursales',
   venta_items: 'venta_items',
   venta_pagos: 'venta_pagos',
-  ventas: 'ventas'
+  ventas: 'ventas',
+  gift_cards: 'gift_cards',
+  packages: 'packages',
+  package_items: 'package_items'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -803,6 +806,42 @@ export const VentasScalarFieldEnum = {
 } as const
 
 export type VentasScalarFieldEnum = (typeof VentasScalarFieldEnum)[keyof typeof VentasScalarFieldEnum]
+
+
+export const Gift_cardsScalarFieldEnum = {
+  id: 'id',
+  code: 'code',
+  initial_amount: 'initial_amount',
+  current_balance: 'current_balance',
+  status: 'status',
+  expiration_date: 'expiration_date',
+  created_at: 'created_at',
+  purchaser_name: 'purchaser_name',
+  recipient_name: 'recipient_name',
+  package_id: 'package_id'
+} as const
+
+export type Gift_cardsScalarFieldEnum = (typeof Gift_cardsScalarFieldEnum)[keyof typeof Gift_cardsScalarFieldEnum]
+
+
+export const PackagesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  price: 'price',
+  is_active: 'is_active',
+  created_at: 'created_at'
+} as const
+
+export type PackagesScalarFieldEnum = (typeof PackagesScalarFieldEnum)[keyof typeof PackagesScalarFieldEnum]
+
+
+export const Package_itemsScalarFieldEnum = {
+  package_id: 'package_id',
+  service_id: 'service_id',
+  quantity: 'quantity'
+} as const
+
+export type Package_itemsScalarFieldEnum = (typeof Package_itemsScalarFieldEnum)[keyof typeof Package_itemsScalarFieldEnum]
 
 
 export const SortOrder = {

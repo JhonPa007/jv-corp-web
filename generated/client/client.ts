@@ -264,3 +264,18 @@ export type venta_pagos = Prisma.venta_pagosModel
  * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
  */
 export type ventas = Prisma.ventasModel
+/**
+ * Model gift_cards
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type gift_cards = Prisma.gift_cardsModel
+/**
+ * Model packages
+ * 
+ */
+export type packages = Prisma.packagesModel
+/**
+ * Model package_items
+ * 
+ */
+export type package_items = Prisma.package_itemsModel
