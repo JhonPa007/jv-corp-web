@@ -4,6 +4,8 @@ import { useState, useRef } from "react";
 import Image from "next/image";
 import { FaCut, FaWineGlass, FaGift } from "react-icons/fa";
 
+import { createGiftCard } from "@/app/actions/gift-card-actions";
+
 type GiftOption = "corte" | "ritual" | "libre" | null;
 
 export default function GiftCardsPage() {
@@ -26,6 +28,8 @@ export default function GiftCardsPage() {
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
+    const [generatedCode, setGeneratedCode] = useState("");
+
     const handleGeneratePDF = async (e: React.FormEvent) => {
         e.preventDefault();
         if (!selectedOption || !cardRef.current) return;
@@ -33,17 +37,62 @@ export default function GiftCardsPage() {
         setIsGenerating(true);
 
         try {
+            // 1. Calculate amount and prepare data
+            let amount = 0;
+            let packageName = "";
+            let packageId: number | undefined = undefined;
+
+            if (selectedOption === "corte") {
+                amount = 30;
+                packageName = "Corte & Estilo";
+            } else if (selectedOption === "ritual") {
+                amount = 50;
+                packageName = "Ritual Caballero";
+            } else if (selectedOption === "libre") {
+                amount = parseFloat(customAmount) || 0;
+                packageName = "Gift Card";
+            }
+
+            if (amount <= 0) {
+                alert("Por favor ingresa un monto válido.");
+                setIsGenerating(false);
+                return;
+            }
+
+            // 2. Save to Database
+            const result = await createGiftCard({
+                amount: amount,
+                from: formData.from,
+                to: formData.to,
+                message: formData.message,
+                packageId: packageId // TODO: If you have actual packages in DB, map them here. For now we use the ID if we had it, or just amount.
+            });
+
+            if (!result.success || !result.code) {
+                throw new Error(result.error || "Error al crear la tarjeta");
+            }
+
+            setGeneratedCode(result.code);
+
+            // Wait for state update to reflect in DOM (Code is displayed in the hidden template)
+            await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure React renders the code
+
+            // 3. Generate PDF
             const html2pdf = (await import("html2pdf.js")).default;
 
             const opt = {
                 margin: 0,
-                filename: `GiftCard-JVStudio-${formData.to || "Guest"}.pdf`,
+                filename: `GiftCard-JVStudio-${result.code}.pdf`,
                 image: { type: 'jpeg' as const, quality: 0.98 },
                 html2canvas: { scale: 2, logging: false, useCORS: true },
-                jsPDF: { unit: 'in', format: [8, 4] as [number, number], orientation: 'landscape' as const } // Standard Gift Card ratio
+                jsPDF: { unit: 'in', format: [8, 4] as [number, number], orientation: 'landscape' as const }
             };
 
             await html2pdf().set(opt).from(cardRef.current).save();
+
+            // Reset form or show success message?
+            // alert("Tarjeta generada exitosamente!"); 
+
         } catch (error) {
             console.error("Error generating PDF:", error);
             alert("Hubo un error al generar la tarjeta. Por favor intenta de nuevo.");
@@ -309,7 +358,7 @@ export default function GiftCardsPage() {
                         </div>
                         <div className="text-right">
                             <div className="text-barberia-gold font-bold text-xl tracking-widest border border-barberia-gold px-3 py-1 bg-black/50">
-                                GIFT CARD
+                                {generatedCode || "CODE-PENDING"}
                             </div>
                         </div>
                     </div>

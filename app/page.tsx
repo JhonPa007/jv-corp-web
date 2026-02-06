@@ -10,10 +10,10 @@ export default function Home() {
         <div className="absolute inset-0 z-0">
           {/* Hero Background Image */}
           <Image
-            src="/images/hero-luxury-barber.png"
+            src="/landing-bg.jpg"
             alt="Luxury Barbershop Interior"
             fill
-            className="object-cover opacity-40"
+            className="object-cover opacity-60"
             priority
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/90" />
