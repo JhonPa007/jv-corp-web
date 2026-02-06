@@ -10,7 +10,7 @@ export type PackageWithItems = {
     package_items: {
         quantity: number;
         servicios: {
-            name: string; // Corrected field name based on schema (nombre -> name? No, schema says nombre)
+            nombre: string;
         };
     }[];
 };

@@ -1,14 +1,25 @@
 "use client";
 
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import Image from "next/image";
 import { FaCut, FaWineGlass, FaGift } from "react-icons/fa";
 
-import { createGiftCard } from "@/app/actions/gift-card-actions";
+import { createGiftCard, getActivePackages, type PackageWithItems } from "@/app/actions/gift-card-actions";
 
-type GiftOption = "corte" | "ritual" | "libre" | null;
+type GiftOption = number | "libre" | null; // number for package ID
 
 export default function GiftCardsPage() {
+    const [packages, setPackages] = useState<PackageWithItems[]>([]);
+
+    // Fetch packages on mount
+    useEffect(() => {
+        const fetchPackages = async () => {
+            const data = await getActivePackages();
+            setPackages(data);
+        };
+        fetchPackages();
+    }, []);
+
     const [selectedOption, setSelectedOption] = useState<GiftOption>(null);
     const [customAmount, setCustomAmount] = useState("");
     const [formData, setFormData] = useState({
@@ -42,15 +53,17 @@ export default function GiftCardsPage() {
             let packageName = "";
             let packageId: number | undefined = undefined;
 
-            if (selectedOption === "corte") {
-                amount = 30;
-                packageName = "Corte & Estilo";
-            } else if (selectedOption === "ritual") {
-                amount = 50;
-                packageName = "Ritual Caballero";
-            } else if (selectedOption === "libre") {
+            if (selectedOption === "libre") {
                 amount = parseFloat(customAmount) || 0;
                 packageName = "Gift Card";
+            } else if (typeof selectedOption === "number") {
+                // It's a package
+                const pkg = packages.find(p => p.id === selectedOption);
+                if (pkg) {
+                    amount = pkg.price;
+                    packageName = pkg.name;
+                    packageId = pkg.id;
+                }
             }
 
             if (amount <= 0) {
@@ -102,12 +115,14 @@ export default function GiftCardsPage() {
     };
 
     const getPackDetails = () => {
-        switch (selectedOption) {
-            case "corte": return { title: "CORTE & ESTILO", price: "S/ 30.00" };
-            case "ritual": return { title: "RITUAL CABALLERO", price: "PACK EXCLUSIVO" };
-            case "libre": return { title: "GIFT CARD", price: `S/ ${customAmount || "0.00"}` };
-            default: return { title: "", price: "" };
+        if (selectedOption === "libre") {
+            return { title: "GIFT CARD", price: `S/ ${customAmount || "0.00"}` };
         }
+        if (typeof selectedOption === "number") {
+            const pkg = packages.find(p => p.id === selectedOption);
+            if (pkg) return { title: pkg.name.toUpperCase(), price: `S/ ${pkg.price.toFixed(2)}` };
+        }
+        return { title: "", price: "" };
     };
 
     const packDetails = getPackDetails();
@@ -149,77 +164,50 @@ export default function GiftCardsPage() {
                 </div>
 
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {/* Card 1: Corte & Estilo */}
-                    <div
-                        onClick={() => handleOptionSelect("corte")}
-                        className={`
-              group cursor-pointer relative p-8 md:p-12
-              bg-[#1a1a1a] border border-white/10
-              hover:border-barberia-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.1)]
-              transition-all duration-500 ease-out
-              flex flex-col items-center text-center
-              ${selectedOption === "corte" ? "border-barberia-gold bg-[#222] scale-105 shadow-[0_0_40px_rgba(212,175,55,0.15)] ring-1 ring-barberia-gold/50" : ""}
-            `}
-                    >
-                        <div className="mb-6 p-4 rounded-full bg-white/5 group-hover:bg-barberia-gold/20 transition-colors duration-500">
-                            <FaCut className="w-8 h-8 text-barberia-gold" />
-                        </div>
-                        <h3 className="text-2xl font-agency font-bold text-white mb-2 tracking-wide group-hover:text-barberia-gold transition-colors">
-                            CORTE & ESTILO
-                        </h3>
-                        <div className="flex items-center gap-3 mb-6">
-                            <span className="text-gray-500 line-through text-lg">S/ 40</span>
-                            <span className="text-3xl font-bold text-white">S/ 30</span>
-                        </div>
-                        <p className="text-gray-400 text-sm leading-relaxed mb-8">
-                            Corte clásico o moderno, lavado premium y styling con productos exclusivos.
-                        </p>
-                        <div className={`w-full py-3 border border-white/20 text-sm uppercase tracking-widest transition-all duration-300
-                ${selectedOption === "corte" ? "bg-barberia-gold text-black border-barberia-gold font-bold" : "text-white group-hover:border-barberia-gold group-hover:text-barberia-gold"}
-            `}>
-                            {selectedOption === "corte" ? "Seleccionado" : "Elegir Pack"}
-                        </div>
-                    </div>
+                    {/* Dynamic Packages */}
+                    {/* Dynamic Packages */}
+                    {packages.map((pkg) => (
+                        <div
+                            key={pkg.id}
+                            onClick={() => handleOptionSelect(pkg.id)}
+                            className={`
+                                group cursor-pointer relative p-8 md:p-12
+                                bg-[#1a1a1a] border border-white/10
+                                hover:border-barberia-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.1)]
+                                transition-all duration-500 ease-out
+                                flex flex-col items-center text-center
+                                ${selectedOption === pkg.id ? "border-barberia-gold bg-[#222] scale-105 shadow-[0_0_40px_rgba(212,175,55,0.15)] ring-1 ring-barberia-gold/50" : ""}
+                            `}
+                        >
+                            <div className="mb-6 p-4 rounded-full bg-white/5 group-hover:bg-barberia-gold/20 transition-colors duration-500">
+                                <FaCut className="w-8 h-8 text-barberia-gold" />
+                            </div>
+                            <h3 className="text-2xl font-agency font-bold text-white mb-2 tracking-wide group-hover:text-barberia-gold transition-colors uppercase">
+                                {pkg.name}
+                            </h3>
+                            <div className="flex items-center gap-3 mb-6">
+                                <span className="text-3xl font-bold text-white">S/ {pkg.price}</span>
+                            </div>
 
-                    {/* Card 2: Ritual Caballero */}
-                    <div
-                        onClick={() => handleOptionSelect("ritual")}
-                        className={`
-              group cursor-pointer relative p-8 md:p-12
-              bg-[#1a1a1a] border border-barberia-gold/30
-              hover:border-barberia-gold hover:shadow-[0_0_30px_rgba(212,175,55,0.2)]
-              transition-all duration-500 ease-out
-              flex flex-col items-center text-center
-              transform md:-translate-y-4
-              ${selectedOption === "ritual" ? "border-barberia-gold bg-[#222] scale-105 shadow-[0_0_50px_rgba(212,175,55,0.2)] ring-1 ring-barberia-gold" : ""}
-            `}
-                    >
-                        <div className="absolute top-0 right-0 bg-barberia-gold text-black text-xs font-bold px-4 py-1 uppercase tracking-widest">
-                            Más Popular
-                        </div>
-                        <div className="mb-6 p-4 rounded-full bg-white/5 group-hover:bg-barberia-gold/20 transition-colors duration-500">
-                            <FaWineGlass className="w-8 h-8 text-barberia-gold" />
-                        </div>
-                        <h3 className="text-2xl font-agency font-bold text-white mb-2 tracking-wide group-hover:text-barberia-gold transition-colors">
-                            RITUAL CABALLERO
-                        </h3>
-                        <div className="flex items-center gap-3 mb-6">
-                            <span className="text-3xl font-bold text-barberia-gold">S/ 50</span>
-                        </div>
-                        <ul className="text-gray-400 text-sm space-y-2 mb-8 text-left w-full px-4">
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" /> Corte de Cabello Premium</li>
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" /> Perfilado de Barba</li>
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" /> Mascarilla Facial Negra</li>
-                            <li className="flex items-center gap-2"><div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" /> Bebida de Cortesía</li>
-                        </ul>
-                        <div className={`w-full py-3 border border-barberia-gold text-sm uppercase tracking-widest transition-all duration-300
-                ${selectedOption === "ritual" ? "bg-barberia-gold text-black font-bold shadow-lg" : "text-barberia-gold hover:bg-barberia-gold hover:text-black"}
-            `}>
-                            {selectedOption === "ritual" ? "Seleccionado" : "Elegir Ritual"}
-                        </div>
-                    </div>
+                            {/* List services if available, limit to 3 */}
+                            <ul className="text-gray-400 text-sm space-y-2 mb-8 text-left w-full px-4">
+                                {pkg.package_items.slice(0, 3).map((item, idx) => (
+                                    <li key={idx} className="flex items-center gap-2">
+                                        <div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" />
+                                        {item.quantity > 1 ? `${item.quantity}x ` : ""}{item.servicios.nombre}
+                                    </li>
+                                ))}
+                            </ul>
 
-                    {/* Card 3: Monto Libre */}
+                            <div className={`w-full py-3 border border-white/20 text-sm uppercase tracking-widest transition-all duration-300
+                                ${selectedOption === pkg.id ? "bg-barberia-gold text-black border-barberia-gold font-bold" : "text-white group-hover:border-barberia-gold group-hover:text-barberia-gold"}
+                            `}>
+                                {selectedOption === pkg.id ? "Seleccionado" : "Elegir Pack"}
+                            </div>
+                        </div>
+                    ))}
+
+                    {/* Card 3: Monto Libre (Always last) */}
                     <div
                         onClick={() => handleOptionSelect("libre")}
                         className={`
