@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef } from "react";
 import Image from "next/image";
 import { FaCut, FaWineGlass, FaGift } from "react-icons/fa";
 
@@ -9,10 +9,59 @@ type GiftOption = "corte" | "ritual" | "libre" | null;
 export default function GiftCardsPage() {
     const [selectedOption, setSelectedOption] = useState<GiftOption>(null);
     const [customAmount, setCustomAmount] = useState("");
+    const [formData, setFormData] = useState({
+        from: "",
+        to: "",
+        message: "",
+    });
+    const [isGenerating, setIsGenerating] = useState(false);
+    const cardRef = useRef<HTMLDivElement>(null);
 
     const handleOptionSelect = (option: GiftOption) => {
         setSelectedOption(option);
     };
+
+    const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+        const { name, value } = e.target;
+        setFormData((prev) => ({ ...prev, [name]: value }));
+    };
+
+    const handleGeneratePDF = async (e: React.FormEvent) => {
+        e.preventDefault();
+        if (!selectedOption || !cardRef.current) return;
+
+        setIsGenerating(true);
+
+        try {
+            const html2pdf = (await import("html2pdf.js")).default;
+
+            const opt = {
+                margin: 0,
+                filename: `GiftCard-JVStudio-${formData.to || "Guest"}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2, logging: false, useCORS: true },
+                jsPDF: { unit: 'in', format: [8, 4], orientation: 'landscape' } // Standard Gift Card ratio
+            };
+
+            await html2pdf().set(opt).from(cardRef.current).save();
+        } catch (error) {
+            console.error("Error generating PDF:", error);
+            alert("Hubo un error al generar la tarjeta. Por favor intenta de nuevo.");
+        } finally {
+            setIsGenerating(false);
+        }
+    };
+
+    const getPackDetails = () => {
+        switch (selectedOption) {
+            case "corte": return { title: "CORTE & ESTILO", price: "S/ 30.00" };
+            case "ritual": return { title: "RITUAL CABALLERO", price: "PACK EXCLUSIVO" };
+            case "libre": return { title: "GIFT CARD", price: `S/ ${customAmount || "0.00"}` };
+            default: return { title: "", price: "" };
+        }
+    };
+
+    const packDetails = getPackDetails();
 
     return (
         <main className="min-h-screen bg-[#121212] font-sans text-gray-200 selection:bg-barberia-gold selection:text-black">
@@ -177,22 +226,30 @@ export default function GiftCardsPage() {
                             Personaliza tu <span className="text-barberia-gold">Regalo</span>
                         </h3>
 
-                        <form className="space-y-6">
+                        <form onSubmit={handleGeneratePDF} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div className="space-y-2">
                                     <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">De (Tu Nombre)</label>
                                     <input
                                         type="text"
+                                        name="from"
+                                        value={formData.from}
+                                        onChange={handleInputChange}
                                         className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
                                         placeholder="Ej. Ana"
+                                        required
                                     />
                                 </div>
                                 <div className="space-y-2">
                                     <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">Para (Afortunado)</label>
                                     <input
                                         type="text"
+                                        name="to"
+                                        value={formData.to}
+                                        onChange={handleInputChange}
                                         className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
                                         placeholder="Ej. Carlos"
+                                        required
                                     />
                                 </div>
                             </div>
@@ -200,21 +257,100 @@ export default function GiftCardsPage() {
                             <div className="space-y-2">
                                 <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">Dedicatoria</label>
                                 <textarea
+                                    name="message"
+                                    value={formData.message}
+                                    onChange={handleInputChange}
                                     rows={3}
                                     className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors resize-none"
                                     placeholder="Escribe un mensaje especial..."
+                                    required
                                 ></textarea>
                             </div>
 
                             <div className="pt-8 text-center">
-                                <button type="submit" className="px-12 py-4 bg-barberia-gold text-black font-agency font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)]">
-                                    Continuar al Pago
+                                <button
+                                    type="submit"
+                                    disabled={isGenerating}
+                                    className="px-12 py-4 bg-barberia-gold text-black font-agency font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                >
+                                    {isGenerating ? "Generando..." : "Descargar Tarjeta PDF"}
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </section>
+
+            {/* HIDDEN PDF TEMPLATE */}
+            <div style={{ position: "absolute", top: "-9999px", left: "-9999px" }}>
+                <div
+                    ref={cardRef}
+                    className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-white overflow-hidden"
+                    style={{
+                        backgroundColor: "#111",
+                        backgroundImage: `
+                    radial-gradient(circle at 50% 0%, #222, transparent 60%),
+                    linear-gradient(45deg, #121212 25%, #151515 25%, #151515 50%, #121212 50%, #121212 75%, #151515 75%, #151515 100%)
+                `,
+                        backgroundSize: "100% 100%, 20px 20px"
+                    }}
+                >
+                    {/* Double Golden Border */}
+                    <div className="absolute inset-4 border-2 border-barberia-gold opacity-80 pointer-events-none rounded-sm"></div>
+                    <div className="absolute inset-6 border border-barberia-gold opacity-50 pointer-events-none rounded-sm"></div>
+
+                    {/* Header / Logo */}
+                    <div className="flex justify-between items-start relative z-10">
+                        <div className="text-left">
+                            <h1 className="text-5xl font-agency font-bold tracking-wider text-white">
+                                <span className="text-barberia-gold">JV</span> STUDIO
+                            </h1>
+                            <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mt-1 pl-1">Barbería Premium</p>
+                        </div>
+                        <div className="text-right">
+                            <div className="text-barberia-gold font-bold text-xl tracking-widest border border-barberia-gold px-3 py-1 bg-black/50">
+                                GIFT CARD
+                            </div>
+                        </div>
+                    </div>
+
+                    {/* Main Content */}
+                    <div className="flex-1 flex flex-col justify-center items-center text-center relative z-10 my-4">
+                        <p className="text-gray-400 uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
+                        <h2 className="text-6xl font-agency font-bold text-barberia-gold tracking-wide drop-shadow-md mb-2">
+                            {packDetails.title}
+                        </h2>
+                        <p className="text-2xl font-light text-white tracking-widest border-b border-white/20 pb-2 px-8">
+                            {packDetails.price}
+                        </p>
+                    </div>
+
+                    {/* Footer / Info */}
+                    <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-white/10 pt-4 mt-2">
+                        <div>
+                            <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1">De:</p>
+                            <p className="text-lg font-agency tracking-wide text-white">{formData.from}</p>
+                            <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1 mt-3">Para:</p>
+                            <p className="text-lg font-agency tracking-wide text-white">{formData.to}</p>
+                        </div>
+                        <div className="text-right flex flex-col justify-end">
+                            <p className="text-sm italic text-gray-300 font-light mb-auto line-clamp-3">
+                                "{formData.message}"
+                            </p>
+                            <p className="text-[10px] text-gray-500 mt-2 uppercase tracking-wide">
+                                Válido para canje en JV Studio Abancay.
+                                <br />Incluye bebida de cortesía.
+                            </p>
+                        </div>
+                    </div>
+
+                    {/* Ornate corners (CSS) */}
+                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-barberia-gold opacity-100"></div>
+                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-barberia-gold opacity-100"></div>
+                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-barberia-gold opacity-100"></div>
+                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-barberia-gold opacity-100"></div>
+                </div>
+            </div>
         </main>
     );
 }
