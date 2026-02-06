@@ -118,10 +118,10 @@ export default function GiftCardsPage() {
             <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center text-center px-4">
                 <div className="absolute inset-0 z-0">
                     <Image
-                        src="/images/hero-luxury-barber.png"
+                        src="/landing-bg.jpg"
                         alt="Amigos brindando en barbería"
                         fill
-                        className="object-cover opacity-50 grayscale"
+                        className="object-cover opacity-60"
                         priority
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/80 via-[#121212]/40 to-[#121212]" />
