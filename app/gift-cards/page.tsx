@@ -38,9 +38,9 @@ export default function GiftCardsPage() {
             const opt = {
                 margin: 0,
                 filename: `GiftCard-JVStudio-${formData.to || "Guest"}.pdf`,
-                image: { type: 'jpeg', quality: 0.98 },
+                image: { type: 'jpeg' as const, quality: 0.98 },
                 html2canvas: { scale: 2, logging: false, useCORS: true },
-                jsPDF: { unit: 'in', format: [8, 4], orientation: 'landscape' } // Standard Gift Card ratio
+                jsPDF: { unit: 'in', format: [8, 4], orientation: 'landscape' as const } // Standard Gift Card ratio
             };
 
             await html2pdf().set(opt).from(cardRef.current).save();
