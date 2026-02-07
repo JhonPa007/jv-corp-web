@@ -68,7 +68,7 @@ export async function createGiftCard(data: {
                 code: code,
                 initial_amount: data.amount,
                 current_balance: data.amount,
-                status: "Activa",
+                status: "ACTIVA",
                 expiration_date: expirationDate,
                 purchaser_name: data.from,
                 recipient_name: data.to,
