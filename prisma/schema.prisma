@@ -771,6 +771,7 @@ model gift_cards {
 model packages {
   id            Int             @id @default(autoincrement())
   name          String          @db.VarChar(255)
+  description   String?         @db.Text
   price         Decimal         @db.Decimal(10, 2)
   is_active     Boolean?        @default(true)
   created_at    DateTime?       @default(now()) @db.Timestamp(6)

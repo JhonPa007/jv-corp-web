@@ -6,6 +6,7 @@ import { revalidatePath } from "next/cache";
 export type PackageWithItems = {
     id: number;
     name: string;
+    description: string | null;
     price: number; // Decimal converted to number for client
     package_items: {
         quantity: number;
