@@ -82,7 +82,7 @@ export async function createGiftCard(data: {
         expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Valid for 1 year
 
         // Try candidate statuses in order of likelihood
-        const candidateStatuses = ["is_active", "IS_ACTIVE", "true", "TRUE", "1", "Activa", "ACTIVA", "Activo", "ACTIVO", "Active", "ACTIVE", "Valid", "VALID", "Generada", "Emitida"];
+        const candidateStatuses = ["active", "ACTIVE", "is_active", "IS_ACTIVE", "true", "TRUE", "1", "Activa", "ACTIVA", "Activo", "ACTIVO", "Active", "Valid", "VALID", "Generada", "Emitida"];
 
         let giftCard;
         let lastError;
