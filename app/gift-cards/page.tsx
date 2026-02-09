@@ -189,15 +189,21 @@ export default function GiftCardsPage() {
                                 <span className="text-3xl font-bold text-white">S/ {pkg.price}</span>
                             </div>
 
-                            {/* List services if available, limit to 3 */}
-                            <ul className="text-gray-400 text-sm space-y-2 mb-8 text-left w-full px-4">
-                                {pkg.package_items.slice(0, 3).map((item, idx) => (
-                                    <li key={idx} className="flex items-center gap-2">
-                                        <div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" />
-                                        {item.quantity > 1 ? `${item.quantity}x ` : ""}{item.servicios.nombre}
-                                    </li>
-                                ))}
-                            </ul>
+                            {/* Description or Service List */}
+                            <div className="text-gray-400 text-sm mb-8 text-left w-full px-4 min-h-[80px]">
+                                {pkg.description ? (
+                                    <p className="italic leading-relaxed line-clamp-3">"{pkg.description}"</p>
+                                ) : (
+                                    <ul className="space-y-2">
+                                        {pkg.package_items.slice(0, 3).map((item, idx) => (
+                                            <li key={idx} className="flex items-center gap-2">
+                                                <div className="w-1.5 h-1.5 bg-barberia-gold rounded-full" />
+                                                {item.quantity > 1 ? `${item.quantity}x ` : ""}{item.servicios.nombre}
+                                            </li>
+                                        ))}
+                                    </ul>
+                                )}
+                            </div>
 
                             <div className={`w-full py-3 border border-white/20 text-sm uppercase tracking-widest transition-all duration-300
                                 ${selectedOption === pkg.id ? "bg-barberia-gold text-black border-barberia-gold font-bold" : "text-white group-hover:border-barberia-gold group-hover:text-barberia-gold"}

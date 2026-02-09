@@ -827,6 +827,7 @@ export type Gift_cardsScalarFieldEnum = (typeof Gift_cardsScalarFieldEnum)[keyof
 export const PackagesScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  description: 'description',
   price: 'price',
   is_active: 'is_active',
   created_at: 'created_at'

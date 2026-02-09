@@ -34,6 +34,7 @@ export async function getActivePackages() {
         // Serialize Decimal to number for client components
         return packages.map((pkg) => ({
             ...pkg,
+            description: pkg.description,
             price: Number(pkg.price),
             package_items: pkg.package_items.map((item) => ({
                 ...item,

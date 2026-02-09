@@ -39,6 +39,7 @@ export type PackagesSumAggregateOutputType = {
 export type PackagesMinAggregateOutputType = {
   id: number | null
   name: string | null
+  description: string | null
   price: runtime.Decimal | null
   is_active: boolean | null
   created_at: Date | null
@@ -47,6 +48,7 @@ export type PackagesMinAggregateOutputType = {
 export type PackagesMaxAggregateOutputType = {
   id: number | null
   name: string | null
+  description: string | null
   price: runtime.Decimal | null
   is_active: boolean | null
   created_at: Date | null
@@ -55,6 +57,7 @@ export type PackagesMaxAggregateOutputType = {
 export type PackagesCountAggregateOutputType = {
   id: number
   name: number
+  description: number
   price: number
   is_active: number
   created_at: number
@@ -75,6 +78,7 @@ export type PackagesSumAggregateInputType = {
 export type PackagesMinAggregateInputType = {
   id?: true
   name?: true
+  description?: true
   price?: true
   is_active?: true
   created_at?: true
@@ -83,6 +87,7 @@ export type PackagesMinAggregateInputType = {
 export type PackagesMaxAggregateInputType = {
   id?: true
   name?: true
+  description?: true
   price?: true
   is_active?: true
   created_at?: true
@@ -91,6 +96,7 @@ export type PackagesMaxAggregateInputType = {
 export type PackagesCountAggregateInputType = {
   id?: true
   name?: true
+  description?: true
   price?: true
   is_active?: true
   created_at?: true
@@ -186,6 +192,7 @@ export type packagesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PackagesGroupByOutputType = {
   id: number
   name: string
+  description: string | null
   price: runtime.Decimal
   is_active: boolean | null
   created_at: Date | null
@@ -217,6 +224,7 @@ export type packagesWhereInput = {
   NOT?: Prisma.packagesWhereInput | Prisma.packagesWhereInput[]
   id?: Prisma.IntFilter<"packages"> | number
   name?: Prisma.StringFilter<"packages"> | string
+  description?: Prisma.StringNullableFilter<"packages"> | string | null
   price?: Prisma.DecimalFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableFilter<"packages"> | Date | string | null
@@ -227,6 +235,7 @@ export type packagesWhereInput = {
 export type packagesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -240,6 +249,7 @@ export type packagesWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.packagesWhereInput[]
   NOT?: Prisma.packagesWhereInput | Prisma.packagesWhereInput[]
   name?: Prisma.StringFilter<"packages"> | string
+  description?: Prisma.StringNullableFilter<"packages"> | string | null
   price?: Prisma.DecimalFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableFilter<"packages"> | Date | string | null
@@ -250,6 +260,7 @@ export type packagesWhereUniqueInput = Prisma.AtLeast<{
 export type packagesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -266,6 +277,7 @@ export type packagesScalarWhereWithAggregatesInput = {
   NOT?: Prisma.packagesScalarWhereWithAggregatesInput | Prisma.packagesScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"packages"> | number
   name?: Prisma.StringWithAggregatesFilter<"packages"> | string
+  description?: Prisma.StringNullableWithAggregatesFilter<"packages"> | string | null
   price?: Prisma.DecimalWithAggregatesFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableWithAggregatesFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableWithAggregatesFilter<"packages"> | Date | string | null
@@ -273,6 +285,7 @@ export type packagesScalarWhereWithAggregatesInput = {
 
 export type packagesCreateInput = {
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -283,6 +296,7 @@ export type packagesCreateInput = {
 export type packagesUncheckedCreateInput = {
   id?: number
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -292,6 +306,7 @@ export type packagesUncheckedCreateInput = {
 
 export type packagesUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -302,6 +317,7 @@ export type packagesUpdateInput = {
 export type packagesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -312,6 +328,7 @@ export type packagesUncheckedUpdateInput = {
 export type packagesCreateManyInput = {
   id?: number
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -319,6 +336,7 @@ export type packagesCreateManyInput = {
 
 export type packagesUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -327,6 +345,7 @@ export type packagesUpdateManyMutationInput = {
 export type packagesUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -340,6 +359,7 @@ export type PackagesNullableScalarRelationFilter = {
 export type packagesCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -353,6 +373,7 @@ export type packagesAvgOrderByAggregateInput = {
 export type packagesMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -361,6 +382,7 @@ export type packagesMaxOrderByAggregateInput = {
 export type packagesMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
+  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
@@ -408,6 +430,7 @@ export type packagesUpdateOneRequiredWithoutPackage_itemsNestedInput = {
 
 export type packagesCreateWithoutGift_cardsInput = {
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -417,6 +440,7 @@ export type packagesCreateWithoutGift_cardsInput = {
 export type packagesUncheckedCreateWithoutGift_cardsInput = {
   id?: number
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -441,6 +465,7 @@ export type packagesUpdateToOneWithWhereWithoutGift_cardsInput = {
 
 export type packagesUpdateWithoutGift_cardsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -450,6 +475,7 @@ export type packagesUpdateWithoutGift_cardsInput = {
 export type packagesUncheckedUpdateWithoutGift_cardsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -458,6 +484,7 @@ export type packagesUncheckedUpdateWithoutGift_cardsInput = {
 
 export type packagesCreateWithoutPackage_itemsInput = {
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -467,6 +494,7 @@ export type packagesCreateWithoutPackage_itemsInput = {
 export type packagesUncheckedCreateWithoutPackage_itemsInput = {
   id?: number
   name: string
+  description?: string | null
   price: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
@@ -491,6 +519,7 @@ export type packagesUpdateToOneWithWhereWithoutPackage_itemsInput = {
 
 export type packagesUpdateWithoutPackage_itemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -500,6 +529,7 @@ export type packagesUpdateWithoutPackage_itemsInput = {
 export type packagesUncheckedUpdateWithoutPackage_itemsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
@@ -549,6 +579,7 @@ export type PackagesCountOutputTypeCountPackage_itemsArgs<ExtArgs extends runtim
 export type packagesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
@@ -560,6 +591,7 @@ export type packagesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type packagesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
@@ -568,6 +600,7 @@ export type packagesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type packagesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
+  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
@@ -576,12 +609,13 @@ export type packagesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
 export type packagesSelectScalar = {
   id?: boolean
   name?: boolean
+  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
 }
 
-export type packagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "price" | "is_active" | "created_at", ExtArgs["result"]["packages"]>
+export type packagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "is_active" | "created_at", ExtArgs["result"]["packages"]>
 export type packagesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   gift_cards?: boolean | Prisma.packages$gift_cardsArgs<ExtArgs>
   package_items?: boolean | Prisma.packages$package_itemsArgs<ExtArgs>
@@ -599,6 +633,7 @@ export type $packagesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
+    description: string | null
     price: runtime.Decimal
     is_active: boolean | null
     created_at: Date | null
@@ -1029,6 +1064,7 @@ export interface Prisma__packagesClient<T, Null = never, ExtArgs extends runtime
 export interface packagesFieldRefs {
   readonly id: Prisma.FieldRef<"packages", 'Int'>
   readonly name: Prisma.FieldRef<"packages", 'String'>
+  readonly description: Prisma.FieldRef<"packages", 'String'>
   readonly price: Prisma.FieldRef<"packages", 'Decimal'>
   readonly is_active: Prisma.FieldRef<"packages", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"packages", 'DateTime'>
