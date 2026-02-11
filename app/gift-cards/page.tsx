@@ -101,9 +101,16 @@ export default function GiftCardsPage() {
             const opt = {
                 margin: 0,
                 filename: `GiftCard-85x45mm-${result.code}.pdf`,
-                image: { type: 'jpeg' as const, quality: 0.98 },
-                html2canvas: { scale: 4, logging: false, useCORS: true }, // Increased scale for better quality at small size
-                jsPDF: { unit: 'mm', format: [85, 45] as [number, number], orientation: 'landscape' as const }
+                image: { type: 'jpeg' as const, quality: 1.0 },
+                html2canvas: {
+                    scale: 4,
+                    logging: false,
+                    useCORS: true,
+                    scrollY: 0,
+                    width: 850, // Match element width
+                    height: 450 // Match element height
+                },
+                jsPDF: { unit: 'mm', format: [85, 45] as [number, number], orientation: 'portrait' as const } // Portrait because we define WxH explicit
             };
 
             // Force a reflow/repaint before capture
@@ -112,9 +119,6 @@ export default function GiftCardsPage() {
             }
 
             await html2pdf().set(opt).from(cardRef.current).save();
-
-            // Reset form or show success message?
-            // alert("Tarjeta generada exitosamente!"); 
 
         } catch (error) {
             console.error("Error generating PDF:", error);
@@ -126,13 +130,17 @@ export default function GiftCardsPage() {
 
     const getPackDetails = () => {
         if (selectedOption === "libre") {
-            return { title: "GIFT CARD", price: `S/ ${customAmount || "0.00"}` };
+            return { title: "GIFT CARD", price: `S/ ${customAmount || "0.00"}`, desc: "Monto de consumo libre para cualquier servicio." };
         }
         if (typeof selectedOption === "number") {
             const pkg = packages.find(p => p.id === selectedOption);
-            if (pkg) return { title: pkg.name.toUpperCase(), price: `S/ ${pkg.price.toFixed(2)}` };
+            if (pkg) return {
+                title: pkg.name.toUpperCase(),
+                price: `S/ ${pkg.price.toFixed(2)}`,
+                desc: pkg.description || "Recibe un servicio de lujo, con un corte de cabello que combina elegancia y modernidad"
+            };
         }
-        return { title: "", price: "" };
+        return { title: "", price: "", desc: "" };
     };
 
     const packDetails = getPackDetails();
@@ -352,212 +360,178 @@ export default function GiftCardsPage() {
                             X
                         </button>
                         <div className="scale-[0.6] md:scale-100 origin-center">
-                            {/* We just render the same structure here for preview, or reuse the hidden one? 
-                                Reusing logic via React component would be best, but let's just use the hidden one 
-                                by temporarily un-hiding it? No, that messes with layout. 
-                                Let's duplicated the render for now as it's cleaner than extracting a component mid-flow. 
-                            */}
+                            {/* Preview Logic duplicate of proper output to ensure consistency */}
                             <div
-                                className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-white overflow-hidden shadow-2xl"
+                                className="w-[850px] h-[450px] relative flex flex-col p-10 overflow-hidden box-border"
                                 style={{
-                                    backgroundColor: "#111",
-                                    backgroundImage: `
-                                radial-gradient(circle at 50% 0%, #222, transparent 60%),
-                                linear-gradient(45deg, #121212 25%, #151515 25%, #151515 50%, #121212 50%, #121212 75%, #151515 75%, #151515 100%)
-                            `,
-                                    backgroundSize: "100% 100%, 20px 20px"
+                                    backgroundColor: "#000000",
+                                    fontFamily: "var(--font-agency), sans-serif",
+                                    color: "white"
                                 }}
                             >
-                                {/* Double Golden Border */}
-                                <div className="absolute inset-4 border-2 border-barberia-gold opacity-80 pointer-events-none rounded-sm"></div>
-                                <div className="absolute inset-6 border border-barberia-gold opacity-50 pointer-events-none rounded-sm"></div>
-
-                                {/* Header / Logo */}
-                                <div className="flex justify-between items-start relative z-10">
-                                    <div className="text-left">
-                                        <h1 className="text-5xl font-agency font-bold tracking-wider text-white">
+                                {/* HEADER */}
+                                <div className="flex justify-between items-start mb-4">
+                                    <div className="w-1/3">
+                                        <h2 className="text-[40px] font-bold leading-none m-0">
                                             <span className="text-barberia-gold">JV</span> STUDIO
-                                        </h1>
-                                        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mt-1 pl-1">Barbería Premium</p>
+                                        </h2>
                                     </div>
-                                    <div className="text-right">
-                                        <div className="text-barberia-gold font-bold text-xl tracking-widest border border-barberia-gold px-3 py-1 bg-black/50">
-                                            PREVIEW
+                                    <div className="w-1/3 text-center">
+                                        <h3 className="text-barberia-gold text-[28px] font-bold uppercase tracking-widest m-0 leading-none mt-2">
+                                            GIFT CARD
+                                        </h3>
+                                    </div>
+                                    <div className="w-1/3 flex justify-end">
+                                        <div className="border border-barberia-gold py-1 px-4 text-white text-[18px]">
+                                            CÓDIGO: <span className="font-bold">{'PENDIENTE'}</span>
                                         </div>
                                     </div>
                                 </div>
 
-                                {/* Main Content */}
-                                <div className="flex-1 flex flex-col justify-center items-center text-center relative z-10 my-4">
-                                    <p className="text-gray-400 uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
-                                    <h2 className="text-6xl font-agency font-bold text-barberia-gold tracking-wide drop-shadow-md mb-2">
-                                        {packDetails.title || "SELECCIONA UNA OPCIÓN"}
-                                    </h2>
-                                    <p className="text-2xl font-light text-white tracking-widest border-b border-white/20 pb-2 px-8">
-                                        {packDetails.price || "S/ 0.00"}
+                                {/* CENTER CONTENT */}
+                                <div className="flex-1 flex flex-col justify-center items-center text-center">
+                                    <h1 className="text-barberia-gold text-[64px] font-bold uppercase leading-none mb-4">
+                                        {packDetails.title}
+                                    </h1>
+                                    <p className="text-xl text-gray-300 max-w-2xl font-light">
+                                        {packDetails.desc}
                                     </p>
                                 </div>
 
-                                {/* Footer / Info */}
-                                <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-white/10 pt-4 mt-2">
-                                    <div>
-                                        <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1">De:</p>
-                                        <p className="text-lg font-agency tracking-wide text-white">{formData.from || "Tu Nombre"}</p>
-                                        <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1 mt-3">Para:</p>
-                                        <p className="text-lg font-agency tracking-wide text-white">{formData.to || "Destinatario"}</p>
+                                {/* DEDICATION */}
+                                <div className="text-center mb-10">
+                                    <p className="text-barberia-gold text-[28px] italic font-serif">
+                                        "{formData.message || 'Tu mensaje aquí...'}"
+                                    </p>
+                                </div>
+
+                                {/* FOOTER */}
+                                <div className="flex justify-between items-end">
+                                    <div className="text-left space-y-1">
+                                        <p className="text-[20px] text-white">De: <span className="text-gray-400">{formData.from}</span></p>
+                                        <p className="text-[20px] text-white">Para: <span className="text-gray-400">{formData.to}</span></p>
                                     </div>
-                                    <div className="text-right flex flex-col justify-end">
-                                        <p className="text-sm italic text-gray-300 font-light mb-auto line-clamp-3">
-                                            "{formData.message || "Tu mensaje personalizado aquí..."}"
+                                    <div className="text-right">
+                                        <p className="text-[18px] text-gray-400 mb-1">
+                                            VENCE: {new Date().toLocaleDateString('es-PE')}
                                         </p>
-                                        <p className="text-sm text-gray-500 mt-2 uppercase tracking-wide">
-                                            Válido para canje en JV Studio Abancay.
-                                            <br />Incluye bebida de cortesía.
+                                        <p className="text-[12px] text-gray-500 uppercase tracking-widest">
+                                            VÁLIDO PARA CANJE EN JV STUDIO
                                         </p>
                                     </div>
                                 </div>
-
-                                {/* Ornate corners (CSS) */}
-                                <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-barberia-gold opacity-100"></div>
-                                <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-barberia-gold opacity-100"></div>
-                                <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-barberia-gold opacity-100"></div>
-                                <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-barberia-gold opacity-100"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             )}
 
-            {/* HIDDEN PDF TEMPLATE - Positioned to be capturable but invisible */}
+            {/* HIDDEN PDF TEMPLATE - Exactly matching Reference Image 2 */}
             <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
-                    className="w-[850px] h-[450px] relative flex flex-col p-8 overflow-hidden"
+                    // Explicit pixel dimensions mapped from 85mm x 45mm @ high DPI (approx 10px per mm for CSS layout convenience, scaled up by html2canvas)
+                    // 850px x 450px is a good maintained ratio.
                     style={{
-                        backgroundImage: "url(/gift-card-bg-final.jpg)", // Updated background
-                        backgroundSize: "cover",
-                        backgroundPosition: "center",
-                        fontFamily: "var(--font-agency), sans-serif"
+                        width: "850px",
+                        height: "450px",
+                        backgroundColor: "#000000",
+                        display: "flex",
+                        flexDirection: "column",
+                        padding: "40px 50px", // Adjusted padding
+                        boxSizing: "border-box",
+                        fontFamily: "var(--font-agency), sans-serif",
+                        color: "white",
+                        position: "relative"
                     }}
                 >
-                    {/* Dark Overlay - Optional, adjusting opacity based on new bg */}
-                    <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.1)" }}></div>
-
-                    {/* Content Container */}
-                    <div style={{ position: "relative", zIndex: 10, height: "100%", display: "flex", flexDirection: "column" }}>
-
-                        {/* Top Row: Logo | Title | Code */}
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
-                            {/* Left: Logo */}
-                            <div style={{ width: "25%" }}>
-                                <h2 style={{
-                                    color: "#ffffff",
-                                    fontSize: "32px",
-                                    fontWeight: "bold",
-                                    margin: 0,
-                                    lineHeight: 1
-                                }}>
-                                    <span style={{ color: "#D4AF37" }}>JV</span> STUDIO
-                                </h2>
-                            </div>
-
-                            {/* Center: Title */}
-                            <div style={{ width: "50%", textAlign: "center" }}>
-                                <h1 style={{
-                                    color: "#D4AF37",
-                                    fontSize: "42px",
-                                    fontWeight: "bold",
-                                    textTransform: "uppercase",
-                                    margin: 0,
-                                    lineHeight: 1
-                                }}>
-                                    GIFT CARD
-                                </h1>
-                            </div>
-
-                            {/* Right: Code */}
-                            <div style={{ width: "25%", display: "flex", justifyContent: "flex-end" }}>
-                                <div style={{
-                                    border: "1px solid #D4AF37",
-                                    padding: "5px 10px",
-                                    color: "#ffffff",
-                                    fontSize: "16px",
-                                    textTransform: "uppercase",
-                                    whiteSpace: "nowrap"
-                                }}>
-                                    CÓDIGO: <span style={{ color: "#ffffff", fontWeight: "bold" }}>{generatedCode || "PENDIENTE"}</span>
-                                </div>
-                            </div>
+                    {/* Header Row */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+                        <div style={{ width: "30%" }}>
+                            <h2 style={{ fontSize: "42px", fontWeight: "bold", margin: 0, lineHeight: 1 }}>
+                                <span style={{ color: "#D4AF37" }}>JV</span> STUDIO
+                            </h2>
                         </div>
-
-                        {/* Middle: Service & Description */}
-                        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", marginBottom: "10px" }}>
+                        <div style={{ width: "40%", textAlign: "center" }}>
                             <h3 style={{
                                 color: "#D4AF37",
-                                fontSize: "56px",
+                                fontSize: "32px",
                                 fontWeight: "bold",
                                 textTransform: "uppercase",
-                                margin: "0 0 10px 0",
-                                lineHeight: "0.9"
+                                margin: "5px 0 0 0",
+                                letterSpacing: "2px"
                             }}>
-                                {packDetails.title || "MONTO DE CONSUMO"}
+                                GIFT CARD
                             </h3>
-                            <p style={{
-                                color: "#cccccc",
+                        </div>
+                        <div style={{ width: "30%", display: "flex", justifyContent: "flex-end" }}>
+                            <div style={{
+                                border: "2px solid #D4AF37",
+                                padding: "8px 15px",
                                 fontSize: "18px",
-                                maxWidth: "80%",
-                                margin: 0,
-                                lineHeight: "1.2"
+                                textTransform: "uppercase",
+                                letterSpacing: "1px"
                             }}>
-                                Recibe un servicio de lujo, con un corte de cabello que combina elegancia y modernidad
-                            </p>
-                        </div>
-
-                        {/* Dedication */}
-                        <div style={{ textAlign: "center", marginBottom: "20px" }}>
-                            <p style={{
-                                color: "#D4AF37",
-                                fontSize: "28px",
-                                fontFamily: "'Brush Script MT', cursive",
-                                fontStyle: "italic",
-                                margin: 0
-                            }}>
-                                "{formData.message || "Para ti, con mucho cariño"}"
-                            </p>
-                        </div>
-
-                        {/* Bottom Row: De/Para | Details */}
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: "auto" }}>
-                            {/* Left: De / Para */}
-                            <div style={{ textAlign: "left" }}>
-                                <div style={{ marginBottom: "5px" }}>
-                                    <span style={{ color: "#ffffff", fontSize: "20px", textTransform: "uppercase" }}>
-                                        De: <span style={{ color: "#cccccc" }}>{formData.from}</span>
-                                    </span>
-                                </div>
-                                <div>
-                                    <span style={{ color: "#ffffff", fontSize: "20px", textTransform: "uppercase" }}>
-                                        Para: <span style={{ color: "#cccccc" }}>{formData.to}</span>
-                                    </span>
-                                </div>
-                            </div>
-
-                            {/* Right: Vence / Legal */}
-                            <div style={{ textAlign: "right" }}>
-                                <div style={{ marginBottom: "5px" }}>
-                                    <span style={{ color: "#cccccc", fontSize: "16px", textTransform: "uppercase" }}>VENCE: </span>
-                                    <span style={{ color: "#ffffff", fontSize: "20px" }}>
-                                        {expirationDate ? expirationDate.toLocaleDateString("es-PE") : "PENDIENTE"}
-                                    </span>
-                                </div>
-                                <div>
-                                    <span style={{ color: "#999999", fontSize: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>
-                                        VÁLIDO PARA CANJE EN JV STUDIO
-                                    </span>
-                                </div>
+                                CÓDIGO: <span style={{ fontWeight: "bold", color: "#fff" }}>{generatedCode || "PENDIENTE"}</span>
                             </div>
                         </div>
+                    </div>
 
+                    {/* Main Center Content */}
+                    <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center" }}>
+                        <h1 style={{
+                            color: "#D4AF37",
+                            fontSize: "64px",
+                            fontWeight: "bold",
+                            textTransform: "uppercase",
+                            margin: "0 0 20px 0",
+                            lineHeight: 0.8
+                        }}>
+                            {packDetails.title || "GIFT CARD"}
+                        </h1>
+                        <p style={{
+                            fontSize: "22px",
+                            color: "#cccccc",
+                            fontWeight: "300",
+                            maxWidth: "90%",
+                            margin: 0,
+                            lineHeight: 1.2
+                        }}>
+                            {packDetails.desc}
+                        </p>
+                    </div>
+
+                    {/* Dedication */}
+                    <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "30px" }}>
+                        <p style={{
+                            color: "#D4AF37",
+                            fontSize: "32px",
+                            fontFamily: "Brush Script MT, cursive",
+                            fontStyle: "italic",
+                            margin: 0
+                        }}>
+                            "{formData.message || "Un presente especial para ti"}"
+                        </p>
+                    </div>
+
+                    {/* Footer Row */}
+                    <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
+                        <div style={{ textAlign: "left" }}>
+                            <p style={{ fontSize: "22px", margin: "0 0 5px 0", color: "#fff" }}>
+                                De: <span style={{ color: "#bbb" }}>{formData.from}</span>
+                            </p>
+                            <p style={{ fontSize: "22px", margin: 0, color: "#fff" }}>
+                                Para: <span style={{ color: "#bbb" }}>{formData.to}</span>
+                            </p>
+                        </div>
+                        <div style={{ textAlign: "right" }}>
+                            <p style={{ fontSize: "20px", color: "#ccc", margin: "0 0 5px 0" }}>
+                                VENCE: <span style={{ color: "#fff" }}>{expirationDate ? expirationDate.toLocaleDateString("es-PE") : "PENDIENTE"}</span>
+                            </p>
+                            <p style={{ fontSize: "14px", color: "#888", textTransform: "uppercase", margin: 0, letterSpacing: "1px" }}>
+                                VÁLIDO PARA CANJE EN JV STUDIO
+                            </p>
+                        </div>
                     </div>
                 </div>
             </div>
