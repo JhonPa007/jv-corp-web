@@ -1,0 +1,6 @@
+[
+  {
+    "constraint_name": "gift_cards_status_check",
+    "definition": "CHECK (((status)::text = ANY ((ARRAY['activa'::character varying, 'canjeada'::character varying, 'vencida'::character varying, 'anulada'::character varying])::text[])))"
+  }
+]

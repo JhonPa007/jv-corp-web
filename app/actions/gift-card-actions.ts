@@ -81,26 +81,9 @@ export async function createGiftCard(data: {
         const expirationDate = new Date();
         expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Valid for 1 year
 
-        // Try multiple status variations until one succeeds
-        const statusCandidates = ["ACTIVA", "Activa", "active", "Emitida", "Pendiente", "Vigente", "VALIDA", "Valida"];
-        let giftCard = null;
-        let lastError = null;
-
-        for (const status of statusCandidates) {
-            try {
-                console.log(`Attempting to create Gift Card with status: ${status}`);
-                giftCard = await tryCreateWithStatus(data, status, code, expirationDate);
-                if (giftCard) break; // Success!
-            } catch (e) {
-                lastError = e;
-                console.warn(`Failed with status '${status}':`, e);
-                // Continue to next candidate
-            }
-        }
-
-        if (!giftCard) {
-            throw lastError || new Error("Failed to create gift card with any status");
-        }
+        // Use the correct status 'activa' (lowercase) as per database constraint
+        console.log(`Creating Gift Card with status: 'activa'`);
+        const giftCard = await tryCreateWithStatus(data, 'activa', code, expirationDate);
 
         if (!giftCard) {
             throw new Error("Failed to create gift card: Unknown error");
