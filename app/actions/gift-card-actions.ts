@@ -61,6 +61,7 @@ async function tryCreateWithStatus(data: any, status: string, code: string, expi
             expiration_date: expirationDate,
             purchaser_name: data.from,
             recipient_name: data.to,
+            dedicatoria: data.message,
             package_id: data.packageId,
         },
     });

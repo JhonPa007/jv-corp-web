@@ -50,6 +50,7 @@ export type Gift_cardsMinAggregateOutputType = {
   created_at: Date | null
   purchaser_name: string | null
   recipient_name: string | null
+  dedicatoria: string | null
   package_id: number | null
 }
 
@@ -63,6 +64,7 @@ export type Gift_cardsMaxAggregateOutputType = {
   created_at: Date | null
   purchaser_name: string | null
   recipient_name: string | null
+  dedicatoria: string | null
   package_id: number | null
 }
 
@@ -76,6 +78,7 @@ export type Gift_cardsCountAggregateOutputType = {
   created_at: number
   purchaser_name: number
   recipient_name: number
+  dedicatoria: number
   package_id: number
   _all: number
 }
@@ -105,6 +108,7 @@ export type Gift_cardsMinAggregateInputType = {
   created_at?: true
   purchaser_name?: true
   recipient_name?: true
+  dedicatoria?: true
   package_id?: true
 }
 
@@ -118,6 +122,7 @@ export type Gift_cardsMaxAggregateInputType = {
   created_at?: true
   purchaser_name?: true
   recipient_name?: true
+  dedicatoria?: true
   package_id?: true
 }
 
@@ -131,6 +136,7 @@ export type Gift_cardsCountAggregateInputType = {
   created_at?: true
   purchaser_name?: true
   recipient_name?: true
+  dedicatoria?: true
   package_id?: true
   _all?: true
 }
@@ -231,6 +237,7 @@ export type Gift_cardsGroupByOutputType = {
   created_at: Date | null
   purchaser_name: string | null
   recipient_name: string | null
+  dedicatoria: string | null
   package_id: number | null
   _count: Gift_cardsCountAggregateOutputType | null
   _avg: Gift_cardsAvgAggregateOutputType | null
@@ -267,6 +274,7 @@ export type gift_cardsWhereInput = {
   created_at?: Prisma.DateTimeNullableFilter<"gift_cards"> | Date | string | null
   purchaser_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   recipient_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
+  dedicatoria?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   package_id?: Prisma.IntNullableFilter<"gift_cards"> | number | null
   packages?: Prisma.XOR<Prisma.PackagesNullableScalarRelationFilter, Prisma.packagesWhereInput> | null
 }
@@ -281,6 +289,7 @@ export type gift_cardsOrderByWithRelationInput = {
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
   purchaser_name?: Prisma.SortOrderInput | Prisma.SortOrder
   recipient_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  dedicatoria?: Prisma.SortOrderInput | Prisma.SortOrder
   package_id?: Prisma.SortOrderInput | Prisma.SortOrder
   packages?: Prisma.packagesOrderByWithRelationInput
 }
@@ -298,6 +307,7 @@ export type gift_cardsWhereUniqueInput = Prisma.AtLeast<{
   created_at?: Prisma.DateTimeNullableFilter<"gift_cards"> | Date | string | null
   purchaser_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   recipient_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
+  dedicatoria?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   package_id?: Prisma.IntNullableFilter<"gift_cards"> | number | null
   packages?: Prisma.XOR<Prisma.PackagesNullableScalarRelationFilter, Prisma.packagesWhereInput> | null
 }, "id">
@@ -312,6 +322,7 @@ export type gift_cardsOrderByWithAggregationInput = {
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
   purchaser_name?: Prisma.SortOrderInput | Prisma.SortOrder
   recipient_name?: Prisma.SortOrderInput | Prisma.SortOrder
+  dedicatoria?: Prisma.SortOrderInput | Prisma.SortOrder
   package_id?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.gift_cardsCountOrderByAggregateInput
   _avg?: Prisma.gift_cardsAvgOrderByAggregateInput
@@ -333,6 +344,7 @@ export type gift_cardsScalarWhereWithAggregatesInput = {
   created_at?: Prisma.DateTimeNullableWithAggregatesFilter<"gift_cards"> | Date | string | null
   purchaser_name?: Prisma.StringNullableWithAggregatesFilter<"gift_cards"> | string | null
   recipient_name?: Prisma.StringNullableWithAggregatesFilter<"gift_cards"> | string | null
+  dedicatoria?: Prisma.StringNullableWithAggregatesFilter<"gift_cards"> | string | null
   package_id?: Prisma.IntNullableWithAggregatesFilter<"gift_cards"> | number | null
 }
 
@@ -345,6 +357,7 @@ export type gift_cardsCreateInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
   packages?: Prisma.packagesCreateNestedOneWithoutGift_cardsInput
 }
 
@@ -358,6 +371,7 @@ export type gift_cardsUncheckedCreateInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
   package_id?: number | null
 }
 
@@ -370,6 +384,7 @@ export type gift_cardsUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   packages?: Prisma.packagesUpdateOneWithoutGift_cardsNestedInput
 }
 
@@ -383,6 +398,7 @@ export type gift_cardsUncheckedUpdateInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   package_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
@@ -396,6 +412,7 @@ export type gift_cardsCreateManyInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
   package_id?: number | null
 }
 
@@ -408,6 +425,7 @@ export type gift_cardsUpdateManyMutationInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gift_cardsUncheckedUpdateManyInput = {
@@ -420,6 +438,7 @@ export type gift_cardsUncheckedUpdateManyInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   package_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
@@ -433,6 +452,7 @@ export type gift_cardsCountOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   purchaser_name?: Prisma.SortOrder
   recipient_name?: Prisma.SortOrder
+  dedicatoria?: Prisma.SortOrder
   package_id?: Prisma.SortOrder
 }
 
@@ -453,6 +473,7 @@ export type gift_cardsMaxOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   purchaser_name?: Prisma.SortOrder
   recipient_name?: Prisma.SortOrder
+  dedicatoria?: Prisma.SortOrder
   package_id?: Prisma.SortOrder
 }
 
@@ -466,6 +487,7 @@ export type gift_cardsMinOrderByAggregateInput = {
   created_at?: Prisma.SortOrder
   purchaser_name?: Prisma.SortOrder
   recipient_name?: Prisma.SortOrder
+  dedicatoria?: Prisma.SortOrder
   package_id?: Prisma.SortOrder
 }
 
@@ -537,6 +559,7 @@ export type gift_cardsCreateWithoutPackagesInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
 }
 
 export type gift_cardsUncheckedCreateWithoutPackagesInput = {
@@ -549,6 +572,7 @@ export type gift_cardsUncheckedCreateWithoutPackagesInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
 }
 
 export type gift_cardsCreateOrConnectWithoutPackagesInput = {
@@ -590,6 +614,7 @@ export type gift_cardsScalarWhereInput = {
   created_at?: Prisma.DateTimeNullableFilter<"gift_cards"> | Date | string | null
   purchaser_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   recipient_name?: Prisma.StringNullableFilter<"gift_cards"> | string | null
+  dedicatoria?: Prisma.StringNullableFilter<"gift_cards"> | string | null
   package_id?: Prisma.IntNullableFilter<"gift_cards"> | number | null
 }
 
@@ -603,6 +628,7 @@ export type gift_cardsCreateManyPackagesInput = {
   created_at?: Date | string | null
   purchaser_name?: string | null
   recipient_name?: string | null
+  dedicatoria?: string | null
 }
 
 export type gift_cardsUpdateWithoutPackagesInput = {
@@ -614,6 +640,7 @@ export type gift_cardsUpdateWithoutPackagesInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gift_cardsUncheckedUpdateWithoutPackagesInput = {
@@ -626,6 +653,7 @@ export type gift_cardsUncheckedUpdateWithoutPackagesInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gift_cardsUncheckedUpdateManyWithoutPackagesInput = {
@@ -638,6 +666,7 @@ export type gift_cardsUncheckedUpdateManyWithoutPackagesInput = {
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   purchaser_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   recipient_name?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  dedicatoria?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -652,6 +681,7 @@ export type gift_cardsSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   created_at?: boolean
   purchaser_name?: boolean
   recipient_name?: boolean
+  dedicatoria?: boolean
   package_id?: boolean
   packages?: boolean | Prisma.gift_cards$packagesArgs<ExtArgs>
 }, ExtArgs["result"]["gift_cards"]>
@@ -666,6 +696,7 @@ export type gift_cardsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   created_at?: boolean
   purchaser_name?: boolean
   recipient_name?: boolean
+  dedicatoria?: boolean
   package_id?: boolean
   packages?: boolean | Prisma.gift_cards$packagesArgs<ExtArgs>
 }, ExtArgs["result"]["gift_cards"]>
@@ -680,6 +711,7 @@ export type gift_cardsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   created_at?: boolean
   purchaser_name?: boolean
   recipient_name?: boolean
+  dedicatoria?: boolean
   package_id?: boolean
   packages?: boolean | Prisma.gift_cards$packagesArgs<ExtArgs>
 }, ExtArgs["result"]["gift_cards"]>
@@ -694,10 +726,11 @@ export type gift_cardsSelectScalar = {
   created_at?: boolean
   purchaser_name?: boolean
   recipient_name?: boolean
+  dedicatoria?: boolean
   package_id?: boolean
 }
 
-export type gift_cardsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "initial_amount" | "current_balance" | "status" | "expiration_date" | "created_at" | "purchaser_name" | "recipient_name" | "package_id", ExtArgs["result"]["gift_cards"]>
+export type gift_cardsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "code" | "initial_amount" | "current_balance" | "status" | "expiration_date" | "created_at" | "purchaser_name" | "recipient_name" | "dedicatoria" | "package_id", ExtArgs["result"]["gift_cards"]>
 export type gift_cardsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   packages?: boolean | Prisma.gift_cards$packagesArgs<ExtArgs>
 }
@@ -723,6 +756,7 @@ export type $gift_cardsPayload<ExtArgs extends runtime.Types.Extensions.Internal
     created_at: Date | null
     purchaser_name: string | null
     recipient_name: string | null
+    dedicatoria: string | null
     package_id: number | null
   }, ExtArgs["result"]["gift_cards"]>
   composites: {}
@@ -1157,6 +1191,7 @@ export interface gift_cardsFieldRefs {
   readonly created_at: Prisma.FieldRef<"gift_cards", 'DateTime'>
   readonly purchaser_name: Prisma.FieldRef<"gift_cards", 'String'>
   readonly recipient_name: Prisma.FieldRef<"gift_cards", 'String'>
+  readonly dedicatoria: Prisma.FieldRef<"gift_cards", 'String'>
   readonly package_id: Prisma.FieldRef<"gift_cards", 'Int'>
 }
     

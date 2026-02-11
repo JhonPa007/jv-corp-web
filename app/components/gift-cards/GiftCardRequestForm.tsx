@@ -15,6 +15,7 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
         purchaser_name: "",
         email: "",
         recipient_name: "",
+        message: "",
         selection_type: "amount",
         amount: "",
         package_id: "",
@@ -36,12 +37,9 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
             const result = await createGiftCard({
                 from: formData.purchaser_name,
                 to: formData.recipient_name,
+                message: formData.message,
                 amount: formData.selection_type === "amount" ? parseFloat(formData.amount) : 0, // Backend might ignore amount if package is selected, but let's be safe
                 packageId: formData.selection_type === "package" ? parseInt(formData.package_id) : undefined,
-                // You might need to update createGiftCard to handle package price if amount is not passed for package
-                // Assuming backend handles it or we need to pass the package price. 
-                // Let's assume for now createGiftCard handles logic or we pass the price.
-                // Wait, the original code passed 'amount' for amount type.
             });
 
             if (result.success) {
@@ -50,6 +48,7 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
                     purchaser_name: "",
                     email: "",
                     recipient_name: "",
+                    message: "",
                     selection_type: "amount",
                     amount: "",
                     package_id: "",
@@ -107,6 +106,18 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
                     onChange={handleChange}
                     required
                     className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Dedicatoria</label>
+                <textarea
+                    name="message"
+                    value={formData.message}
+                    onChange={handleChange as any} // Cast needed for textarea
+                    rows={2}
+                    className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                    placeholder="Mensaje corto... (Opcional)"
                 />
             </div>
 

@@ -434,14 +434,14 @@ export default function GiftCardsPage() {
                     ref={cardRef}
                     className="w-[850px] h-[450px] relative flex flex-col p-8 overflow-hidden"
                     style={{
-                        backgroundImage: "url(/gift-card-bg-v2.jpg)",
+                        backgroundImage: "url(/gift-card-bg-final.jpg)", // Updated background
                         backgroundSize: "cover",
                         backgroundPosition: "center",
                         fontFamily: "var(--font-agency), sans-serif"
                     }}
                 >
-                    {/* Dark Overlay */}
-                    <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.3)" }}></div>
+                    {/* Dark Overlay - Optional, adjusting opacity based on new bg */}
+                    <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.1)" }}></div>
 
                     {/* Content Container */}
                     <div style={{ position: "relative", zIndex: 10, height: "100%", display: "flex", flexDirection: "column" }}>
@@ -481,7 +481,7 @@ export default function GiftCardsPage() {
                                     border: "1px solid #D4AF37",
                                     padding: "5px 10px",
                                     color: "#ffffff",
-                                    fontSize: "16px", // Reduced size to fit
+                                    fontSize: "16px",
                                     textTransform: "uppercase",
                                     whiteSpace: "nowrap"
                                 }}>
@@ -494,7 +494,7 @@ export default function GiftCardsPage() {
                         <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", marginBottom: "10px" }}>
                             <h3 style={{
                                 color: "#D4AF37",
-                                fontSize: "56px", // Large dominant text
+                                fontSize: "56px",
                                 fontWeight: "bold",
                                 textTransform: "uppercase",
                                 margin: "0 0 10px 0",

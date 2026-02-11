@@ -818,6 +818,7 @@ export const Gift_cardsScalarFieldEnum = {
   created_at: 'created_at',
   purchaser_name: 'purchaser_name',
   recipient_name: 'recipient_name',
+  dedicatoria: 'dedicatoria',
   package_id: 'package_id'
 } as const
 
