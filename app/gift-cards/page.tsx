@@ -439,8 +439,8 @@ export default function GiftCardsPage() {
                     }}
                 >
                     {/* Double Golden Border */}
-                    <div className="absolute inset-4 border-2 border-[#D4AF37] opacity-80 pointer-events-none rounded-sm"></div>
-                    <div className="absolute inset-6 border border-[#D4AF37] opacity-50 pointer-events-none rounded-sm"></div>
+                    <div className="absolute inset-4 border-2 border-[#D4AF37] pointer-events-none rounded-sm" style={{ opacity: 0.8 }}></div>
+                    <div className="absolute inset-6 border border-[#D4AF37] pointer-events-none rounded-sm" style={{ opacity: 0.5 }}></div>
 
                     {/* Header / Logo */}
                     <div className="flex justify-between items-start relative z-10">
@@ -451,7 +451,7 @@ export default function GiftCardsPage() {
                             <p className="text-xs tracking-[0.3em] uppercase text-[#9ca3af] mt-1 pl-1">Barbería Premium</p>
                         </div>
                         <div className="text-right">
-                            <div className="text-[#D4AF37] font-bold text-xl tracking-widest border border-[#D4AF37] px-3 py-1 bg-black/50">
+                            <div className="text-[#D4AF37] font-bold text-xl tracking-widest border border-[#D4AF37] px-3 py-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
                                 {generatedCode || "CODE-PENDING"}
                             </div>
                         </div>
@@ -488,10 +488,10 @@ export default function GiftCardsPage() {
                     </div>
 
                     {/* Ornate corners (CSS) */}
-                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-[#D4AF37] opacity-100"></div>
-                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#D4AF37] opacity-100"></div>
-                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#D4AF37] opacity-100"></div>
-                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-[#D4AF37] opacity-100"></div>
+                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
+                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
+                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
+                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
                 </div>
             </div>
         </main>
