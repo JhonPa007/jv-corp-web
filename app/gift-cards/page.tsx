@@ -100,10 +100,10 @@ export default function GiftCardsPage() {
 
             const opt = {
                 margin: 0,
-                filename: `GiftCard-JVStudio-${result.code}.pdf`,
+                filename: `GiftCard-85x45mm-${result.code}.pdf`,
                 image: { type: 'jpeg' as const, quality: 0.98 },
                 html2canvas: { scale: 4, logging: false, useCORS: true }, // Increased scale for better quality at small size
-                jsPDF: { unit: 'mm', format: [85, 45] as [number, number], orientation: 'landscape' as const }
+                jsPDF: { unit: 'mm', format: [85, 45] as [number, number] }
             };
 
             // Force a reflow/repaint before capture
