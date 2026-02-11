@@ -365,6 +365,9 @@ export default function GiftCardsPage() {
                                 className="w-[850px] h-[450px] relative flex flex-col p-10 overflow-hidden box-border"
                                 style={{
                                     backgroundColor: "#000000",
+                                    backgroundImage: "url(/gift-card-bg-v3.jpg)",
+                                    backgroundSize: "cover",
+                                    backgroundPosition: "center",
                                     fontFamily: "var(--font-agency), sans-serif",
                                     color: "white"
                                 }}
@@ -436,6 +439,9 @@ export default function GiftCardsPage() {
                         width: "850px",
                         height: "450px",
                         backgroundColor: "#000000",
+                        backgroundImage: "url(/gift-card-bg-v3.jpg)",
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
                         display: "flex",
                         flexDirection: "column",
                         padding: "40px 50px", // Adjusted padding
