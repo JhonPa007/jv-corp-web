@@ -102,8 +102,8 @@ export default function GiftCardsPage() {
                 margin: 0,
                 filename: `GiftCard-JVStudio-${result.code}.pdf`,
                 image: { type: 'jpeg' as const, quality: 0.98 },
-                html2canvas: { scale: 2, logging: false, useCORS: true },
-                jsPDF: { unit: 'in', format: [8, 4] as [number, number], orientation: 'landscape' as const }
+                html2canvas: { scale: 4, logging: false, useCORS: true }, // Increased scale for better quality at small size
+                jsPDF: { unit: 'mm', format: [85, 45] as [number, number], orientation: 'landscape' as const }
             };
 
             // Force a reflow/repaint before capture
@@ -432,95 +432,132 @@ export default function GiftCardsPage() {
             <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
-                    className="w-[800px] h-[500px] relative flex flex-col p-12 overflow-hidden"
+                    className="w-[850px] h-[450px] relative flex flex-col p-8 overflow-hidden"
                     style={{
-                        backgroundImage: "url(/gift-card-bg-v2.jpg)", // Using the new background image
+                        backgroundImage: "url(/gift-card-bg-v2.jpg)",
                         backgroundSize: "cover",
                         backgroundPosition: "center",
-                        fontFamily: "var(--font-agency), sans-serif" // usage of project font
+                        fontFamily: "var(--font-agency), sans-serif"
                     }}
                 >
-                    {/* Dark Overlay to ensure text readability if needed, though the bg image is dark */}
+                    {/* Dark Overlay */}
                     <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.3)" }}></div>
 
                     {/* Content Container */}
-                    <div style={{ position: "relative", zIndex: 10, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+                    <div style={{ position: "relative", zIndex: 10, height: "100%", display: "flex", flexDirection: "column" }}>
 
-                        {/* Top: Header */}
-                        <div style={{ textAlign: "center", marginTop: "40px" }}>
-                            <h1 style={{
-                                color: "#D4AF37", // Gold
-                                fontSize: "80px",
-                                fontWeight: "bold",
-                                letterSpacing: "5px",
-                                margin: 0,
-                                textTransform: "uppercase",
-                                fontFamily: "var(--font-agency), sans-serif",
-                                lineHeight: "1"
-                            }}>
-                                GIFT CARD
-                            </h1>
-                            <div style={{
-                                color: "#ffffff",
-                                fontSize: "18px",
-                                marginTop: "10px",
-                                textTransform: "uppercase",
-                                letterSpacing: "2px",
-                                maxWidth: "500px",
-                                marginLeft: "auto",
-                                marginRight: "auto",
-                                lineHeight: "1.4"
-                            }}>
-                                {packDetails.title ? `VALIDO POR: ${packDetails.title}` : "MONTO DE CONSUMO"}
-                                <br />
-                                <span style={{ fontSize: "14px", color: "#cccccc" }}>
-                                    Recibe un servicio de lujo, con un corte de cabello que combina elegancia y modernidad
-                                </span>
+                        {/* Top Row: Logo | Title | Code */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: "20px" }}>
+                            {/* Left: Logo */}
+                            <div style={{ width: "25%" }}>
+                                <h2 style={{
+                                    color: "#ffffff",
+                                    fontSize: "32px",
+                                    fontWeight: "bold",
+                                    margin: 0,
+                                    lineHeight: 1
+                                }}>
+                                    <span style={{ color: "#D4AF37" }}>JV</span> STUDIO
+                                </h2>
+                            </div>
+
+                            {/* Center: Title */}
+                            <div style={{ width: "50%", textAlign: "center" }}>
+                                <h1 style={{
+                                    color: "#D4AF37",
+                                    fontSize: "42px",
+                                    fontWeight: "bold",
+                                    textTransform: "uppercase",
+                                    margin: 0,
+                                    lineHeight: 1
+                                }}>
+                                    GIFT CARD
+                                </h1>
+                            </div>
+
+                            {/* Right: Code */}
+                            <div style={{ width: "25%", display: "flex", justifyContent: "flex-end" }}>
+                                <div style={{
+                                    border: "1px solid #D4AF37",
+                                    padding: "5px 10px",
+                                    color: "#ffffff",
+                                    fontSize: "16px", // Reduced size to fit
+                                    textTransform: "uppercase",
+                                    whiteSpace: "nowrap"
+                                }}>
+                                    CÓDIGO: <span style={{ color: "#ffffff", fontWeight: "bold" }}>{generatedCode || "PENDIENTE"}</span>
+                                </div>
                             </div>
                         </div>
 
-                        {/* Middle: Dedication (Script Font) */}
-                        <div style={{ textAlign: "center", margin: "20px 0" }}>
+                        {/* Middle: Service & Description */}
+                        <div style={{ flex: 1, display: "flex", flexDirection: "column", justifyContent: "center", alignItems: "center", textAlign: "center", marginBottom: "10px" }}>
+                            <h3 style={{
+                                color: "#D4AF37",
+                                fontSize: "56px", // Large dominant text
+                                fontWeight: "bold",
+                                textTransform: "uppercase",
+                                margin: "0 0 10px 0",
+                                lineHeight: "0.9"
+                            }}>
+                                {packDetails.title || "MONTO DE CONSUMO"}
+                            </h3>
+                            <p style={{
+                                color: "#cccccc",
+                                fontSize: "18px",
+                                maxWidth: "80%",
+                                margin: 0,
+                                lineHeight: "1.2"
+                            }}>
+                                Recibe un servicio de lujo, con un corte de cabello que combina elegancia y modernidad
+                            </p>
+                        </div>
+
+                        {/* Dedication */}
+                        <div style={{ textAlign: "center", marginBottom: "20px" }}>
                             <p style={{
                                 color: "#D4AF37",
-                                fontSize: "32px",
+                                fontSize: "28px",
+                                fontFamily: "'Brush Script MT', cursive",
                                 fontStyle: "italic",
-                                fontFamily: "'Brush Script MT', cursive", // Standard script font availability
+                                margin: 0
                             }}>
                                 "{formData.message || "Para ti, con mucho cariño"}"
                             </p>
                         </div>
 
-                        {/* Bottom: Details */}
-                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", color: "#ffffff" }}>
-                            {/* Left Side: FROM and CODE */}
+                        {/* Bottom Row: De/Para | Details */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginTop: "auto" }}>
+                            {/* Left: De / Para */}
                             <div style={{ textAlign: "left" }}>
-                                <div style={{ marginBottom: "15px" }}>
-                                    <span style={{ color: "#cccccc", fontSize: "14px", textTransform: "uppercase" }}>De:</span>
-                                    <br />
-                                    <span style={{ fontSize: "24px", color: "#ffffff", textTransform: "uppercase" }}>{formData.from}</span>
+                                <div style={{ marginBottom: "5px" }}>
+                                    <span style={{ color: "#ffffff", fontSize: "20px", textTransform: "uppercase" }}>
+                                        De: <span style={{ color: "#cccccc" }}>{formData.from}</span>
+                                    </span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: "16px", color: "#ffffff", textTransform: "uppercase", letterSpacing: "1px" }}>
-                                        CÓDIGO: <span style={{ color: "#ffffff" }}>{generatedCode || "PENDIENTE"}</span>
+                                    <span style={{ color: "#ffffff", fontSize: "20px", textTransform: "uppercase" }}>
+                                        Para: <span style={{ color: "#cccccc" }}>{formData.to}</span>
                                     </span>
                                 </div>
                             </div>
 
-                            {/* Right Side: TO and EXPIRES */}
+                            {/* Right: Vence / Legal */}
                             <div style={{ textAlign: "right" }}>
-                                <div style={{ marginBottom: "15px" }}>
-                                    <span style={{ color: "#cccccc", fontSize: "14px", textTransform: "uppercase" }}>Para:</span>
-                                    <br />
-                                    <span style={{ fontSize: "24px", color: "#ffffff", textTransform: "uppercase" }}>{formData.to}</span>
+                                <div style={{ marginBottom: "5px" }}>
+                                    <span style={{ color: "#cccccc", fontSize: "16px", textTransform: "uppercase" }}>VENCE: </span>
+                                    <span style={{ color: "#ffffff", fontSize: "20px" }}>
+                                        {expirationDate ? expirationDate.toLocaleDateString("es-PE") : "PENDIENTE"}
+                                    </span>
                                 </div>
                                 <div>
-                                    <span style={{ fontSize: "16px", color: "#ffffff", textTransform: "uppercase", letterSpacing: "1px" }}>
-                                        VENCE: <span style={{ color: "#ffffff" }}>{expirationDate ? expirationDate.toLocaleDateString("es-PE") : "PENDIENTE"}</span>
+                                    <span style={{ color: "#999999", fontSize: "12px", textTransform: "uppercase", letterSpacing: "1px" }}>
+                                        VÁLIDO PARA CANJE EN JV STUDIO
                                     </span>
                                 </div>
                             </div>
                         </div>
+
                     </div>
                 </div>
             </div>
