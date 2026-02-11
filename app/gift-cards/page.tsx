@@ -40,6 +40,7 @@ export default function GiftCardsPage() {
     };
 
     const [generatedCode, setGeneratedCode] = useState("");
+    const [expirationDate, setExpirationDate] = useState<Date | null>(null);
     const [showPreview, setShowPreview] = useState(false);
 
     const handleGeneratePDF = async (e: React.FormEvent) => {
@@ -87,6 +88,9 @@ export default function GiftCardsPage() {
             }
 
             setGeneratedCode(result.code);
+            if (result.expirationDate) {
+                setExpirationDate(new Date(result.expirationDate));
+            }
 
             // Wait for state update to reflect in DOM (Code is displayed in the hidden template)
             await new Promise(resolve => setTimeout(resolve, 100)); // Small delay to ensure React renders the code
@@ -428,70 +432,96 @@ export default function GiftCardsPage() {
             <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
-                    className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-[#ffffff] overflow-hidden"
+                    className="w-[800px] h-[500px] relative flex flex-col p-12 overflow-hidden"
                     style={{
-                        backgroundColor: "#111",
-                        backgroundImage: `
-                    radial-gradient(circle at 50% 0%, #222, transparent 60%),
-                    linear-gradient(45deg, #121212 25%, #151515 25%, #151515 50%, #121212 50%, #121212 75%, #151515 75%, #151515 100%)
-                `,
-                        backgroundSize: "100% 100%, 20px 20px"
+                        backgroundImage: "url(/gift-card-bg-v2.jpg)", // Using the new background image
+                        backgroundSize: "cover",
+                        backgroundPosition: "center",
+                        fontFamily: "var(--font-agency), sans-serif" // usage of project font
                     }}
                 >
-                    {/* Double Golden Border */}
-                    <div className="absolute inset-4 border-2 border-[#D4AF37] pointer-events-none rounded-sm" style={{ opacity: 0.8 }}></div>
-                    <div className="absolute inset-6 border border-[#D4AF37] pointer-events-none rounded-sm" style={{ opacity: 0.5 }}></div>
+                    {/* Dark Overlay to ensure text readability if needed, though the bg image is dark */}
+                    <div style={{ position: "absolute", inset: 0, backgroundColor: "rgba(0,0,0,0.3)" }}></div>
 
-                    {/* Header / Logo */}
-                    <div className="flex justify-between items-start relative z-10">
-                        <div className="text-left">
-                            <h1 className="text-5xl font-agency font-bold tracking-wider text-[#ffffff]">
-                                <span className="text-[#D4AF37]">JV</span> STUDIO
+                    {/* Content Container */}
+                    <div style={{ position: "relative", zIndex: 10, height: "100%", display: "flex", flexDirection: "column", justifyContent: "space-between" }}>
+
+                        {/* Top: Header */}
+                        <div style={{ textAlign: "center", marginTop: "40px" }}>
+                            <h1 style={{
+                                color: "#D4AF37", // Gold
+                                fontSize: "80px",
+                                fontWeight: "bold",
+                                letterSpacing: "5px",
+                                margin: 0,
+                                textTransform: "uppercase",
+                                fontFamily: "var(--font-agency), sans-serif",
+                                lineHeight: "1"
+                            }}>
+                                GIFT CARD
                             </h1>
-                            <p className="text-xs tracking-[0.3em] uppercase text-[#9ca3af] mt-1 pl-1">Barbería Premium</p>
+                            <div style={{
+                                color: "#ffffff",
+                                fontSize: "18px",
+                                marginTop: "10px",
+                                textTransform: "uppercase",
+                                letterSpacing: "2px",
+                                maxWidth: "500px",
+                                marginLeft: "auto",
+                                marginRight: "auto",
+                                lineHeight: "1.4"
+                            }}>
+                                {packDetails.title ? `VALIDO POR: ${packDetails.title}` : "MONTO DE CONSUMO"}
+                                <br />
+                                <span style={{ fontSize: "14px", color: "#cccccc" }}>
+                                    Recibe un servicio de lujo, con un corte de cabello que combina elegancia y modernidad
+                                </span>
+                            </div>
                         </div>
-                        <div className="text-right">
-                            <div className="text-[#D4AF37] font-bold text-xl tracking-widest border border-[#D4AF37] px-3 py-1" style={{ backgroundColor: 'rgba(0,0,0,0.5)' }}>
-                                {generatedCode || "CODE-PENDING"}
+
+                        {/* Middle: Dedication (Script Font) */}
+                        <div style={{ textAlign: "center", margin: "20px 0" }}>
+                            <p style={{
+                                color: "#D4AF37",
+                                fontSize: "32px",
+                                fontStyle: "italic",
+                                fontFamily: "'Brush Script MT', cursive", // Standard script font availability
+                            }}>
+                                "{formData.message || "Para ti, con mucho cariño"}"
+                            </p>
+                        </div>
+
+                        {/* Bottom: Details */}
+                        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", color: "#ffffff" }}>
+                            {/* Left Side: FROM and CODE */}
+                            <div style={{ textAlign: "left" }}>
+                                <div style={{ marginBottom: "15px" }}>
+                                    <span style={{ color: "#cccccc", fontSize: "14px", textTransform: "uppercase" }}>De:</span>
+                                    <br />
+                                    <span style={{ fontSize: "24px", color: "#ffffff", textTransform: "uppercase" }}>{formData.from}</span>
+                                </div>
+                                <div>
+                                    <span style={{ fontSize: "16px", color: "#ffffff", textTransform: "uppercase", letterSpacing: "1px" }}>
+                                        CÓDIGO: <span style={{ color: "#ffffff" }}>{generatedCode || "PENDIENTE"}</span>
+                                    </span>
+                                </div>
+                            </div>
+
+                            {/* Right Side: TO and EXPIRES */}
+                            <div style={{ textAlign: "right" }}>
+                                <div style={{ marginBottom: "15px" }}>
+                                    <span style={{ color: "#cccccc", fontSize: "14px", textTransform: "uppercase" }}>Para:</span>
+                                    <br />
+                                    <span style={{ fontSize: "24px", color: "#ffffff", textTransform: "uppercase" }}>{formData.to}</span>
+                                </div>
+                                <div>
+                                    <span style={{ fontSize: "16px", color: "#ffffff", textTransform: "uppercase", letterSpacing: "1px" }}>
+                                        VENCE: <span style={{ color: "#ffffff" }}>{expirationDate ? expirationDate.toLocaleDateString("es-PE") : "PENDIENTE"}</span>
+                                    </span>
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    {/* Main Content */}
-                    <div className="flex-1 flex flex-col justify-center items-center text-center relative z-10 my-4">
-                        <p className="text-[#9ca3af] uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
-                        <h2 className="text-6xl font-agency font-bold text-[#D4AF37] tracking-wide drop-shadow-md mb-2">
-                            {packDetails.title}
-                        </h2>
-                        <p className="text-2xl font-light text-[#ffffff] tracking-widest border-b border-[#ffffff33] pb-2 px-8">
-                            {packDetails.price}
-                        </p>
-                    </div>
-
-                    {/* Footer / Info */}
-                    <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-[#ffffff1a] pt-4 mt-2">
-                        <div>
-                            <p className="text-[10px] uppercase text-[#D4AF37] tracking-widest font-bold mb-1">De:</p>
-                            <p className="text-lg font-agency tracking-wide text-[#ffffff]">{formData.from}</p>
-                            <p className="text-[10px] uppercase text-[#D4AF37] tracking-widest font-bold mb-1 mt-3">Para:</p>
-                            <p className="text-lg font-agency tracking-wide text-[#ffffff]">{formData.to}</p>
-                        </div>
-                        <div className="text-right flex flex-col justify-end">
-                            <p className="text-sm italic text-[#d1d5db] font-light mb-auto line-clamp-3">
-                                "{formData.message}"
-                            </p>
-                            <p className="text-[10px] text-[#6b7280] mt-2 uppercase tracking-wide">
-                                Válido para canje en JV Studio Abancay.
-                                <br />Incluye bebida de cortesía.
-                            </p>
-                        </div>
-                    </div>
-
-                    {/* Ornate corners (CSS) */}
-                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
-                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
-                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
-                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-[#D4AF37]" style={{ opacity: 1 }}></div>
                 </div>
             </div>
         </main>

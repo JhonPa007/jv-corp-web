@@ -90,7 +90,7 @@ export async function createGiftCard(data: {
         }
 
         revalidatePath("/admin/gift-cards"); // Assuming an admin page exists or will exist
-        return { success: true, code: giftCard.code, id: giftCard.id };
+        return { success: true, code: giftCard.code, id: giftCard.id, expirationDate: giftCard.expiration_date };
     } catch (error) {
         console.error("Error creating gift card:", error);
         return { success: false, error: error instanceof Error ? error.message : "Failed to create gift card" };
