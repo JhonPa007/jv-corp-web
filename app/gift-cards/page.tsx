@@ -40,6 +40,7 @@ export default function GiftCardsPage() {
     };
 
     const [generatedCode, setGeneratedCode] = useState("");
+    const [showPreview, setShowPreview] = useState(false);
 
     const handleGeneratePDF = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -318,11 +319,105 @@ export default function GiftCardsPage() {
                                 >
                                     {isGenerating ? "Generando..." : "Descargar Tarjeta PDF"}
                                 </button>
+                                <button
+                                    type="button"
+                                    onClick={() => setShowPreview(true)}
+                                    className="mt-4 text-barberia-gold underline text-sm uppercase tracking-widest hover:text-white transition-colors"
+                                >
+                                    Vista Previa
+                                </button>
                             </div>
                         </form>
                     </div>
                 </div>
             </section>
+
+            {/* PREVIEW MODAL */}
+            {showPreview && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
+                    <div className="relative bg-[#1a1a1a] p-2 rounded-lg shadow-2xl border border-barberia-gold/30">
+                        <button
+                            onClick={() => setShowPreview(false)}
+                            className="absolute -top-4 -right-4 bg-barberia-gold text-black w-8 h-8 rounded-full flex items-center justify-center font-bold hover:bg-white transition-colors z-[60]"
+                        >
+                            X
+                        </button>
+                        <div className="scale-[0.6] md:scale-100 origin-center">
+                            {/* We just render the same structure here for preview, or reuse the hidden one? 
+                                Reusing logic via React component would be best, but let's just use the hidden one 
+                                by temporarily un-hiding it? No, that messes with layout. 
+                                Let's duplicated the render for now as it's cleaner than extracting a component mid-flow. 
+                            */}
+                            <div
+                                className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-white overflow-hidden shadow-2xl"
+                                style={{
+                                    backgroundColor: "#111",
+                                    backgroundImage: `
+                                radial-gradient(circle at 50% 0%, #222, transparent 60%),
+                                linear-gradient(45deg, #121212 25%, #151515 25%, #151515 50%, #121212 50%, #121212 75%, #151515 75%, #151515 100%)
+                            `,
+                                    backgroundSize: "100% 100%, 20px 20px"
+                                }}
+                            >
+                                {/* Double Golden Border */}
+                                <div className="absolute inset-4 border-2 border-barberia-gold opacity-80 pointer-events-none rounded-sm"></div>
+                                <div className="absolute inset-6 border border-barberia-gold opacity-50 pointer-events-none rounded-sm"></div>
+
+                                {/* Header / Logo */}
+                                <div className="flex justify-between items-start relative z-10">
+                                    <div className="text-left">
+                                        <h1 className="text-5xl font-agency font-bold tracking-wider text-white">
+                                            <span className="text-barberia-gold">JV</span> STUDIO
+                                        </h1>
+                                        <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mt-1 pl-1">Barbería Premium</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="text-barberia-gold font-bold text-xl tracking-widest border border-barberia-gold px-3 py-1 bg-black/50">
+                                            PREVIEW
+                                        </div>
+                                    </div>
+                                </div>
+
+                                {/* Main Content */}
+                                <div className="flex-1 flex flex-col justify-center items-center text-center relative z-10 my-4">
+                                    <p className="text-gray-400 uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
+                                    <h2 className="text-6xl font-agency font-bold text-barberia-gold tracking-wide drop-shadow-md mb-2">
+                                        {packDetails.title || "SELECCIONA UNA OPCIÓN"}
+                                    </h2>
+                                    <p className="text-2xl font-light text-white tracking-widest border-b border-white/20 pb-2 px-8">
+                                        {packDetails.price || "S/ 0.00"}
+                                    </p>
+                                </div>
+
+                                {/* Footer / Info */}
+                                <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-white/10 pt-4 mt-2">
+                                    <div>
+                                        <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1">De:</p>
+                                        <p className="text-lg font-agency tracking-wide text-white">{formData.from || "Tu Nombre"}</p>
+                                        <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1 mt-3">Para:</p>
+                                        <p className="text-lg font-agency tracking-wide text-white">{formData.to || "Destinatario"}</p>
+                                    </div>
+                                    <div className="text-right flex flex-col justify-end">
+                                        <p className="text-sm italic text-gray-300 font-light mb-auto line-clamp-3">
+                                            "{formData.message || "Tu mensaje personalizado aquí..."}"
+                                        </p>
+                                        <p className="text-sm text-gray-500 mt-2 uppercase tracking-wide">
+                                            Válido para canje en JV Studio Abancay.
+                                            <br />Incluye bebida de cortesía.
+                                        </p>
+                                    </div>
+                                </div>
+
+                                {/* Ornate corners (CSS) */}
+                                <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-barberia-gold opacity-100"></div>
+                                <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-barberia-gold opacity-100"></div>
+                                <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-barberia-gold opacity-100"></div>
+                                <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-barberia-gold opacity-100"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            )}
 
             {/* HIDDEN PDF TEMPLATE */}
             <div style={{ position: "absolute", top: "-9999px", left: "-9999px" }}>

@@ -81,8 +81,8 @@ export async function createGiftCard(data: {
         const expirationDate = new Date();
         expirationDate.setFullYear(expirationDate.getFullYear() + 1); // Valid for 1 year
 
-        // Create directly with the correct status 'activa' (lowercase) per constraint
-        const giftCard = await tryCreateWithStatus(data, "activa", code, expirationDate);
+        // Create directly with the correct status 'Activa' (Title Case) per constraint
+        const giftCard = await tryCreateWithStatus(data, "Activa", code, expirationDate);
 
         if (!giftCard) {
             throw new Error("Failed to create gift card: Unknown error");
