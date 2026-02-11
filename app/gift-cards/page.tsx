@@ -428,7 +428,7 @@ export default function GiftCardsPage() {
             <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
-                    className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-white overflow-hidden"
+                    className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-[#ffffff] overflow-hidden"
                     style={{
                         backgroundColor: "#111",
                         backgroundImage: `
@@ -439,19 +439,19 @@ export default function GiftCardsPage() {
                     }}
                 >
                     {/* Double Golden Border */}
-                    <div className="absolute inset-4 border-2 border-barberia-gold opacity-80 pointer-events-none rounded-sm"></div>
-                    <div className="absolute inset-6 border border-barberia-gold opacity-50 pointer-events-none rounded-sm"></div>
+                    <div className="absolute inset-4 border-2 border-[#D4AF37] opacity-80 pointer-events-none rounded-sm"></div>
+                    <div className="absolute inset-6 border border-[#D4AF37] opacity-50 pointer-events-none rounded-sm"></div>
 
                     {/* Header / Logo */}
                     <div className="flex justify-between items-start relative z-10">
                         <div className="text-left">
-                            <h1 className="text-5xl font-agency font-bold tracking-wider text-white">
-                                <span className="text-barberia-gold">JV</span> STUDIO
+                            <h1 className="text-5xl font-agency font-bold tracking-wider text-[#ffffff]">
+                                <span className="text-[#D4AF37]">JV</span> STUDIO
                             </h1>
-                            <p className="text-xs tracking-[0.3em] uppercase text-gray-400 mt-1 pl-1">Barbería Premium</p>
+                            <p className="text-xs tracking-[0.3em] uppercase text-[#9ca3af] mt-1 pl-1">Barbería Premium</p>
                         </div>
                         <div className="text-right">
-                            <div className="text-barberia-gold font-bold text-xl tracking-widest border border-barberia-gold px-3 py-1 bg-black/50">
+                            <div className="text-[#D4AF37] font-bold text-xl tracking-widest border border-[#D4AF37] px-3 py-1 bg-black/50">
                                 {generatedCode || "CODE-PENDING"}
                             </div>
                         </div>
@@ -459,28 +459,28 @@ export default function GiftCardsPage() {
 
                     {/* Main Content */}
                     <div className="flex-1 flex flex-col justify-center items-center text-center relative z-10 my-4">
-                        <p className="text-gray-400 uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
-                        <h2 className="text-6xl font-agency font-bold text-barberia-gold tracking-wide drop-shadow-md mb-2">
+                        <p className="text-[#9ca3af] uppercase tracking-widest text-xs mb-2">Una experiencia exclusiva para ti</p>
+                        <h2 className="text-6xl font-agency font-bold text-[#D4AF37] tracking-wide drop-shadow-md mb-2">
                             {packDetails.title}
                         </h2>
-                        <p className="text-2xl font-light text-white tracking-widest border-b border-white/20 pb-2 px-8">
+                        <p className="text-2xl font-light text-[#ffffff] tracking-widest border-b border-[#ffffff33] pb-2 px-8">
                             {packDetails.price}
                         </p>
                     </div>
 
                     {/* Footer / Info */}
-                    <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-white/10 pt-4 mt-2">
+                    <div className="relative z-10 grid grid-cols-2 gap-8 border-t border-[#ffffff1a] pt-4 mt-2">
                         <div>
-                            <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1">De:</p>
-                            <p className="text-lg font-agency tracking-wide text-white">{formData.from}</p>
-                            <p className="text-[10px] uppercase text-barberia-gold tracking-widest font-bold mb-1 mt-3">Para:</p>
-                            <p className="text-lg font-agency tracking-wide text-white">{formData.to}</p>
+                            <p className="text-[10px] uppercase text-[#D4AF37] tracking-widest font-bold mb-1">De:</p>
+                            <p className="text-lg font-agency tracking-wide text-[#ffffff]">{formData.from}</p>
+                            <p className="text-[10px] uppercase text-[#D4AF37] tracking-widest font-bold mb-1 mt-3">Para:</p>
+                            <p className="text-lg font-agency tracking-wide text-[#ffffff]">{formData.to}</p>
                         </div>
                         <div className="text-right flex flex-col justify-end">
-                            <p className="text-sm italic text-gray-300 font-light mb-auto line-clamp-3">
+                            <p className="text-sm italic text-[#d1d5db] font-light mb-auto line-clamp-3">
                                 "{formData.message}"
                             </p>
-                            <p className="text-[10px] text-gray-500 mt-2 uppercase tracking-wide">
+                            <p className="text-[10px] text-[#6b7280] mt-2 uppercase tracking-wide">
                                 Válido para canje en JV Studio Abancay.
                                 <br />Incluye bebida de cortesía.
                             </p>
@@ -488,10 +488,10 @@ export default function GiftCardsPage() {
                     </div>
 
                     {/* Ornate corners (CSS) */}
-                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-barberia-gold opacity-100"></div>
-                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-barberia-gold opacity-100"></div>
-                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-barberia-gold opacity-100"></div>
-                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-barberia-gold opacity-100"></div>
+                    <div className="absolute top-4 left-4 w-16 h-16 border-t-2 border-l-2 border-[#D4AF37] opacity-100"></div>
+                    <div className="absolute top-4 right-4 w-16 h-16 border-t-2 border-r-2 border-[#D4AF37] opacity-100"></div>
+                    <div className="absolute bottom-4 left-4 w-16 h-16 border-b-2 border-l-2 border-[#D4AF37] opacity-100"></div>
+                    <div className="absolute bottom-4 right-4 w-16 h-16 border-b-2 border-r-2 border-[#D4AF37] opacity-100"></div>
                 </div>
             </div>
         </main>
