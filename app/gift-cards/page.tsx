@@ -102,6 +102,11 @@ export default function GiftCardsPage() {
                 jsPDF: { unit: 'in', format: [8, 4] as [number, number], orientation: 'landscape' as const }
             };
 
+            // Force a reflow/repaint before capture
+            if (cardRef.current) {
+                cardRef.current.style.display = 'flex'; // Ensure it's not 'none'
+            }
+
             await html2pdf().set(opt).from(cardRef.current).save();
 
             // Reset form or show success message?
@@ -109,7 +114,7 @@ export default function GiftCardsPage() {
 
         } catch (error) {
             console.error("Error generating PDF:", error);
-            alert("Hubo un error al generar la tarjeta. Por favor intenta de nuevo.");
+            alert(`Hubo un error al generar la tarjeta PDF: ${error instanceof Error ? error.message : String(error)}`);
         } finally {
             setIsGenerating(false);
         }
@@ -419,8 +424,8 @@ export default function GiftCardsPage() {
                 </div>
             )}
 
-            {/* HIDDEN PDF TEMPLATE */}
-            <div style={{ position: "absolute", top: "-9999px", left: "-9999px" }}>
+            {/* HIDDEN PDF TEMPLATE - Positioned to be capturable but invisible */}
+            <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
                     className="w-[800px] h-[400px] relative flex flex-col justify-between p-8 text-white overflow-hidden"
