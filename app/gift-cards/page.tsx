@@ -26,6 +26,7 @@ export default function GiftCardsPage() {
         from: "",
         to: "",
         message: "",
+        whatsapp: "",
     });
     const [isGenerating, setIsGenerating] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
@@ -35,7 +36,7 @@ export default function GiftCardsPage() {
     const handleOptionSelect = (option: GiftOption) => {
         setSelectedOption(option);
         setIsPersonalized(true); // Reset to default
-        setFormData({ from: "", to: "", message: "" }); // Reset form
+        setFormData({ from: "", to: "", message: "", whatsapp: "" }); // Reset form
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -84,6 +85,7 @@ export default function GiftCardsPage() {
                 from: isPersonalized ? formData.from : undefined,
                 to: formData.to,
                 message: isPersonalized ? formData.message : undefined,
+                whatsapp: formData.whatsapp,
                 packageId: packageId
             });
 
@@ -123,6 +125,12 @@ export default function GiftCardsPage() {
             }
 
             await html2pdf().set(opt).from(cardRef.current).save();
+
+            // Auto-close modal and show success message
+            setTimeout(() => {
+                setSelectedOption(null);
+                alert("¡Gift Card generada con éxito!");
+            }, 1000); // Give it a sec for the download to start
 
         } catch (error) {
             console.error("Error generating PDF:", error);
@@ -337,6 +345,17 @@ export default function GiftCardsPage() {
                                         className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
                                         placeholder="Ej. Carlos"
                                         required
+                                    />
+                                </div>
+                                <div className={`space-y-2 ${!isPersonalized ? "md:col-span-2" : ""}`}>
+                                    <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">WhatsApp (Opcional)</label>
+                                    <input
+                                        type="tel"
+                                        name="whatsapp"
+                                        value={formData.whatsapp}
+                                        onChange={handleInputChange}
+                                        className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
+                                        placeholder="Ej. 999888777"
                                     />
                                 </div>
                             </div>
