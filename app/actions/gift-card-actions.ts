@@ -71,7 +71,7 @@ async function tryCreateWithStatus(data: any, status: string, code: string, expi
 // Create a new Gift Card
 export async function createGiftCard(data: {
     amount: number;
-    from: string;
+    from?: string;
     to: string;
     whatsapp?: string;
     message?: string;
