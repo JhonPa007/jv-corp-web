@@ -45,8 +45,8 @@ export default function GiftCardsPage() {
     };
 
     const [generatedCode, setGeneratedCode] = useState("");
+
     const [expirationDate, setExpirationDate] = useState<Date | null>(null);
-    const [showPreview, setShowPreview] = useState(false);
 
     const handleGeneratePDF = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -162,21 +162,23 @@ export default function GiftCardsPage() {
             {/* Hero Section */}
             <section className="relative h-[80vh] w-full overflow-hidden flex items-center justify-center text-center px-4">
                 <div className="absolute inset-0 z-0">
-                    <Image
-                        src="/landing-bg.jpg"
-                        alt="Amigos brindando en barbería"
-                        fill
-                        className="object-cover opacity-60"
-                        priority
+                    <div
+                        className="absolute inset-0 opacity-60"
+                        style={{
+                            backgroundImage: "url('/landing-bg.jpg')",
+                            backgroundAttachment: "fixed",
+                            backgroundPosition: "center",
+                            backgroundSize: "cover",
+                        }}
                     />
                     <div className="absolute inset-0 bg-gradient-to-b from-[#121212]/80 via-[#121212]/40 to-[#121212]" />
                 </div>
 
                 <div className="relative z-10 max-w-4xl mx-auto space-y-6 animate-fade-in-up">
                     <h1 className="text-5xl md:text-7xl font-agency font-bold tracking-wider text-white uppercase drop-shadow-2xl">
-                        Regala <span className="text-barberia-gold">Estatus</span>,
+                        Para esa fecha <span className="text-barberia-gold">especial</span>,
                         <br />
-                        No Objetos
+                        Regala Experiencia
                     </h1>
                     <p className="text-xl md:text-2xl text-gray-300 font-light tracking-wide max-w-2xl mx-auto">
                         La experiencia de barbería premium que él realmente quiere.
@@ -383,103 +385,8 @@ export default function GiftCardsPage() {
                                 >
                                     {isGenerating ? "Generando..." : "Confirmar y Descargar PDF"}
                                 </button>
-                                <button
-                                    type="button"
-                                    onClick={() => setShowPreview(true)}
-                                    className="text-barberia-gold underline text-sm uppercase tracking-widest hover:text-white transition-colors"
-                                >
-                                    Ver Vista Previa
-                                </button>
                             </div>
                         </form>
-                    </div>
-                </div>
-            )}
-
-            {/* PREVIEW MODAL */}
-            {showPreview && (
-                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4">
-                    <div className="relative bg-[#1a1a1a] p-2 rounded-lg shadow-2xl border border-barberia-gold/30">
-                        <button
-                            onClick={() => setShowPreview(false)}
-                            className="absolute -top-4 -right-4 bg-barberia-gold text-black w-8 h-8 rounded-full flex items-center justify-center font-bold hover:bg-white transition-colors z-[60]"
-                        >
-                            X
-                        </button>
-                        <div className="scale-[0.6] md:scale-100 origin-center">
-                            {/* Preview Logic duplicate of proper output to ensure consistency */}
-                            <div
-                                className="w-[850px] h-[450px] relative flex flex-col p-10 overflow-hidden box-border"
-                                style={{
-                                    backgroundColor: "#000000",
-                                    backgroundImage: "url(/gift-card-bg-v3.jpg)",
-                                    backgroundSize: "cover",
-                                    backgroundPosition: "center",
-                                    fontFamily: "var(--font-agency), sans-serif",
-                                    color: "white"
-                                }}
-                            >
-                                {/* HEADER */}
-                                <div className="flex justify-between items-start mb-4">
-                                    <div className="w-1/3">
-                                        <h2 className="text-[40px] font-bold leading-none m-0">
-                                            <span className="text-barberia-gold">JV</span> STUDIO
-                                        </h2>
-                                    </div>
-                                    <div className="w-1/3 text-center">
-                                        <h3 className="text-barberia-gold text-[28px] font-bold uppercase tracking-widest m-0 leading-none mt-2">
-                                            GIFT CARD
-                                        </h3>
-                                    </div>
-                                    <div className="w-1/3 flex justify-end">
-                                        <div className="border border-barberia-gold py-1 px-4 text-white text-[18px]">
-                                            CÓDIGO: <span className="font-bold">{'PENDIENTE'}</span>
-                                        </div>
-                                    </div>
-                                </div>
-
-                                {/* CENTER CONTENT */}
-                                <div className="flex-1 flex flex-col justify-center items-center text-center">
-                                    <h1 className="text-barberia-gold text-[64px] font-bold uppercase leading-none mb-4">
-                                        {packDetails.title}
-                                    </h1>
-                                    <p className="text-xl text-gray-300 max-w-2xl font-light">
-                                        {packDetails.desc}
-                                    </p>
-                                </div>
-
-                                {/* DEDICATION */}
-                                <div className="text-center mb-10 h-10">
-                                    {isPersonalized && (
-                                        <p className="text-barberia-gold text-[28px] italic font-serif">
-                                            "{formData.message || 'Tu mensaje aquí...'}"
-                                        </p>
-                                    )}
-                                </div>
-
-                                {/* FOOTER */}
-                                <div className="flex justify-between items-end">
-                                    <div className="text-left space-y-1">
-                                        {isPersonalized ? (
-                                            <>
-                                                <p className="text-[20px] text-white"><span className="text-gray-400">{formData.from}</span></p>
-                                                <p className="text-[20px] text-white"><span className="text-gray-400">{formData.to}</span></p>
-                                            </>
-                                        ) : (
-                                            <p className="text-[26px] text-white font-bold uppercase"><span className="text-white">{formData.to}</span></p>
-                                        )}
-                                    </div>
-                                    <div className="text-right">
-                                        <p className="text-[18px] text-gray-400 mb-1">
-                                            VENCE: {new Date().toLocaleDateString('es-PE')}
-                                        </p>
-                                        <p className="text-[12px] text-gray-500 uppercase tracking-widest">
-                                            VÁLIDO PARA CANJE EN JV STUDIO
-                                        </p>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                     </div>
                 </div>
             )}
@@ -604,7 +511,7 @@ export default function GiftCardsPage() {
                     </div>
                 </div>
             </div>
-        </main>
+        </main >
     );
 }
 
