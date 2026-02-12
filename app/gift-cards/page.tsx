@@ -350,7 +350,7 @@ export default function GiftCardsPage() {
                                     />
                                 </div>
                                 <div className={`space-y-2 ${!isPersonalized ? "md:col-span-2" : ""}`}>
-                                    <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">WhatsApp (Opcional)</label>
+                                    <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">WhatsApp del Beneficiario</label>
                                     <input
                                         type="tel"
                                         name="whatsapp"
@@ -358,6 +358,7 @@ export default function GiftCardsPage() {
                                         onChange={handleInputChange}
                                         className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
                                         placeholder="Ej. 999888777"
+                                        required
                                     />
                                 </div>
                             </div>
