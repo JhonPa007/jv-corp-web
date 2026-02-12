@@ -209,6 +209,7 @@ export type package_itemsWhereInput = {
   service_id?: Prisma.IntFilter<"package_items"> | number
   quantity?: Prisma.IntFilter<"package_items"> | number
   packages?: Prisma.XOR<Prisma.PackagesScalarRelationFilter, Prisma.packagesWhereInput>
+  servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
 }
 
 export type package_itemsOrderByWithRelationInput = {
@@ -216,6 +217,7 @@ export type package_itemsOrderByWithRelationInput = {
   service_id?: Prisma.SortOrder
   quantity?: Prisma.SortOrder
   packages?: Prisma.packagesOrderByWithRelationInput
+  servicios?: Prisma.serviciosOrderByWithRelationInput
 }
 
 export type package_itemsWhereUniqueInput = Prisma.AtLeast<{
@@ -227,6 +229,7 @@ export type package_itemsWhereUniqueInput = Prisma.AtLeast<{
   service_id?: Prisma.IntFilter<"package_items"> | number
   quantity?: Prisma.IntFilter<"package_items"> | number
   packages?: Prisma.XOR<Prisma.PackagesScalarRelationFilter, Prisma.packagesWhereInput>
+  servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
 }, "package_id_service_id">
 
 export type package_itemsOrderByWithAggregationInput = {
@@ -250,9 +253,9 @@ export type package_itemsScalarWhereWithAggregatesInput = {
 }
 
 export type package_itemsCreateInput = {
-  service_id: number
   quantity?: number
   packages: Prisma.packagesCreateNestedOneWithoutPackage_itemsInput
+  servicios: Prisma.serviciosCreateNestedOneWithoutPackage_itemsInput
 }
 
 export type package_itemsUncheckedCreateInput = {
@@ -262,9 +265,9 @@ export type package_itemsUncheckedCreateInput = {
 }
 
 export type package_itemsUpdateInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
   packages?: Prisma.packagesUpdateOneRequiredWithoutPackage_itemsNestedInput
+  servicios?: Prisma.serviciosUpdateOneRequiredWithoutPackage_itemsNestedInput
 }
 
 export type package_itemsUncheckedUpdateInput = {
@@ -280,7 +283,6 @@ export type package_itemsCreateManyInput = {
 }
 
 export type package_itemsUpdateManyMutationInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -335,6 +337,48 @@ export type package_itemsSumOrderByAggregateInput = {
   quantity?: Prisma.SortOrder
 }
 
+export type package_itemsCreateNestedManyWithoutServiciosInput = {
+  create?: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput> | Prisma.package_itemsCreateWithoutServiciosInput[] | Prisma.package_itemsUncheckedCreateWithoutServiciosInput[]
+  connectOrCreate?: Prisma.package_itemsCreateOrConnectWithoutServiciosInput | Prisma.package_itemsCreateOrConnectWithoutServiciosInput[]
+  createMany?: Prisma.package_itemsCreateManyServiciosInputEnvelope
+  connect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+}
+
+export type package_itemsUncheckedCreateNestedManyWithoutServiciosInput = {
+  create?: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput> | Prisma.package_itemsCreateWithoutServiciosInput[] | Prisma.package_itemsUncheckedCreateWithoutServiciosInput[]
+  connectOrCreate?: Prisma.package_itemsCreateOrConnectWithoutServiciosInput | Prisma.package_itemsCreateOrConnectWithoutServiciosInput[]
+  createMany?: Prisma.package_itemsCreateManyServiciosInputEnvelope
+  connect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+}
+
+export type package_itemsUpdateManyWithoutServiciosNestedInput = {
+  create?: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput> | Prisma.package_itemsCreateWithoutServiciosInput[] | Prisma.package_itemsUncheckedCreateWithoutServiciosInput[]
+  connectOrCreate?: Prisma.package_itemsCreateOrConnectWithoutServiciosInput | Prisma.package_itemsCreateOrConnectWithoutServiciosInput[]
+  upsert?: Prisma.package_itemsUpsertWithWhereUniqueWithoutServiciosInput | Prisma.package_itemsUpsertWithWhereUniqueWithoutServiciosInput[]
+  createMany?: Prisma.package_itemsCreateManyServiciosInputEnvelope
+  set?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  disconnect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  delete?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  connect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  update?: Prisma.package_itemsUpdateWithWhereUniqueWithoutServiciosInput | Prisma.package_itemsUpdateWithWhereUniqueWithoutServiciosInput[]
+  updateMany?: Prisma.package_itemsUpdateManyWithWhereWithoutServiciosInput | Prisma.package_itemsUpdateManyWithWhereWithoutServiciosInput[]
+  deleteMany?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
+}
+
+export type package_itemsUncheckedUpdateManyWithoutServiciosNestedInput = {
+  create?: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput> | Prisma.package_itemsCreateWithoutServiciosInput[] | Prisma.package_itemsUncheckedCreateWithoutServiciosInput[]
+  connectOrCreate?: Prisma.package_itemsCreateOrConnectWithoutServiciosInput | Prisma.package_itemsCreateOrConnectWithoutServiciosInput[]
+  upsert?: Prisma.package_itemsUpsertWithWhereUniqueWithoutServiciosInput | Prisma.package_itemsUpsertWithWhereUniqueWithoutServiciosInput[]
+  createMany?: Prisma.package_itemsCreateManyServiciosInputEnvelope
+  set?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  disconnect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  delete?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  connect?: Prisma.package_itemsWhereUniqueInput | Prisma.package_itemsWhereUniqueInput[]
+  update?: Prisma.package_itemsUpdateWithWhereUniqueWithoutServiciosInput | Prisma.package_itemsUpdateWithWhereUniqueWithoutServiciosInput[]
+  updateMany?: Prisma.package_itemsUpdateManyWithWhereWithoutServiciosInput | Prisma.package_itemsUpdateManyWithWhereWithoutServiciosInput[]
+  deleteMany?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
+}
+
 export type package_itemsCreateNestedManyWithoutPackagesInput = {
   create?: Prisma.XOR<Prisma.package_itemsCreateWithoutPackagesInput, Prisma.package_itemsUncheckedCreateWithoutPackagesInput> | Prisma.package_itemsCreateWithoutPackagesInput[] | Prisma.package_itemsUncheckedCreateWithoutPackagesInput[]
   connectOrCreate?: Prisma.package_itemsCreateOrConnectWithoutPackagesInput | Prisma.package_itemsCreateOrConnectWithoutPackagesInput[]
@@ -377,9 +421,54 @@ export type package_itemsUncheckedUpdateManyWithoutPackagesNestedInput = {
   deleteMany?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
 }
 
-export type package_itemsCreateWithoutPackagesInput = {
-  service_id: number
+export type package_itemsCreateWithoutServiciosInput = {
   quantity?: number
+  packages: Prisma.packagesCreateNestedOneWithoutPackage_itemsInput
+}
+
+export type package_itemsUncheckedCreateWithoutServiciosInput = {
+  package_id: number
+  quantity?: number
+}
+
+export type package_itemsCreateOrConnectWithoutServiciosInput = {
+  where: Prisma.package_itemsWhereUniqueInput
+  create: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput>
+}
+
+export type package_itemsCreateManyServiciosInputEnvelope = {
+  data: Prisma.package_itemsCreateManyServiciosInput | Prisma.package_itemsCreateManyServiciosInput[]
+  skipDuplicates?: boolean
+}
+
+export type package_itemsUpsertWithWhereUniqueWithoutServiciosInput = {
+  where: Prisma.package_itemsWhereUniqueInput
+  update: Prisma.XOR<Prisma.package_itemsUpdateWithoutServiciosInput, Prisma.package_itemsUncheckedUpdateWithoutServiciosInput>
+  create: Prisma.XOR<Prisma.package_itemsCreateWithoutServiciosInput, Prisma.package_itemsUncheckedCreateWithoutServiciosInput>
+}
+
+export type package_itemsUpdateWithWhereUniqueWithoutServiciosInput = {
+  where: Prisma.package_itemsWhereUniqueInput
+  data: Prisma.XOR<Prisma.package_itemsUpdateWithoutServiciosInput, Prisma.package_itemsUncheckedUpdateWithoutServiciosInput>
+}
+
+export type package_itemsUpdateManyWithWhereWithoutServiciosInput = {
+  where: Prisma.package_itemsScalarWhereInput
+  data: Prisma.XOR<Prisma.package_itemsUpdateManyMutationInput, Prisma.package_itemsUncheckedUpdateManyWithoutServiciosInput>
+}
+
+export type package_itemsScalarWhereInput = {
+  AND?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
+  OR?: Prisma.package_itemsScalarWhereInput[]
+  NOT?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
+  package_id?: Prisma.IntFilter<"package_items"> | number
+  service_id?: Prisma.IntFilter<"package_items"> | number
+  quantity?: Prisma.IntFilter<"package_items"> | number
+}
+
+export type package_itemsCreateWithoutPackagesInput = {
+  quantity?: number
+  servicios: Prisma.serviciosCreateNestedOneWithoutPackage_itemsInput
 }
 
 export type package_itemsUncheckedCreateWithoutPackagesInput = {
@@ -413,13 +502,24 @@ export type package_itemsUpdateManyWithWhereWithoutPackagesInput = {
   data: Prisma.XOR<Prisma.package_itemsUpdateManyMutationInput, Prisma.package_itemsUncheckedUpdateManyWithoutPackagesInput>
 }
 
-export type package_itemsScalarWhereInput = {
-  AND?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
-  OR?: Prisma.package_itemsScalarWhereInput[]
-  NOT?: Prisma.package_itemsScalarWhereInput | Prisma.package_itemsScalarWhereInput[]
-  package_id?: Prisma.IntFilter<"package_items"> | number
-  service_id?: Prisma.IntFilter<"package_items"> | number
-  quantity?: Prisma.IntFilter<"package_items"> | number
+export type package_itemsCreateManyServiciosInput = {
+  package_id: number
+  quantity?: number
+}
+
+export type package_itemsUpdateWithoutServiciosInput = {
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  packages?: Prisma.packagesUpdateOneRequiredWithoutPackage_itemsNestedInput
+}
+
+export type package_itemsUncheckedUpdateWithoutServiciosInput = {
+  package_id?: Prisma.IntFieldUpdateOperationsInput | number
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
+}
+
+export type package_itemsUncheckedUpdateManyWithoutServiciosInput = {
+  package_id?: Prisma.IntFieldUpdateOperationsInput | number
+  quantity?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type package_itemsCreateManyPackagesInput = {
@@ -428,8 +528,8 @@ export type package_itemsCreateManyPackagesInput = {
 }
 
 export type package_itemsUpdateWithoutPackagesInput = {
-  service_id?: Prisma.IntFieldUpdateOperationsInput | number
   quantity?: Prisma.IntFieldUpdateOperationsInput | number
+  servicios?: Prisma.serviciosUpdateOneRequiredWithoutPackage_itemsNestedInput
 }
 
 export type package_itemsUncheckedUpdateWithoutPackagesInput = {
@@ -449,6 +549,7 @@ export type package_itemsSelect<ExtArgs extends runtime.Types.Extensions.Interna
   service_id?: boolean
   quantity?: boolean
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["package_items"]>
 
 export type package_itemsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -456,6 +557,7 @@ export type package_itemsSelectCreateManyAndReturn<ExtArgs extends runtime.Types
   service_id?: boolean
   quantity?: boolean
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["package_items"]>
 
 export type package_itemsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -463,6 +565,7 @@ export type package_itemsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types
   service_id?: boolean
   quantity?: boolean
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["package_items"]>
 
 export type package_itemsSelectScalar = {
@@ -474,18 +577,22 @@ export type package_itemsSelectScalar = {
 export type package_itemsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"package_id" | "service_id" | "quantity", ExtArgs["result"]["package_items"]>
 export type package_itemsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }
 export type package_itemsIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }
 export type package_itemsIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   packages?: boolean | Prisma.packagesDefaultArgs<ExtArgs>
+  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
 }
 
 export type $package_itemsPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "package_items"
   objects: {
     packages: Prisma.$packagesPayload<ExtArgs>
+    servicios: Prisma.$serviciosPayload<ExtArgs>
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     package_id: number
@@ -886,6 +993,7 @@ readonly fields: package_itemsFieldRefs;
 export interface Prisma__package_itemsClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   packages<T extends Prisma.packagesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.packagesDefaultArgs<ExtArgs>>): Prisma.Prisma__packagesClient<runtime.Types.Result.GetResult<Prisma.$packagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  servicios<T extends Prisma.serviciosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.serviciosDefaultArgs<ExtArgs>>): Prisma.Prisma__serviciosClient<runtime.Types.Result.GetResult<Prisma.$serviciosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
