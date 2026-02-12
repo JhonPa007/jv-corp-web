@@ -95,7 +95,14 @@ export const ModelName = {
   ventas: 'ventas',
   gift_cards: 'gift_cards',
   packages: 'packages',
-  package_items: 'package_items'
+  package_items: 'package_items',
+  compra_items: 'compra_items',
+  compras: 'compras',
+  crm_config: 'crm_config',
+  kardex: 'kardex',
+  loyalty_rule_services: 'loyalty_rule_services',
+  loyalty_rules: 'loyalty_rules',
+  puntos_historial: 'puntos_historial'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -279,7 +286,11 @@ export const ClientesScalarFieldEnum = {
   preferencia_servicio: 'preferencia_servicio',
   sucursal_id: 'sucursal_id',
   cumpleanos_validado: 'cumpleanos_validado',
-  rechazo_dato_cumpleanos: 'rechazo_dato_cumpleanos'
+  rechazo_dato_cumpleanos: 'rechazo_dato_cumpleanos',
+  puntos_acumulados: 'puntos_acumulados',
+  apellido_paterno: 'apellido_paterno',
+  apellido_materno: 'apellido_materno',
+  saldo_monedero: 'saldo_monedero'
 } as const
 
 export type ClientesScalarFieldEnum = (typeof ClientesScalarFieldEnum)[keyof typeof ClientesScalarFieldEnum]
@@ -318,7 +329,8 @@ export const ComisionesScalarFieldEnum = {
   estado: 'estado',
   fecha_generacion: 'fecha_generacion',
   fecha_pago: 'fecha_pago',
-  pago_caja_sesion_id: 'pago_caja_sesion_id'
+  pago_caja_sesion_id: 'pago_caja_sesion_id',
+  porcentaje: 'porcentaje'
 } as const
 
 export type ComisionesScalarFieldEnum = (typeof ComisionesScalarFieldEnum)[keyof typeof ComisionesScalarFieldEnum]
@@ -358,7 +370,9 @@ export const Configuracion_sucursalScalarFieldEnum = {
   agenda_color_habilitado: 'agenda_color_habilitado',
   agenda_color_reserva: 'agenda_color_reserva',
   agenda_color_completado: 'agenda_color_completado',
-  app_fuente: 'app_fuente'
+  app_fuente: 'app_fuente',
+  agenda_hora_inicio: 'agenda_hora_inicio',
+  agenda_hora_fin: 'agenda_hora_fin'
 } as const
 
 export type Configuracion_sucursalScalarFieldEnum = (typeof Configuracion_sucursalScalarFieldEnum)[keyof typeof Configuracion_sucursalScalarFieldEnum]
@@ -376,8 +390,6 @@ export const EmpleadosScalarFieldEnum = {
   id: 'id',
   nombres: 'nombres',
   apellidos: 'apellidos',
-  profesion: 'profesion',
-  foto_url: 'foto_url',
   nombre_display: 'nombre_display',
   email: 'email',
   rol_id: 'rol_id',
@@ -402,7 +414,12 @@ export const EmpleadosScalarFieldEnum = {
   modalidad_pago: 'modalidad_pago',
   sueldo_fijo_mensual: 'sueldo_fijo_mensual',
   porcentaje_productos: 'porcentaje_productos',
-  frecuencia_pago: 'frecuencia_pago'
+  frecuencia_pago: 'frecuencia_pago',
+  profesion: 'profesion',
+  tipo_contrato: 'tipo_contrato',
+  realiza_ventas: 'realiza_ventas',
+  porcentaje_comision_productos: 'porcentaje_comision_productos',
+  configuracion_comision: 'configuracion_comision'
 } as const
 
 export type EmpleadosScalarFieldEnum = (typeof EmpleadosScalarFieldEnum)[keyof typeof EmpleadosScalarFieldEnum]
@@ -668,7 +685,8 @@ export const ReservasScalarFieldEnum = {
   notas_cliente: 'notas_cliente',
   notas_internas: 'notas_internas',
   precio_cobrado: 'precio_cobrado',
-  fecha_actualizacion: 'fecha_actualizacion'
+  fecha_actualizacion: 'fecha_actualizacion',
+  evidencia_url: 'evidencia_url'
 } as const
 
 export type ReservasScalarFieldEnum = (typeof ReservasScalarFieldEnum)[keyof typeof ReservasScalarFieldEnum]
@@ -757,7 +775,13 @@ export const Venta_itemsScalarFieldEnum = {
   descuento_item_monto: 'descuento_item_monto',
   descripcion_item_venta: 'descripcion_item_venta',
   notas_item: 'notas_item',
-  usado_como_beneficio: 'usado_como_beneficio'
+  usado_como_beneficio: 'usado_como_beneficio',
+  es_extra: 'es_extra',
+  pagado_al_empleado: 'pagado_al_empleado',
+  porcentaje_servicio_extra: 'porcentaje_servicio_extra',
+  comision_servicio_extra: 'comision_servicio_extra',
+  entregado_al_colaborador: 'entregado_al_colaborador',
+  loyalty_consumption_group_id: 'loyalty_consumption_group_id'
 } as const
 
 export type Venta_itemsScalarFieldEnum = (typeof Venta_itemsScalarFieldEnum)[keyof typeof Venta_itemsScalarFieldEnum]
@@ -818,8 +842,9 @@ export const Gift_cardsScalarFieldEnum = {
   created_at: 'created_at',
   purchaser_name: 'purchaser_name',
   recipient_name: 'recipient_name',
+  package_id: 'package_id',
   dedicatoria: 'dedicatoria',
-  package_id: 'package_id'
+  whatsapp: 'whatsapp'
 } as const
 
 export type Gift_cardsScalarFieldEnum = (typeof Gift_cardsScalarFieldEnum)[keyof typeof Gift_cardsScalarFieldEnum]
@@ -828,10 +853,10 @@ export type Gift_cardsScalarFieldEnum = (typeof Gift_cardsScalarFieldEnum)[keyof
 export const PackagesScalarFieldEnum = {
   id: 'id',
   name: 'name',
-  description: 'description',
   price: 'price',
   is_active: 'is_active',
-  created_at: 'created_at'
+  created_at: 'created_at',
+  description: 'description'
 } as const
 
 export type PackagesScalarFieldEnum = (typeof PackagesScalarFieldEnum)[keyof typeof PackagesScalarFieldEnum]
@@ -846,12 +871,111 @@ export const Package_itemsScalarFieldEnum = {
 export type Package_itemsScalarFieldEnum = (typeof Package_itemsScalarFieldEnum)[keyof typeof Package_itemsScalarFieldEnum]
 
 
+export const Compra_itemsScalarFieldEnum = {
+  id: 'id',
+  compra_id: 'compra_id',
+  producto_id: 'producto_id',
+  cantidad: 'cantidad',
+  costo_unitario: 'costo_unitario',
+  subtotal: 'subtotal'
+} as const
+
+export type Compra_itemsScalarFieldEnum = (typeof Compra_itemsScalarFieldEnum)[keyof typeof Compra_itemsScalarFieldEnum]
+
+
+export const ComprasScalarFieldEnum = {
+  id: 'id',
+  proveedor_id: 'proveedor_id',
+  sucursal_id: 'sucursal_id',
+  fecha_compra: 'fecha_compra',
+  tipo_comprobante: 'tipo_comprobante',
+  serie_numero_comprobante: 'serie_numero_comprobante',
+  monto_subtotal: 'monto_subtotal',
+  monto_impuestos: 'monto_impuestos',
+  monto_total: 'monto_total',
+  estado_pago: 'estado_pago',
+  notas: 'notas',
+  fecha_registro: 'fecha_registro'
+} as const
+
+export type ComprasScalarFieldEnum = (typeof ComprasScalarFieldEnum)[keyof typeof ComprasScalarFieldEnum]
+
+
+export const Crm_configScalarFieldEnum = {
+  id: 'id',
+  tipo_evento: 'tipo_evento',
+  mensaje_plantilla: 'mensaje_plantilla',
+  dias_anticipacion: 'dias_anticipacion',
+  activo: 'activo'
+} as const
+
+export type Crm_configScalarFieldEnum = (typeof Crm_configScalarFieldEnum)[keyof typeof Crm_configScalarFieldEnum]
+
+
+export const KardexScalarFieldEnum = {
+  id: 'id',
+  producto_id: 'producto_id',
+  tipo_movimiento: 'tipo_movimiento',
+  cantidad: 'cantidad',
+  stock_anterior: 'stock_anterior',
+  stock_actual: 'stock_actual',
+  motivo: 'motivo',
+  usuario_id: 'usuario_id',
+  venta_id: 'venta_id',
+  fecha: 'fecha'
+} as const
+
+export type KardexScalarFieldEnum = (typeof KardexScalarFieldEnum)[keyof typeof KardexScalarFieldEnum]
+
+
+export const Loyalty_rule_servicesScalarFieldEnum = {
+  loyalty_rule_id: 'loyalty_rule_id',
+  servicio_id: 'servicio_id'
+} as const
+
+export type Loyalty_rule_servicesScalarFieldEnum = (typeof Loyalty_rule_servicesScalarFieldEnum)[keyof typeof Loyalty_rule_servicesScalarFieldEnum]
+
+
+export const Loyalty_rulesScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  servicio_id: 'servicio_id',
+  cantidad_requerida: 'cantidad_requerida',
+  periodo_meses: 'periodo_meses',
+  descuento_porcentaje: 'descuento_porcentaje',
+  activo: 'activo'
+} as const
+
+export type Loyalty_rulesScalarFieldEnum = (typeof Loyalty_rulesScalarFieldEnum)[keyof typeof Loyalty_rulesScalarFieldEnum]
+
+
+export const Puntos_historialScalarFieldEnum = {
+  id: 'id',
+  cliente_id: 'cliente_id',
+  venta_id: 'venta_id',
+  monto_puntos: 'monto_puntos',
+  tipo_transaccion: 'tipo_transaccion',
+  fecha_registro: 'fecha_registro',
+  descripcion: 'descripcion'
+} as const
+
+export type Puntos_historialScalarFieldEnum = (typeof Puntos_historialScalarFieldEnum)[keyof typeof Puntos_historialScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
 } as const
 
 export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
+
+
+export const NullableJsonNullValueInput = {
+  DbNull: DbNull,
+  JsonNull: JsonNull
+} as const
+
+export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
 
 
 export const QueryMode = {
@@ -868,4 +992,13 @@ export const NullsOrder = {
 } as const
 
 export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+export const JsonNullValueFilter = {
+  DbNull: DbNull,
+  JsonNull: JsonNull,
+  AnyNull: AnyNull
+} as const
+
+export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
 

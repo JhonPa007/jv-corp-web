@@ -252,3 +252,38 @@ export type packages = Prisma.packagesModel
  * 
  */
 export type package_items = Prisma.package_itemsModel
+/**
+ * Model compra_items
+ * 
+ */
+export type compra_items = Prisma.compra_itemsModel
+/**
+ * Model compras
+ * 
+ */
+export type compras = Prisma.comprasModel
+/**
+ * Model crm_config
+ * 
+ */
+export type crm_config = Prisma.crm_configModel
+/**
+ * Model kardex
+ * 
+ */
+export type kardex = Prisma.kardexModel
+/**
+ * Model loyalty_rule_services
+ * 
+ */
+export type loyalty_rule_services = Prisma.loyalty_rule_servicesModel
+/**
+ * Model loyalty_rules
+ * 
+ */
+export type loyalty_rules = Prisma.loyalty_rulesModel
+/**
+ * Model puntos_historial
+ * 
+ */
+export type puntos_historial = Prisma.puntos_historialModel

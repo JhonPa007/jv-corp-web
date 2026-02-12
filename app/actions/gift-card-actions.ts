@@ -63,6 +63,7 @@ async function tryCreateWithStatus(data: any, status: string, code: string, expi
             recipient_name: data.to,
             dedicatoria: data.message,
             package_id: data.packageId,
+            whatsapp: data.whatsapp,
         },
     });
 }
@@ -72,6 +73,7 @@ export async function createGiftCard(data: {
     amount: number;
     from: string;
     to: string;
+    whatsapp?: string;
     message?: string;
     packageId?: number;
     quantity?: number; // Optional, defaulted to 1 usually

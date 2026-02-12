@@ -45,6 +45,8 @@ export type Configuracion_sucursalMinAggregateOutputType = {
   agenda_color_reserva: string | null
   agenda_color_completado: string | null
   app_fuente: string | null
+  agenda_hora_inicio: Date | null
+  agenda_hora_fin: Date | null
 }
 
 export type Configuracion_sucursalMaxAggregateOutputType = {
@@ -56,6 +58,8 @@ export type Configuracion_sucursalMaxAggregateOutputType = {
   agenda_color_reserva: string | null
   agenda_color_completado: string | null
   app_fuente: string | null
+  agenda_hora_inicio: Date | null
+  agenda_hora_fin: Date | null
 }
 
 export type Configuracion_sucursalCountAggregateOutputType = {
@@ -67,6 +71,8 @@ export type Configuracion_sucursalCountAggregateOutputType = {
   agenda_color_reserva: number
   agenda_color_completado: number
   app_fuente: number
+  agenda_hora_inicio: number
+  agenda_hora_fin: number
   _all: number
 }
 
@@ -90,6 +96,8 @@ export type Configuracion_sucursalMinAggregateInputType = {
   agenda_color_reserva?: true
   agenda_color_completado?: true
   app_fuente?: true
+  agenda_hora_inicio?: true
+  agenda_hora_fin?: true
 }
 
 export type Configuracion_sucursalMaxAggregateInputType = {
@@ -101,6 +109,8 @@ export type Configuracion_sucursalMaxAggregateInputType = {
   agenda_color_reserva?: true
   agenda_color_completado?: true
   app_fuente?: true
+  agenda_hora_inicio?: true
+  agenda_hora_fin?: true
 }
 
 export type Configuracion_sucursalCountAggregateInputType = {
@@ -112,6 +122,8 @@ export type Configuracion_sucursalCountAggregateInputType = {
   agenda_color_reserva?: true
   agenda_color_completado?: true
   app_fuente?: true
+  agenda_hora_inicio?: true
+  agenda_hora_fin?: true
   _all?: true
 }
 
@@ -210,6 +222,8 @@ export type Configuracion_sucursalGroupByOutputType = {
   agenda_color_reserva: string | null
   agenda_color_completado: string | null
   app_fuente: string | null
+  agenda_hora_inicio: Date | null
+  agenda_hora_fin: Date | null
   _count: Configuracion_sucursalCountAggregateOutputType | null
   _avg: Configuracion_sucursalAvgAggregateOutputType | null
   _sum: Configuracion_sucursalSumAggregateOutputType | null
@@ -244,6 +258,8 @@ export type configuracion_sucursalWhereInput = {
   agenda_color_reserva?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
   agenda_color_completado?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
   app_fuente?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
+  agenda_hora_inicio?: Prisma.DateTimeNullableFilter<"configuracion_sucursal"> | Date | string | null
+  agenda_hora_fin?: Prisma.DateTimeNullableFilter<"configuracion_sucursal"> | Date | string | null
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
 }
 
@@ -256,6 +272,8 @@ export type configuracion_sucursalOrderByWithRelationInput = {
   agenda_color_reserva?: Prisma.SortOrderInput | Prisma.SortOrder
   agenda_color_completado?: Prisma.SortOrderInput | Prisma.SortOrder
   app_fuente?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda_hora_inicio?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda_hora_fin?: Prisma.SortOrderInput | Prisma.SortOrder
   sucursales?: Prisma.sucursalesOrderByWithRelationInput
 }
 
@@ -271,6 +289,8 @@ export type configuracion_sucursalWhereUniqueInput = Prisma.AtLeast<{
   agenda_color_reserva?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
   agenda_color_completado?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
   app_fuente?: Prisma.StringNullableFilter<"configuracion_sucursal"> | string | null
+  agenda_hora_inicio?: Prisma.DateTimeNullableFilter<"configuracion_sucursal"> | Date | string | null
+  agenda_hora_fin?: Prisma.DateTimeNullableFilter<"configuracion_sucursal"> | Date | string | null
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
 }, "id" | "sucursal_id">
 
@@ -283,6 +303,8 @@ export type configuracion_sucursalOrderByWithAggregationInput = {
   agenda_color_reserva?: Prisma.SortOrderInput | Prisma.SortOrder
   agenda_color_completado?: Prisma.SortOrderInput | Prisma.SortOrder
   app_fuente?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda_hora_inicio?: Prisma.SortOrderInput | Prisma.SortOrder
+  agenda_hora_fin?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.configuracion_sucursalCountOrderByAggregateInput
   _avg?: Prisma.configuracion_sucursalAvgOrderByAggregateInput
   _max?: Prisma.configuracion_sucursalMaxOrderByAggregateInput
@@ -302,6 +324,8 @@ export type configuracion_sucursalScalarWhereWithAggregatesInput = {
   agenda_color_reserva?: Prisma.StringNullableWithAggregatesFilter<"configuracion_sucursal"> | string | null
   agenda_color_completado?: Prisma.StringNullableWithAggregatesFilter<"configuracion_sucursal"> | string | null
   app_fuente?: Prisma.StringNullableWithAggregatesFilter<"configuracion_sucursal"> | string | null
+  agenda_hora_inicio?: Prisma.DateTimeNullableWithAggregatesFilter<"configuracion_sucursal"> | Date | string | null
+  agenda_hora_fin?: Prisma.DateTimeNullableWithAggregatesFilter<"configuracion_sucursal"> | Date | string | null
 }
 
 export type configuracion_sucursalCreateInput = {
@@ -311,6 +335,8 @@ export type configuracion_sucursalCreateInput = {
   agenda_color_reserva?: string | null
   agenda_color_completado?: string | null
   app_fuente?: string | null
+  agenda_hora_inicio?: Date | string | null
+  agenda_hora_fin?: Date | string | null
   sucursales: Prisma.sucursalesCreateNestedOneWithoutConfiguracion_sucursalInput
 }
 
@@ -323,6 +349,8 @@ export type configuracion_sucursalUncheckedCreateInput = {
   agenda_color_reserva?: string | null
   agenda_color_completado?: string | null
   app_fuente?: string | null
+  agenda_hora_inicio?: Date | string | null
+  agenda_hora_fin?: Date | string | null
 }
 
 export type configuracion_sucursalUpdateInput = {
@@ -332,6 +360,8 @@ export type configuracion_sucursalUpdateInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutConfiguracion_sucursalNestedInput
 }
 
@@ -344,6 +374,8 @@ export type configuracion_sucursalUncheckedUpdateInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type configuracion_sucursalCreateManyInput = {
@@ -355,6 +387,8 @@ export type configuracion_sucursalCreateManyInput = {
   agenda_color_reserva?: string | null
   agenda_color_completado?: string | null
   app_fuente?: string | null
+  agenda_hora_inicio?: Date | string | null
+  agenda_hora_fin?: Date | string | null
 }
 
 export type configuracion_sucursalUpdateManyMutationInput = {
@@ -364,6 +398,8 @@ export type configuracion_sucursalUpdateManyMutationInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type configuracion_sucursalUncheckedUpdateManyInput = {
@@ -375,6 +411,8 @@ export type configuracion_sucursalUncheckedUpdateManyInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type configuracion_sucursalCountOrderByAggregateInput = {
@@ -386,6 +424,8 @@ export type configuracion_sucursalCountOrderByAggregateInput = {
   agenda_color_reserva?: Prisma.SortOrder
   agenda_color_completado?: Prisma.SortOrder
   app_fuente?: Prisma.SortOrder
+  agenda_hora_inicio?: Prisma.SortOrder
+  agenda_hora_fin?: Prisma.SortOrder
 }
 
 export type configuracion_sucursalAvgOrderByAggregateInput = {
@@ -402,6 +442,8 @@ export type configuracion_sucursalMaxOrderByAggregateInput = {
   agenda_color_reserva?: Prisma.SortOrder
   agenda_color_completado?: Prisma.SortOrder
   app_fuente?: Prisma.SortOrder
+  agenda_hora_inicio?: Prisma.SortOrder
+  agenda_hora_fin?: Prisma.SortOrder
 }
 
 export type configuracion_sucursalMinOrderByAggregateInput = {
@@ -413,6 +455,8 @@ export type configuracion_sucursalMinOrderByAggregateInput = {
   agenda_color_reserva?: Prisma.SortOrder
   agenda_color_completado?: Prisma.SortOrder
   app_fuente?: Prisma.SortOrder
+  agenda_hora_inicio?: Prisma.SortOrder
+  agenda_hora_fin?: Prisma.SortOrder
 }
 
 export type configuracion_sucursalSumOrderByAggregateInput = {
@@ -464,6 +508,8 @@ export type configuracion_sucursalCreateWithoutSucursalesInput = {
   agenda_color_reserva?: string | null
   agenda_color_completado?: string | null
   app_fuente?: string | null
+  agenda_hora_inicio?: Date | string | null
+  agenda_hora_fin?: Date | string | null
 }
 
 export type configuracion_sucursalUncheckedCreateWithoutSucursalesInput = {
@@ -474,6 +520,8 @@ export type configuracion_sucursalUncheckedCreateWithoutSucursalesInput = {
   agenda_color_reserva?: string | null
   agenda_color_completado?: string | null
   app_fuente?: string | null
+  agenda_hora_inicio?: Date | string | null
+  agenda_hora_fin?: Date | string | null
 }
 
 export type configuracion_sucursalCreateOrConnectWithoutSucursalesInput = {
@@ -499,6 +547,8 @@ export type configuracion_sucursalUpdateWithoutSucursalesInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type configuracion_sucursalUncheckedUpdateWithoutSucursalesInput = {
@@ -509,6 +559,8 @@ export type configuracion_sucursalUncheckedUpdateWithoutSucursalesInput = {
   agenda_color_reserva?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   agenda_color_completado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   app_fuente?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  agenda_hora_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  agenda_hora_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 
@@ -522,6 +574,8 @@ export type configuracion_sucursalSelect<ExtArgs extends runtime.Types.Extension
   agenda_color_reserva?: boolean
   agenda_color_completado?: boolean
   app_fuente?: boolean
+  agenda_hora_inicio?: boolean
+  agenda_hora_fin?: boolean
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["configuracion_sucursal"]>
 
@@ -534,6 +588,8 @@ export type configuracion_sucursalSelectCreateManyAndReturn<ExtArgs extends runt
   agenda_color_reserva?: boolean
   agenda_color_completado?: boolean
   app_fuente?: boolean
+  agenda_hora_inicio?: boolean
+  agenda_hora_fin?: boolean
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["configuracion_sucursal"]>
 
@@ -546,6 +602,8 @@ export type configuracion_sucursalSelectUpdateManyAndReturn<ExtArgs extends runt
   agenda_color_reserva?: boolean
   agenda_color_completado?: boolean
   app_fuente?: boolean
+  agenda_hora_inicio?: boolean
+  agenda_hora_fin?: boolean
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["configuracion_sucursal"]>
 
@@ -558,9 +616,11 @@ export type configuracion_sucursalSelectScalar = {
   agenda_color_reserva?: boolean
   agenda_color_completado?: boolean
   app_fuente?: boolean
+  agenda_hora_inicio?: boolean
+  agenda_hora_fin?: boolean
 }
 
-export type configuracion_sucursalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sucursal_id" | "agenda_intervalo" | "agenda_color_bloqueo" | "agenda_color_habilitado" | "agenda_color_reserva" | "agenda_color_completado" | "app_fuente", ExtArgs["result"]["configuracion_sucursal"]>
+export type configuracion_sucursalOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sucursal_id" | "agenda_intervalo" | "agenda_color_bloqueo" | "agenda_color_habilitado" | "agenda_color_reserva" | "agenda_color_completado" | "app_fuente" | "agenda_hora_inicio" | "agenda_hora_fin", ExtArgs["result"]["configuracion_sucursal"]>
 export type configuracion_sucursalInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
 }
@@ -585,6 +645,8 @@ export type $configuracion_sucursalPayload<ExtArgs extends runtime.Types.Extensi
     agenda_color_reserva: string | null
     agenda_color_completado: string | null
     app_fuente: string | null
+    agenda_hora_inicio: Date | null
+    agenda_hora_fin: Date | null
   }, ExtArgs["result"]["configuracion_sucursal"]>
   composites: {}
 }
@@ -1017,6 +1079,8 @@ export interface configuracion_sucursalFieldRefs {
   readonly agenda_color_reserva: Prisma.FieldRef<"configuracion_sucursal", 'String'>
   readonly agenda_color_completado: Prisma.FieldRef<"configuracion_sucursal", 'String'>
   readonly app_fuente: Prisma.FieldRef<"configuracion_sucursal", 'String'>
+  readonly agenda_hora_inicio: Prisma.FieldRef<"configuracion_sucursal", 'DateTime'>
+  readonly agenda_hora_fin: Prisma.FieldRef<"configuracion_sucursal", 'DateTime'>
 }
     
 

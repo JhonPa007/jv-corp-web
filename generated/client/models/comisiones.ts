@@ -32,6 +32,7 @@ export type ComisionesAvgAggregateOutputType = {
   empleado_id: number | null
   monto_comision: runtime.Decimal | null
   pago_caja_sesion_id: number | null
+  porcentaje: runtime.Decimal | null
 }
 
 export type ComisionesSumAggregateOutputType = {
@@ -40,6 +41,7 @@ export type ComisionesSumAggregateOutputType = {
   empleado_id: number | null
   monto_comision: runtime.Decimal | null
   pago_caja_sesion_id: number | null
+  porcentaje: runtime.Decimal | null
 }
 
 export type ComisionesMinAggregateOutputType = {
@@ -51,6 +53,7 @@ export type ComisionesMinAggregateOutputType = {
   fecha_generacion: Date | null
   fecha_pago: Date | null
   pago_caja_sesion_id: number | null
+  porcentaje: runtime.Decimal | null
 }
 
 export type ComisionesMaxAggregateOutputType = {
@@ -62,6 +65,7 @@ export type ComisionesMaxAggregateOutputType = {
   fecha_generacion: Date | null
   fecha_pago: Date | null
   pago_caja_sesion_id: number | null
+  porcentaje: runtime.Decimal | null
 }
 
 export type ComisionesCountAggregateOutputType = {
@@ -73,6 +77,7 @@ export type ComisionesCountAggregateOutputType = {
   fecha_generacion: number
   fecha_pago: number
   pago_caja_sesion_id: number
+  porcentaje: number
   _all: number
 }
 
@@ -83,6 +88,7 @@ export type ComisionesAvgAggregateInputType = {
   empleado_id?: true
   monto_comision?: true
   pago_caja_sesion_id?: true
+  porcentaje?: true
 }
 
 export type ComisionesSumAggregateInputType = {
@@ -91,6 +97,7 @@ export type ComisionesSumAggregateInputType = {
   empleado_id?: true
   monto_comision?: true
   pago_caja_sesion_id?: true
+  porcentaje?: true
 }
 
 export type ComisionesMinAggregateInputType = {
@@ -102,6 +109,7 @@ export type ComisionesMinAggregateInputType = {
   fecha_generacion?: true
   fecha_pago?: true
   pago_caja_sesion_id?: true
+  porcentaje?: true
 }
 
 export type ComisionesMaxAggregateInputType = {
@@ -113,6 +121,7 @@ export type ComisionesMaxAggregateInputType = {
   fecha_generacion?: true
   fecha_pago?: true
   pago_caja_sesion_id?: true
+  porcentaje?: true
 }
 
 export type ComisionesCountAggregateInputType = {
@@ -124,6 +133,7 @@ export type ComisionesCountAggregateInputType = {
   fecha_generacion?: true
   fecha_pago?: true
   pago_caja_sesion_id?: true
+  porcentaje?: true
   _all?: true
 }
 
@@ -222,6 +232,7 @@ export type ComisionesGroupByOutputType = {
   fecha_generacion: Date | null
   fecha_pago: Date | null
   pago_caja_sesion_id: number | null
+  porcentaje: runtime.Decimal | null
   _count: ComisionesCountAggregateOutputType | null
   _avg: ComisionesAvgAggregateOutputType | null
   _sum: ComisionesSumAggregateOutputType | null
@@ -256,6 +267,7 @@ export type comisionesWhereInput = {
   fecha_generacion?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   fecha_pago?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   pago_caja_sesion_id?: Prisma.IntNullableFilter<"comisiones"> | number | null
+  porcentaje?: Prisma.DecimalNullableFilter<"comisiones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
   caja_sesiones?: Prisma.XOR<Prisma.Caja_sesionesNullableScalarRelationFilter, Prisma.caja_sesionesWhereInput> | null
   venta_items?: Prisma.XOR<Prisma.Venta_itemsNullableScalarRelationFilter, Prisma.venta_itemsWhereInput> | null
@@ -270,6 +282,7 @@ export type comisionesOrderByWithRelationInput = {
   fecha_generacion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_pago?: Prisma.SortOrderInput | Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje?: Prisma.SortOrderInput | Prisma.SortOrder
   empleados?: Prisma.empleadosOrderByWithRelationInput
   caja_sesiones?: Prisma.caja_sesionesOrderByWithRelationInput
   venta_items?: Prisma.venta_itemsOrderByWithRelationInput
@@ -287,6 +300,7 @@ export type comisionesWhereUniqueInput = Prisma.AtLeast<{
   fecha_generacion?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   fecha_pago?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   pago_caja_sesion_id?: Prisma.IntNullableFilter<"comisiones"> | number | null
+  porcentaje?: Prisma.DecimalNullableFilter<"comisiones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
   caja_sesiones?: Prisma.XOR<Prisma.Caja_sesionesNullableScalarRelationFilter, Prisma.caja_sesionesWhereInput> | null
   venta_items?: Prisma.XOR<Prisma.Venta_itemsNullableScalarRelationFilter, Prisma.venta_itemsWhereInput> | null
@@ -301,6 +315,7 @@ export type comisionesOrderByWithAggregationInput = {
   fecha_generacion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_pago?: Prisma.SortOrderInput | Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.comisionesCountOrderByAggregateInput
   _avg?: Prisma.comisionesAvgOrderByAggregateInput
   _max?: Prisma.comisionesMaxOrderByAggregateInput
@@ -320,6 +335,7 @@ export type comisionesScalarWhereWithAggregatesInput = {
   fecha_generacion?: Prisma.DateTimeNullableWithAggregatesFilter<"comisiones"> | Date | string | null
   fecha_pago?: Prisma.DateTimeNullableWithAggregatesFilter<"comisiones"> | Date | string | null
   pago_caja_sesion_id?: Prisma.IntNullableWithAggregatesFilter<"comisiones"> | number | null
+  porcentaje?: Prisma.DecimalNullableWithAggregatesFilter<"comisiones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateInput = {
@@ -327,6 +343,7 @@ export type comisionesCreateInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados: Prisma.empleadosCreateNestedOneWithoutComisionesInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutComisionesInput
   venta_items?: Prisma.venta_itemsCreateNestedOneWithoutComisionesInput
@@ -341,6 +358,7 @@ export type comisionesUncheckedCreateInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUpdateInput = {
@@ -348,6 +366,7 @@ export type comisionesUpdateInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutComisionesNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutComisionesNestedInput
   venta_items?: Prisma.venta_itemsUpdateOneWithoutComisionesNestedInput
@@ -362,6 +381,7 @@ export type comisionesUncheckedUpdateInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateManyInput = {
@@ -373,6 +393,7 @@ export type comisionesCreateManyInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUpdateManyMutationInput = {
@@ -380,6 +401,7 @@ export type comisionesUpdateManyMutationInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUncheckedUpdateManyInput = {
@@ -391,6 +413,7 @@ export type comisionesUncheckedUpdateManyInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type ComisionesListRelationFilter = {
@@ -412,6 +435,7 @@ export type comisionesCountOrderByAggregateInput = {
   fecha_generacion?: Prisma.SortOrder
   fecha_pago?: Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrder
+  porcentaje?: Prisma.SortOrder
 }
 
 export type comisionesAvgOrderByAggregateInput = {
@@ -420,6 +444,7 @@ export type comisionesAvgOrderByAggregateInput = {
   empleado_id?: Prisma.SortOrder
   monto_comision?: Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrder
+  porcentaje?: Prisma.SortOrder
 }
 
 export type comisionesMaxOrderByAggregateInput = {
@@ -431,6 +456,7 @@ export type comisionesMaxOrderByAggregateInput = {
   fecha_generacion?: Prisma.SortOrder
   fecha_pago?: Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrder
+  porcentaje?: Prisma.SortOrder
 }
 
 export type comisionesMinOrderByAggregateInput = {
@@ -442,6 +468,7 @@ export type comisionesMinOrderByAggregateInput = {
   fecha_generacion?: Prisma.SortOrder
   fecha_pago?: Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrder
+  porcentaje?: Prisma.SortOrder
 }
 
 export type comisionesSumOrderByAggregateInput = {
@@ -450,6 +477,7 @@ export type comisionesSumOrderByAggregateInput = {
   empleado_id?: Prisma.SortOrder
   monto_comision?: Prisma.SortOrder
   pago_caja_sesion_id?: Prisma.SortOrder
+  porcentaje?: Prisma.SortOrder
 }
 
 export type comisionesCreateNestedManyWithoutCaja_sesionesInput = {
@@ -583,6 +611,7 @@ export type comisionesCreateWithoutCaja_sesionesInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados: Prisma.empleadosCreateNestedOneWithoutComisionesInput
   venta_items?: Prisma.venta_itemsCreateNestedOneWithoutComisionesInput
 }
@@ -595,6 +624,7 @@ export type comisionesUncheckedCreateWithoutCaja_sesionesInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateOrConnectWithoutCaja_sesionesInput = {
@@ -635,6 +665,7 @@ export type comisionesScalarWhereInput = {
   fecha_generacion?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   fecha_pago?: Prisma.DateTimeNullableFilter<"comisiones"> | Date | string | null
   pago_caja_sesion_id?: Prisma.IntNullableFilter<"comisiones"> | number | null
+  porcentaje?: Prisma.DecimalNullableFilter<"comisiones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateWithoutEmpleadosInput = {
@@ -642,6 +673,7 @@ export type comisionesCreateWithoutEmpleadosInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutComisionesInput
   venta_items?: Prisma.venta_itemsCreateNestedOneWithoutComisionesInput
 }
@@ -654,6 +686,7 @@ export type comisionesUncheckedCreateWithoutEmpleadosInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateOrConnectWithoutEmpleadosInput = {
@@ -687,6 +720,7 @@ export type comisionesCreateWithoutVenta_itemsInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados: Prisma.empleadosCreateNestedOneWithoutComisionesInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutComisionesInput
 }
@@ -699,6 +733,7 @@ export type comisionesUncheckedCreateWithoutVenta_itemsInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateOrConnectWithoutVenta_itemsInput = {
@@ -735,6 +770,7 @@ export type comisionesCreateManyCaja_sesionesInput = {
   estado?: string | null
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUpdateWithoutCaja_sesionesInput = {
@@ -742,6 +778,7 @@ export type comisionesUpdateWithoutCaja_sesionesInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutComisionesNestedInput
   venta_items?: Prisma.venta_itemsUpdateOneWithoutComisionesNestedInput
 }
@@ -754,6 +791,7 @@ export type comisionesUncheckedUpdateWithoutCaja_sesionesInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUncheckedUpdateManyWithoutCaja_sesionesInput = {
@@ -764,6 +802,7 @@ export type comisionesUncheckedUpdateManyWithoutCaja_sesionesInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateManyEmpleadosInput = {
@@ -774,6 +813,7 @@ export type comisionesCreateManyEmpleadosInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUpdateWithoutEmpleadosInput = {
@@ -781,6 +821,7 @@ export type comisionesUpdateWithoutEmpleadosInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutComisionesNestedInput
   venta_items?: Prisma.venta_itemsUpdateOneWithoutComisionesNestedInput
 }
@@ -793,6 +834,7 @@ export type comisionesUncheckedUpdateWithoutEmpleadosInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUncheckedUpdateManyWithoutEmpleadosInput = {
@@ -803,6 +845,7 @@ export type comisionesUncheckedUpdateManyWithoutEmpleadosInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesCreateManyVenta_itemsInput = {
@@ -813,6 +856,7 @@ export type comisionesCreateManyVenta_itemsInput = {
   fecha_generacion?: Date | string | null
   fecha_pago?: Date | string | null
   pago_caja_sesion_id?: number | null
+  porcentaje?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUpdateWithoutVenta_itemsInput = {
@@ -820,6 +864,7 @@ export type comisionesUpdateWithoutVenta_itemsInput = {
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutComisionesNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutComisionesNestedInput
 }
@@ -832,6 +877,7 @@ export type comisionesUncheckedUpdateWithoutVenta_itemsInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 export type comisionesUncheckedUpdateManyWithoutVenta_itemsInput = {
@@ -842,6 +888,7 @@ export type comisionesUncheckedUpdateManyWithoutVenta_itemsInput = {
   fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_pago?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   pago_caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  porcentaje?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
 }
 
 
@@ -855,6 +902,7 @@ export type comisionesSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   fecha_generacion?: boolean
   fecha_pago?: boolean
   pago_caja_sesion_id?: boolean
+  porcentaje?: boolean
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.comisiones$caja_sesionesArgs<ExtArgs>
   venta_items?: boolean | Prisma.comisiones$venta_itemsArgs<ExtArgs>
@@ -869,6 +917,7 @@ export type comisionesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ex
   fecha_generacion?: boolean
   fecha_pago?: boolean
   pago_caja_sesion_id?: boolean
+  porcentaje?: boolean
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.comisiones$caja_sesionesArgs<ExtArgs>
   venta_items?: boolean | Prisma.comisiones$venta_itemsArgs<ExtArgs>
@@ -883,6 +932,7 @@ export type comisionesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
   fecha_generacion?: boolean
   fecha_pago?: boolean
   pago_caja_sesion_id?: boolean
+  porcentaje?: boolean
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.comisiones$caja_sesionesArgs<ExtArgs>
   venta_items?: boolean | Prisma.comisiones$venta_itemsArgs<ExtArgs>
@@ -897,9 +947,10 @@ export type comisionesSelectScalar = {
   fecha_generacion?: boolean
   fecha_pago?: boolean
   pago_caja_sesion_id?: boolean
+  porcentaje?: boolean
 }
 
-export type comisionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "venta_item_id" | "empleado_id" | "monto_comision" | "estado" | "fecha_generacion" | "fecha_pago" | "pago_caja_sesion_id", ExtArgs["result"]["comisiones"]>
+export type comisionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "venta_item_id" | "empleado_id" | "monto_comision" | "estado" | "fecha_generacion" | "fecha_pago" | "pago_caja_sesion_id" | "porcentaje", ExtArgs["result"]["comisiones"]>
 export type comisionesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.comisiones$caja_sesionesArgs<ExtArgs>
@@ -932,6 +983,7 @@ export type $comisionesPayload<ExtArgs extends runtime.Types.Extensions.Internal
     fecha_generacion: Date | null
     fecha_pago: Date | null
     pago_caja_sesion_id: number | null
+    porcentaje: runtime.Decimal | null
   }, ExtArgs["result"]["comisiones"]>
   composites: {}
 }
@@ -1366,6 +1418,7 @@ export interface comisionesFieldRefs {
   readonly fecha_generacion: Prisma.FieldRef<"comisiones", 'DateTime'>
   readonly fecha_pago: Prisma.FieldRef<"comisiones", 'DateTime'>
   readonly pago_caja_sesion_id: Prisma.FieldRef<"comisiones", 'Int'>
+  readonly porcentaje: Prisma.FieldRef<"comisiones", 'Decimal'>
 }
     
 

@@ -122,7 +122,7 @@ model categorias_servicios {
   descripcion         String?
   fecha_creacion      DateTime?   @default(now()) @db.Timestamp(6)
   fecha_actualizacion DateTime?   @default(now()) @db.Timestamp(6)
-  activo              Boolean?    @default(true)
+  activo              Boolean?
   servicios           servicios[]
 }
 
@@ -171,6 +171,10 @@ model clientes {
   sucursal_id                                    Int?
   cumpleanos_validado                            Boolean?                 @default(false)
   rechazo_dato_cumpleanos                        Boolean?                 @default(false)
+  puntos_acumulados                              Int?                     @default(0)
+  apellido_paterno                               String?                  @db.VarChar(100)
+  apellido_materno                               String?                  @db.VarChar(100)
+  saldo_monedero                                 Decimal?                 @default(0.00) @db.Decimal(12, 2)
   cliente_comunicaciones                         cliente_comunicaciones[]
   cliente_membresias                             cliente_membresias[]
   clientes                                       clientes?                @relation("clientesToclientes", fields: [apoderado_id], references: [id], onUpdate: NoAction)
@@ -223,6 +227,7 @@ model comisiones {
   fecha_generacion    DateTime?      @default(now()) @db.Timestamp(6)
   fecha_pago          DateTime?      @db.Timestamp(6)
   pago_caja_sesion_id Int?
+  porcentaje          Decimal?       @default(0.00) @db.Decimal(5, 2)
   empleados           empleados      @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   caja_sesiones       caja_sesiones? @relation(fields: [pago_caja_sesion_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   venta_items         venta_items?   @relation(fields: [venta_item_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
@@ -262,6 +267,8 @@ model configuracion_sucursal {
   agenda_color_reserva    String?    @default("#6c63ff") @db.VarChar(20)
   agenda_color_completado String?    @default("#198754") @db.VarChar(20)
   app_fuente              String?    @default("Inter") @db.VarChar(50)
+  agenda_hora_inicio      DateTime?  @default(dbgenerated("'08:00:00'::time without time zone")) @db.Time(6)
+  agenda_hora_fin         DateTime?  @default(dbgenerated("'22:00:00'::time without time zone")) @db.Time(6)
   sucursales              sucursales @relation(fields: [sucursal_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 }
 
@@ -278,8 +285,6 @@ model empleados {
   id                                                                   Int                      @id @default(autoincrement())
   nombres                                                              String                   @db.VarChar(100)
   apellidos                                                            String                   @db.VarChar(100)
-  profesion                                                            String?                  @db.VarChar(100)
-  foto_url                                                             String?                  @db.VarChar(255)
   nombre_display                                                       String?                  @db.VarChar(100)
   email                                                                String?                  @unique @db.VarChar(100)
   rol_id                                                               Int?
@@ -305,6 +310,11 @@ model empleados {
   sueldo_fijo_mensual                                                  Decimal?                 @default(0.00) @db.Decimal(10, 2)
   porcentaje_productos                                                 Decimal?                 @default(10.00) @db.Decimal(5, 2)
   frecuencia_pago                                                      String?                  @default("Mensual") @db.VarChar(20)
+  profesion                                                            String?                  @db.VarChar(100)
+  tipo_contrato                                                        String?                  @default("FIJO") @db.VarChar(20)
+  realiza_ventas                                                       Boolean?                 @default(true)
+  porcentaje_comision_productos                                        Decimal?                 @default(0.00) @db.Decimal(5, 2)
+  configuracion_comision                                               Json?                    @default("{}")
   ausencias_empleado                                                   ausencias_empleado[]
   caja_sesiones                                                        caja_sesiones[]
   cliente_comunicaciones                                               cliente_comunicaciones[]
@@ -580,6 +590,7 @@ model reservas {
   notas_internas      String?
   precio_cobrado      Decimal?   @db.Decimal(10, 2)
   fecha_actualizacion DateTime?  @default(now()) @db.Timestamp(6)
+  evidencia_url       String?    @db.VarChar(255)
   clientes            clientes   @relation(fields: [cliente_id], references: [id], onUpdate: NoAction, map: "fk_reserva_cliente")
   servicios           servicios  @relation(fields: [servicio_id], references: [id], onUpdate: NoAction, map: "fk_reserva_servicio")
   sucursales          sucursales @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_reserva_sucursal")
@@ -640,7 +651,6 @@ model servicios {
   reservas                                                                       reservas[]
   categorias_servicios                                                           categorias_servicios      @relation(fields: [categoria_id], references: [id], onUpdate: NoAction, map: "fk_servicio_categoria")
   venta_items                                                                    venta_items[]
-  package_items                                                                  package_items[]
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -673,25 +683,31 @@ model sucursales {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model venta_items {
-  id                     Int          @id @default(autoincrement())
-  venta_id               Int
-  servicio_id            Int?
-  producto_id            Int?
-  cantidad               Int          @default(1)
-  precio_unitario_venta  Decimal      @db.Decimal(10, 2)
-  subtotal_item_neto     Decimal      @db.Decimal(10, 2)
-  valor_produccion       Decimal      @default(0.00) @db.Decimal(10, 2)
-  es_trabajo_extra       Boolean?     @default(false)
-  es_hora_extra          Boolean      @default(false)
-  subtotal_item_bruto    Decimal      @default(0.00) @db.Decimal(10, 2)
-  descuento_item_monto   Decimal      @default(0.00) @db.Decimal(10, 2)
-  descripcion_item_venta String?      @db.VarChar(255)
-  notas_item             String?
-  usado_como_beneficio   Boolean?     @default(false)
-  comisiones             comisiones[]
-  productos              productos?   @relation(fields: [producto_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_producto")
-  servicios              servicios?   @relation(fields: [servicio_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_servicio")
-  ventas                 ventas       @relation(fields: [venta_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_ventaitem_venta")
+  id                           Int          @id @default(autoincrement())
+  venta_id                     Int
+  servicio_id                  Int?
+  producto_id                  Int?
+  cantidad                     Int          @default(1)
+  precio_unitario_venta        Decimal      @db.Decimal(10, 2)
+  subtotal_item_neto           Decimal      @db.Decimal(10, 2)
+  valor_produccion             Decimal      @default(0.00) @db.Decimal(10, 2)
+  es_trabajo_extra             Boolean?     @default(false)
+  es_hora_extra                Boolean      @default(false)
+  subtotal_item_bruto          Decimal      @default(0.00) @db.Decimal(10, 2)
+  descuento_item_monto         Decimal      @default(0.00) @db.Decimal(10, 2)
+  descripcion_item_venta       String?      @db.VarChar(255)
+  notas_item                   String?
+  usado_como_beneficio         Boolean?     @default(false)
+  es_extra                     Boolean?     @default(false)
+  pagado_al_empleado           Boolean?     @default(false)
+  porcentaje_servicio_extra    Decimal?     @default(0.00) @db.Decimal(5, 2)
+  comision_servicio_extra      Decimal?     @default(0.00) @db.Decimal(10, 2)
+  entregado_al_colaborador     Boolean?     @default(false)
+  loyalty_consumption_group_id String?      @db.VarChar(50)
+  comisiones                   comisiones[]
+  productos                    productos?   @relation(fields: [producto_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_producto")
+  servicios                    servicios?   @relation(fields: [servicio_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_ventaitem_servicio")
+  ventas                       ventas       @relation(fields: [venta_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "fk_ventaitem_venta")
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -756,36 +772,120 @@ model ventas {
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model gift_cards {
   id              Int       @id @default(autoincrement())
-  code            String    @db.VarChar(100)
+  code            String    @unique @db.VarChar(50)
   initial_amount  Decimal   @db.Decimal(10, 2)
   current_balance Decimal   @db.Decimal(10, 2)
-  status          String    @db.VarChar(50)
-  expiration_date DateTime  @db.Date
-  created_at      DateTime? @default(now()) @db.Timestamp(6)
+  status          String    @default("activa") @db.VarChar(20)
+  expiration_date DateTime? @db.Date
+  created_at      DateTime? @default(now()) @db.Timestamptz(6)
   purchaser_name  String?   @db.VarChar(255)
   recipient_name  String?   @db.VarChar(255)
-  dedicatoria     String?   @db.VarChar(100)
   package_id      Int?
-  packages        packages? @relation(fields: [package_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  dedicatoria     String?
+  whatsapp        String?
+
+  @@index([code], map: "idx_gift_cards_code")
 }
 
 model packages {
   id            Int             @id @default(autoincrement())
-  name          String          @db.VarChar(255)
-  description   String?         @db.Text
-  price         Decimal         @db.Decimal(10, 2)
+  name          String          @db.VarChar(100)
+  price         Decimal         @default(0.00) @db.Decimal(10, 2)
   is_active     Boolean?        @default(true)
   created_at    DateTime?       @default(now()) @db.Timestamp(6)
-  gift_cards    gift_cards[]
+  description   String?
   package_items package_items[]
 }
 
 model package_items {
   package_id Int
   service_id Int
-  quantity   Int
-  packages   packages  @relation(fields: [package_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
-  servicios  servicios @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  quantity   Int      @default(1)
+  packages   packages @relation(fields: [package_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
 
   @@id([package_id, service_id])
+}
+
+model compra_items {
+  id             Int     @id @default(autoincrement())
+  compra_id      Int?
+  producto_id    Int?
+  cantidad       Int
+  costo_unitario Decimal @db.Decimal(10, 2)
+  subtotal       Decimal @db.Decimal(10, 2)
+}
+
+model compras {
+  id                       Int       @id @default(autoincrement())
+  proveedor_id             Int?
+  sucursal_id              Int?
+  fecha_compra             DateTime? @default(dbgenerated("CURRENT_DATE")) @db.Date
+  tipo_comprobante         String?   @db.VarChar(50)
+  serie_numero_comprobante String?   @db.VarChar(100)
+  monto_subtotal           Decimal?  @default(0.00) @db.Decimal(10, 2)
+  monto_impuestos          Decimal?  @default(0.00) @db.Decimal(10, 2)
+  monto_total              Decimal?  @default(0.00) @db.Decimal(10, 2)
+  estado_pago              String?   @default("Pendiente") @db.VarChar(20)
+  notas                    String?
+  fecha_registro           DateTime? @default(now()) @db.Timestamp(6)
+}
+
+/// The underlying table does not contain a valid unique identifier and can therefore currently not be handled by Prisma Client.
+model configuracion_fondo_mensual {
+  anio        Int
+  mes         Int
+  empleado_id Int?
+  porcentaje  Decimal   @db.Decimal(5, 2)
+  created_at  DateTime? @default(now()) @db.Timestamp(6)
+  updated_at  DateTime? @default(now()) @db.Timestamp(6)
+
+  @@ignore
+}
+
+model crm_config {
+  id                Int      @id @default(autoincrement())
+  tipo_evento       String   @db.VarChar(50)
+  mensaje_plantilla String?
+  dias_anticipacion Int?     @default(0)
+  activo            Boolean? @default(true)
+}
+
+model kardex {
+  id              Int       @id @default(autoincrement())
+  producto_id     Int?
+  tipo_movimiento String?   @db.VarChar(50)
+  cantidad        Int?
+  stock_anterior  Int?
+  stock_actual    Int?
+  motivo          String?
+  usuario_id      Int?
+  venta_id        Int?
+  fecha           DateTime? @default(now()) @db.Timestamp(6)
+}
+
+model loyalty_rule_services {
+  loyalty_rule_id Int
+  servicio_id     Int
+
+  @@id([loyalty_rule_id, servicio_id])
+}
+
+model loyalty_rules {
+  id                   Int      @id @default(autoincrement())
+  nombre               String   @db.VarChar(100)
+  servicio_id          Int?
+  cantidad_requerida   Int
+  periodo_meses        Int
+  descuento_porcentaje Decimal  @db.Decimal(5, 2)
+  activo               Boolean? @default(true)
+}
+
+model puntos_historial {
+  id               Int       @id @default(autoincrement())
+  cliente_id       Int?
+  venta_id         Int?
+  monto_puntos     Int
+  tipo_transaccion String    @db.VarChar(20)
+  fecha_registro   DateTime? @default(now()) @db.Timestamp(6)
+  descripcion      String?
 }

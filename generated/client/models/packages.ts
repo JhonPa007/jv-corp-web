@@ -39,28 +39,28 @@ export type PackagesSumAggregateOutputType = {
 export type PackagesMinAggregateOutputType = {
   id: number | null
   name: string | null
-  description: string | null
   price: runtime.Decimal | null
   is_active: boolean | null
   created_at: Date | null
+  description: string | null
 }
 
 export type PackagesMaxAggregateOutputType = {
   id: number | null
   name: string | null
-  description: string | null
   price: runtime.Decimal | null
   is_active: boolean | null
   created_at: Date | null
+  description: string | null
 }
 
 export type PackagesCountAggregateOutputType = {
   id: number
   name: number
-  description: number
   price: number
   is_active: number
   created_at: number
+  description: number
   _all: number
 }
 
@@ -78,28 +78,28 @@ export type PackagesSumAggregateInputType = {
 export type PackagesMinAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   price?: true
   is_active?: true
   created_at?: true
+  description?: true
 }
 
 export type PackagesMaxAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   price?: true
   is_active?: true
   created_at?: true
+  description?: true
 }
 
 export type PackagesCountAggregateInputType = {
   id?: true
   name?: true
-  description?: true
   price?: true
   is_active?: true
   created_at?: true
+  description?: true
   _all?: true
 }
 
@@ -192,10 +192,10 @@ export type packagesGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 export type PackagesGroupByOutputType = {
   id: number
   name: string
-  description: string | null
   price: runtime.Decimal
   is_active: boolean | null
   created_at: Date | null
+  description: string | null
   _count: PackagesCountAggregateOutputType | null
   _avg: PackagesAvgAggregateOutputType | null
   _sum: PackagesSumAggregateOutputType | null
@@ -224,22 +224,20 @@ export type packagesWhereInput = {
   NOT?: Prisma.packagesWhereInput | Prisma.packagesWhereInput[]
   id?: Prisma.IntFilter<"packages"> | number
   name?: Prisma.StringFilter<"packages"> | string
-  description?: Prisma.StringNullableFilter<"packages"> | string | null
   price?: Prisma.DecimalFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableFilter<"packages"> | Date | string | null
-  gift_cards?: Prisma.Gift_cardsListRelationFilter
+  description?: Prisma.StringNullableFilter<"packages"> | string | null
   package_items?: Prisma.Package_itemsListRelationFilter
 }
 
 export type packagesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
-  gift_cards?: Prisma.gift_cardsOrderByRelationAggregateInput
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   package_items?: Prisma.package_itemsOrderByRelationAggregateInput
 }
 
@@ -249,21 +247,20 @@ export type packagesWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.packagesWhereInput[]
   NOT?: Prisma.packagesWhereInput | Prisma.packagesWhereInput[]
   name?: Prisma.StringFilter<"packages"> | string
-  description?: Prisma.StringNullableFilter<"packages"> | string | null
   price?: Prisma.DecimalFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableFilter<"packages"> | Date | string | null
-  gift_cards?: Prisma.Gift_cardsListRelationFilter
+  description?: Prisma.StringNullableFilter<"packages"> | string | null
   package_items?: Prisma.Package_itemsListRelationFilter
 }, "id">
 
 export type packagesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrderInput | Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrderInput | Prisma.SortOrder
   created_at?: Prisma.SortOrderInput | Prisma.SortOrder
+  description?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.packagesCountOrderByAggregateInput
   _avg?: Prisma.packagesAvgOrderByAggregateInput
   _max?: Prisma.packagesMaxOrderByAggregateInput
@@ -277,92 +274,83 @@ export type packagesScalarWhereWithAggregatesInput = {
   NOT?: Prisma.packagesScalarWhereWithAggregatesInput | Prisma.packagesScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"packages"> | number
   name?: Prisma.StringWithAggregatesFilter<"packages"> | string
-  description?: Prisma.StringNullableWithAggregatesFilter<"packages"> | string | null
   price?: Prisma.DecimalWithAggregatesFilter<"packages"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.BoolNullableWithAggregatesFilter<"packages"> | boolean | null
   created_at?: Prisma.DateTimeNullableWithAggregatesFilter<"packages"> | Date | string | null
+  description?: Prisma.StringNullableWithAggregatesFilter<"packages"> | string | null
 }
 
 export type packagesCreateInput = {
   name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
-  gift_cards?: Prisma.gift_cardsCreateNestedManyWithoutPackagesInput
+  description?: string | null
   package_items?: Prisma.package_itemsCreateNestedManyWithoutPackagesInput
 }
 
 export type packagesUncheckedCreateInput = {
   id?: number
   name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
-  gift_cards?: Prisma.gift_cardsUncheckedCreateNestedManyWithoutPackagesInput
+  description?: string | null
   package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutPackagesInput
 }
 
 export type packagesUpdateInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  gift_cards?: Prisma.gift_cardsUpdateManyWithoutPackagesNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   package_items?: Prisma.package_itemsUpdateManyWithoutPackagesNestedInput
 }
 
 export type packagesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  gift_cards?: Prisma.gift_cardsUncheckedUpdateManyWithoutPackagesNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutPackagesNestedInput
 }
 
 export type packagesCreateManyInput = {
   id?: number
   name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
+  description?: string | null
 }
 
 export type packagesUpdateManyMutationInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type packagesUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-}
-
-export type PackagesNullableScalarRelationFilter = {
-  is?: Prisma.packagesWhereInput | null
-  isNot?: Prisma.packagesWhereInput | null
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type packagesCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type packagesAvgOrderByAggregateInput = {
@@ -373,19 +361,19 @@ export type packagesAvgOrderByAggregateInput = {
 export type packagesMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type packagesMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   name?: Prisma.SortOrder
-  description?: Prisma.SortOrder
   price?: Prisma.SortOrder
   is_active?: Prisma.SortOrder
   created_at?: Prisma.SortOrder
+  description?: Prisma.SortOrder
 }
 
 export type packagesSumOrderByAggregateInput = {
@@ -396,22 +384,6 @@ export type packagesSumOrderByAggregateInput = {
 export type PackagesScalarRelationFilter = {
   is?: Prisma.packagesWhereInput
   isNot?: Prisma.packagesWhereInput
-}
-
-export type packagesCreateNestedOneWithoutGift_cardsInput = {
-  create?: Prisma.XOR<Prisma.packagesCreateWithoutGift_cardsInput, Prisma.packagesUncheckedCreateWithoutGift_cardsInput>
-  connectOrCreate?: Prisma.packagesCreateOrConnectWithoutGift_cardsInput
-  connect?: Prisma.packagesWhereUniqueInput
-}
-
-export type packagesUpdateOneWithoutGift_cardsNestedInput = {
-  create?: Prisma.XOR<Prisma.packagesCreateWithoutGift_cardsInput, Prisma.packagesUncheckedCreateWithoutGift_cardsInput>
-  connectOrCreate?: Prisma.packagesCreateOrConnectWithoutGift_cardsInput
-  upsert?: Prisma.packagesUpsertWithoutGift_cardsInput
-  disconnect?: Prisma.packagesWhereInput | boolean
-  delete?: Prisma.packagesWhereInput | boolean
-  connect?: Prisma.packagesWhereUniqueInput
-  update?: Prisma.XOR<Prisma.XOR<Prisma.packagesUpdateToOneWithWhereWithoutGift_cardsInput, Prisma.packagesUpdateWithoutGift_cardsInput>, Prisma.packagesUncheckedUpdateWithoutGift_cardsInput>
 }
 
 export type packagesCreateNestedOneWithoutPackage_itemsInput = {
@@ -428,77 +400,21 @@ export type packagesUpdateOneRequiredWithoutPackage_itemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.packagesUpdateToOneWithWhereWithoutPackage_itemsInput, Prisma.packagesUpdateWithoutPackage_itemsInput>, Prisma.packagesUncheckedUpdateWithoutPackage_itemsInput>
 }
 
-export type packagesCreateWithoutGift_cardsInput = {
-  name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
-  is_active?: boolean | null
-  created_at?: Date | string | null
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutPackagesInput
-}
-
-export type packagesUncheckedCreateWithoutGift_cardsInput = {
-  id?: number
-  name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
-  is_active?: boolean | null
-  created_at?: Date | string | null
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutPackagesInput
-}
-
-export type packagesCreateOrConnectWithoutGift_cardsInput = {
-  where: Prisma.packagesWhereUniqueInput
-  create: Prisma.XOR<Prisma.packagesCreateWithoutGift_cardsInput, Prisma.packagesUncheckedCreateWithoutGift_cardsInput>
-}
-
-export type packagesUpsertWithoutGift_cardsInput = {
-  update: Prisma.XOR<Prisma.packagesUpdateWithoutGift_cardsInput, Prisma.packagesUncheckedUpdateWithoutGift_cardsInput>
-  create: Prisma.XOR<Prisma.packagesCreateWithoutGift_cardsInput, Prisma.packagesUncheckedCreateWithoutGift_cardsInput>
-  where?: Prisma.packagesWhereInput
-}
-
-export type packagesUpdateToOneWithWhereWithoutGift_cardsInput = {
-  where?: Prisma.packagesWhereInput
-  data: Prisma.XOR<Prisma.packagesUpdateWithoutGift_cardsInput, Prisma.packagesUncheckedUpdateWithoutGift_cardsInput>
-}
-
-export type packagesUpdateWithoutGift_cardsInput = {
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  package_items?: Prisma.package_itemsUpdateManyWithoutPackagesNestedInput
-}
-
-export type packagesUncheckedUpdateWithoutGift_cardsInput = {
-  id?: Prisma.IntFieldUpdateOperationsInput | number
-  name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
-  is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
-  created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutPackagesNestedInput
-}
-
 export type packagesCreateWithoutPackage_itemsInput = {
   name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
-  gift_cards?: Prisma.gift_cardsCreateNestedManyWithoutPackagesInput
+  description?: string | null
 }
 
 export type packagesUncheckedCreateWithoutPackage_itemsInput = {
   id?: number
   name: string
-  description?: string | null
-  price: runtime.Decimal | runtime.DecimalJsLike | number | string
+  price?: runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: boolean | null
   created_at?: Date | string | null
-  gift_cards?: Prisma.gift_cardsUncheckedCreateNestedManyWithoutPackagesInput
+  description?: string | null
 }
 
 export type packagesCreateOrConnectWithoutPackage_itemsInput = {
@@ -519,21 +435,19 @@ export type packagesUpdateToOneWithWhereWithoutPackage_itemsInput = {
 
 export type packagesUpdateWithoutPackage_itemsInput = {
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  gift_cards?: Prisma.gift_cardsUpdateManyWithoutPackagesNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type packagesUncheckedUpdateWithoutPackage_itemsInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   name?: Prisma.StringFieldUpdateOperationsInput | string
-  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   price?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   is_active?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   created_at?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  gift_cards?: Prisma.gift_cardsUncheckedUpdateManyWithoutPackagesNestedInput
+  description?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -542,12 +456,10 @@ export type packagesUncheckedUpdateWithoutPackage_itemsInput = {
  */
 
 export type PackagesCountOutputType = {
-  gift_cards: number
   package_items: number
 }
 
 export type PackagesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  gift_cards?: boolean | PackagesCountOutputTypeCountGift_cardsArgs
   package_items?: boolean | PackagesCountOutputTypeCountPackage_itemsArgs
 }
 
@@ -564,13 +476,6 @@ export type PackagesCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
 /**
  * PackagesCountOutputType without action
  */
-export type PackagesCountOutputTypeCountGift_cardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.gift_cardsWhereInput
-}
-
-/**
- * PackagesCountOutputType without action
- */
 export type PackagesCountOutputTypeCountPackage_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.package_itemsWhereInput
 }
@@ -579,11 +484,10 @@ export type PackagesCountOutputTypeCountPackage_itemsArgs<ExtArgs extends runtim
 export type packagesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
-  gift_cards?: boolean | Prisma.packages$gift_cardsArgs<ExtArgs>
+  description?: boolean
   package_items?: boolean | Prisma.packages$package_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.PackagesCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["packages"]>
@@ -591,33 +495,32 @@ export type packagesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
 export type packagesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
+  description?: boolean
 }, ExtArgs["result"]["packages"]>
 
 export type packagesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   name?: boolean
-  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
+  description?: boolean
 }, ExtArgs["result"]["packages"]>
 
 export type packagesSelectScalar = {
   id?: boolean
   name?: boolean
-  description?: boolean
   price?: boolean
   is_active?: boolean
   created_at?: boolean
+  description?: boolean
 }
 
-export type packagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "description" | "price" | "is_active" | "created_at", ExtArgs["result"]["packages"]>
+export type packagesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "name" | "price" | "is_active" | "created_at" | "description", ExtArgs["result"]["packages"]>
 export type packagesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  gift_cards?: boolean | Prisma.packages$gift_cardsArgs<ExtArgs>
   package_items?: boolean | Prisma.packages$package_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.PackagesCountOutputTypeDefaultArgs<ExtArgs>
 }
@@ -627,16 +530,15 @@ export type packagesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $packagesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "packages"
   objects: {
-    gift_cards: Prisma.$gift_cardsPayload<ExtArgs>[]
     package_items: Prisma.$package_itemsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
     name: string
-    description: string | null
     price: runtime.Decimal
     is_active: boolean | null
     created_at: Date | null
+    description: string | null
   }, ExtArgs["result"]["packages"]>
   composites: {}
 }
@@ -1031,7 +933,6 @@ readonly fields: packagesFieldRefs;
  */
 export interface Prisma__packagesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  gift_cards<T extends Prisma.packages$gift_cardsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.packages$gift_cardsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gift_cardsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   package_items<T extends Prisma.packages$package_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.packages$package_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$package_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
@@ -1064,10 +965,10 @@ export interface Prisma__packagesClient<T, Null = never, ExtArgs extends runtime
 export interface packagesFieldRefs {
   readonly id: Prisma.FieldRef<"packages", 'Int'>
   readonly name: Prisma.FieldRef<"packages", 'String'>
-  readonly description: Prisma.FieldRef<"packages", 'String'>
   readonly price: Prisma.FieldRef<"packages", 'Decimal'>
   readonly is_active: Prisma.FieldRef<"packages", 'Boolean'>
   readonly created_at: Prisma.FieldRef<"packages", 'DateTime'>
+  readonly description: Prisma.FieldRef<"packages", 'String'>
 }
     
 
@@ -1453,30 +1354,6 @@ export type packagesDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many packages to delete.
    */
   limit?: number
-}
-
-/**
- * packages.gift_cards
- */
-export type packages$gift_cardsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the gift_cards
-   */
-  select?: Prisma.gift_cardsSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the gift_cards
-   */
-  omit?: Prisma.gift_cardsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.gift_cardsInclude<ExtArgs> | null
-  where?: Prisma.gift_cardsWhereInput
-  orderBy?: Prisma.gift_cardsOrderByWithRelationInput | Prisma.gift_cardsOrderByWithRelationInput[]
-  cursor?: Prisma.gift_cardsWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.Gift_cardsScalarFieldEnum | Prisma.Gift_cardsScalarFieldEnum[]
 }
 
 /**

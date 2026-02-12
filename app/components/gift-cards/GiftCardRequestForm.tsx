@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { createGiftCard } from "@/app/actions/gift-card-actions";
 
 type Package = {
@@ -14,12 +14,25 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
     const [formData, setFormData] = useState({
         purchaser_name: "",
         email: "",
+        whatsapp: "",
         recipient_name: "",
         message: "",
         selection_type: "amount",
         amount: "",
         package_id: "",
     });
+
+    const purchaserRef = useRef<HTMLInputElement>(null);
+
+    useEffect(() => {
+        if ((formData.selection_type === "package" && formData.package_id) || (formData.selection_type === "amount" && formData.amount)) {
+            // Auto-focus to "De" (Purchaser Name) after selection
+            setTimeout(() => {
+                purchaserRef.current?.scrollIntoView({ behavior: "smooth", block: "center" });
+                purchaserRef.current?.focus();
+            }, 300);
+        }
+    }, [formData.package_id, formData.amount]);
 
     const [loading, setLoading] = useState(false);
     const [message, setMessage] = useState<{ type: "success" | "error"; text: string } | null>(null);
@@ -37,6 +50,7 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
             const result = await createGiftCard({
                 from: formData.purchaser_name,
                 to: formData.recipient_name,
+                whatsapp: formData.whatsapp,
                 message: formData.message,
                 amount: formData.selection_type === "amount" ? parseFloat(formData.amount) : 0, // Backend might ignore amount if package is selected, but let's be safe
                 packageId: formData.selection_type === "package" ? parseInt(formData.package_id) : undefined,
@@ -47,6 +61,7 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
                 setFormData({
                     purchaser_name: "",
                     email: "",
+                    whatsapp: "",
                     recipient_name: "",
                     message: "",
                     selection_type: "amount",
@@ -74,8 +89,58 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
             )}
 
             <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tipo de Regalo</label>
+                <select
+                    name="selection_type"
+                    value={formData.selection_type}
+                    onChange={handleChange}
+                    className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                >
+                    <option value="amount">Monto en Dinero</option>
+                    <option value="package">Paquete de Servicios</option>
+                </select>
+            </div>
+
+            {formData.selection_type === "amount" ? (
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monto (S/)</label>
+                    <input
+                        type="number"
+                        name="amount"
+                        value={formData.amount}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                        placeholder="Ej. 100.00"
+                        step="0.01"
+                        required={formData.selection_type === "amount"}
+                    />
+                </div>
+            ) : (
+                <div className="mb-6">
+                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Selecciona un Paquete</label>
+                    <select
+                        name="package_id"
+                        value={formData.package_id}
+                        onChange={handleChange}
+                        className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                        required={formData.selection_type === "package"}
+                    >
+                        <option value="">-- Selecciona un paquete --</option>
+                        {packages.map((pkg) => (
+                            <option key={pkg.id} value={pkg.id}>
+                                {pkg.name} - S/ {pkg.price}
+                            </option>
+                        ))}
+                    </select>
+                </div>
+            )}
+
+            <div className="border-t border-gray-200 dark:border-zinc-700 my-6"></div>
+
+            <div className="mb-4">
                 <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tu Nombre (Comprador)</label>
                 <input
+                    ref={purchaserRef}
                     type="text"
                     name="purchaser_name"
                     value={formData.purchaser_name}
@@ -93,6 +158,19 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
                     value={formData.email}
                     onChange={handleChange}
                     required
+                    className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
+                />
+            </div>
+
+            <div className="mb-4">
+                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tu WhatsApp</label>
+                <input
+                    type="tel"
+                    name="whatsapp"
+                    value={formData.whatsapp}
+                    onChange={handleChange}
+                    required
+                    placeholder="Ej. 999888777"
                     className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
                 />
             </div>
@@ -120,53 +198,6 @@ export default function GiftCardRequestForm({ packages }: { packages: Package[] 
                     placeholder="Mensaje corto... (Opcional)"
                 />
             </div>
-
-            <div className="mb-4">
-                <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Tipo de Regalo</label>
-                <select
-                    name="selection_type"
-                    value={formData.selection_type}
-                    onChange={handleChange}
-                    className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
-                >
-                    <option value="amount">Monto en Dinero</option>
-                    <option value="package">Paquete de Servicios</option>
-                </select>
-            </div>
-
-            {formData.selection_type === "amount" ? (
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Monto (S/)</label>
-                    <input
-                        type="number"
-                        name="amount"
-                        value={formData.amount}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
-                        placeholder="Ej. 100.00"
-                        step="0.01"
-                        required={formData.selection_type === "amount"}
-                    />
-                </div>
-            ) : (
-                <div className="mb-4">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Selecciona un Paquete</label>
-                    <select
-                        name="package_id"
-                        value={formData.package_id}
-                        onChange={handleChange}
-                        className="w-full px-3 py-2 border rounded-md dark:bg-zinc-800 dark:border-zinc-700 dark:text-white focus:outline-none focus:ring-2 focus:ring-barberia-gold"
-                        required={formData.selection_type === "package"}
-                    >
-                        <option value="">-- Selecciona un paquete --</option>
-                        {packages.map((pkg) => (
-                            <option key={pkg.id} value={pkg.id}>
-                                {pkg.name} - S/ {pkg.price}
-                            </option>
-                        ))}
-                    </select>
-                </div>
-            )}
 
             <button
                 type="submit"

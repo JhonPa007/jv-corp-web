@@ -37,6 +37,7 @@ export type EmpleadosAvgAggregateOutputType = {
   saldo_fondo_acumulado: runtime.Decimal | null
   sueldo_fijo_mensual: runtime.Decimal | null
   porcentaje_productos: runtime.Decimal | null
+  porcentaje_comision_productos: runtime.Decimal | null
 }
 
 export type EmpleadosSumAggregateOutputType = {
@@ -50,14 +51,13 @@ export type EmpleadosSumAggregateOutputType = {
   saldo_fondo_acumulado: runtime.Decimal | null
   sueldo_fijo_mensual: runtime.Decimal | null
   porcentaje_productos: runtime.Decimal | null
+  porcentaje_comision_productos: runtime.Decimal | null
 }
 
 export type EmpleadosMinAggregateOutputType = {
   id: number | null
   nombres: string | null
   apellidos: string | null
-  profesion: string | null
-  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -83,14 +83,16 @@ export type EmpleadosMinAggregateOutputType = {
   sueldo_fijo_mensual: runtime.Decimal | null
   porcentaje_productos: runtime.Decimal | null
   frecuencia_pago: string | null
+  profesion: string | null
+  tipo_contrato: string | null
+  realiza_ventas: boolean | null
+  porcentaje_comision_productos: runtime.Decimal | null
 }
 
 export type EmpleadosMaxAggregateOutputType = {
   id: number | null
   nombres: string | null
   apellidos: string | null
-  profesion: string | null
-  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -116,14 +118,16 @@ export type EmpleadosMaxAggregateOutputType = {
   sueldo_fijo_mensual: runtime.Decimal | null
   porcentaje_productos: runtime.Decimal | null
   frecuencia_pago: string | null
+  profesion: string | null
+  tipo_contrato: string | null
+  realiza_ventas: boolean | null
+  porcentaje_comision_productos: runtime.Decimal | null
 }
 
 export type EmpleadosCountAggregateOutputType = {
   id: number
   nombres: number
   apellidos: number
-  profesion: number
-  foto_url: number
   nombre_display: number
   email: number
   rol_id: number
@@ -149,6 +153,11 @@ export type EmpleadosCountAggregateOutputType = {
   sueldo_fijo_mensual: number
   porcentaje_productos: number
   frecuencia_pago: number
+  profesion: number
+  tipo_contrato: number
+  realiza_ventas: number
+  porcentaje_comision_productos: number
+  configuracion_comision: number
   _all: number
 }
 
@@ -164,6 +173,7 @@ export type EmpleadosAvgAggregateInputType = {
   saldo_fondo_acumulado?: true
   sueldo_fijo_mensual?: true
   porcentaje_productos?: true
+  porcentaje_comision_productos?: true
 }
 
 export type EmpleadosSumAggregateInputType = {
@@ -177,14 +187,13 @@ export type EmpleadosSumAggregateInputType = {
   saldo_fondo_acumulado?: true
   sueldo_fijo_mensual?: true
   porcentaje_productos?: true
+  porcentaje_comision_productos?: true
 }
 
 export type EmpleadosMinAggregateInputType = {
   id?: true
   nombres?: true
   apellidos?: true
-  profesion?: true
-  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -210,14 +219,16 @@ export type EmpleadosMinAggregateInputType = {
   sueldo_fijo_mensual?: true
   porcentaje_productos?: true
   frecuencia_pago?: true
+  profesion?: true
+  tipo_contrato?: true
+  realiza_ventas?: true
+  porcentaje_comision_productos?: true
 }
 
 export type EmpleadosMaxAggregateInputType = {
   id?: true
   nombres?: true
   apellidos?: true
-  profesion?: true
-  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -243,14 +254,16 @@ export type EmpleadosMaxAggregateInputType = {
   sueldo_fijo_mensual?: true
   porcentaje_productos?: true
   frecuencia_pago?: true
+  profesion?: true
+  tipo_contrato?: true
+  realiza_ventas?: true
+  porcentaje_comision_productos?: true
 }
 
 export type EmpleadosCountAggregateInputType = {
   id?: true
   nombres?: true
   apellidos?: true
-  profesion?: true
-  foto_url?: true
   nombre_display?: true
   email?: true
   rol_id?: true
@@ -276,6 +289,11 @@ export type EmpleadosCountAggregateInputType = {
   sueldo_fijo_mensual?: true
   porcentaje_productos?: true
   frecuencia_pago?: true
+  profesion?: true
+  tipo_contrato?: true
+  realiza_ventas?: true
+  porcentaje_comision_productos?: true
+  configuracion_comision?: true
   _all?: true
 }
 
@@ -369,8 +387,6 @@ export type EmpleadosGroupByOutputType = {
   id: number
   nombres: string
   apellidos: string
-  profesion: string | null
-  foto_url: string | null
   nombre_display: string | null
   email: string | null
   rol_id: number | null
@@ -396,6 +412,11 @@ export type EmpleadosGroupByOutputType = {
   sueldo_fijo_mensual: runtime.Decimal | null
   porcentaje_productos: runtime.Decimal | null
   frecuencia_pago: string | null
+  profesion: string | null
+  tipo_contrato: string | null
+  realiza_ventas: boolean | null
+  porcentaje_comision_productos: runtime.Decimal | null
+  configuracion_comision: runtime.JsonValue | null
   _count: EmpleadosCountAggregateOutputType | null
   _avg: EmpleadosAvgAggregateOutputType | null
   _sum: EmpleadosSumAggregateOutputType | null
@@ -425,8 +446,6 @@ export type empleadosWhereInput = {
   id?: Prisma.IntFilter<"empleados"> | number
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
-  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
-  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   email?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
@@ -452,6 +471,11 @@ export type empleadosWhereInput = {
   sueldo_fijo_mensual?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.StringNullableFilter<"empleados"> | string | null
+  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  tipo_contrato?: Prisma.StringNullableFilter<"empleados"> | string | null
+  realiza_ventas?: Prisma.BoolNullableFilter<"empleados"> | boolean | null
+  porcentaje_comision_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.JsonNullableFilter<"empleados">
   ausencias_empleado?: Prisma.Ausencias_empleadoListRelationFilter
   caja_sesiones?: Prisma.Caja_sesionesListRelationFilter
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
@@ -478,8 +502,6 @@ export type empleadosOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
-  profesion?: Prisma.SortOrderInput | Prisma.SortOrder
-  foto_url?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_display?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   rol_id?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -505,6 +527,11 @@ export type empleadosOrderByWithRelationInput = {
   sueldo_fijo_mensual?: Prisma.SortOrderInput | Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrderInput | Prisma.SortOrder
   frecuencia_pago?: Prisma.SortOrderInput | Prisma.SortOrder
+  profesion?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipo_contrato?: Prisma.SortOrderInput | Prisma.SortOrder
+  realiza_ventas?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrderInput | Prisma.SortOrder
+  configuracion_comision?: Prisma.SortOrderInput | Prisma.SortOrder
   ausencias_empleado?: Prisma.ausencias_empleadoOrderByRelationAggregateInput
   caja_sesiones?: Prisma.caja_sesionesOrderByRelationAggregateInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesOrderByRelationAggregateInput
@@ -536,8 +563,6 @@ export type empleadosWhereUniqueInput = Prisma.AtLeast<{
   NOT?: Prisma.empleadosWhereInput | Prisma.empleadosWhereInput[]
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
-  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
-  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
   password?: Prisma.StringNullableFilter<"empleados"> | string | null
@@ -561,6 +586,11 @@ export type empleadosWhereUniqueInput = Prisma.AtLeast<{
   sueldo_fijo_mensual?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.StringNullableFilter<"empleados"> | string | null
+  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  tipo_contrato?: Prisma.StringNullableFilter<"empleados"> | string | null
+  realiza_ventas?: Prisma.BoolNullableFilter<"empleados"> | boolean | null
+  porcentaje_comision_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.JsonNullableFilter<"empleados">
   ausencias_empleado?: Prisma.Ausencias_empleadoListRelationFilter
   caja_sesiones?: Prisma.Caja_sesionesListRelationFilter
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
@@ -587,8 +617,6 @@ export type empleadosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
-  profesion?: Prisma.SortOrderInput | Prisma.SortOrder
-  foto_url?: Prisma.SortOrderInput | Prisma.SortOrder
   nombre_display?: Prisma.SortOrderInput | Prisma.SortOrder
   email?: Prisma.SortOrderInput | Prisma.SortOrder
   rol_id?: Prisma.SortOrderInput | Prisma.SortOrder
@@ -614,6 +642,11 @@ export type empleadosOrderByWithAggregationInput = {
   sueldo_fijo_mensual?: Prisma.SortOrderInput | Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrderInput | Prisma.SortOrder
   frecuencia_pago?: Prisma.SortOrderInput | Prisma.SortOrder
+  profesion?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipo_contrato?: Prisma.SortOrderInput | Prisma.SortOrder
+  realiza_ventas?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrderInput | Prisma.SortOrder
+  configuracion_comision?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.empleadosCountOrderByAggregateInput
   _avg?: Prisma.empleadosAvgOrderByAggregateInput
   _max?: Prisma.empleadosMaxOrderByAggregateInput
@@ -628,8 +661,6 @@ export type empleadosScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"empleados"> | number
   nombres?: Prisma.StringWithAggregatesFilter<"empleados"> | string
   apellidos?: Prisma.StringWithAggregatesFilter<"empleados"> | string
-  profesion?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
-  foto_url?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   email?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableWithAggregatesFilter<"empleados"> | number | null
@@ -655,13 +686,16 @@ export type empleadosScalarWhereWithAggregatesInput = {
   sueldo_fijo_mensual?: Prisma.DecimalNullableWithAggregatesFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.DecimalNullableWithAggregatesFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
+  profesion?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
+  tipo_contrato?: Prisma.StringNullableWithAggregatesFilter<"empleados"> | string | null
+  realiza_ventas?: Prisma.BoolNullableWithAggregatesFilter<"empleados"> | boolean | null
+  porcentaje_comision_productos?: Prisma.DecimalNullableWithAggregatesFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.JsonNullableWithAggregatesFilter<"empleados">
 }
 
 export type empleadosCreateInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -686,6 +720,11 @@ export type empleadosCreateInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -712,8 +751,6 @@ export type empleadosUncheckedCreateInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -739,6 +776,11 @@ export type empleadosUncheckedCreateInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -763,8 +805,6 @@ export type empleadosUncheckedCreateInput = {
 export type empleadosUpdateInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -789,6 +829,11 @@ export type empleadosUpdateInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -815,8 +860,6 @@ export type empleadosUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -842,6 +885,11 @@ export type empleadosUncheckedUpdateInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -867,8 +915,6 @@ export type empleadosCreateManyInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -894,13 +940,16 @@ export type empleadosCreateManyInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type empleadosUpdateManyMutationInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -925,14 +974,17 @@ export type empleadosUpdateManyMutationInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type empleadosUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -958,6 +1010,11 @@ export type empleadosUncheckedUpdateManyInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type EmpleadosScalarRelationFilter = {
@@ -969,8 +1026,6 @@ export type empleadosCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
-  profesion?: Prisma.SortOrder
-  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -996,6 +1051,11 @@ export type empleadosCountOrderByAggregateInput = {
   sueldo_fijo_mensual?: Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrder
   frecuencia_pago?: Prisma.SortOrder
+  profesion?: Prisma.SortOrder
+  tipo_contrato?: Prisma.SortOrder
+  realiza_ventas?: Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrder
+  configuracion_comision?: Prisma.SortOrder
 }
 
 export type empleadosAvgOrderByAggregateInput = {
@@ -1009,14 +1069,13 @@ export type empleadosAvgOrderByAggregateInput = {
   saldo_fondo_acumulado?: Prisma.SortOrder
   sueldo_fijo_mensual?: Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrder
 }
 
 export type empleadosMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
-  profesion?: Prisma.SortOrder
-  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -1042,14 +1101,16 @@ export type empleadosMaxOrderByAggregateInput = {
   sueldo_fijo_mensual?: Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrder
   frecuencia_pago?: Prisma.SortOrder
+  profesion?: Prisma.SortOrder
+  tipo_contrato?: Prisma.SortOrder
+  realiza_ventas?: Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrder
 }
 
 export type empleadosMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombres?: Prisma.SortOrder
   apellidos?: Prisma.SortOrder
-  profesion?: Prisma.SortOrder
-  foto_url?: Prisma.SortOrder
   nombre_display?: Prisma.SortOrder
   email?: Prisma.SortOrder
   rol_id?: Prisma.SortOrder
@@ -1075,6 +1136,10 @@ export type empleadosMinOrderByAggregateInput = {
   sueldo_fijo_mensual?: Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrder
   frecuencia_pago?: Prisma.SortOrder
+  profesion?: Prisma.SortOrder
+  tipo_contrato?: Prisma.SortOrder
+  realiza_ventas?: Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrder
 }
 
 export type empleadosSumOrderByAggregateInput = {
@@ -1088,6 +1153,7 @@ export type empleadosSumOrderByAggregateInput = {
   saldo_fondo_acumulado?: Prisma.SortOrder
   sueldo_fijo_mensual?: Prisma.SortOrder
   porcentaje_productos?: Prisma.SortOrder
+  porcentaje_comision_productos?: Prisma.SortOrder
 }
 
 export type EmpleadosNullableScalarRelationFilter = {
@@ -1436,8 +1502,6 @@ export type empleadosUpdateOneRequiredWithoutVentasNestedInput = {
 export type empleadosCreateWithoutAusencias_empleadoInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1462,6 +1526,11 @@ export type empleadosCreateWithoutAusencias_empleadoInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
@@ -1487,8 +1556,6 @@ export type empleadosUncheckedCreateWithoutAusencias_empleadoInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1514,6 +1581,11 @@ export type empleadosUncheckedCreateWithoutAusencias_empleadoInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -1553,8 +1625,6 @@ export type empleadosUpdateToOneWithWhereWithoutAusencias_empleadoInput = {
 export type empleadosUpdateWithoutAusencias_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1579,6 +1649,11 @@ export type empleadosUpdateWithoutAusencias_empleadoInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
@@ -1604,8 +1679,6 @@ export type empleadosUncheckedUpdateWithoutAusencias_empleadoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1631,6 +1704,11 @@ export type empleadosUncheckedUpdateWithoutAusencias_empleadoInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -1654,8 +1732,6 @@ export type empleadosUncheckedUpdateWithoutAusencias_empleadoInput = {
 export type empleadosCreateWithoutCaja_sesionesInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1680,6 +1756,11 @@ export type empleadosCreateWithoutCaja_sesionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
@@ -1705,8 +1786,6 @@ export type empleadosUncheckedCreateWithoutCaja_sesionesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1732,6 +1811,11 @@ export type empleadosUncheckedCreateWithoutCaja_sesionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -1771,8 +1855,6 @@ export type empleadosUpdateToOneWithWhereWithoutCaja_sesionesInput = {
 export type empleadosUpdateWithoutCaja_sesionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -1797,6 +1879,11 @@ export type empleadosUpdateWithoutCaja_sesionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
@@ -1822,8 +1909,6 @@ export type empleadosUncheckedUpdateWithoutCaja_sesionesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -1849,6 +1934,11 @@ export type empleadosUncheckedUpdateWithoutCaja_sesionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -1872,8 +1962,6 @@ export type empleadosUncheckedUpdateWithoutCaja_sesionesInput = {
 export type empleadosCreateWithoutCliente_comunicacionesInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -1898,6 +1986,11 @@ export type empleadosCreateWithoutCliente_comunicacionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
@@ -1923,8 +2016,6 @@ export type empleadosUncheckedCreateWithoutCliente_comunicacionesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -1950,6 +2041,11 @@ export type empleadosUncheckedCreateWithoutCliente_comunicacionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -1989,8 +2085,6 @@ export type empleadosUpdateToOneWithWhereWithoutCliente_comunicacionesInput = {
 export type empleadosUpdateWithoutCliente_comunicacionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2015,6 +2109,11 @@ export type empleadosUpdateWithoutCliente_comunicacionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
@@ -2040,8 +2139,6 @@ export type empleadosUncheckedUpdateWithoutCliente_comunicacionesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2067,6 +2164,11 @@ export type empleadosUncheckedUpdateWithoutCliente_comunicacionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2090,8 +2192,6 @@ export type empleadosUncheckedUpdateWithoutCliente_comunicacionesInput = {
 export type empleadosCreateWithoutComisionesInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2116,6 +2216,11 @@ export type empleadosCreateWithoutComisionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -2141,8 +2246,6 @@ export type empleadosUncheckedCreateWithoutComisionesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2168,6 +2271,11 @@ export type empleadosUncheckedCreateWithoutComisionesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2207,8 +2315,6 @@ export type empleadosUpdateToOneWithWhereWithoutComisionesInput = {
 export type empleadosUpdateWithoutComisionesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2233,6 +2339,11 @@ export type empleadosUpdateWithoutComisionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -2258,8 +2369,6 @@ export type empleadosUncheckedUpdateWithoutComisionesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2285,6 +2394,11 @@ export type empleadosUncheckedUpdateWithoutComisionesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2308,8 +2422,6 @@ export type empleadosUncheckedUpdateWithoutComisionesInput = {
 export type empleadosCreateWithoutEmpleado_sucursalesInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2334,6 +2446,11 @@ export type empleadosCreateWithoutEmpleado_sucursalesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -2359,8 +2476,6 @@ export type empleadosUncheckedCreateWithoutEmpleado_sucursalesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2386,6 +2501,11 @@ export type empleadosUncheckedCreateWithoutEmpleado_sucursalesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2425,8 +2545,6 @@ export type empleadosUpdateToOneWithWhereWithoutEmpleado_sucursalesInput = {
 export type empleadosUpdateWithoutEmpleado_sucursalesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2451,6 +2569,11 @@ export type empleadosUpdateWithoutEmpleado_sucursalesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -2476,8 +2599,6 @@ export type empleadosUncheckedUpdateWithoutEmpleado_sucursalesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2503,6 +2624,11 @@ export type empleadosUncheckedUpdateWithoutEmpleado_sucursalesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2526,8 +2652,6 @@ export type empleadosUncheckedUpdateWithoutEmpleado_sucursalesInput = {
 export type empleadosCreateWithoutGastos_gastos_empleado_beneficiario_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2552,6 +2676,11 @@ export type empleadosCreateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -2577,8 +2706,6 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_empleado_beneficiario_i
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2604,6 +2731,11 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_empleado_beneficiario_i
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2632,8 +2764,6 @@ export type empleadosCreateOrConnectWithoutGastos_gastos_empleado_beneficiario_i
 export type empleadosCreateWithoutGastos_gastos_registrado_por_colaborador_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2658,6 +2788,11 @@ export type empleadosCreateWithoutGastos_gastos_registrado_por_colaborador_idToe
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -2683,8 +2818,6 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_registrado_por_colabora
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2710,6 +2843,11 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_registrado_por_colabora
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2738,8 +2876,6 @@ export type empleadosCreateOrConnectWithoutGastos_gastos_registrado_por_colabora
 export type empleadosCreateWithoutGastos_gastos_usuario_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -2764,6 +2900,11 @@ export type empleadosCreateWithoutGastos_gastos_usuario_idToempleadosInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -2789,8 +2930,6 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_usuario_idToempleadosIn
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -2816,6 +2955,11 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_usuario_idToempleadosIn
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2855,8 +2999,6 @@ export type empleadosUpdateToOneWithWhereWithoutGastos_gastos_empleado_beneficia
 export type empleadosUpdateWithoutGastos_gastos_empleado_beneficiario_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2881,6 +3023,11 @@ export type empleadosUpdateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -2906,8 +3053,6 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_empleado_beneficiario_i
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -2933,6 +3078,11 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_empleado_beneficiario_i
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2967,8 +3117,6 @@ export type empleadosUpdateToOneWithWhereWithoutGastos_gastos_registrado_por_col
 export type empleadosUpdateWithoutGastos_gastos_registrado_por_colaborador_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -2993,6 +3141,11 @@ export type empleadosUpdateWithoutGastos_gastos_registrado_por_colaborador_idToe
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -3018,8 +3171,6 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_registrado_por_colabora
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3045,6 +3196,11 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_registrado_por_colabora
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3079,8 +3235,6 @@ export type empleadosUpdateToOneWithWhereWithoutGastos_gastos_usuario_idToemplea
 export type empleadosUpdateWithoutGastos_gastos_usuario_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3105,6 +3259,11 @@ export type empleadosUpdateWithoutGastos_gastos_usuario_idToempleadosInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -3130,8 +3289,6 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_usuario_idToempleadosIn
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3157,6 +3314,11 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_usuario_idToempleadosIn
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3180,8 +3342,6 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_usuario_idToempleadosIn
 export type empleadosCreateWithoutHorarios_empleadoInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3206,6 +3366,11 @@ export type empleadosCreateWithoutHorarios_empleadoInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -3231,8 +3396,6 @@ export type empleadosUncheckedCreateWithoutHorarios_empleadoInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3258,6 +3421,11 @@ export type empleadosUncheckedCreateWithoutHorarios_empleadoInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3297,8 +3465,6 @@ export type empleadosUpdateToOneWithWhereWithoutHorarios_empleadoInput = {
 export type empleadosUpdateWithoutHorarios_empleadoInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3323,6 +3489,11 @@ export type empleadosUpdateWithoutHorarios_empleadoInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -3348,8 +3519,6 @@ export type empleadosUncheckedUpdateWithoutHorarios_empleadoInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3375,6 +3544,11 @@ export type empleadosUncheckedUpdateWithoutHorarios_empleadoInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3398,8 +3572,6 @@ export type empleadosUncheckedUpdateWithoutHorarios_empleadoInput = {
 export type empleadosCreateWithoutHorarios_extraInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3424,6 +3596,11 @@ export type empleadosCreateWithoutHorarios_extraInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -3449,8 +3626,6 @@ export type empleadosUncheckedCreateWithoutHorarios_extraInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3476,6 +3651,11 @@ export type empleadosUncheckedCreateWithoutHorarios_extraInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3515,8 +3695,6 @@ export type empleadosUpdateToOneWithWhereWithoutHorarios_extraInput = {
 export type empleadosUpdateWithoutHorarios_extraInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3541,6 +3719,11 @@ export type empleadosUpdateWithoutHorarios_extraInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -3566,8 +3749,6 @@ export type empleadosUncheckedUpdateWithoutHorarios_extraInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3593,6 +3774,11 @@ export type empleadosUncheckedUpdateWithoutHorarios_extraInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3616,8 +3802,6 @@ export type empleadosUncheckedUpdateWithoutHorarios_extraInput = {
 export type empleadosCreateWithoutIngresos_academiaInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3642,6 +3826,11 @@ export type empleadosCreateWithoutIngresos_academiaInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -3667,8 +3856,6 @@ export type empleadosUncheckedCreateWithoutIngresos_academiaInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3694,6 +3881,11 @@ export type empleadosUncheckedCreateWithoutIngresos_academiaInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3733,8 +3925,6 @@ export type empleadosUpdateToOneWithWhereWithoutIngresos_academiaInput = {
 export type empleadosUpdateWithoutIngresos_academiaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3759,6 +3949,11 @@ export type empleadosUpdateWithoutIngresos_academiaInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -3784,8 +3979,6 @@ export type empleadosUncheckedUpdateWithoutIngresos_academiaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -3811,6 +4004,11 @@ export type empleadosUncheckedUpdateWithoutIngresos_academiaInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3834,8 +4032,6 @@ export type empleadosUncheckedUpdateWithoutIngresos_academiaInput = {
 export type empleadosCreateWithoutMovimientos_cajaInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -3860,6 +4056,11 @@ export type empleadosCreateWithoutMovimientos_cajaInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -3885,8 +4086,6 @@ export type empleadosUncheckedCreateWithoutMovimientos_cajaInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -3912,6 +4111,11 @@ export type empleadosUncheckedCreateWithoutMovimientos_cajaInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3951,8 +4155,6 @@ export type empleadosUpdateToOneWithWhereWithoutMovimientos_cajaInput = {
 export type empleadosUpdateWithoutMovimientos_cajaInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -3977,6 +4179,11 @@ export type empleadosUpdateWithoutMovimientos_cajaInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -4002,8 +4209,6 @@ export type empleadosUncheckedUpdateWithoutMovimientos_cajaInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4029,6 +4234,11 @@ export type empleadosUncheckedUpdateWithoutMovimientos_cajaInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4052,8 +4262,6 @@ export type empleadosUncheckedUpdateWithoutMovimientos_cajaInput = {
 export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4078,6 +4286,11 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -4103,8 +4316,6 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_c
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4130,6 +4341,11 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_c
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4158,8 +4374,6 @@ export type empleadosCreateOrConnectWithoutMovimientos_fondo_movimientos_fondo_c
 export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_empleado_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4184,6 +4398,11 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -4209,8 +4428,6 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_e
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4236,6 +4453,11 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_e
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4275,8 +4497,6 @@ export type empleadosUpdateToOneWithWhereWithoutMovimientos_fondo_movimientos_fo
 export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4301,6 +4521,11 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -4326,8 +4551,6 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_c
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4353,6 +4576,11 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_c
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4387,8 +4615,6 @@ export type empleadosUpdateToOneWithWhereWithoutMovimientos_fondo_movimientos_fo
 export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_empleado_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4413,6 +4639,11 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -4438,8 +4669,6 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_e
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4465,6 +4694,11 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_e
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4488,8 +4722,6 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_e
 export type empleadosCreateWithoutPlanillasInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4514,6 +4746,11 @@ export type empleadosCreateWithoutPlanillasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -4539,8 +4776,6 @@ export type empleadosUncheckedCreateWithoutPlanillasInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4566,6 +4801,11 @@ export type empleadosUncheckedCreateWithoutPlanillasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4605,8 +4845,6 @@ export type empleadosUpdateToOneWithWhereWithoutPlanillasInput = {
 export type empleadosUpdateWithoutPlanillasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4631,6 +4869,11 @@ export type empleadosUpdateWithoutPlanillasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -4656,8 +4899,6 @@ export type empleadosUncheckedUpdateWithoutPlanillasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -4683,6 +4924,11 @@ export type empleadosUncheckedUpdateWithoutPlanillasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4706,8 +4952,6 @@ export type empleadosUncheckedUpdateWithoutPlanillasInput = {
 export type empleadosCreateWithoutPropinas_propinas_empleado_idToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4732,6 +4976,11 @@ export type empleadosCreateWithoutPropinas_propinas_empleado_idToempleadosInput 
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -4757,8 +5006,6 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_empleado_idToemplea
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4784,6 +5031,11 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_empleado_idToemplea
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4812,8 +5064,6 @@ export type empleadosCreateOrConnectWithoutPropinas_propinas_empleado_idToemplea
 export type empleadosCreateWithoutPropinas_propinas_registrado_porToempleadosInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -4838,6 +5088,11 @@ export type empleadosCreateWithoutPropinas_propinas_registrado_porToempleadosInp
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -4863,8 +5118,6 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_registrado_porToemp
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -4890,6 +5143,11 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_registrado_porToemp
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4929,8 +5187,6 @@ export type empleadosUpdateToOneWithWhereWithoutPropinas_propinas_empleado_idToe
 export type empleadosUpdateWithoutPropinas_propinas_empleado_idToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -4955,6 +5211,11 @@ export type empleadosUpdateWithoutPropinas_propinas_empleado_idToempleadosInput 
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -4980,8 +5241,6 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_empleado_idToemplea
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5007,6 +5266,11 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_empleado_idToemplea
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5041,8 +5305,6 @@ export type empleadosUpdateToOneWithWhereWithoutPropinas_propinas_registrado_por
 export type empleadosUpdateWithoutPropinas_propinas_registrado_porToempleadosInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5067,6 +5329,11 @@ export type empleadosUpdateWithoutPropinas_propinas_registrado_porToempleadosInp
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -5092,8 +5359,6 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_registrado_porToemp
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5119,6 +5384,11 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_registrado_porToemp
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5142,8 +5412,6 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_registrado_porToemp
 export type empleadosCreateWithoutReservasInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5168,6 +5436,11 @@ export type empleadosCreateWithoutReservasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -5193,8 +5466,6 @@ export type empleadosUncheckedCreateWithoutReservasInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -5220,6 +5491,11 @@ export type empleadosUncheckedCreateWithoutReservasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5259,8 +5535,6 @@ export type empleadosUpdateToOneWithWhereWithoutReservasInput = {
 export type empleadosUpdateWithoutReservasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5285,6 +5559,11 @@ export type empleadosUpdateWithoutReservasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -5310,8 +5589,6 @@ export type empleadosUncheckedUpdateWithoutReservasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5337,6 +5614,11 @@ export type empleadosUncheckedUpdateWithoutReservasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5360,8 +5642,6 @@ export type empleadosUncheckedUpdateWithoutReservasInput = {
 export type empleadosCreateWithoutRolesInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5386,6 +5666,11 @@ export type empleadosCreateWithoutRolesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -5411,8 +5696,6 @@ export type empleadosUncheckedCreateWithoutRolesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5437,6 +5720,11 @@ export type empleadosUncheckedCreateWithoutRolesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5491,8 +5779,6 @@ export type empleadosScalarWhereInput = {
   id?: Prisma.IntFilter<"empleados"> | number
   nombres?: Prisma.StringFilter<"empleados"> | string
   apellidos?: Prisma.StringFilter<"empleados"> | string
-  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
-  foto_url?: Prisma.StringNullableFilter<"empleados"> | string | null
   nombre_display?: Prisma.StringNullableFilter<"empleados"> | string | null
   email?: Prisma.StringNullableFilter<"empleados"> | string | null
   rol_id?: Prisma.IntNullableFilter<"empleados"> | number | null
@@ -5518,13 +5804,16 @@ export type empleadosScalarWhereInput = {
   sueldo_fijo_mensual?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.StringNullableFilter<"empleados"> | string | null
+  profesion?: Prisma.StringNullableFilter<"empleados"> | string | null
+  tipo_contrato?: Prisma.StringNullableFilter<"empleados"> | string | null
+  realiza_ventas?: Prisma.BoolNullableFilter<"empleados"> | boolean | null
+  porcentaje_comision_productos?: Prisma.DecimalNullableFilter<"empleados"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.JsonNullableFilter<"empleados">
 }
 
 export type empleadosCreateWithoutVentasInput = {
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5549,6 +5838,11 @@ export type empleadosCreateWithoutVentasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
@@ -5574,8 +5868,6 @@ export type empleadosUncheckedCreateWithoutVentasInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   rol_id?: number | null
@@ -5601,6 +5893,11 @@ export type empleadosUncheckedCreateWithoutVentasInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5640,8 +5937,6 @@ export type empleadosUpdateToOneWithWhereWithoutVentasInput = {
 export type empleadosUpdateWithoutVentasInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5666,6 +5961,11 @@ export type empleadosUpdateWithoutVentasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -5691,8 +5991,6 @@ export type empleadosUncheckedUpdateWithoutVentasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
@@ -5718,6 +6016,11 @@ export type empleadosUncheckedUpdateWithoutVentasInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5742,8 +6045,6 @@ export type empleadosCreateManyRolesInput = {
   id?: number
   nombres: string
   apellidos: string
-  profesion?: string | null
-  foto_url?: string | null
   nombre_display?: string | null
   email?: string | null
   password?: string | null
@@ -5768,13 +6069,16 @@ export type empleadosCreateManyRolesInput = {
   sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 export type empleadosUpdateWithoutRolesInput = {
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5799,6 +6103,11 @@ export type empleadosUpdateWithoutRolesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
@@ -5824,8 +6133,6 @@ export type empleadosUncheckedUpdateWithoutRolesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5850,6 +6157,11 @@ export type empleadosUncheckedUpdateWithoutRolesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5875,8 +6187,6 @@ export type empleadosUncheckedUpdateManyWithoutRolesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombres?: Prisma.StringFieldUpdateOperationsInput | string
   apellidos?: Prisma.StringFieldUpdateOperationsInput | string
-  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  foto_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
@@ -5901,6 +6211,11 @@ export type empleadosUncheckedUpdateManyWithoutRolesInput = {
   sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
 }
 
 
@@ -6100,8 +6415,6 @@ export type empleadosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   id?: boolean
   nombres?: boolean
   apellidos?: boolean
-  profesion?: boolean
-  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6127,6 +6440,11 @@ export type empleadosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   sueldo_fijo_mensual?: boolean
   porcentaje_productos?: boolean
   frecuencia_pago?: boolean
+  profesion?: boolean
+  tipo_contrato?: boolean
+  realiza_ventas?: boolean
+  porcentaje_comision_productos?: boolean
+  configuracion_comision?: boolean
   ausencias_empleado?: boolean | Prisma.empleados$ausencias_empleadoArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.empleados$caja_sesionesArgs<ExtArgs>
   cliente_comunicaciones?: boolean | Prisma.empleados$cliente_comunicacionesArgs<ExtArgs>
@@ -6154,8 +6472,6 @@ export type empleadosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   nombres?: boolean
   apellidos?: boolean
-  profesion?: boolean
-  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6181,6 +6497,11 @@ export type empleadosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   sueldo_fijo_mensual?: boolean
   porcentaje_productos?: boolean
   frecuencia_pago?: boolean
+  profesion?: boolean
+  tipo_contrato?: boolean
+  realiza_ventas?: boolean
+  porcentaje_comision_productos?: boolean
+  configuracion_comision?: boolean
   roles?: boolean | Prisma.empleados$rolesArgs<ExtArgs>
 }, ExtArgs["result"]["empleados"]>
 
@@ -6188,8 +6509,6 @@ export type empleadosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   id?: boolean
   nombres?: boolean
   apellidos?: boolean
-  profesion?: boolean
-  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6215,6 +6534,11 @@ export type empleadosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   sueldo_fijo_mensual?: boolean
   porcentaje_productos?: boolean
   frecuencia_pago?: boolean
+  profesion?: boolean
+  tipo_contrato?: boolean
+  realiza_ventas?: boolean
+  porcentaje_comision_productos?: boolean
+  configuracion_comision?: boolean
   roles?: boolean | Prisma.empleados$rolesArgs<ExtArgs>
 }, ExtArgs["result"]["empleados"]>
 
@@ -6222,8 +6546,6 @@ export type empleadosSelectScalar = {
   id?: boolean
   nombres?: boolean
   apellidos?: boolean
-  profesion?: boolean
-  foto_url?: boolean
   nombre_display?: boolean
   email?: boolean
   rol_id?: boolean
@@ -6249,9 +6571,14 @@ export type empleadosSelectScalar = {
   sueldo_fijo_mensual?: boolean
   porcentaje_productos?: boolean
   frecuencia_pago?: boolean
+  profesion?: boolean
+  tipo_contrato?: boolean
+  realiza_ventas?: boolean
+  porcentaje_comision_productos?: boolean
+  configuracion_comision?: boolean
 }
 
-export type empleadosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "profesion" | "foto_url" | "nombre_display" | "email" | "rol_id" | "password" | "telefono" | "sueldo_base" | "contrato_id" | "sucursal_id" | "fecha_contratacion" | "activo" | "notas" | "fecha_creacion" | "fecha_actualizacion" | "dni" | "fecha_nacimiento" | "realiza_servicios" | "tipo_salario" | "meta_activacion_mensual" | "porcentaje_fondo" | "saldo_fondo_acumulado" | "estado_fondo" | "modalidad_pago" | "sueldo_fijo_mensual" | "porcentaje_productos" | "frecuencia_pago", ExtArgs["result"]["empleados"]>
+export type empleadosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombres" | "apellidos" | "nombre_display" | "email" | "rol_id" | "password" | "telefono" | "sueldo_base" | "contrato_id" | "sucursal_id" | "fecha_contratacion" | "activo" | "notas" | "fecha_creacion" | "fecha_actualizacion" | "dni" | "fecha_nacimiento" | "realiza_servicios" | "tipo_salario" | "meta_activacion_mensual" | "porcentaje_fondo" | "saldo_fondo_acumulado" | "estado_fondo" | "modalidad_pago" | "sueldo_fijo_mensual" | "porcentaje_productos" | "frecuencia_pago" | "profesion" | "tipo_contrato" | "realiza_ventas" | "porcentaje_comision_productos" | "configuracion_comision", ExtArgs["result"]["empleados"]>
 export type empleadosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   ausencias_empleado?: boolean | Prisma.empleados$ausencias_empleadoArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.empleados$caja_sesionesArgs<ExtArgs>
@@ -6310,8 +6637,6 @@ export type $empleadosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     id: number
     nombres: string
     apellidos: string
-    profesion: string | null
-    foto_url: string | null
     nombre_display: string | null
     email: string | null
     rol_id: number | null
@@ -6337,6 +6662,11 @@ export type $empleadosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     sueldo_fijo_mensual: runtime.Decimal | null
     porcentaje_productos: runtime.Decimal | null
     frecuencia_pago: string | null
+    profesion: string | null
+    tipo_contrato: string | null
+    realiza_ventas: boolean | null
+    porcentaje_comision_productos: runtime.Decimal | null
+    configuracion_comision: runtime.JsonValue | null
   }, ExtArgs["result"]["empleados"]>
   composites: {}
 }
@@ -6783,8 +7113,6 @@ export interface empleadosFieldRefs {
   readonly id: Prisma.FieldRef<"empleados", 'Int'>
   readonly nombres: Prisma.FieldRef<"empleados", 'String'>
   readonly apellidos: Prisma.FieldRef<"empleados", 'String'>
-  readonly profesion: Prisma.FieldRef<"empleados", 'String'>
-  readonly foto_url: Prisma.FieldRef<"empleados", 'String'>
   readonly nombre_display: Prisma.FieldRef<"empleados", 'String'>
   readonly email: Prisma.FieldRef<"empleados", 'String'>
   readonly rol_id: Prisma.FieldRef<"empleados", 'Int'>
@@ -6810,6 +7138,11 @@ export interface empleadosFieldRefs {
   readonly sueldo_fijo_mensual: Prisma.FieldRef<"empleados", 'Decimal'>
   readonly porcentaje_productos: Prisma.FieldRef<"empleados", 'Decimal'>
   readonly frecuencia_pago: Prisma.FieldRef<"empleados", 'String'>
+  readonly profesion: Prisma.FieldRef<"empleados", 'String'>
+  readonly tipo_contrato: Prisma.FieldRef<"empleados", 'String'>
+  readonly realiza_ventas: Prisma.FieldRef<"empleados", 'Boolean'>
+  readonly porcentaje_comision_productos: Prisma.FieldRef<"empleados", 'Decimal'>
+  readonly configuracion_comision: Prisma.FieldRef<"empleados", 'Json'>
 }
     
 

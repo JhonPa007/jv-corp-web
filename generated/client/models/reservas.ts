@@ -57,6 +57,7 @@ export type ReservasMinAggregateOutputType = {
   notas_internas: string | null
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
+  evidencia_url: string | null
 }
 
 export type ReservasMaxAggregateOutputType = {
@@ -72,6 +73,7 @@ export type ReservasMaxAggregateOutputType = {
   notas_internas: string | null
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
+  evidencia_url: string | null
 }
 
 export type ReservasCountAggregateOutputType = {
@@ -87,6 +89,7 @@ export type ReservasCountAggregateOutputType = {
   notas_internas: number
   precio_cobrado: number
   fecha_actualizacion: number
+  evidencia_url: number
   _all: number
 }
 
@@ -122,6 +125,7 @@ export type ReservasMinAggregateInputType = {
   notas_internas?: true
   precio_cobrado?: true
   fecha_actualizacion?: true
+  evidencia_url?: true
 }
 
 export type ReservasMaxAggregateInputType = {
@@ -137,6 +141,7 @@ export type ReservasMaxAggregateInputType = {
   notas_internas?: true
   precio_cobrado?: true
   fecha_actualizacion?: true
+  evidencia_url?: true
 }
 
 export type ReservasCountAggregateInputType = {
@@ -152,6 +157,7 @@ export type ReservasCountAggregateInputType = {
   notas_internas?: true
   precio_cobrado?: true
   fecha_actualizacion?: true
+  evidencia_url?: true
   _all?: true
 }
 
@@ -254,6 +260,7 @@ export type ReservasGroupByOutputType = {
   notas_internas: string | null
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
+  evidencia_url: string | null
   _count: ReservasCountAggregateOutputType | null
   _avg: ReservasAvgAggregateOutputType | null
   _sum: ReservasSumAggregateOutputType | null
@@ -292,6 +299,7 @@ export type reservasWhereInput = {
   notas_internas?: Prisma.StringNullableFilter<"reservas"> | string | null
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
+  evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
   clientes?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.clientesWhereInput>
   servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
@@ -312,6 +320,7 @@ export type reservasOrderByWithRelationInput = {
   notas_internas?: Prisma.SortOrderInput | Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
+  evidencia_url?: Prisma.SortOrderInput | Prisma.SortOrder
   clientes?: Prisma.clientesOrderByWithRelationInput
   servicios?: Prisma.serviciosOrderByWithRelationInput
   sucursales?: Prisma.sucursalesOrderByWithRelationInput
@@ -335,6 +344,7 @@ export type reservasWhereUniqueInput = Prisma.AtLeast<{
   notas_internas?: Prisma.StringNullableFilter<"reservas"> | string | null
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
+  evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
   clientes?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.clientesWhereInput>
   servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
@@ -355,6 +365,7 @@ export type reservasOrderByWithAggregationInput = {
   notas_internas?: Prisma.SortOrderInput | Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
+  evidencia_url?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.reservasCountOrderByAggregateInput
   _avg?: Prisma.reservasAvgOrderByAggregateInput
   _max?: Prisma.reservasMaxOrderByAggregateInput
@@ -378,6 +389,7 @@ export type reservasScalarWhereWithAggregatesInput = {
   notas_internas?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
   precio_cobrado?: Prisma.DecimalNullableWithAggregatesFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableWithAggregatesFilter<"reservas"> | Date | string | null
+  evidencia_url?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
 }
 
 export type reservasCreateInput = {
@@ -388,6 +400,7 @@ export type reservasCreateInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
   servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
@@ -408,6 +421,7 @@ export type reservasUncheckedCreateInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -419,6 +433,7 @@ export type reservasUpdateInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
   servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
@@ -439,6 +454,7 @@ export type reservasUncheckedUpdateInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
@@ -455,6 +471,7 @@ export type reservasCreateManyInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasUpdateManyMutationInput = {
@@ -465,6 +482,7 @@ export type reservasUpdateManyMutationInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type reservasUncheckedUpdateManyInput = {
@@ -480,6 +498,7 @@ export type reservasUncheckedUpdateManyInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ReservasListRelationFilter = {
@@ -505,6 +524,7 @@ export type reservasCountOrderByAggregateInput = {
   notas_internas?: Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  evidencia_url?: Prisma.SortOrder
 }
 
 export type reservasAvgOrderByAggregateInput = {
@@ -529,6 +549,7 @@ export type reservasMaxOrderByAggregateInput = {
   notas_internas?: Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  evidencia_url?: Prisma.SortOrder
 }
 
 export type reservasMinOrderByAggregateInput = {
@@ -544,6 +565,7 @@ export type reservasMinOrderByAggregateInput = {
   notas_internas?: Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  evidencia_url?: Prisma.SortOrder
 }
 
 export type reservasSumOrderByAggregateInput = {
@@ -752,6 +774,7 @@ export type reservasCreateWithoutClientesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
@@ -770,6 +793,7 @@ export type reservasUncheckedCreateWithoutClientesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -815,6 +839,7 @@ export type reservasScalarWhereInput = {
   notas_internas?: Prisma.StringNullableFilter<"reservas"> | string | null
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
+  evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
 }
 
 export type reservasCreateWithoutEmpleadosInput = {
@@ -825,6 +850,7 @@ export type reservasCreateWithoutEmpleadosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
   servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
@@ -843,6 +869,7 @@ export type reservasUncheckedCreateWithoutEmpleadosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -880,6 +907,7 @@ export type reservasCreateWithoutServiciosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
@@ -898,6 +926,7 @@ export type reservasUncheckedCreateWithoutServiciosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -935,6 +964,7 @@ export type reservasCreateWithoutSucursalesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
   servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
@@ -953,6 +983,7 @@ export type reservasUncheckedCreateWithoutSucursalesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -990,6 +1021,7 @@ export type reservasCreateWithoutVentasInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
   clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
   servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
@@ -1009,6 +1041,7 @@ export type reservasUncheckedCreateWithoutVentasInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasCreateOrConnectWithoutVentasInput = {
@@ -1035,6 +1068,7 @@ export type reservasUpdateWithoutVentasInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
   servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
@@ -1054,6 +1088,7 @@ export type reservasUncheckedUpdateWithoutVentasInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type reservasCreateManyClientesInput = {
@@ -1068,6 +1103,7 @@ export type reservasCreateManyClientesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasUpdateWithoutClientesInput = {
@@ -1078,6 +1114,7 @@ export type reservasUpdateWithoutClientesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
@@ -1096,6 +1133,7 @@ export type reservasUncheckedUpdateWithoutClientesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
@@ -1111,6 +1149,7 @@ export type reservasUncheckedUpdateManyWithoutClientesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type reservasCreateManyEmpleadosInput = {
@@ -1125,6 +1164,7 @@ export type reservasCreateManyEmpleadosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasUpdateWithoutEmpleadosInput = {
@@ -1135,6 +1175,7 @@ export type reservasUpdateWithoutEmpleadosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
   servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
@@ -1153,6 +1194,7 @@ export type reservasUncheckedUpdateWithoutEmpleadosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
@@ -1168,6 +1210,7 @@ export type reservasUncheckedUpdateManyWithoutEmpleadosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type reservasCreateManyServiciosInput = {
@@ -1182,6 +1225,7 @@ export type reservasCreateManyServiciosInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasUpdateWithoutServiciosInput = {
@@ -1192,6 +1236,7 @@ export type reservasUpdateWithoutServiciosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
@@ -1210,6 +1255,7 @@ export type reservasUncheckedUpdateWithoutServiciosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
@@ -1225,6 +1271,7 @@ export type reservasUncheckedUpdateManyWithoutServiciosInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type reservasCreateManySucursalesInput = {
@@ -1239,6 +1286,7 @@ export type reservasCreateManySucursalesInput = {
   notas_internas?: string | null
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
+  evidencia_url?: string | null
 }
 
 export type reservasUpdateWithoutSucursalesInput = {
@@ -1249,6 +1297,7 @@ export type reservasUpdateWithoutSucursalesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
   servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
@@ -1267,6 +1316,7 @@ export type reservasUncheckedUpdateWithoutSucursalesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
@@ -1282,6 +1332,7 @@ export type reservasUncheckedUpdateManyWithoutSucursalesInput = {
   notas_internas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1328,6 +1379,7 @@ export type reservasSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   notas_internas?: boolean
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
+  evidencia_url?: boolean
   clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
   servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
@@ -1349,6 +1401,7 @@ export type reservasSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   notas_internas?: boolean
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
+  evidencia_url?: boolean
   clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
   servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
@@ -1368,6 +1421,7 @@ export type reservasSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   notas_internas?: boolean
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
+  evidencia_url?: boolean
   clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
   servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
@@ -1387,9 +1441,10 @@ export type reservasSelectScalar = {
   notas_internas?: boolean
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
+  evidencia_url?: boolean
 }
 
-export type reservasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cliente_id" | "empleado_id" | "servicio_id" | "sucursal_id" | "fecha_hora_inicio" | "fecha_hora_fin" | "estado" | "notas_cliente" | "notas_internas" | "precio_cobrado" | "fecha_actualizacion", ExtArgs["result"]["reservas"]>
+export type reservasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cliente_id" | "empleado_id" | "servicio_id" | "sucursal_id" | "fecha_hora_inicio" | "fecha_hora_fin" | "estado" | "notas_cliente" | "notas_internas" | "precio_cobrado" | "fecha_actualizacion" | "evidencia_url", ExtArgs["result"]["reservas"]>
 export type reservasInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
   servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
@@ -1433,6 +1488,7 @@ export type $reservasPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     notas_internas: string | null
     precio_cobrado: runtime.Decimal | null
     fecha_actualizacion: Date | null
+    evidencia_url: string | null
   }, ExtArgs["result"]["reservas"]>
   composites: {}
 }
@@ -1873,6 +1929,7 @@ export interface reservasFieldRefs {
   readonly notas_internas: Prisma.FieldRef<"reservas", 'String'>
   readonly precio_cobrado: Prisma.FieldRef<"reservas", 'Decimal'>
   readonly fecha_actualizacion: Prisma.FieldRef<"reservas", 'DateTime'>
+  readonly evidencia_url: Prisma.FieldRef<"reservas", 'String'>
 }
     
 

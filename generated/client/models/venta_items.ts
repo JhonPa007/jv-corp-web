@@ -37,6 +37,8 @@ export type Venta_itemsAvgAggregateOutputType = {
   valor_produccion: runtime.Decimal | null
   subtotal_item_bruto: runtime.Decimal | null
   descuento_item_monto: runtime.Decimal | null
+  porcentaje_servicio_extra: runtime.Decimal | null
+  comision_servicio_extra: runtime.Decimal | null
 }
 
 export type Venta_itemsSumAggregateOutputType = {
@@ -50,6 +52,8 @@ export type Venta_itemsSumAggregateOutputType = {
   valor_produccion: runtime.Decimal | null
   subtotal_item_bruto: runtime.Decimal | null
   descuento_item_monto: runtime.Decimal | null
+  porcentaje_servicio_extra: runtime.Decimal | null
+  comision_servicio_extra: runtime.Decimal | null
 }
 
 export type Venta_itemsMinAggregateOutputType = {
@@ -68,6 +72,12 @@ export type Venta_itemsMinAggregateOutputType = {
   descripcion_item_venta: string | null
   notas_item: string | null
   usado_como_beneficio: boolean | null
+  es_extra: boolean | null
+  pagado_al_empleado: boolean | null
+  porcentaje_servicio_extra: runtime.Decimal | null
+  comision_servicio_extra: runtime.Decimal | null
+  entregado_al_colaborador: boolean | null
+  loyalty_consumption_group_id: string | null
 }
 
 export type Venta_itemsMaxAggregateOutputType = {
@@ -86,6 +96,12 @@ export type Venta_itemsMaxAggregateOutputType = {
   descripcion_item_venta: string | null
   notas_item: string | null
   usado_como_beneficio: boolean | null
+  es_extra: boolean | null
+  pagado_al_empleado: boolean | null
+  porcentaje_servicio_extra: runtime.Decimal | null
+  comision_servicio_extra: runtime.Decimal | null
+  entregado_al_colaborador: boolean | null
+  loyalty_consumption_group_id: string | null
 }
 
 export type Venta_itemsCountAggregateOutputType = {
@@ -104,6 +120,12 @@ export type Venta_itemsCountAggregateOutputType = {
   descripcion_item_venta: number
   notas_item: number
   usado_como_beneficio: number
+  es_extra: number
+  pagado_al_empleado: number
+  porcentaje_servicio_extra: number
+  comision_servicio_extra: number
+  entregado_al_colaborador: number
+  loyalty_consumption_group_id: number
   _all: number
 }
 
@@ -119,6 +141,8 @@ export type Venta_itemsAvgAggregateInputType = {
   valor_produccion?: true
   subtotal_item_bruto?: true
   descuento_item_monto?: true
+  porcentaje_servicio_extra?: true
+  comision_servicio_extra?: true
 }
 
 export type Venta_itemsSumAggregateInputType = {
@@ -132,6 +156,8 @@ export type Venta_itemsSumAggregateInputType = {
   valor_produccion?: true
   subtotal_item_bruto?: true
   descuento_item_monto?: true
+  porcentaje_servicio_extra?: true
+  comision_servicio_extra?: true
 }
 
 export type Venta_itemsMinAggregateInputType = {
@@ -150,6 +176,12 @@ export type Venta_itemsMinAggregateInputType = {
   descripcion_item_venta?: true
   notas_item?: true
   usado_como_beneficio?: true
+  es_extra?: true
+  pagado_al_empleado?: true
+  porcentaje_servicio_extra?: true
+  comision_servicio_extra?: true
+  entregado_al_colaborador?: true
+  loyalty_consumption_group_id?: true
 }
 
 export type Venta_itemsMaxAggregateInputType = {
@@ -168,6 +200,12 @@ export type Venta_itemsMaxAggregateInputType = {
   descripcion_item_venta?: true
   notas_item?: true
   usado_como_beneficio?: true
+  es_extra?: true
+  pagado_al_empleado?: true
+  porcentaje_servicio_extra?: true
+  comision_servicio_extra?: true
+  entregado_al_colaborador?: true
+  loyalty_consumption_group_id?: true
 }
 
 export type Venta_itemsCountAggregateInputType = {
@@ -186,6 +224,12 @@ export type Venta_itemsCountAggregateInputType = {
   descripcion_item_venta?: true
   notas_item?: true
   usado_como_beneficio?: true
+  es_extra?: true
+  pagado_al_empleado?: true
+  porcentaje_servicio_extra?: true
+  comision_servicio_extra?: true
+  entregado_al_colaborador?: true
+  loyalty_consumption_group_id?: true
   _all?: true
 }
 
@@ -291,6 +335,12 @@ export type Venta_itemsGroupByOutputType = {
   descripcion_item_venta: string | null
   notas_item: string | null
   usado_como_beneficio: boolean | null
+  es_extra: boolean | null
+  pagado_al_empleado: boolean | null
+  porcentaje_servicio_extra: runtime.Decimal | null
+  comision_servicio_extra: runtime.Decimal | null
+  entregado_al_colaborador: boolean | null
+  loyalty_consumption_group_id: string | null
   _count: Venta_itemsCountAggregateOutputType | null
   _avg: Venta_itemsAvgAggregateOutputType | null
   _sum: Venta_itemsSumAggregateOutputType | null
@@ -332,6 +382,12 @@ export type venta_itemsWhereInput = {
   descripcion_item_venta?: Prisma.StringNullableFilter<"venta_items"> | string | null
   notas_item?: Prisma.StringNullableFilter<"venta_items"> | string | null
   usado_como_beneficio?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  es_extra?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  pagado_al_empleado?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  porcentaje_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  loyalty_consumption_group_id?: Prisma.StringNullableFilter<"venta_items"> | string | null
   comisiones?: Prisma.ComisionesListRelationFilter
   productos?: Prisma.XOR<Prisma.ProductosNullableScalarRelationFilter, Prisma.productosWhereInput> | null
   servicios?: Prisma.XOR<Prisma.ServiciosNullableScalarRelationFilter, Prisma.serviciosWhereInput> | null
@@ -354,6 +410,12 @@ export type venta_itemsOrderByWithRelationInput = {
   descripcion_item_venta?: Prisma.SortOrderInput | Prisma.SortOrder
   notas_item?: Prisma.SortOrderInput | Prisma.SortOrder
   usado_como_beneficio?: Prisma.SortOrderInput | Prisma.SortOrder
+  es_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  pagado_al_empleado?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  entregado_al_colaborador?: Prisma.SortOrderInput | Prisma.SortOrder
+  loyalty_consumption_group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   comisiones?: Prisma.comisionesOrderByRelationAggregateInput
   productos?: Prisma.productosOrderByWithRelationInput
   servicios?: Prisma.serviciosOrderByWithRelationInput
@@ -379,6 +441,12 @@ export type venta_itemsWhereUniqueInput = Prisma.AtLeast<{
   descripcion_item_venta?: Prisma.StringNullableFilter<"venta_items"> | string | null
   notas_item?: Prisma.StringNullableFilter<"venta_items"> | string | null
   usado_como_beneficio?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  es_extra?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  pagado_al_empleado?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  porcentaje_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  loyalty_consumption_group_id?: Prisma.StringNullableFilter<"venta_items"> | string | null
   comisiones?: Prisma.ComisionesListRelationFilter
   productos?: Prisma.XOR<Prisma.ProductosNullableScalarRelationFilter, Prisma.productosWhereInput> | null
   servicios?: Prisma.XOR<Prisma.ServiciosNullableScalarRelationFilter, Prisma.serviciosWhereInput> | null
@@ -401,6 +469,12 @@ export type venta_itemsOrderByWithAggregationInput = {
   descripcion_item_venta?: Prisma.SortOrderInput | Prisma.SortOrder
   notas_item?: Prisma.SortOrderInput | Prisma.SortOrder
   usado_como_beneficio?: Prisma.SortOrderInput | Prisma.SortOrder
+  es_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  pagado_al_empleado?: Prisma.SortOrderInput | Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrderInput | Prisma.SortOrder
+  entregado_al_colaborador?: Prisma.SortOrderInput | Prisma.SortOrder
+  loyalty_consumption_group_id?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.venta_itemsCountOrderByAggregateInput
   _avg?: Prisma.venta_itemsAvgOrderByAggregateInput
   _max?: Prisma.venta_itemsMaxOrderByAggregateInput
@@ -427,6 +501,12 @@ export type venta_itemsScalarWhereWithAggregatesInput = {
   descripcion_item_venta?: Prisma.StringNullableWithAggregatesFilter<"venta_items"> | string | null
   notas_item?: Prisma.StringNullableWithAggregatesFilter<"venta_items"> | string | null
   usado_como_beneficio?: Prisma.BoolNullableWithAggregatesFilter<"venta_items"> | boolean | null
+  es_extra?: Prisma.BoolNullableWithAggregatesFilter<"venta_items"> | boolean | null
+  pagado_al_empleado?: Prisma.BoolNullableWithAggregatesFilter<"venta_items"> | boolean | null
+  porcentaje_servicio_extra?: Prisma.DecimalNullableWithAggregatesFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.DecimalNullableWithAggregatesFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.BoolNullableWithAggregatesFilter<"venta_items"> | boolean | null
+  loyalty_consumption_group_id?: Prisma.StringNullableWithAggregatesFilter<"venta_items"> | string | null
 }
 
 export type venta_itemsCreateInput = {
@@ -441,6 +521,12 @@ export type venta_itemsCreateInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesCreateNestedManyWithoutVenta_itemsInput
   productos?: Prisma.productosCreateNestedOneWithoutVenta_itemsInput
   servicios?: Prisma.serviciosCreateNestedOneWithoutVenta_itemsInput
@@ -463,6 +549,12 @@ export type venta_itemsUncheckedCreateInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutVenta_itemsInput
 }
 
@@ -478,6 +570,12 @@ export type venta_itemsUpdateInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUpdateManyWithoutVenta_itemsNestedInput
   productos?: Prisma.productosUpdateOneWithoutVenta_itemsNestedInput
   servicios?: Prisma.serviciosUpdateOneWithoutVenta_itemsNestedInput
@@ -500,6 +598,12 @@ export type venta_itemsUncheckedUpdateInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutVenta_itemsNestedInput
 }
 
@@ -519,6 +623,12 @@ export type venta_itemsCreateManyInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
 }
 
 export type venta_itemsUpdateManyMutationInput = {
@@ -533,6 +643,12 @@ export type venta_itemsUpdateManyMutationInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type venta_itemsUncheckedUpdateManyInput = {
@@ -551,6 +667,12 @@ export type venta_itemsUncheckedUpdateManyInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type Venta_itemsNullableScalarRelationFilter = {
@@ -584,6 +706,12 @@ export type venta_itemsCountOrderByAggregateInput = {
   descripcion_item_venta?: Prisma.SortOrder
   notas_item?: Prisma.SortOrder
   usado_como_beneficio?: Prisma.SortOrder
+  es_extra?: Prisma.SortOrder
+  pagado_al_empleado?: Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrder
+  entregado_al_colaborador?: Prisma.SortOrder
+  loyalty_consumption_group_id?: Prisma.SortOrder
 }
 
 export type venta_itemsAvgOrderByAggregateInput = {
@@ -597,6 +725,8 @@ export type venta_itemsAvgOrderByAggregateInput = {
   valor_produccion?: Prisma.SortOrder
   subtotal_item_bruto?: Prisma.SortOrder
   descuento_item_monto?: Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrder
 }
 
 export type venta_itemsMaxOrderByAggregateInput = {
@@ -615,6 +745,12 @@ export type venta_itemsMaxOrderByAggregateInput = {
   descripcion_item_venta?: Prisma.SortOrder
   notas_item?: Prisma.SortOrder
   usado_como_beneficio?: Prisma.SortOrder
+  es_extra?: Prisma.SortOrder
+  pagado_al_empleado?: Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrder
+  entregado_al_colaborador?: Prisma.SortOrder
+  loyalty_consumption_group_id?: Prisma.SortOrder
 }
 
 export type venta_itemsMinOrderByAggregateInput = {
@@ -633,6 +769,12 @@ export type venta_itemsMinOrderByAggregateInput = {
   descripcion_item_venta?: Prisma.SortOrder
   notas_item?: Prisma.SortOrder
   usado_como_beneficio?: Prisma.SortOrder
+  es_extra?: Prisma.SortOrder
+  pagado_al_empleado?: Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrder
+  entregado_al_colaborador?: Prisma.SortOrder
+  loyalty_consumption_group_id?: Prisma.SortOrder
 }
 
 export type venta_itemsSumOrderByAggregateInput = {
@@ -646,6 +788,8 @@ export type venta_itemsSumOrderByAggregateInput = {
   valor_produccion?: Prisma.SortOrder
   subtotal_item_bruto?: Prisma.SortOrder
   descuento_item_monto?: Prisma.SortOrder
+  porcentaje_servicio_extra?: Prisma.SortOrder
+  comision_servicio_extra?: Prisma.SortOrder
 }
 
 export type venta_itemsCreateNestedOneWithoutComisionesInput = {
@@ -802,6 +946,12 @@ export type venta_itemsCreateWithoutComisionesInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   productos?: Prisma.productosCreateNestedOneWithoutVenta_itemsInput
   servicios?: Prisma.serviciosCreateNestedOneWithoutVenta_itemsInput
   ventas: Prisma.ventasCreateNestedOneWithoutVenta_itemsInput
@@ -823,6 +973,12 @@ export type venta_itemsUncheckedCreateWithoutComisionesInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
 }
 
 export type venta_itemsCreateOrConnectWithoutComisionesInput = {
@@ -853,6 +1009,12 @@ export type venta_itemsUpdateWithoutComisionesInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   productos?: Prisma.productosUpdateOneWithoutVenta_itemsNestedInput
   servicios?: Prisma.serviciosUpdateOneWithoutVenta_itemsNestedInput
   ventas?: Prisma.ventasUpdateOneRequiredWithoutVenta_itemsNestedInput
@@ -874,6 +1036,12 @@ export type venta_itemsUncheckedUpdateWithoutComisionesInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type venta_itemsCreateWithoutProductosInput = {
@@ -888,6 +1056,12 @@ export type venta_itemsCreateWithoutProductosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesCreateNestedManyWithoutVenta_itemsInput
   servicios?: Prisma.serviciosCreateNestedOneWithoutVenta_itemsInput
   ventas: Prisma.ventasCreateNestedOneWithoutVenta_itemsInput
@@ -908,6 +1082,12 @@ export type venta_itemsUncheckedCreateWithoutProductosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutVenta_itemsInput
 }
 
@@ -956,6 +1136,12 @@ export type venta_itemsScalarWhereInput = {
   descripcion_item_venta?: Prisma.StringNullableFilter<"venta_items"> | string | null
   notas_item?: Prisma.StringNullableFilter<"venta_items"> | string | null
   usado_como_beneficio?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  es_extra?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  pagado_al_empleado?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  porcentaje_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.DecimalNullableFilter<"venta_items"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.BoolNullableFilter<"venta_items"> | boolean | null
+  loyalty_consumption_group_id?: Prisma.StringNullableFilter<"venta_items"> | string | null
 }
 
 export type venta_itemsCreateWithoutServiciosInput = {
@@ -970,6 +1156,12 @@ export type venta_itemsCreateWithoutServiciosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesCreateNestedManyWithoutVenta_itemsInput
   productos?: Prisma.productosCreateNestedOneWithoutVenta_itemsInput
   ventas: Prisma.ventasCreateNestedOneWithoutVenta_itemsInput
@@ -990,6 +1182,12 @@ export type venta_itemsUncheckedCreateWithoutServiciosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutVenta_itemsInput
 }
 
@@ -1031,6 +1229,12 @@ export type venta_itemsCreateWithoutVentasInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesCreateNestedManyWithoutVenta_itemsInput
   productos?: Prisma.productosCreateNestedOneWithoutVenta_itemsInput
   servicios?: Prisma.serviciosCreateNestedOneWithoutVenta_itemsInput
@@ -1051,6 +1255,12 @@ export type venta_itemsUncheckedCreateWithoutVentasInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutVenta_itemsInput
 }
 
@@ -1095,6 +1305,12 @@ export type venta_itemsCreateManyProductosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
 }
 
 export type venta_itemsUpdateWithoutProductosInput = {
@@ -1109,6 +1325,12 @@ export type venta_itemsUpdateWithoutProductosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUpdateManyWithoutVenta_itemsNestedInput
   servicios?: Prisma.serviciosUpdateOneWithoutVenta_itemsNestedInput
   ventas?: Prisma.ventasUpdateOneRequiredWithoutVenta_itemsNestedInput
@@ -1129,6 +1351,12 @@ export type venta_itemsUncheckedUpdateWithoutProductosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutVenta_itemsNestedInput
 }
 
@@ -1147,6 +1375,12 @@ export type venta_itemsUncheckedUpdateManyWithoutProductosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type venta_itemsCreateManyServiciosInput = {
@@ -1164,6 +1398,12 @@ export type venta_itemsCreateManyServiciosInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
 }
 
 export type venta_itemsUpdateWithoutServiciosInput = {
@@ -1178,6 +1418,12 @@ export type venta_itemsUpdateWithoutServiciosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUpdateManyWithoutVenta_itemsNestedInput
   productos?: Prisma.productosUpdateOneWithoutVenta_itemsNestedInput
   ventas?: Prisma.ventasUpdateOneRequiredWithoutVenta_itemsNestedInput
@@ -1198,6 +1444,12 @@ export type venta_itemsUncheckedUpdateWithoutServiciosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutVenta_itemsNestedInput
 }
 
@@ -1216,6 +1468,12 @@ export type venta_itemsUncheckedUpdateManyWithoutServiciosInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type venta_itemsCreateManyVentasInput = {
@@ -1233,6 +1491,12 @@ export type venta_itemsCreateManyVentasInput = {
   descripcion_item_venta?: string | null
   notas_item?: string | null
   usado_como_beneficio?: boolean | null
+  es_extra?: boolean | null
+  pagado_al_empleado?: boolean | null
+  porcentaje_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: boolean | null
+  loyalty_consumption_group_id?: string | null
 }
 
 export type venta_itemsUpdateWithoutVentasInput = {
@@ -1247,6 +1511,12 @@ export type venta_itemsUpdateWithoutVentasInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUpdateManyWithoutVenta_itemsNestedInput
   productos?: Prisma.productosUpdateOneWithoutVenta_itemsNestedInput
   servicios?: Prisma.serviciosUpdateOneWithoutVenta_itemsNestedInput
@@ -1267,6 +1537,12 @@ export type venta_itemsUncheckedUpdateWithoutVentasInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutVenta_itemsNestedInput
 }
 
@@ -1285,6 +1561,12 @@ export type venta_itemsUncheckedUpdateManyWithoutVentasInput = {
   descripcion_item_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_item?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usado_como_beneficio?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  es_extra?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  pagado_al_empleado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  comision_servicio_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  entregado_al_colaborador?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  loyalty_consumption_group_id?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -1334,6 +1616,12 @@ export type venta_itemsSelect<ExtArgs extends runtime.Types.Extensions.InternalA
   descripcion_item_venta?: boolean
   notas_item?: boolean
   usado_como_beneficio?: boolean
+  es_extra?: boolean
+  pagado_al_empleado?: boolean
+  porcentaje_servicio_extra?: boolean
+  comision_servicio_extra?: boolean
+  entregado_al_colaborador?: boolean
+  loyalty_consumption_group_id?: boolean
   comisiones?: boolean | Prisma.venta_items$comisionesArgs<ExtArgs>
   productos?: boolean | Prisma.venta_items$productosArgs<ExtArgs>
   servicios?: boolean | Prisma.venta_items$serviciosArgs<ExtArgs>
@@ -1357,6 +1645,12 @@ export type venta_itemsSelectCreateManyAndReturn<ExtArgs extends runtime.Types.E
   descripcion_item_venta?: boolean
   notas_item?: boolean
   usado_como_beneficio?: boolean
+  es_extra?: boolean
+  pagado_al_empleado?: boolean
+  porcentaje_servicio_extra?: boolean
+  comision_servicio_extra?: boolean
+  entregado_al_colaborador?: boolean
+  loyalty_consumption_group_id?: boolean
   productos?: boolean | Prisma.venta_items$productosArgs<ExtArgs>
   servicios?: boolean | Prisma.venta_items$serviciosArgs<ExtArgs>
   ventas?: boolean | Prisma.ventasDefaultArgs<ExtArgs>
@@ -1378,6 +1672,12 @@ export type venta_itemsSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.E
   descripcion_item_venta?: boolean
   notas_item?: boolean
   usado_como_beneficio?: boolean
+  es_extra?: boolean
+  pagado_al_empleado?: boolean
+  porcentaje_servicio_extra?: boolean
+  comision_servicio_extra?: boolean
+  entregado_al_colaborador?: boolean
+  loyalty_consumption_group_id?: boolean
   productos?: boolean | Prisma.venta_items$productosArgs<ExtArgs>
   servicios?: boolean | Prisma.venta_items$serviciosArgs<ExtArgs>
   ventas?: boolean | Prisma.ventasDefaultArgs<ExtArgs>
@@ -1399,9 +1699,15 @@ export type venta_itemsSelectScalar = {
   descripcion_item_venta?: boolean
   notas_item?: boolean
   usado_como_beneficio?: boolean
+  es_extra?: boolean
+  pagado_al_empleado?: boolean
+  porcentaje_servicio_extra?: boolean
+  comision_servicio_extra?: boolean
+  entregado_al_colaborador?: boolean
+  loyalty_consumption_group_id?: boolean
 }
 
-export type venta_itemsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "venta_id" | "servicio_id" | "producto_id" | "cantidad" | "precio_unitario_venta" | "subtotal_item_neto" | "valor_produccion" | "es_trabajo_extra" | "es_hora_extra" | "subtotal_item_bruto" | "descuento_item_monto" | "descripcion_item_venta" | "notas_item" | "usado_como_beneficio", ExtArgs["result"]["venta_items"]>
+export type venta_itemsOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "venta_id" | "servicio_id" | "producto_id" | "cantidad" | "precio_unitario_venta" | "subtotal_item_neto" | "valor_produccion" | "es_trabajo_extra" | "es_hora_extra" | "subtotal_item_bruto" | "descuento_item_monto" | "descripcion_item_venta" | "notas_item" | "usado_como_beneficio" | "es_extra" | "pagado_al_empleado" | "porcentaje_servicio_extra" | "comision_servicio_extra" | "entregado_al_colaborador" | "loyalty_consumption_group_id", ExtArgs["result"]["venta_items"]>
 export type venta_itemsInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   comisiones?: boolean | Prisma.venta_items$comisionesArgs<ExtArgs>
   productos?: boolean | Prisma.venta_items$productosArgs<ExtArgs>
@@ -1444,6 +1750,12 @@ export type $venta_itemsPayload<ExtArgs extends runtime.Types.Extensions.Interna
     descripcion_item_venta: string | null
     notas_item: string | null
     usado_como_beneficio: boolean | null
+    es_extra: boolean | null
+    pagado_al_empleado: boolean | null
+    porcentaje_servicio_extra: runtime.Decimal | null
+    comision_servicio_extra: runtime.Decimal | null
+    entregado_al_colaborador: boolean | null
+    loyalty_consumption_group_id: string | null
   }, ExtArgs["result"]["venta_items"]>
   composites: {}
 }
@@ -1886,6 +2198,12 @@ export interface venta_itemsFieldRefs {
   readonly descripcion_item_venta: Prisma.FieldRef<"venta_items", 'String'>
   readonly notas_item: Prisma.FieldRef<"venta_items", 'String'>
   readonly usado_como_beneficio: Prisma.FieldRef<"venta_items", 'Boolean'>
+  readonly es_extra: Prisma.FieldRef<"venta_items", 'Boolean'>
+  readonly pagado_al_empleado: Prisma.FieldRef<"venta_items", 'Boolean'>
+  readonly porcentaje_servicio_extra: Prisma.FieldRef<"venta_items", 'Decimal'>
+  readonly comision_servicio_extra: Prisma.FieldRef<"venta_items", 'Decimal'>
+  readonly entregado_al_colaborador: Prisma.FieldRef<"venta_items", 'Boolean'>
+  readonly loyalty_consumption_group_id: Prisma.FieldRef<"venta_items", 'String'>
 }
     
 
