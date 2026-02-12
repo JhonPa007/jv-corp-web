@@ -30,8 +30,12 @@ export default function GiftCardsPage() {
     const [isGenerating, setIsGenerating] = useState(false);
     const cardRef = useRef<HTMLDivElement>(null);
 
+    const [isPersonalized, setIsPersonalized] = useState(true);
+
     const handleOptionSelect = (option: GiftOption) => {
         setSelectedOption(option);
+        setIsPersonalized(true); // Reset to default
+        setFormData({ from: "", to: "", message: "" }); // Reset form
     };
 
     const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -77,10 +81,10 @@ export default function GiftCardsPage() {
             // 2. Save to Database
             const result = await createGiftCard({
                 amount: amount,
-                from: formData.from,
+                from: isPersonalized ? formData.from : undefined,
                 to: formData.to,
-                message: formData.message,
-                packageId: packageId // TODO: If you have actual packages in DB, map them here. For now we use the ID if we had it, or just amount.
+                message: isPersonalized ? formData.message : undefined,
+                packageId: packageId
             });
 
             if (!result.success || !result.code) {
@@ -289,27 +293,41 @@ export default function GiftCardsPage() {
                         <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-barberia-gold rotate-45"></div>
 
                         <h3 className="text-3xl font-agency text-white mb-2 text-center uppercase tracking-widest">
-                            Personaliza tu <span className="text-barberia-gold">Regalo</span>
+                            {isPersonalized ? "Personaliza tu" : "Datos del"} <span className="text-barberia-gold">{isPersonalized ? "Regalo" : "Beneficiario"}</span>
                         </h3>
-                        <p className="text-center text-gray-400 mb-8 text-sm uppercase tracking-wide">
+                        <p className="text-center text-gray-400 mb-6 text-sm uppercase tracking-wide">
                             {selectedOption === "libre" ? "Monto Libre" : packages.find(p => p.id === selectedOption)?.name}
                         </p>
 
+                        <div className="flex justify-center mb-6">
+                            <label className="flex items-center cursor-pointer gap-3">
+                                <span className={`text-sm uppercase tracking-wide ${!isPersonalized ? "text-barberia-gold font-bold" : "text-gray-500"}`}>Solo Beneficiario</span>
+                                <div className="relative">
+                                    <input type="checkbox" className="sr-only" checked={isPersonalized} onChange={() => setIsPersonalized(!isPersonalized)} />
+                                    <div className={`block w-14 h-8 rounded-full border border-barberia-gold/50 transition-colors ${isPersonalized ? "bg-barberia-gold/20" : "bg-black/40"}`}></div>
+                                    <div className={`dot absolute left-1 top-1 bg-barberia-gold w-6 h-6 rounded-full transition-transform duration-300 ${isPersonalized ? "translate-x-6 bg-barberia-gold" : "bg-gray-500"}`}></div>
+                                </div>
+                                <span className={`text-sm uppercase tracking-wide ${isPersonalized ? "text-barberia-gold font-bold" : "text-gray-500"}`}>Dedicatoria</span>
+                            </label>
+                        </div>
+
                         <form onSubmit={handleGeneratePDF} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                                <div className="space-y-2">
-                                    <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">De (Tu Nombre)</label>
-                                    <input
-                                        type="text"
-                                        name="from"
-                                        value={formData.from}
-                                        onChange={handleInputChange}
-                                        className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
-                                        placeholder="Ej. Ana"
-                                        required
-                                    />
-                                </div>
-                                <div className="space-y-2">
+                                {isPersonalized && (
+                                    <div className="space-y-2 animate-fade-in">
+                                        <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">De (Tu Nombre)</label>
+                                        <input
+                                            type="text"
+                                            name="from"
+                                            value={formData.from}
+                                            onChange={handleInputChange}
+                                            className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors"
+                                            placeholder="Ej. Ana"
+                                            required={isPersonalized}
+                                        />
+                                    </div>
+                                )}
+                                <div className={`space-y-2 ${!isPersonalized ? "md:col-span-2" : ""}`}>
                                     <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">Para (Afortunado)</label>
                                     <input
                                         type="text"
@@ -323,18 +341,20 @@ export default function GiftCardsPage() {
                                 </div>
                             </div>
 
-                            <div className="space-y-2">
-                                <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">Dedicatoria</label>
-                                <textarea
-                                    name="message"
-                                    value={formData.message}
-                                    onChange={handleInputChange}
-                                    rows={3}
-                                    className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors resize-none"
-                                    placeholder="Escribe un mensaje especial..."
-                                    required
-                                ></textarea>
-                            </div>
+                            {isPersonalized && (
+                                <div className="space-y-2 animate-fade-in">
+                                    <label className="text-xs uppercase tracking-widest text-barberia-gold font-bold">Dedicatoria</label>
+                                    <textarea
+                                        name="message"
+                                        value={formData.message}
+                                        onChange={handleInputChange}
+                                        rows={3}
+                                        className="w-full bg-black/40 border-b border-white/20 py-3 px-4 text-white focus:outline-none focus:border-barberia-gold transition-colors resize-none"
+                                        placeholder="Escribe un mensaje especial..."
+                                        required={isPersonalized}
+                                    ></textarea>
+                                </div>
+                            )}
 
                             <div className="pt-4 text-center flex flex-col items-center gap-4">
                                 <button
@@ -410,17 +430,25 @@ export default function GiftCardsPage() {
                                 </div>
 
                                 {/* DEDICATION */}
-                                <div className="text-center mb-10">
-                                    <p className="text-barberia-gold text-[28px] italic font-serif">
-                                        "{formData.message || 'Tu mensaje aquí...'}"
-                                    </p>
+                                <div className="text-center mb-10 h-10">
+                                    {isPersonalized && (
+                                        <p className="text-barberia-gold text-[28px] italic font-serif">
+                                            "{formData.message || 'Tu mensaje aquí...'}"
+                                        </p>
+                                    )}
                                 </div>
 
                                 {/* FOOTER */}
                                 <div className="flex justify-between items-end">
                                     <div className="text-left space-y-1">
-                                        <p className="text-[20px] text-white">De: <span className="text-gray-400">{formData.from}</span></p>
-                                        <p className="text-[20px] text-white">Para: <span className="text-gray-400">{formData.to}</span></p>
+                                        {isPersonalized ? (
+                                            <>
+                                                <p className="text-[20px] text-white"><span className="text-gray-400">{formData.from}</span></p>
+                                                <p className="text-[20px] text-white"><span className="text-gray-400">{formData.to}</span></p>
+                                            </>
+                                        ) : (
+                                            <p className="text-[26px] text-white font-bold uppercase"><span className="text-white">{formData.to}</span></p>
+                                        )}
                                     </div>
                                     <div className="text-right">
                                         <p className="text-[18px] text-gray-400 mb-1">
@@ -441,8 +469,6 @@ export default function GiftCardsPage() {
             <div style={{ position: "fixed", left: "-9999px", top: "0", zIndex: -50, opacity: 0, pointerEvents: "none" }}>
                 <div
                     ref={cardRef}
-                    // Explicit pixel dimensions mapped from 85mm x 45mm @ high DPI (approx 10px per mm for CSS layout convenience, scaled up by html2canvas)
-                    // 850px x 450px is a good maintained ratio.
                     style={{
                         width: "850px",
                         height: "450px",
@@ -516,27 +542,37 @@ export default function GiftCardsPage() {
                     </div>
 
                     {/* Dedication */}
-                    <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "30px" }}>
-                        <p style={{
-                            color: "#D4AF37",
-                            fontSize: "32px",
-                            fontFamily: "Brush Script MT, cursive",
-                            fontStyle: "italic",
-                            margin: 0
-                        }}>
-                            "{formData.message || "Un presente especial para ti"}"
-                        </p>
+                    <div style={{ textAlign: "center", marginTop: "20px", marginBottom: "30px", minHeight: "38px" }}>
+                        {isPersonalized && (
+                            <p style={{
+                                color: "#D4AF37",
+                                fontSize: "32px",
+                                fontFamily: "Brush Script MT, cursive",
+                                fontStyle: "italic",
+                                margin: 0
+                            }}>
+                                "{formData.message || "Un presente especial para ti"}"
+                            </p>
+                        )}
                     </div>
 
                     {/* Footer Row */}
                     <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end" }}>
                         <div style={{ textAlign: "left" }}>
-                            <p style={{ fontSize: "22px", margin: "0 0 5px 0", color: "#fff" }}>
-                                De: <span style={{ color: "#bbb" }}>{formData.from}</span>
-                            </p>
-                            <p style={{ fontSize: "22px", margin: 0, color: "#fff" }}>
-                                Para: <span style={{ color: "#bbb" }}>{formData.to}</span>
-                            </p>
+                            {isPersonalized ? (
+                                <>
+                                    <p style={{ fontSize: "22px", margin: "0 0 5px 0", color: "#fff" }}>
+                                        <span style={{ color: "#bbb" }}>{formData.from}</span>
+                                    </p>
+                                    <p style={{ fontSize: "22px", margin: 0, color: "#fff" }}>
+                                        <span style={{ color: "#bbb" }}>{formData.to}</span>
+                                    </p>
+                                </>
+                            ) : (
+                                <p style={{ fontSize: "26px", margin: 0, color: "#fff", fontWeight: "bold", textTransform: "uppercase" }}>
+                                    <span style={{ color: "#fff" }}>{formData.to}</span>
+                                </p>
+                            )}
                         </div>
                         <div style={{ textAlign: "right" }}>
                             <p style={{ fontSize: "20px", color: "#ccc", margin: "0 0 5px 0" }}>
@@ -552,3 +588,4 @@ export default function GiftCardsPage() {
         </main>
     );
 }
+
