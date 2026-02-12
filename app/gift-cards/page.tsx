@@ -274,18 +274,26 @@ export default function GiftCardsPage() {
                 </div>
             </section>
 
-            {/* Form Section */}
-            <section className={`
-        relative pb-32 transition-all duration-700 ease-in-out
-        ${selectedOption ? "opacity-100 translate-y-0" : "opacity-0 translate-y-20 pointer-events-none h-0 overflow-hidden"}
-      `}>
-                <div className="max-w-3xl mx-auto px-4">
-                    <div className="bg-[#1a1a1a] p-10 border-t-4 border-barberia-gold shadow-2xl relative">
+            {/* Form Modal */}
+            {selectedOption && (
+                <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 backdrop-blur-sm p-4 animate-fade-in">
+                    <div className="relative w-full max-w-2xl bg-[#1a1a1a] p-8 md:p-10 rounded-none border border-barberia-gold shadow-[0_0_50px_rgba(212,175,55,0.2)]">
+
+                        <button
+                            onClick={() => setSelectedOption(null)}
+                            className="absolute -top-5 -right-5 w-10 h-10 bg-barberia-gold text-black rounded-full flex items-center justify-center font-bold text-xl hover:bg-white transition-colors shadow-lg z-10"
+                        >
+                            ✕
+                        </button>
+
                         <div className="absolute -top-3 left-1/2 -translate-x-1/2 w-6 h-6 bg-barberia-gold rotate-45"></div>
 
-                        <h3 className="text-2xl font-agency text-white mb-8 text-center uppercase tracking-widest">
+                        <h3 className="text-3xl font-agency text-white mb-2 text-center uppercase tracking-widest">
                             Personaliza tu <span className="text-barberia-gold">Regalo</span>
                         </h3>
+                        <p className="text-center text-gray-400 mb-8 text-sm uppercase tracking-wide">
+                            {selectedOption === "libre" ? "Monto Libre" : packages.find(p => p.id === selectedOption)?.name}
+                        </p>
 
                         <form onSubmit={handleGeneratePDF} className="space-y-6">
                             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -328,26 +336,26 @@ export default function GiftCardsPage() {
                                 ></textarea>
                             </div>
 
-                            <div className="pt-8 text-center">
+                            <div className="pt-4 text-center flex flex-col items-center gap-4">
                                 <button
                                     type="submit"
                                     disabled={isGenerating}
-                                    className="px-12 py-4 bg-barberia-gold text-black font-agency font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
+                                    className="w-full md:w-auto px-12 py-4 bg-barberia-gold text-black font-agency font-bold text-xl uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_20px_rgba(212,175,55,0.4)] hover:shadow-[0_0_30px_rgba(255,255,255,0.4)] disabled:opacity-50 disabled:cursor-not-allowed"
                                 >
-                                    {isGenerating ? "Generando..." : "Descargar Tarjeta PDF"}
+                                    {isGenerating ? "Generando..." : "Confirmar y Descargar PDF"}
                                 </button>
                                 <button
                                     type="button"
                                     onClick={() => setShowPreview(true)}
-                                    className="mt-4 text-barberia-gold underline text-sm uppercase tracking-widest hover:text-white transition-colors"
+                                    className="text-barberia-gold underline text-sm uppercase tracking-widest hover:text-white transition-colors"
                                 >
-                                    Vista Previa
+                                    Ver Vista Previa
                                 </button>
                             </div>
                         </form>
                     </div>
                 </div>
-            </section>
+            )}
 
             {/* PREVIEW MODAL */}
             {showPreview && (
