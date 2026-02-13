@@ -165,7 +165,7 @@ export default function GiftCardsPage() {
                     <div
                         className="absolute inset-0 opacity-60"
                         style={{
-                            backgroundImage: "url('/san-valentin-landing-bg.jpg')",
+                            backgroundImage: "url('/san-valentin-landing-bg-v2.jpg')",
                             backgroundAttachment: "fixed",
                             backgroundPosition: "center",
                             backgroundSize: "cover",
