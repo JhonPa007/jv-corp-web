@@ -141,6 +141,8 @@ const ClientIdentityStep = ({
     }
 
     if (mode === 'confirm_identity') {
+        const needsEmail = !clientData.email;
+
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
                 <h2 className="text-2xl font-bold text-gray-900 mb-2">¿Eres tú?</h2>
@@ -148,12 +150,39 @@ const ClientIdentityStep = ({
                     <div className="w-16 h-16 bg-green-200 text-green-700 rounded-full flex items-center justify-center font-bold text-2xl">
                         {clientData.nombres.charAt(0)}
                     </div>
-                    <div>
+                    <div className="flex-1">
                         <h3 className="font-bold text-lg text-gray-900">{clientData.nombres} {clientData.apellidos}</h3>
-                        <p className="text-sm text-gray-600">{clientData.email}</p>
+                        <p className="text-sm text-gray-600">{clientData.email || 'Correo no registrado'}</p>
                         <p className="text-sm text-gray-600">{clientData.telefono}</p>
                     </div>
                 </div>
+
+                {needsEmail && (
+                    <div className="space-y-3 p-4 bg-amber-50 rounded-xl border border-amber-200 animate-in fade-in zoom-in duration-300">
+                        <label className="block text-sm font-bold text-amber-800">
+                            ¡Hola! Para continuar necesitamos tu correo electrónico:
+                        </label>
+                        <div className="relative">
+                            <FaEnvelope className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400" />
+                            <input
+                                type="email"
+                                className="w-full pl-10 p-3 border border-amber-300 rounded-xl focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-gray-900"
+                                placeholder="tucorreo@ejemplo.com"
+                                value={clientData.email}
+                                onChange={e => setClientData({ ...clientData, email: e.target.value })}
+                            />
+                        </div>
+                        <p className="text-xs text-amber-700">
+                            Lo usaremos para crear tu usuario en nuestra futura App de clientes. 🚀
+                        </p>
+                    </div>
+                )}
+
+                {clientError && (
+                    <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-200 flex items-center gap-2">
+                        <span>⚠️</span> {clientError}
+                    </div>
+                )}
 
                 <div className="grid grid-cols-2 gap-4">
                     <button
@@ -368,8 +397,17 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
     const handleClientSubmit = async () => {
         // Just move to confirmation step, don't create reservation yet.
         // Or validate client data locally first?
-        if (!clientData.nombres || !clientData.telefono || !clientData.email || !clientData.fecha_nacimiento) {
-            setClientError("Por favor completa los campos obligatorios (*)");
+        if (!clientData.nombres || !clientData.telefono || !clientData.email) {
+            setClientError("Por favor completa los campos obligatorios (*) incluyendo tu correo.");
+            return;
+        }
+
+        // Only validate birthday if NEW client (old clients might not have it and we don't want to force it now unless necessary)
+        // Actually, the previous code had !clientData.fecha_nacimiento as mandatory. 
+        // Let's keep it mandatory for consistency, but if they are an existing client we might need to handle it.
+        // For now, let's just make it clear email is mandatory.
+        if (!clientData.fecha_nacimiento) {
+            setClientError("Por favor ingresa tu fecha de nacimiento.");
             return;
         }
         setClientError(null);

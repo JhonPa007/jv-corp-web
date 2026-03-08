@@ -26,6 +26,14 @@ export async function registerClientForBooking(data: ClientRegistrationData) {
         });
 
         if (existingClient) {
+            // Si el cliente existe pero no tiene correo y el usuario proporcionó uno, actualizarlo
+            if (!existingClient.email && data.email) {
+                const updatedClient = await prisma.clientes.update({
+                    where: { id: existingClient.id },
+                    data: { email: data.email }
+                });
+                return { success: true, client: updatedClient, isNew: false };
+            }
             return { success: true, client: existingClient, isNew: false };
         }
 
