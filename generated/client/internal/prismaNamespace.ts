@@ -443,7 +443,8 @@ export const ModelName = {
   kardex: 'kardex',
   loyalty_rule_services: 'loyalty_rule_services',
   loyalty_rules: 'loyalty_rules',
-  puntos_historial: 'puntos_historial'
+  puntos_historial: 'puntos_historial',
+  libro_reclamaciones: 'libro_reclamaciones'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -459,7 +460,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ajustes_pago" | "ausencias_empleado" | "bono_reglas" | "bonos" | "caja_sesiones" | "campanas" | "categorias_gastos" | "categorias_productos" | "categorias_servicios" | "cliente_comunicaciones" | "cliente_membresias" | "clientes" | "colaboradores" | "comisiones" | "configuracion_sistema" | "configuracion_sucursal" | "empleado_sucursales" | "empleados" | "esquema_comisiones" | "estilos" | "gastos" | "horarios_empleado" | "horarios_extra" | "ingresos_academia" | "marcas" | "membresia_planes" | "movimientos_caja" | "movimientos_fondo" | "paquete_servicios_items" | "permisos" | "planillas" | "plantillas_whatsapp" | "productos" | "propinas" | "proveedores" | "reservas" | "rol_permisos" | "roles" | "series_comprobantes" | "servicios" | "sucursales" | "venta_items" | "venta_pagos" | "ventas" | "gift_cards" | "packages" | "package_items" | "compra_items" | "compras" | "crm_config" | "kardex" | "loyalty_rule_services" | "loyalty_rules" | "puntos_historial"
+    modelProps: "ajustes_pago" | "ausencias_empleado" | "bono_reglas" | "bonos" | "caja_sesiones" | "campanas" | "categorias_gastos" | "categorias_productos" | "categorias_servicios" | "cliente_comunicaciones" | "cliente_membresias" | "clientes" | "colaboradores" | "comisiones" | "configuracion_sistema" | "configuracion_sucursal" | "empleado_sucursales" | "empleados" | "esquema_comisiones" | "estilos" | "gastos" | "horarios_empleado" | "horarios_extra" | "ingresos_academia" | "marcas" | "membresia_planes" | "movimientos_caja" | "movimientos_fondo" | "paquete_servicios_items" | "permisos" | "planillas" | "plantillas_whatsapp" | "productos" | "propinas" | "proveedores" | "reservas" | "rol_permisos" | "roles" | "series_comprobantes" | "servicios" | "sucursales" | "venta_items" | "venta_pagos" | "ventas" | "gift_cards" | "packages" | "package_items" | "compra_items" | "compras" | "crm_config" | "kardex" | "loyalty_rule_services" | "loyalty_rules" | "puntos_historial" | "libro_reclamaciones"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -4459,6 +4460,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         }
       }
     }
+    libro_reclamaciones: {
+      payload: Prisma.$libro_reclamacionesPayload<ExtArgs>
+      fields: Prisma.libro_reclamacionesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.libro_reclamacionesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.libro_reclamacionesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        findFirst: {
+          args: Prisma.libro_reclamacionesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.libro_reclamacionesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        findMany: {
+          args: Prisma.libro_reclamacionesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>[]
+        }
+        create: {
+          args: Prisma.libro_reclamacionesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        createMany: {
+          args: Prisma.libro_reclamacionesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.libro_reclamacionesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>[]
+        }
+        delete: {
+          args: Prisma.libro_reclamacionesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        update: {
+          args: Prisma.libro_reclamacionesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        deleteMany: {
+          args: Prisma.libro_reclamacionesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.libro_reclamacionesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.libro_reclamacionesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>[]
+        }
+        upsert: {
+          args: Prisma.libro_reclamacionesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$libro_reclamacionesPayload>
+        }
+        aggregate: {
+          args: Prisma.Libro_reclamacionesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateLibro_reclamaciones>
+        }
+        groupBy: {
+          args: Prisma.libro_reclamacionesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Libro_reclamacionesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.libro_reclamacionesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Libro_reclamacionesCountAggregateOutputType> | number
+        }
+      }
+    }
   }
 } & {
   other: {
@@ -5339,6 +5414,33 @@ export const Puntos_historialScalarFieldEnum = {
 export type Puntos_historialScalarFieldEnum = (typeof Puntos_historialScalarFieldEnum)[keyof typeof Puntos_historialScalarFieldEnum]
 
 
+export const Libro_reclamacionesScalarFieldEnum = {
+  id_reclamo: 'id_reclamo',
+  codigo_seguimiento: 'codigo_seguimiento',
+  fecha_registro: 'fecha_registro',
+  nombre_completo: 'nombre_completo',
+  tipo_documento: 'tipo_documento',
+  numero_documento: 'numero_documento',
+  direccion_domicilio: 'direccion_domicilio',
+  email: 'email',
+  telefono: 'telefono',
+  nombre_padre_tutor: 'nombre_padre_tutor',
+  unidad_negocio: 'unidad_negocio',
+  tipo_bien: 'tipo_bien',
+  monto_reclamado: 'monto_reclamado',
+  descripcion_bien: 'descripcion_bien',
+  tipo_incidencia: 'tipo_incidencia',
+  detalle_incidencia: 'detalle_incidencia',
+  pedido_consumidor: 'pedido_consumidor',
+  estado: 'estado',
+  respuesta_empresa: 'respuesta_empresa',
+  fecha_respuesta: 'fecha_respuesta',
+  archivo_sustento: 'archivo_sustento'
+} as const
+
+export type Libro_reclamacionesScalarFieldEnum = (typeof Libro_reclamacionesScalarFieldEnum)[keyof typeof Libro_reclamacionesScalarFieldEnum]
+
+
 export const SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -5617,6 +5719,7 @@ export type GlobalOmitConfig = {
   loyalty_rule_services?: Prisma.loyalty_rule_servicesOmit
   loyalty_rules?: Prisma.loyalty_rulesOmit
   puntos_historial?: Prisma.puntos_historialOmit
+  libro_reclamaciones?: Prisma.libro_reclamacionesOmit
 }
 
 /* Types for Logging */

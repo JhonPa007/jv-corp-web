@@ -102,7 +102,8 @@ export const ModelName = {
   kardex: 'kardex',
   loyalty_rule_services: 'loyalty_rule_services',
   loyalty_rules: 'loyalty_rules',
-  puntos_historial: 'puntos_historial'
+  puntos_historial: 'puntos_historial',
+  libro_reclamaciones: 'libro_reclamaciones'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -960,6 +961,33 @@ export const Puntos_historialScalarFieldEnum = {
 } as const
 
 export type Puntos_historialScalarFieldEnum = (typeof Puntos_historialScalarFieldEnum)[keyof typeof Puntos_historialScalarFieldEnum]
+
+
+export const Libro_reclamacionesScalarFieldEnum = {
+  id_reclamo: 'id_reclamo',
+  codigo_seguimiento: 'codigo_seguimiento',
+  fecha_registro: 'fecha_registro',
+  nombre_completo: 'nombre_completo',
+  tipo_documento: 'tipo_documento',
+  numero_documento: 'numero_documento',
+  direccion_domicilio: 'direccion_domicilio',
+  email: 'email',
+  telefono: 'telefono',
+  nombre_padre_tutor: 'nombre_padre_tutor',
+  unidad_negocio: 'unidad_negocio',
+  tipo_bien: 'tipo_bien',
+  monto_reclamado: 'monto_reclamado',
+  descripcion_bien: 'descripcion_bien',
+  tipo_incidencia: 'tipo_incidencia',
+  detalle_incidencia: 'detalle_incidencia',
+  pedido_consumidor: 'pedido_consumidor',
+  estado: 'estado',
+  respuesta_empresa: 'respuesta_empresa',
+  fecha_respuesta: 'fecha_respuesta',
+  archivo_sustento: 'archivo_sustento'
+} as const
+
+export type Libro_reclamacionesScalarFieldEnum = (typeof Libro_reclamacionesScalarFieldEnum)[keyof typeof Libro_reclamacionesScalarFieldEnum]
 
 
 export const SortOrder = {

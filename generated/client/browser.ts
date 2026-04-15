@@ -287,3 +287,8 @@ export type loyalty_rules = Prisma.loyalty_rulesModel
  * 
  */
 export type puntos_historial = Prisma.puntos_historialModel
+/**
+ * Model libro_reclamaciones
+ * 
+ */
+export type libro_reclamaciones = Prisma.libro_reclamacionesModel

@@ -891,3 +891,37 @@ model puntos_historial {
   fecha_registro   DateTime? @default(now()) @db.Timestamp(6)
   descripcion      String?
 }
+
+model libro_reclamaciones {
+  id_reclamo           Int      @id @default(autoincrement())
+  codigo_seguimiento   String   @unique @db.VarChar(20) // Ej: RE-2026-0001
+  fecha_registro       DateTime @default(now()) @db.Timestamp(6)
+
+  // Datos del Consumidor
+  nombre_completo      String   @db.VarChar(150)
+  tipo_documento       String   @db.VarChar(20) // DNI, CE, Pasaporte (Prisma handles enums better as strings or defined enums)
+  numero_documento     String   @db.VarChar(15)
+  direccion_domicilio  String   @db.Text
+  email                String   @db.VarChar(100)
+  telefono             String   @db.VarChar(15)
+  nombre_padre_tutor   String?  @db.VarChar(150) // Obligatorio si es menor de edad
+
+  // Detalle del Bien Contratado
+  unidad_negocio       String   @db.VarChar(20) // Studio, School, Comercial
+  tipo_bien            String   @db.VarChar(20) // Producto, Servicio
+  monto_reclamado      Decimal? @db.Decimal(10, 2)
+  descripcion_bien     String?  @db.Text
+
+  // Detalle de la Disconformidad
+  tipo_incidencia      String   @db.VarChar(20) // Reclamo, Queja
+  detalle_incidencia   String   @db.Text
+  pedido_consumidor    String   @db.Text
+
+  // Gestión Interna (Auditable)
+  estado               String   @default("Pendiente") @db.VarChar(20) // Pendiente, En Proceso, Resuelto
+  respuesta_empresa    String?  @db.Text
+  fecha_respuesta      DateTime? @db.Timestamp(6)
+  archivo_sustento     String?  @db.VarChar(255) // Ruta de PDF de respuesta enviada
+
+  @@index([codigo_seguimiento])
+}
