@@ -48,7 +48,7 @@ export default function LibroReclamacionesPage() {
     if (result?.success) {
         return (
             <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-                <div id="reclamacion-content" className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-green-100">
+                <div id="reclamacion-content" className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-green-100 no-print">
                     <div className="text-center">
                         <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
                             <FiCheckCircle size={32} />
@@ -415,7 +415,7 @@ export default function LibroReclamacionesPage() {
                     </div>
                 </form>
 
-                <footer className="mt-12 text-center text-neutral-400 text-xs py-6 border-t border-neutral-200">
+                <footer className="mt-12 text-center text-neutral-400 text-xs py-6 border-t border-neutral-200 no-print">
                     <p>© {new Date().getFullYear()} JV Corp SAC. Todos los derechos reservados.</p>
                 </footer>
             </div>
