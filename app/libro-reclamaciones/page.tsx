@@ -11,18 +11,25 @@ export default function LibroReclamacionesPage() {
 
     const handleDownloadPDF = async () => {
         if (typeof window !== 'undefined') {
-            const html2pdf = (await import('html2pdf.js')).default;
-            const element = document.getElementById('reclamacion-content');
-            if (!element) return;
+            try {
+                // Importación dinámica compatible con ES Modules
+                const html2pdf = (await import('html2pdf.js')).default;
+                const element = document.getElementById('reclamacion-content');
+                if (!element) throw new Error("No se encontró el contenido para el PDF");
 
-            const opt = {
-                margin: 10,
-                filename: `Reclamacion_${result?.codigo}.pdf`,
-                image: { type: 'jpeg' as const, quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'mm' as const, format: 'a4' as const, orientation: 'portrait' as const }
-            };
-            html2pdf().from(element).set(opt).save();
+                const opt = {
+                    margin: 10,
+                    filename: `Reclamacion_${result?.codigo || 'JV'}.pdf`,
+                    image: { type: 'jpeg', quality: 0.98 },
+                    html2canvas: { scale: 2, useCORS: true },
+                    jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+                };
+
+                await html2pdf().from(element).set(opt).save();
+            } catch (error) {
+                console.error("Error al generar PDF:", error);
+                alert("Hubo un problema al generar el PDF. Por favor, intente imprimir la pantalla o guardarla como PDF desde el navegador.");
+            }
         }
     };
 
