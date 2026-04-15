@@ -26,9 +26,9 @@ export default function LibroReclamacionesPage() {
                 };
 
                 await html2pdf().from(element).set(opt).save();
-            } catch (error) {
+            } catch (error: any) {
                 console.error("Error al generar PDF:", error);
-                alert("Hubo un problema al generar el PDF. Por favor, intente imprimir la pantalla o guardarla como PDF desde el navegador.");
+                alert(`Error al generar PDF: ${error.message || 'Error desconocido'}. Por favor, intente imprimir (Ctrl+P) y Guardar como PDF.`);
             }
         }
     };
