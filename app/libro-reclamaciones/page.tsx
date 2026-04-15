@@ -40,13 +40,16 @@ export default function LibroReclamacionesPage() {
         setIsSubmitting(true);
         setResult(null);
 
-        const res = await createReclamacion(formData);
-
-        setResult(res as any);
-        setIsSubmitting(false);
-
-        if (res.success) {
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+        try {
+            const res = await createReclamacion(formData);
+            setResult(res as any);
+            if (res.success) {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        } catch (error) {
+            setResult({ success: false, message: "Error de red o servidor. Intente de nuevo." });
+        } finally {
+            setIsSubmitting(false);
         }
     }
 

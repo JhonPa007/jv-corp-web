@@ -63,14 +63,14 @@ export async function createReclamacion(formData: FormData) {
             data: data
         });
 
-        // 4. Enviar Correo (Background)
-        // No bloqueamos la respuesta principal por si falla el correo, pero lo intentamos.
-        // En Next.js Server Actions, podemos esperar o no. Aquí esperaremos para confirmar éxito al usuario.
-        const emailResult = await sendReclamacionEmail(newReclamacion);
-
-        if (!emailResult.success) {
-            console.warn("La reclamación se guardó pero el correo falló.");
-        }
+        // 4. Enviar Correo (No bloqueante)
+        // Ejecutamos el envío sin 'await' para que la respuesta al usuario sea inmediata.
+        // Capturamos el error internamente para no romper la ejecución.
+        sendReclamacionEmail(newReclamacion).then(res => {
+            if (!res.success) console.error("Error enviando correo de reclamación:", res.error);
+        }).catch(err => {
+            console.error("Error fatal en proceso de correo:", err);
+        });
 
         return {
             success: true,
@@ -78,11 +78,11 @@ export async function createReclamacion(formData: FormData) {
             message: "Su reclamación ha sido registrada exitosamente."
         };
 
-    } catch (error) {
-        console.error("Error al crear reclamación:", error);
+    } catch (error: any) {
+        console.error("Error crítico en Libro de Reclamaciones:", error);
         return {
             success: false,
-            error: "Hubo un error al procesar su solicitud. Por favor intente más tarde."
+            message: error?.message || "Hubo un error al procesar su solicitud. Por favor intente más tarde."
         };
     }
 }
