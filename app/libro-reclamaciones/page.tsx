@@ -2,19 +2,42 @@
 
 import React, { useState } from 'react';
 import { createReclamacion } from '../actions/reclamaciones-actions';
-import { FiSend, FiCheckCircle, FiAlertCircle, FiInfo } from 'react-icons/fi';
+import { FiSend, FiCheckCircle, FiAlertCircle, FiInfo, FiDownload } from 'react-icons/fi';
 
 export default function LibroReclamacionesPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [result, setResult] = useState<{ success: boolean; message: string; codigo?: string } | null>(null);
     const [esMenor, setEsMenor] = useState(false);
 
+    const handleDownloadPDF = async () => {
+        if (typeof window !== 'undefined') {
+            const html2pdf = (await import('html2pdf.js')).default;
+            const element = document.getElementById('reclamacion-content');
+            const opt = {
+                margin: 10,
+                filename: `Reclamacion_${result?.codigo}.pdf`,
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+            };
+            html2pdf().from(element).set(opt).save();
+        }
+    };
+
     async function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
         e.preventDefault();
+
+        const formData = new FormData(e.currentTarget);
+
+        // Validación de Blindaje de Datos
+        if (formData.get('acepto_terminos') !== 'on') {
+            alert("Debe aceptar el tratamiento de datos para continuar");
+            return;
+        }
+
         setIsSubmitting(true);
         setResult(null);
 
-        const formData = new FormData(e.currentTarget);
         const res = await createReclamacion(formData);
 
         setResult(res as any);
@@ -28,25 +51,47 @@ export default function LibroReclamacionesPage() {
     if (result?.success) {
         return (
             <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-                <div className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 text-center border border-green-100">
-                    <div className="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <FiCheckCircle size={40} />
+                <div id="reclamacion-content" className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-green-100">
+                    <div className="text-center">
+                        <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                            <FiCheckCircle size={32} />
+                        </div>
+                        <h2 className="text-xl font-bold text-neutral-800 mb-1">¡Registro Exitoso!</h2>
+                        <p className="text-neutral-500 text-sm mb-4">Su solicitud ha sido procesada correctamente.</p>
+
+                        <div className="bg-neutral-50 p-4 rounded-xl mb-6 border border-neutral-100">
+                            <p className="text-[10px] text-neutral-400 uppercase font-black tracking-widest mb-1">Código de Seguimiento</p>
+                            <p className="text-3xl font-bold text-neutral-900 font-agency tracking-wider">{result.codigo}</p>
+                        </div>
                     </div>
-                    <h2 className="text-2xl font-bold text-neutral-800 mb-2">¡Reclamación Registrada!</h2>
-                    <p className="text-neutral-600 mb-6">{result.message}</p>
-                    <div className="bg-neutral-100 p-4 rounded-lg mb-8">
-                        <p className="text-sm text-neutral-500 uppercase font-semibold mb-1">Código de Seguimiento</p>
-                        <p className="text-2xl font-mono font-bold text-neutral-900 tracking-wider font-agency">{result.codigo}</p>
+
+                    <div className="space-y-3 mb-8">
+                        <div className="flex items-start gap-3 p-3 bg-neutral-50 rounded-lg">
+                            <FiInfo className="text-barberia-gold mt-0.5 shrink-0" />
+                            <p className="text-xs text-neutral-600">Se envió una copia fiel a <strong>su correo</strong>. Puede descargar el PDF numerado aquí debajo.</p>
+                        </div>
                     </div>
-                    <p className="text-sm text-neutral-500 mb-8">
-                        Se ha enviado una copia fiel a su correo electrónico. Guarde este código para futuras consultas.
-                    </p>
-                    <button
-                        onClick={() => window.location.href = '/'}
-                        className="w-full bg-barberia-dark text-white font-bold py-3 rounded-lg hover:bg-neutral-800 transition-colors"
-                    >
-                        Volver a Inicio
-                    </button>
+
+                    <div className="flex flex-col gap-3 no-print">
+                        <button
+                            onClick={handleDownloadPDF}
+                            className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
+                        >
+                            <FiDownload /> Descargar PDF Numerado
+                        </button>
+                        <button
+                            onClick={() => window.location.href = '/'}
+                            className="w-full bg-neutral-900 text-white font-bold py-3 rounded-xl hover:bg-black transition-all"
+                        >
+                            Volver al Inicio
+                        </button>
+                    </div>
+
+                    <style jsx>{`
+                        @media print {
+                            .no-print { display: none !important; }
+                        }
+                    `}</style>
                 </div>
             </div>
         );
@@ -225,11 +270,25 @@ export default function LibroReclamacionesPage() {
 
                     {/* Aceptación y Envío */}
                     <div className="bg-neutral-900 rounded-2xl p-6 md:p-8 shadow-xl text-white">
-                        <div className="flex items-start gap-4 mb-8 p-4 bg-white/5 rounded-xl border border-white/10">
-                            <input required type="checkbox" id="acepto_plazos" className="w-6 h-6 mt-1 accent-barberia-gold cursor-pointer" />
-                            <label htmlFor="acepto_plazos" className="text-sm md:text-base leading-relaxed cursor-pointer text-neutral-300">
-                                Acepto que la respuesta será enviada en un plazo máximo de <span className="text-barberia-gold font-bold">15 días hábiles</span> (improrrogables) al correo electrónico proporcionado, conforme a la normativa vigente de INDECOPI.
-                            </label>
+                        <div className="flex flex-col gap-6 mb-8">
+                            {/* Plazo Legal INDECOPI */}
+                            <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                                <input required type="checkbox" id="acepto_plazos" className="w-6 h-6 mt-1 accent-barberia-gold cursor-pointer" />
+                                <label htmlFor="acepto_plazos" className="text-sm md:text-base leading-relaxed cursor-pointer text-neutral-300">
+                                    Acepto que la respuesta será enviada en un plazo máximo de <span className="text-barberia-gold font-bold">15 días hábiles</span> (improrrogables) al correo electrónico proporcionado.
+                                </label>
+                            </div>
+
+                            {/* Blindaje de Datos Personales - Ley N° 29733 */}
+                            <div className="flex items-start gap-4 p-4 bg-white/5 rounded-xl border border-white/10">
+                                <input required name="acepto_terminos" type="checkbox" id="acepto_terminos" className="w-6 h-6 mt-1 accent-barberia-gold cursor-pointer" />
+                                <div className="flex flex-col">
+                                    <label htmlFor="acepto_terminos" className="text-[11px] md:text-[12px] leading-snug cursor-pointer text-neutral-400">
+                                        De conformidad con la <span className="text-white font-medium">Ley N° 29733 de Protección de Datos Personales</span>, autorizo a <span className="text-white font-medium">JV Corp SAC (RUC 20614287561)</span> a tratar mis datos para la gestión de este reclamo. Entiendo que mis datos se almacenarán en su banco de datos por un periodo de 2 años según exige INDECOPI y que puedo ejercer mis derechos ARCO escribiendo a <span className="text-barberia-gold underline">legal@jvcorp.com</span>.
+                                    </label>
+                                    <a href="/politica-de-privacidad" target="_blank" className="text-[10px] text-barberia-gold uppercase font-bold mt-2 hover:underline">Ver Política de Privacidad completa</a>
+                                </div>
+                            </div>
                         </div>
 
                         <div className="flex flex-col md:flex-row items-center gap-6">

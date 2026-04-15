@@ -58,6 +58,9 @@ export type Libro_reclamacionesMinAggregateOutputType = {
   respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  acepto_terminos: boolean | null
+  ip_registro: string | null
+  fecha_consentimiento: Date | null
 }
 
 export type Libro_reclamacionesMaxAggregateOutputType = {
@@ -82,6 +85,9 @@ export type Libro_reclamacionesMaxAggregateOutputType = {
   respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  acepto_terminos: boolean | null
+  ip_registro: string | null
+  fecha_consentimiento: Date | null
 }
 
 export type Libro_reclamacionesCountAggregateOutputType = {
@@ -106,6 +112,9 @@ export type Libro_reclamacionesCountAggregateOutputType = {
   respuesta_empresa: number
   fecha_respuesta: number
   archivo_sustento: number
+  acepto_terminos: number
+  ip_registro: number
+  fecha_consentimiento: number
   _all: number
 }
 
@@ -142,6 +151,9 @@ export type Libro_reclamacionesMinAggregateInputType = {
   respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  acepto_terminos?: true
+  ip_registro?: true
+  fecha_consentimiento?: true
 }
 
 export type Libro_reclamacionesMaxAggregateInputType = {
@@ -166,6 +178,9 @@ export type Libro_reclamacionesMaxAggregateInputType = {
   respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  acepto_terminos?: true
+  ip_registro?: true
+  fecha_consentimiento?: true
 }
 
 export type Libro_reclamacionesCountAggregateInputType = {
@@ -190,6 +205,9 @@ export type Libro_reclamacionesCountAggregateInputType = {
   respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  acepto_terminos?: true
+  ip_registro?: true
+  fecha_consentimiento?: true
   _all?: true
 }
 
@@ -301,6 +319,9 @@ export type Libro_reclamacionesGroupByOutputType = {
   respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  acepto_terminos: boolean
+  ip_registro: string | null
+  fecha_consentimiento: Date | null
   _count: Libro_reclamacionesCountAggregateOutputType | null
   _avg: Libro_reclamacionesAvgAggregateOutputType | null
   _sum: Libro_reclamacionesSumAggregateOutputType | null
@@ -348,6 +369,9 @@ export type libro_reclamacionesWhereInput = {
   respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  acepto_terminos?: Prisma.BoolFilter<"libro_reclamaciones"> | boolean
+  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  fecha_consentimiento?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
 }
 
 export type libro_reclamacionesOrderByWithRelationInput = {
@@ -372,6 +396,9 @@ export type libro_reclamacionesOrderByWithRelationInput = {
   respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrderInput | Prisma.SortOrder
+  acepto_terminos?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
+  fecha_consentimiento?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type libro_reclamacionesWhereUniqueInput = Prisma.AtLeast<{
@@ -399,6 +426,9 @@ export type libro_reclamacionesWhereUniqueInput = Prisma.AtLeast<{
   respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  acepto_terminos?: Prisma.BoolFilter<"libro_reclamaciones"> | boolean
+  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  fecha_consentimiento?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
 }, "id_reclamo" | "codigo_seguimiento">
 
 export type libro_reclamacionesOrderByWithAggregationInput = {
@@ -423,6 +453,9 @@ export type libro_reclamacionesOrderByWithAggregationInput = {
   respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrderInput | Prisma.SortOrder
+  acepto_terminos?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
+  fecha_consentimiento?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.libro_reclamacionesCountOrderByAggregateInput
   _avg?: Prisma.libro_reclamacionesAvgOrderByAggregateInput
   _max?: Prisma.libro_reclamacionesMaxOrderByAggregateInput
@@ -455,6 +488,9 @@ export type libro_reclamacionesScalarWhereWithAggregatesInput = {
   respuesta_empresa?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableWithAggregatesFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  acepto_terminos?: Prisma.BoolWithAggregatesFilter<"libro_reclamaciones"> | boolean
+  ip_registro?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  fecha_consentimiento?: Prisma.DateTimeNullableWithAggregatesFilter<"libro_reclamaciones"> | Date | string | null
 }
 
 export type libro_reclamacionesCreateInput = {
@@ -478,6 +514,9 @@ export type libro_reclamacionesCreateInput = {
   respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  acepto_terminos?: boolean
+  ip_registro?: string | null
+  fecha_consentimiento?: Date | string | null
 }
 
 export type libro_reclamacionesUncheckedCreateInput = {
@@ -502,6 +541,9 @@ export type libro_reclamacionesUncheckedCreateInput = {
   respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  acepto_terminos?: boolean
+  ip_registro?: string | null
+  fecha_consentimiento?: Date | string | null
 }
 
 export type libro_reclamacionesUpdateInput = {
@@ -525,6 +567,9 @@ export type libro_reclamacionesUpdateInput = {
   respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type libro_reclamacionesUncheckedUpdateInput = {
@@ -549,6 +594,9 @@ export type libro_reclamacionesUncheckedUpdateInput = {
   respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type libro_reclamacionesCreateManyInput = {
@@ -573,6 +621,9 @@ export type libro_reclamacionesCreateManyInput = {
   respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  acepto_terminos?: boolean
+  ip_registro?: string | null
+  fecha_consentimiento?: Date | string | null
 }
 
 export type libro_reclamacionesUpdateManyMutationInput = {
@@ -596,6 +647,9 @@ export type libro_reclamacionesUpdateManyMutationInput = {
   respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type libro_reclamacionesUncheckedUpdateManyInput = {
@@ -620,6 +674,9 @@ export type libro_reclamacionesUncheckedUpdateManyInput = {
   respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
 }
 
 export type libro_reclamacionesCountOrderByAggregateInput = {
@@ -644,6 +701,9 @@ export type libro_reclamacionesCountOrderByAggregateInput = {
   respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  acepto_terminos?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
+  fecha_consentimiento?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesAvgOrderByAggregateInput = {
@@ -673,6 +733,9 @@ export type libro_reclamacionesMaxOrderByAggregateInput = {
   respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  acepto_terminos?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
+  fecha_consentimiento?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesMinOrderByAggregateInput = {
@@ -697,6 +760,9 @@ export type libro_reclamacionesMinOrderByAggregateInput = {
   respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  acepto_terminos?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
+  fecha_consentimiento?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesSumOrderByAggregateInput = {
@@ -728,6 +794,9 @@ export type libro_reclamacionesSelect<ExtArgs extends runtime.Types.Extensions.I
   respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  acepto_terminos?: boolean
+  ip_registro?: boolean
+  fecha_consentimiento?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -752,6 +821,9 @@ export type libro_reclamacionesSelectCreateManyAndReturn<ExtArgs extends runtime
   respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  acepto_terminos?: boolean
+  ip_registro?: boolean
+  fecha_consentimiento?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -776,6 +848,9 @@ export type libro_reclamacionesSelectUpdateManyAndReturn<ExtArgs extends runtime
   respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  acepto_terminos?: boolean
+  ip_registro?: boolean
+  fecha_consentimiento?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectScalar = {
@@ -800,9 +875,12 @@ export type libro_reclamacionesSelectScalar = {
   respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  acepto_terminos?: boolean
+  ip_registro?: boolean
+  fecha_consentimiento?: boolean
 }
 
-export type libro_reclamacionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_reclamo" | "codigo_seguimiento" | "fecha_registro" | "nombre_completo" | "tipo_documento" | "numero_documento" | "direccion_domicilio" | "email" | "telefono" | "nombre_padre_tutor" | "unidad_negocio" | "tipo_bien" | "monto_reclamado" | "descripcion_bien" | "tipo_incidencia" | "detalle_incidencia" | "pedido_consumidor" | "estado" | "respuesta_empresa" | "fecha_respuesta" | "archivo_sustento", ExtArgs["result"]["libro_reclamaciones"]>
+export type libro_reclamacionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_reclamo" | "codigo_seguimiento" | "fecha_registro" | "nombre_completo" | "tipo_documento" | "numero_documento" | "direccion_domicilio" | "email" | "telefono" | "nombre_padre_tutor" | "unidad_negocio" | "tipo_bien" | "monto_reclamado" | "descripcion_bien" | "tipo_incidencia" | "detalle_incidencia" | "pedido_consumidor" | "estado" | "respuesta_empresa" | "fecha_respuesta" | "archivo_sustento" | "acepto_terminos" | "ip_registro" | "fecha_consentimiento", ExtArgs["result"]["libro_reclamaciones"]>
 
 export type $libro_reclamacionesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "libro_reclamaciones"
@@ -829,6 +907,9 @@ export type $libro_reclamacionesPayload<ExtArgs extends runtime.Types.Extensions
     respuesta_empresa: string | null
     fecha_respuesta: Date | null
     archivo_sustento: string | null
+    acepto_terminos: boolean
+    ip_registro: string | null
+    fecha_consentimiento: Date | null
   }, ExtArgs["result"]["libro_reclamaciones"]>
   composites: {}
 }
@@ -1273,6 +1354,9 @@ export interface libro_reclamacionesFieldRefs {
   readonly respuesta_empresa: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly fecha_respuesta: Prisma.FieldRef<"libro_reclamaciones", 'DateTime'>
   readonly archivo_sustento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly acepto_terminos: Prisma.FieldRef<"libro_reclamaciones", 'Boolean'>
+  readonly ip_registro: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly fecha_consentimiento: Prisma.FieldRef<"libro_reclamaciones", 'DateTime'>
 }
     
 

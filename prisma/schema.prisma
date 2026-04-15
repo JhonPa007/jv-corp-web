@@ -923,5 +923,10 @@ model libro_reclamaciones {
   fecha_respuesta      DateTime? @db.Timestamp(6)
   archivo_sustento     String?  @db.VarChar(255) // Ruta de PDF de respuesta enviada
 
+  // Blindaje de Datos Personales (Ley N° 29733)
+  acepto_terminos      Boolean  @default(false)
+  ip_registro          String?  @db.VarChar(45)
+  fecha_consentimiento DateTime? @default(now()) @db.Timestamp(6)
+
   @@index([codigo_seguimiento])
 }

@@ -2,9 +2,13 @@
 
 import { prisma } from '../lib/prisma';
 import { sendReclamacionEmail } from '../lib/email-utils';
+import { headers } from 'next/headers';
 
 export async function createReclamacion(formData: FormData) {
     try {
+        const headersList = await headers();
+        const ip = headersList.get('x-forwarded-for')?.split(',')[0] || '127.0.0.1';
+
         const year = new Date().getFullYear();
 
         // 1. Generar Código Correlativo
@@ -49,6 +53,9 @@ export async function createReclamacion(formData: FormData) {
             detalle_incidencia: formData.get('detalle_incidencia') as string,
             pedido_consumidor: formData.get('pedido_consumidor') as string,
             estado: 'Pendiente',
+            acepto_terminos: formData.get('acepto_terminos') === 'on',
+            ip_registro: ip,
+            fecha_consentimiento: new Date(),
         };
 
         // 3. Guardar en Base de Datos

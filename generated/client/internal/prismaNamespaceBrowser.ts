@@ -984,7 +984,10 @@ export const Libro_reclamacionesScalarFieldEnum = {
   estado: 'estado',
   respuesta_empresa: 'respuesta_empresa',
   fecha_respuesta: 'fecha_respuesta',
-  archivo_sustento: 'archivo_sustento'
+  archivo_sustento: 'archivo_sustento',
+  acepto_terminos: 'acepto_terminos',
+  ip_registro: 'ip_registro',
+  fecha_consentimiento: 'fecha_consentimiento'
 } as const
 
 export type Libro_reclamacionesScalarFieldEnum = (typeof Libro_reclamacionesScalarFieldEnum)[keyof typeof Libro_reclamacionesScalarFieldEnum]
