@@ -86,32 +86,32 @@ export default function LibroReclamacionesPage() {
 
                     {/* HOJA DE RECLAMACIÓN OFICIAL (VISIBLE SOLO AL IMPRIMIR) */}
                     {submittedData && (
-                        <div id="hoja-reclamacion" className="print-only">
-                            <div className="p-8 border-2 border-black bg-white">
+                        <div id="hoja-reclamacion" className="print-only text-black">
+                            <div className="p-8 border-2 border-black bg-white text-black">
                                 <div className="bg-black py-2 mb-6 flex justify-center">
                                     <img src="/images/logo-white.png" alt="Logo" className="h-10 object-contain" />
                                 </div>
 
-                                <div className="flex justify-between items-start border-b-2 border-black pb-4 mb-4">
-                                    <div>
-                                        <h1 className="text-2xl font-black">LIBRO DE RECLAMACIONES</h1>
-                                        <p className="text-xs">JV CORP SAC - RUC 20614287561</p>
-                                        <p className="text-xs">Jr. Andahuaylas 216 - Abancay - Apurimac</p>
+                                <div className="flex justify-between items-start border-b-2 border-black pb-4 mb-4 text-black">
+                                    <div className="text-black">
+                                        <h1 className="text-2xl font-black text-black">LIBRO DE RECLAMACIONES</h1>
+                                        <p className="text-xs text-black">JV CORP SAC - RUC 20614287561</p>
+                                        <p className="text-xs text-black">Jr. Andahuaylas 216 - Abancay - Apurimac</p>
                                     </div>
-                                    <div className="text-right">
+                                    <div className="text-right text-black">
                                         <div className="border-2 border-red-600 p-2 text-red-600 font-bold mb-2">
                                             HOJA DE RECLAMACIÓN<br />
                                             N° {result.codigo}
                                         </div>
-                                        <p className="text-xs">Fecha: {new Date().toLocaleDateString('es-PE')}</p>
+                                        <p className="text-xs text-black">Fecha: {new Date().toLocaleDateString('es-PE')}</p>
                                     </div>
                                 </div>
 
-                                <div className="space-y-4 text-sm">
+                                <div className="space-y-4 text-sm text-black">
                                     {/* 1. Identificación del Consumidor */}
-                                    <div className="border-b border-black pb-2">
-                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">1. IDENTIFICACIÓN DEL CONSUMIDOR</h3>
-                                        <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-2">
+                                    <div className="border-b border-black pb-2 text-black">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2 text-black">1. IDENTIFICACIÓN DEL CONSUMIDOR</h3>
+                                        <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-2 text-black">
                                             <p><span className="font-bold">Nombre:</span> {submittedData.nombre_completo}</p>
                                             <p><span className="font-bold">DNI/CE:</span> {submittedData.numero_documento}</p>
                                             <p className="col-span-2"><span className="font-bold">Domicilio:</span> {submittedData.direccion_domicilio}</p>
@@ -124,9 +124,9 @@ export default function LibroReclamacionesPage() {
                                     </div>
 
                                     {/* 2. Identificación del Bien */}
-                                    <div className="border-b border-black pb-2">
-                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">2. IDENTIFICACIÓN DEL BIEN CONTRATADO</h3>
-                                        <div className="px-2">
+                                    <div className="border-b border-black pb-2 text-black">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2 text-black">2. IDENTIFICACIÓN DEL BIEN CONTRATADO</h3>
+                                        <div className="px-2 text-black">
                                             <p><span className="font-bold">Unidad:</span> {submittedData.unidad_negocio} | <span className="font-bold">Tipo:</span> {submittedData.tipo_bien}</p>
                                             <p><span className="font-bold">Monto:</span> S/. {Number(submittedData.monto_reclamado || 0).toFixed(2)}</p>
                                             <p><span className="font-bold">Descripción:</span> {submittedData.descripcion_bien}</p>
@@ -134,15 +134,15 @@ export default function LibroReclamacionesPage() {
                                     </div>
 
                                     {/* 3. Detalle de Reclamación */}
-                                    <div className="border-b border-black pb-2">
-                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">3. DETALLE DE LA RECLAMACIÓN Y PEDIDO DEL CONSUMIDOR</h3>
-                                        <div className="px-2 space-y-2">
+                                    <div className="border-b border-black pb-2 text-black">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2 text-black">3. DETALLE DE LA RECLAMACIÓN Y PEDIDO DEL CONSUMIDOR</h3>
+                                        <div className="px-2 space-y-2 text-black">
                                             <p><span className="font-bold">Incidencia:</span> {submittedData.tipo_incidencia}</p>
-                                            <div className="border p-2 rounded">
+                                            <div className="border p-2 rounded text-black mb-2">
                                                 <p className="font-bold text-xs uppercase mb-1 underline">Detalle:</p>
                                                 <p>{submittedData.detalle_incidencia}</p>
                                             </div>
-                                            <div className="border p-2 rounded">
+                                            <div className="border p-2 rounded text-black">
                                                 <p className="font-bold text-xs uppercase mb-1 underline">Pedido del Consumidor:</p>
                                                 <p>{submittedData.pedido_consumidor}</p>
                                             </div>
@@ -150,15 +150,15 @@ export default function LibroReclamacionesPage() {
                                     </div>
 
                                     {/* 4. Acciones del Proveedor */}
-                                    <div className="border-b border-black pb-2">
-                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">4. OBSERVACIONES Y ACCIONES DEL PROVEEDOR</h3>
+                                    <div className="border-b border-black pb-2 text-black">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2 text-black">4. OBSERVACIONES Y ACCIONES DEL PROVEEDOR</h3>
                                         <div className="h-24 border border-dashed border-neutral-400 p-2 flex items-end">
                                             <p className="text-[10px] text-neutral-400 italic">Espacio reservado para el proveedor...</p>
                                         </div>
                                     </div>
                                 </div>
 
-                                <div className="mt-8 grid grid-cols-2 gap-12 text-center text-xs">
+                                <div className="mt-8 grid grid-cols-2 gap-12 text-center text-xs text-black">
                                     <div className="border-t border-black pt-2">FIRMA DEL CONSUMIDOR</div>
                                     <div className="border-t border-black pt-2">FIRMA DEL PROVEEDOR</div>
                                 </div>
@@ -171,17 +171,22 @@ export default function LibroReclamacionesPage() {
                         </div>
                     )}
 
-                    <style jsx>{`
+                    <style jsx global>{`
                         .print-only { display: none; }
                         @media print {
+                            body, html {
+                                background-color: white !important;
+                                color: black !important;
+                            }
                             body * {
                                 visibility: hidden !important;
                             }
-                            nav, footer, .no-print {
+                            nav, footer, header, .no-print, [class*="Navbar"], [class*="Footer"] {
                                 display: none !important;
                             }
                             #hoja-reclamacion, #hoja-reclamacion * {
                                 visibility: visible !important;
+                                color: black !important;
                             }
                             #hoja-reclamacion {
                                 display: block !important;
@@ -189,7 +194,8 @@ export default function LibroReclamacionesPage() {
                                 left: 0;
                                 top: 0;
                                 width: 100%;
-                                background-color: white;
+                                background-color: white !important;
+                                text-align: left;
                             }
                         }
                     `}</style>
