@@ -131,13 +131,13 @@ export default function LibroReclamacionesPage() {
                         </div>
                         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div className="md:col-span-2">
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Nombre Completo *</label>
-                                <input required name="nombre_completo" type="text" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all placeholder:text-neutral-400" placeholder="Ej: Juan Pérez Rojas" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Nombre Completo *</label>
+                                <input required name="nombre_completo" type="text" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold focus:border-transparent outline-none transition-all text-neutral-900 placeholder:text-neutral-500 font-medium" placeholder="Ej: Juan Pérez Rojas" />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Tipo de Documento *</label>
-                                <select required name="tipo_documento" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all">
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Tipo de Documento *</label>
+                                <select required name="tipo_documento" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-medium">
                                     <option value="DNI">DNI</option>
                                     <option value="CE">C.E. (Carné de Extranjería)</option>
                                     <option value="Pasaporte">Pasaporte</option>
@@ -145,23 +145,23 @@ export default function LibroReclamacionesPage() {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Número de Documento *</label>
-                                <input required name="numero_documento" type="text" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="Ej: 71234567" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Número de Documento *</label>
+                                <input required name="numero_documento" type="text" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="Ej: 71234567" />
                             </div>
 
                             <div className="md:col-span-2">
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Domicilio *</label>
-                                <input required name="direccion_domicilio" type="text" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="Dirección completa, distrito y ciudad" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Domicilio *</label>
+                                <input required name="direccion_domicilio" type="text" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="Dirección completa, distrito y ciudad" />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Teléfono / Celular *</label>
-                                <input required name="telefono" type="tel" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="Ej: 987654321" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Teléfono / Celular *</label>
+                                <input required name="telefono" type="tel" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="Ej: 987654321" />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Correo Electrónico *</label>
-                                <input required name="email" type="email" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="ejemplo@correo.com" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Correo Electrónico *</label>
+                                <input required name="email" type="email" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="ejemplo@correo.com" />
                             </div>
 
                             <div className="md:col-span-2 p-4 bg-neutral-50 rounded-xl border border-neutral-100">
@@ -172,12 +172,12 @@ export default function LibroReclamacionesPage() {
                                         onChange={(e) => setEsMenor(e.target.checked)}
                                         className="w-5 h-5 accent-barberia-gold rounded"
                                     />
-                                    <span className="text-sm text-neutral-700 font-medium">Soy menor de edad</span>
+                                    <span className="text-sm text-neutral-900 font-bold">Soy menor de edad</span>
                                 </label>
 
                                 {esMenor && (
                                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
-                                        <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Nombre del Padre o Tutor *</label>
+                                        <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Nombre del Padre o Tutor *</label>
                                         <input required={esMenor} name="nombre_padre_tutor" type="text" className="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="Nombre completo del representante" />
                                     </div>
                                 )}
@@ -193,8 +193,8 @@ export default function LibroReclamacionesPage() {
                         </div>
                         <div className="p-6 grid grid-cols-1 md:grid-cols-2 gap-6">
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Unidad de Negocio *</label>
-                                <select required name="unidad_negocio" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all">
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Unidad de Negocio *</label>
+                                <select required name="unidad_negocio" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold">
                                     <option value="Studio">JV Studio (Barbería/Salón)</option>
                                     <option value="School">JV School (Academia)</option>
                                     <option value="Comercial">JV Comercial (Productos)</option>
@@ -202,11 +202,11 @@ export default function LibroReclamacionesPage() {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Tipo de Bien *</label>
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Tipo de Bien *</label>
                                 <div className="flex gap-4 mt-1">
                                     <label className="flex-1 flex items-center justify-center gap-2 p-3 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 has-[:checked]:border-barberia-gold has-[:checked]:bg-barberia-gold/5 transition-all">
                                         <input required type="radio" name="tipo_bien" value="Producto" className="w-4 h-4 accent-barberia-gold" />
-                                        <span className="text-sm font-bold uppercase text-neutral-600">Producto</span>
+                                        <span className="text-sm font-bold uppercase text-neutral-900">Producto</span>
                                     </label>
                                     <label className="flex-1 flex items-center justify-center gap-2 p-3 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 has-[:checked]:border-barberia-gold has-[:checked]:bg-barberia-gold/5 transition-all">
                                         <input required type="radio" name="tipo_bien" value="Servicio" className="w-4 h-4 accent-barberia-gold" />
@@ -216,13 +216,13 @@ export default function LibroReclamacionesPage() {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Monto Reclamado (S/.)</label>
-                                <input name="monto_reclamado" type="number" step="0.01" className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="0.00" />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Monto Reclamado (S/.)</label>
+                                <input name="monto_reclamado" type="number" step="0.01" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="0.00" />
                             </div>
 
                             <div className="md:col-span-2">
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Descripción del Producto o Servicio *</label>
-                                <textarea required name="descripcion_bien" rows={2} className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all resize-none" placeholder="Indique brevemente el producto o servicio..." />
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Descripción del Producto o Servicio *</label>
+                                <textarea required name="descripcion_bien" rows={2} className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 placeholder:text-neutral-500 font-medium resize-none" placeholder="Indique brevemente el producto o servicio..." />
                             </div>
                         </div>
                     </div>
@@ -235,14 +235,14 @@ export default function LibroReclamacionesPage() {
                         </div>
                         <div className="p-6 space-y-6">
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Tipo de Incidencia *</label>
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Tipo de Incidencia *</label>
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                                     <label className="p-4 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 has-[:checked]:border-barberia-gold has-[:checked]:bg-barberia-gold/5 transition-all">
                                         <div className="flex items-center gap-3 mb-2">
                                             <input required type="radio" name="tipo_incidencia" value="Reclamo" className="w-5 h-5 accent-barberia-gold" />
                                             <span className="font-bold uppercase text-neutral-800">Reclamo</span>
                                         </div>
-                                        <p className="text-xs text-neutral-500 leading-relaxed pl-8">
+                                        <p className="text-xs text-neutral-700 leading-relaxed pl-8 font-medium">
                                             Disconformidad relacionada a los productos o servicios expendidos o suministrados.
                                         </p>
                                     </label>
@@ -259,12 +259,12 @@ export default function LibroReclamacionesPage() {
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Detalle de la Reclamación *</label>
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Detalle de la Reclamación *</label>
                                 <textarea required name="detalle_incidencia" rows={5} className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all resize-none" placeholder="Describa con detalle lo sucedido..." />
                             </div>
 
                             <div>
-                                <label className="block text-xs font-bold text-neutral-500 uppercase mb-2">Pedido del Consumidor *</label>
+                                <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Pedido del Consumidor *</label>
                                 <textarea required name="pedido_consumidor" rows={3} className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all resize-none" placeholder="¿Qué es lo que solicita?" />
                             </div>
                         </div>
