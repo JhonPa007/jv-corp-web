@@ -8,6 +8,7 @@ export default function LibroReclamacionesPage() {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [result, setResult] = useState<{ success: boolean; message: string; codigo?: string } | null>(null);
     const [esMenor, setEsMenor] = useState(false);
+    const [submittedData, setSubmittedData] = useState<any>(null);
 
     const handleDownloadPDF = () => {
         if (typeof window !== 'undefined') {
@@ -19,6 +20,7 @@ export default function LibroReclamacionesPage() {
         e.preventDefault();
 
         const formData = new FormData(e.currentTarget);
+        const dataObj = Object.fromEntries(formData.entries());
 
         // Validación de Blindaje de Datos
         if (formData.get('acepto_terminos') !== 'on') {
@@ -33,6 +35,7 @@ export default function LibroReclamacionesPage() {
             const res = await createReclamacion(formData);
             setResult(res as any);
             if (res.success) {
+                setSubmittedData(dataObj);
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             }
         } catch (error) {
@@ -71,7 +74,7 @@ export default function LibroReclamacionesPage() {
                             onClick={handleDownloadPDF}
                             className="w-full bg-emerald-600 text-white font-bold py-3 rounded-xl hover:bg-emerald-700 transition-all flex items-center justify-center gap-2 shadow-lg shadow-emerald-200"
                         >
-                            <FiDownload /> Imprimir / Guardar PDF
+                            <FiDownload /> Imprimir / Guardar Hoja Completa
                         </button>
                         <button
                             onClick={() => window.location.href = '/'}
@@ -81,28 +84,110 @@ export default function LibroReclamacionesPage() {
                         </button>
                     </div>
 
+                    {/* HOJA DE RECLAMACIÓN OFICIAL (VISIBLE SOLO AL IMPRIMIR) */}
+                    {submittedData && (
+                        <div id="hoja-reclamacion" className="print-only hidden">
+                            <div className="p-8 border-2 border-black">
+                                <div className="flex justify-between items-start border-b-2 border-black pb-4 mb-4">
+                                    <div>
+                                        <h1 className="text-2xl font-black">LIBRO DE RECLAMACIONES</h1>
+                                        <p className="text-xs">JV CORP SAC - RUC 20614287561</p>
+                                        <p className="text-xs">Av. Abancay con Jr. Cuzco, Lima</p>
+                                    </div>
+                                    <div className="text-right">
+                                        <div className="border-2 border-red-600 p-2 text-red-600 font-bold mb-2">
+                                            HOJA DE RECLAMACIÓN<br />
+                                            N° {result.codigo}
+                                        </div>
+                                        <p className="text-xs">Fecha: {new Date().toLocaleDateString('es-PE')}</p>
+                                    </div>
+                                </div>
+
+                                <div className="space-y-4 text-sm">
+                                    {/* 1. Identificación del Consumidor */}
+                                    <div className="border-b border-black pb-2">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">1. IDENTIFICACIÓN DEL CONSUMIDOR</h3>
+                                        <div className="grid grid-cols-2 gap-x-4 gap-y-1 px-2">
+                                            <p><span className="font-bold">Nombre:</span> {submittedData.nombre_completo}</p>
+                                            <p><span className="font-bold">DNI/CE:</span> {submittedData.numero_documento}</p>
+                                            <p className="col-span-2"><span className="font-bold">Domicilio:</span> {submittedData.direccion_domicilio}</p>
+                                            <p><span className="font-bold">Teléfono:</span> {submittedData.telefono}</p>
+                                            <p><span className="font-bold">E-mail:</span> {submittedData.email}</p>
+                                            {submittedData.nombre_padre_tutor && (
+                                                <p className="col-span-2"><span className="font-bold">Padre/Tutor:</span> {submittedData.nombre_padre_tutor}</p>
+                                            )}
+                                        </div>
+                                    </div>
+
+                                    {/* 2. Identificación del Bien */}
+                                    <div className="border-b border-black pb-2">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">2. IDENTIFICACIÓN DEL BIEN CONTRATADO</h3>
+                                        <div className="px-2">
+                                            <p><span className="font-bold">Unidad:</span> {submittedData.unidad_negocio} | <span className="font-bold">Tipo:</span> {submittedData.tipo_bien}</p>
+                                            <p><span className="font-bold">Monto:</span> S/. {submittedData.monto_reclamado || '0.00'}</p>
+                                            <p><span className="font-bold">Descripción:</span> {submittedData.descripcion_bien}</p>
+                                        </div>
+                                    </div>
+
+                                    {/* 3. Detalle de Reclamación */}
+                                    <div className="border-b border-black pb-2">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">3. DETALLE DE LA RECLAMACIÓN Y PEDIDO DEL CONSUMIDOR</h3>
+                                        <div className="px-2 space-y-2">
+                                            <p><span className="font-bold">Incidencia:</span> {submittedData.tipo_incidencia}</p>
+                                            <div className="border p-2 rounded">
+                                                <p className="font-bold text-xs uppercase mb-1 underline">Detalle:</p>
+                                                <p>{submittedData.detalle_incidencia}</p>
+                                            </div>
+                                            <div className="border p-2 rounded">
+                                                <p className="font-bold text-xs uppercase mb-1 underline">Pedido del Consumidor:</p>
+                                                <p>{submittedData.pedido_consumidor}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* 4. Acciones del Proveedor */}
+                                    <div className="border-b border-black pb-2">
+                                        <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">4. OBSERVACIONES Y ACCIONES DEL PROVEEDOR</h3>
+                                        <div className="h-24 border border-dashed border-neutral-400 p-2 flex items-end">
+                                            <p className="text-[10px] text-neutral-400 italic">Espacio reservado para el proveedor...</p>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div className="mt-8 grid grid-cols-2 gap-12 text-center text-xs">
+                                    <div className="border-t border-black pt-2">FIRMA DEL CONSUMIDOR</div>
+                                    <div className="border-t border-black pt-2">FIRMA DEL PROVEEDOR</div>
+                                </div>
+
+                                <div className="mt-6 text-[9px] text-neutral-500 leading-tight">
+                                    * La formulación del reclamo no impide acudir a otras vías de solución de controversias ni es condición previa para interponer una denuncia ante el INDECOPI.<br />
+                                    * El proveedor deberá dar respuesta al reclamo en un plazo no mayor a quince (15) días hábiles.
+                                </div>
+                            </div>
+                        </div>
+                    )}
+
                     <style jsx>{`
                         @media print {
                             body * {
-                                visibility: hidden;
+                                visibility: hidden !important;
                             }
-                            #reclamacion-content, #reclamacion-content * {
-                                visibility: visible;
+                            #hoja-reclamacion, #hoja-reclamacion * {
+                                visibility: visible !important;
                             }
-                            #reclamacion-content {
+                            #hoja-reclamacion {
+                                display: block !important;
                                 position: absolute;
-                                left: 50%;
-                                top: 50%;
-                                transform: translate(-50%, -50%);
+                                left: 0;
+                                top: 0;
                                 width: 100%;
-                                max-width: 100%;
-                                border: none;
-                                box-shadow: none;
-                                padding: 0;
                             }
                             .no-print {
                                 display: none !important;
                             }
+                        }
+                        .print-only {
+                            display: none;
                         }
                     `}</style>
                 </div>
