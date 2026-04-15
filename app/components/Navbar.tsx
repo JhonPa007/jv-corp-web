@@ -14,7 +14,6 @@ export default function Navbar() {
                             className="object-contain"
                         />
                     </div>
-                    <span className="text-3xl font-agency font-bold tracking-wider">JV STUDIO</span>
                 </Link>
                 <div className="hidden md:flex gap-8 font-medium font-agency tracking-wider text-lg items-center">
                     <Link href="/" className="hover:text-barberia-gold transition-colors">

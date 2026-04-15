@@ -88,11 +88,15 @@ export default function LibroReclamacionesPage() {
                     {submittedData && (
                         <div id="hoja-reclamacion" className="print-only">
                             <div className="p-8 border-2 border-black bg-white">
+                                <div className="bg-black py-2 mb-6 flex justify-center">
+                                    <img src="/images/logo-white.png" alt="Logo" className="h-10 object-contain" />
+                                </div>
+
                                 <div className="flex justify-between items-start border-b-2 border-black pb-4 mb-4">
                                     <div>
                                         <h1 className="text-2xl font-black">LIBRO DE RECLAMACIONES</h1>
                                         <p className="text-xs">JV CORP SAC - RUC 20614287561</p>
-                                        <p className="text-xs">Av. Abancay con Jr. Cuzco, Lima</p>
+                                        <p className="text-xs">Jr. Andahuaylas 216 - Abancay - Apurimac</p>
                                     </div>
                                     <div className="text-right">
                                         <div className="border-2 border-red-600 p-2 text-red-600 font-bold mb-2">
@@ -124,7 +128,7 @@ export default function LibroReclamacionesPage() {
                                         <h3 className="bg-neutral-200 px-2 py-1 font-bold mb-2">2. IDENTIFICACIÓN DEL BIEN CONTRATADO</h3>
                                         <div className="px-2">
                                             <p><span className="font-bold">Unidad:</span> {submittedData.unidad_negocio} | <span className="font-bold">Tipo:</span> {submittedData.tipo_bien}</p>
-                                            <p><span className="font-bold">Monto:</span> S/. {submittedData.monto_reclamado || '0.00'}</p>
+                                            <p><span className="font-bold">Monto:</span> S/. {Number(submittedData.monto_reclamado || 0).toFixed(2)}</p>
                                             <p><span className="font-bold">Descripción:</span> {submittedData.descripcion_bien}</p>
                                         </div>
                                     </div>
@@ -173,6 +177,9 @@ export default function LibroReclamacionesPage() {
                             body * {
                                 visibility: hidden !important;
                             }
+                            nav, footer, .no-print {
+                                display: none !important;
+                            }
                             #hoja-reclamacion, #hoja-reclamacion * {
                                 visibility: visible !important;
                             }
@@ -182,6 +189,7 @@ export default function LibroReclamacionesPage() {
                                 left: 0;
                                 top: 0;
                                 width: 100%;
+                                background-color: white;
                             }
                         }
                     `}</style>
