@@ -174,28 +174,31 @@ export default function LibroReclamacionesPage() {
                     <style jsx global>{`
                         .print-only { display: none; }
                         @media print {
-                            body, html {
+                            @page { margin: 0; }
+                            html, body {
                                 background-color: white !important;
                                 color: black !important;
+                                margin: 0 !important;
+                                padding: 0 !important;
+                                height: auto !important;
                             }
-                            body * {
-                                visibility: hidden !important;
-                            }
-                            nav, footer, header, .no-print, [class*="Navbar"], [class*="Footer"] {
+                            nav, footer, .no-print, [class*="Navbar"], [class*="Footer"] {
                                 display: none !important;
                             }
-                            #hoja-reclamacion, #hoja-reclamacion * {
-                                visibility: visible !important;
-                                color: black !important;
+                            main {
+                                padding: 0 !important;
+                                margin: 0 !important;
+                                background-color: white !important;
                             }
                             #hoja-reclamacion {
                                 display: block !important;
-                                position: absolute;
-                                left: 0;
-                                top: 0;
-                                width: 100%;
+                                color: black !important;
                                 background-color: white !important;
-                                text-align: left;
+                                min-height: 100vh;
+                                width: 100%;
+                            }
+                            #hoja-reclamacion * {
+                                color: black !important;
                             }
                         }
                     `}</style>
