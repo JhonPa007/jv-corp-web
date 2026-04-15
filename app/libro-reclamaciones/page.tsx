@@ -86,8 +86,8 @@ export default function LibroReclamacionesPage() {
 
                     {/* HOJA DE RECLAMACIÓN OFICIAL (VISIBLE SOLO AL IMPRIMIR) */}
                     {submittedData && (
-                        <div id="hoja-reclamacion" className="print-only hidden">
-                            <div className="p-8 border-2 border-black">
+                        <div id="hoja-reclamacion" className="print-only">
+                            <div className="p-8 border-2 border-black bg-white">
                                 <div className="flex justify-between items-start border-b-2 border-black pb-4 mb-4">
                                     <div>
                                         <h1 className="text-2xl font-black">LIBRO DE RECLAMACIONES</h1>
@@ -168,6 +168,7 @@ export default function LibroReclamacionesPage() {
                     )}
 
                     <style jsx>{`
+                        .print-only { display: none; }
                         @media print {
                             body * {
                                 visibility: hidden !important;
@@ -182,12 +183,6 @@ export default function LibroReclamacionesPage() {
                                 top: 0;
                                 width: 100%;
                             }
-                            .no-print {
-                                display: none !important;
-                            }
-                        }
-                        .print-only {
-                            display: none;
                         }
                     `}</style>
                 </div>
