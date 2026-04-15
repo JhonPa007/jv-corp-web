@@ -181,7 +181,7 @@ export default function LibroReclamacionesPage() {
                                 {esMenor && (
                                     <div className="mt-4 animate-in fade-in slide-in-from-top-2 duration-300">
                                         <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Nombre del Padre o Tutor *</label>
-                                        <input required={esMenor} name="nombre_padre_tutor" type="text" className="w-full bg-white border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all" placeholder="Nombre completo del representante" />
+                                        <input required={esMenor} name="nombre_padre_tutor" type="text" className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 font-bold" placeholder="Nombre completo del representante" />
                                     </div>
                                 )}
                             </div>
@@ -213,7 +213,7 @@ export default function LibroReclamacionesPage() {
                                     </label>
                                     <label className="flex-1 flex items-center justify-center gap-2 p-3 border border-neutral-200 rounded-xl cursor-pointer hover:bg-neutral-50 has-[:checked]:border-barberia-gold has-[:checked]:bg-barberia-gold/5 transition-all">
                                         <input required type="radio" name="tipo_bien" value="Servicio" className="w-4 h-4 accent-barberia-gold" />
-                                        <span className="text-sm font-bold uppercase text-neutral-600">Servicio</span>
+                                        <span className="text-sm font-bold uppercase text-neutral-900">Servicio</span>
                                     </label>
                                 </div>
                             </div>
@@ -254,7 +254,7 @@ export default function LibroReclamacionesPage() {
                                             <input required type="radio" name="tipo_incidencia" value="Queja" className="w-5 h-5 accent-barberia-gold" />
                                             <span className="font-bold uppercase text-neutral-800">Queja</span>
                                         </div>
-                                        <p className="text-xs text-neutral-500 leading-relaxed pl-8">
+                                        <p className="text-xs text-neutral-700 leading-relaxed pl-8 font-medium">
                                             Malestar o descontento respecto a la atención al público.
                                         </p>
                                     </label>
@@ -263,12 +263,12 @@ export default function LibroReclamacionesPage() {
 
                             <div>
                                 <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Detalle de la Reclamación *</label>
-                                <textarea required name="detalle_incidencia" rows={5} className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all resize-none" placeholder="Describa con detalle lo sucedido..." />
+                                <textarea required name="detalle_incidencia" rows={5} className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 placeholder:text-neutral-500 font-bold resize-none" placeholder="Describa con detalle lo sucedido..." />
                             </div>
 
                             <div>
                                 <label className="block text-xs font-bold text-neutral-700 font-bold uppercase mb-2 tracking-wide">Pedido del Consumidor *</label>
-                                <textarea required name="pedido_consumidor" rows={3} className="w-full bg-neutral-50 border border-neutral-200 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all resize-none" placeholder="¿Qué es lo que solicita?" />
+                                <textarea required name="pedido_consumidor" rows={3} className="w-full bg-neutral-100 border border-neutral-300 rounded-xl px-4 py-3 focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-neutral-900 placeholder:text-neutral-500 font-bold resize-none" placeholder="¿Qué es lo que solicita?" />
                             </div>
                         </div>
                     </div>
