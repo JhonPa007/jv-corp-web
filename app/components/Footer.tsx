@@ -23,6 +23,9 @@ export default function Footer() {
                         <Link href="/reservas" className="hover:text-white transition-colors text-sm">
                             RESERVAS
                         </Link>
+                        <Link href="/libro-reclamaciones" className="hover:text-white transition-colors text-sm font-bold border-l border-barberia-gold/30 pl-8">
+                            LIBRO DE RECLAMACIONES
+                        </Link>
                     </div>
 
                     <div className="flex flex-col gap-2 text-right">
