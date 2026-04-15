@@ -28,7 +28,7 @@ export default function LibroReclamacionesPage() {
                 await html2pdf().from(element).set(opt).save();
             } catch (error: any) {
                 console.error("Error al generar PDF:", error);
-                alert(`Error al generar PDF: ${error.message || 'Error desconocido'}. Por favor, intente imprimir (Ctrl+P) y Guardar como PDF.`);
+                alert("Hubo un problema al generar el PDF. Por favor, intente imprimir la pantalla (Ctrl+P) y guardarla como PDF.");
             }
         }
     };
@@ -63,24 +63,24 @@ export default function LibroReclamacionesPage() {
     if (result?.success) {
         return (
             <div className="min-h-screen bg-neutral-50 flex items-center justify-center p-4">
-                <div id="reclamacion-content" className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-green-100">
+                <div id="reclamacion-content" className="max-w-md w-full bg-white rounded-2xl shadow-xl p-8 border border-[#d1fae5]" style={{ backgroundColor: '#ffffff', borderColor: '#d1fae5' }}>
                     <div className="text-center">
-                        <div className="w-16 h-16 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-4">
+                        <div className="w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4" style={{ backgroundColor: '#d1fae5', color: '#059669' }}>
                             <FiCheckCircle size={32} />
                         </div>
-                        <h2 className="text-xl font-bold text-neutral-800 mb-1">¡Registro Exitoso!</h2>
-                        <p className="text-neutral-500 text-sm mb-4">Su solicitud ha sido procesada correctamente.</p>
+                        <h2 className="text-xl font-bold mb-1" style={{ color: '#1f2937' }}>¡Registro Exitoso!</h2>
+                        <p className="text-sm mb-4" style={{ color: '#6b7280' }}>Su solicitud ha sido procesada correctamente.</p>
 
-                        <div className="bg-neutral-50 p-4 rounded-xl mb-6 border border-neutral-100">
-                            <p className="text-[10px] text-neutral-400 uppercase font-black tracking-widest mb-1">Código de Seguimiento</p>
-                            <p className="text-3xl font-bold text-neutral-900 font-agency tracking-wider">{result.codigo}</p>
+                        <div className="p-4 rounded-xl mb-6 border border-[#f3f4f6]" style={{ backgroundColor: '#f9fafb', borderColor: '#f3f4f6' }}>
+                            <p className="text-[10px] uppercase font-black tracking-widest mb-1" style={{ color: '#9ca3af' }}>Código de Seguimiento</p>
+                            <p className="text-3xl font-bold font-agency tracking-wider" style={{ color: '#111827' }}>{result.codigo}</p>
                         </div>
                     </div>
 
                     <div className="space-y-3 mb-8">
-                        <div className="flex items-start gap-3 p-3 bg-neutral-50 rounded-lg">
-                            <FiInfo className="text-barberia-gold mt-0.5 shrink-0" />
-                            <p className="text-xs text-neutral-600">Se envió una copia fiel a <strong>su correo</strong>. Puede descargar el PDF numerado aquí debajo.</p>
+                        <div className="flex items-start gap-3 p-3 rounded-lg" style={{ backgroundColor: '#f9fafb' }}>
+                            <FiInfo className="mt-0.5 shrink-0" style={{ color: '#d4af37' }} />
+                            <p className="text-xs" style={{ color: '#4b5563' }}>Se envió una copia fiel a <strong>su correo</strong>. Puede descargar el PDF numerado aquí debajo.</p>
                         </div>
                     </div>
 
