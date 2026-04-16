@@ -186,8 +186,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
                 slots.push(format(slotStart, 'h:mm a'));
             }
 
-            // Next slot: 5 min steps as requested
-            currentTime = addMinutes(currentTime, 5);
+            // Next slot: 15 min steps as requested
+            currentTime = addMinutes(currentTime, 15);
         }
 
         return slots;
