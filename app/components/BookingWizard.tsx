@@ -469,282 +469,6 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
 
     // --- Components for each step ---
 
-    // 1. Service Selection
-    const ServiceSelection = () => (
-        <div className="space-y-4">
-            <h2 className="text-2xl font-bold mb-6 text-gray-900">Selecciona un Servicio</h2>
-            <div className="grid gap-4">
-                {services.map((service) => (
-                    <div
-                        key={service.id}
-                        onClick={() => {
-                            setSelectedService(service);
-                            setTimeout(() => setCurrentStep("staff"), 200);
-                        }}
-                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex justify-between items-center group
-                            ${selectedService?.id === service.id
-                                ? "border-barberia-gold bg-amber-50"
-                                : "border-gray-100 hover:border-gray-300 bg-white"
-                            }`}
-                    >
-                        <div>
-                            <h3 className="font-bold text-lg text-gray-900">{service.nombre}</h3>
-                            <p className="text-sm text-gray-500">{service.duracion_minutos} min</p>
-                            {service.descripcion && <p className="text-sm text-gray-400 mt-1">{service.descripcion}</p>}
-                        </div>
-                        <div className="text-right">
-                            <span className="font-bold text-lg text-gray-900 block">{formatPrice(service.precio)}</span>
-                            <div className={`mt-2 w-6 h-6 rounded-full border-2 flex items-center justify-center ml-auto
-                                ${selectedService?.id === service.id ? "border-barberia-gold bg-barberia-gold text-white" : "border-gray-300"}
-                             `}>
-                                {selectedService?.id === service.id && <FaCheckCircle size={14} />}
-                            </div>
-                        </div>
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-
-    // 2. Staff Selection
-    const StaffSelection = () => {
-        // Filter logic
-        const relevantStaff = staff.filter(employee => {
-            // Use profesion if available, otherwise role, otherwise empty
-            const jobTitle = (employee.profesion || employee.roles?.nombre || "").toLowerCase();
-            const serviceCategory = (selectedService?.categorias_servicios?.nombre || "").toLowerCase();
-
-            if (serviceCategory.includes("barber")) {
-                return jobTitle.includes("barber") || jobTitle.includes("general");
-            }
-            return true;
-        });
-
-        const displayStaff = relevantStaff.length > 0 ? relevantStaff : staff;
-
-        return (
-            <div className="space-y-4">
-                <h2 className="text-2xl font-bold mb-6 text-black">Elige tu Profesional</h2>
-
-                {/* Option "Any Professional" */}
-                <div
-                    onClick={() => {
-                        setSelectedStaff({ id: 'any', nombres: "Cualquier", apellidos: "Profesional", any: true });
-                        setTimeout(() => setCurrentStep("time"), 200);
-                    }}
-                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
-                        ${selectedStaff?.any
-                            ? "border-barberia-gold bg-amber-50"
-                            : "border-gray-100 hover:border-gray-300 bg-white"
-                        }`}
-                >
-                    <div className="w-12 h-12 rounded-full bg-barberia-dark text-barberia-gold flex items-center justify-center font-bold">
-                        JV
-                    </div>
-                    <div>
-                        <h3 className="font-bold text-lg text-gray-900">Cualquier Profesional</h3>
-                        <p className="text-sm text-gray-500">Para máxima disponibilidad</p>
-                    </div>
-                </div>
-
-                <div className="grid gap-4">
-                    {displayStaff.map((employee) => (
-                        <div
-                            key={employee.id}
-                            onClick={() => {
-                                setSelectedStaff(employee);
-                                setTimeout(() => setCurrentStep("time"), 200);
-                            }}
-                            className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
-                                 ${selectedStaff?.id === employee.id && !selectedStaff?.any
-                                    ? "border-barberia-gold bg-amber-50"
-                                    : "border-gray-100 hover:border-gray-300 bg-white"
-                                }`}
-                        >
-                            <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative flex-shrink-0">
-                                <FaUser className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
-                            </div>
-                            <div>
-                                <div className="flex items-center gap-2">
-                                    <h3 className="font-bold text-lg text-gray-900">{employee.nombre_display || employee.nombres}</h3>
-                                    <div className="flex text-yellow-400 text-xs gap-0.5">
-                                        <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
-                                    </div>
-                                </div>
-                                <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
-                                    {employee.profesion || employee.roles?.nombre || "Estilista Profesional"}
-                                </p>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        );
-    };
-
-    // 3. Time Selection
-    const TimeSelection = () => {
-        const days = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(startOfToday(), i)), []);
-
-        // Use Effect for fetching slots
-        const [slots, setSlots] = useState<string[]>([]);
-        const [loading, setLoading] = useState(false);
-
-        // We use a key to force re-render or just standard useEffect
-        useMemo(() => {
-            const fetchSlots = async () => {
-                if (!selectedService) return;
-                setLoading(true);
-                setSlots([]); // Clear prev
-
-                const staffId = selectedStaff?.any ? 'any' : selectedStaff?.id;
-                if (!staffId) return;
-
-                const fetchedSlots = await getAvailableTimeSlots(selectedDate, staffId, selectedService.duracion_minutos);
-                setSlots(fetchedSlots);
-                setLoading(false);
-            };
-            fetchSlots();
-        }, [selectedDate, selectedStaff, selectedService]);
-
-        return (
-            <div className="space-y-6">
-                <h2 className="text-2xl font-bold text-gray-900">Fecha y Hora</h2>
-
-                <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
-                    {days.map((day) => {
-                        const isSelected = isSameDay(day, selectedDate);
-                        return (
-                            <button
-                                key={day.toISOString()}
-                                onClick={() => { setSelectedDate(day); setSelectedTime(null); }}
-                                className={`flex-shrink-0 w-20 h-24 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all
-                                    ${isSelected
-                                        ? "border-barberia-dark bg-barberia-dark text-white shadow-lg scale-105"
-                                        : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
-                                    }`}
-                            >
-                                <span className="text-xs uppercase font-bold">{format(day, "EEE", { locale: es })}</span>
-                                <span className="text-2xl font-bold">{format(day, "d")}</span>
-                                <span className="text-xs opacity-70">{format(day, "MMM", { locale: es })}</span>
-                            </button>
-                        );
-                    })}
-                </div>
-
-                <div>
-                    <h3 className="font-bold text-gray-700 mb-4">{format(selectedDate, "EEEE d 'de' MMMM", { locale: es })}</h3>
-
-                    {loading ? (
-                        <div className="flex items-center gap-2 text-gray-500 py-8 justify-center">
-                            <FaClock className="animate-spin" /> Buscando espacios disponibles...
-                        </div>
-                    ) : slots.length === 0 ? (
-                        <div className="text-center py-8 bg-gray-50 rounded-xl border border-dashed border-gray-300">
-                            <p className="text-gray-500">No hay horarios disponibles para esta fecha.</p>
-                            <p className="text-sm text-gray-400 mt-1">Intenta con otra fecha o profesional.</p>
-                        </div>
-                    ) : (
-                        <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
-                            {slots.map((time) => (
-                                <button
-                                    key={time}
-                                    onClick={() => {
-                                        setSelectedTime(time);
-                                        setTimeout(() => setCurrentStep("client"), 200); // Skip directly to client? Flow is Service->Staff->Time->Client->Confirm
-                                    }}
-                                    className={`py-3 px-2 rounded-lg border text-sm font-semibold transition-all
-                                        ${selectedTime === time
-                                            ? "bg-barberia-gold border-barberia-gold text-white shadow-md"
-                                            : "bg-white border-gray-200 text-gray-700 hover:border-barberia-gold hover:text-barberia-gold"
-                                        }`}
-                                >
-                                    {time}
-                                </button>
-                            ))}
-                        </div>
-                    )}
-                </div>
-            </div>
-        );
-    };
-
-
-
-
-    // 5. Confirmation
-    const ConfirmationStep = () => {
-        if (reservationId) {
-            return (
-                <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
-                    <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                        <FaCheckCircle className="text-5xl text-green-500" />
-                    </div>
-                    <h2 className="text-3xl font-bold text-gray-900 mb-4">¡Reserva Confirmada!</h2>
-                    <p className="text-gray-600 max-w-md mx-auto mb-8">
-                        Tu cita ha sido agendada con éxito. Te esperamos el <strong>{format(selectedDate, "d 'de' MMMM", { locale: es })}</strong> a las <strong>{selectedTime}</strong>.
-                    </p>
-                    <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 max-w-sm mx-auto mb-8 text-left">
-                        <p className="text-sm text-gray-500 mb-1">Código de Reserva</p>
-                        <p className="text-xl font-mono font-bold text-gray-900">#{reservationId}</p>
-                    </div>
-                    <button
-                        onClick={() => window.location.reload()}
-                        className="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-black transition-all"
-                    >
-                        Hacer otra reserva
-                    </button>
-                </div>
-            );
-        }
-
-        return (
-            <div className="text-center py-8">
-                <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
-                    <FaCalendarAlt className="text-4xl text-barberia-gold" />
-                </div>
-                <h2 className="text-3xl font-bold text-gray-900 mb-4">Confirmar Detalle</h2>
-                <p className="text-gray-600 max-w-md mx-auto mb-8">
-                    Por favor revisa los detalles de tu reserva antes de confirmar.
-                </p>
-
-                <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 max-w-md mx-auto mb-8 space-y-4">
-                    <div className="flex justify-between border-b pb-2 border-gray-200">
-                        <span className="text-gray-500">Servicio</span>
-                        <span className="font-bold text-gray-900">{selectedService?.nombre}</span>
-                    </div>
-                    <div className="flex justify-between border-b pb-2 border-gray-200">
-                        <span className="text-gray-500">Profesional</span>
-                        <span className="font-bold text-gray-900">{selectedStaff?.any ? "Cualquiera" : (selectedStaff?.nombre_display || selectedStaff?.nombres)}</span>
-                    </div>
-                    <div className="flex justify-between border-b pb-2 border-gray-200">
-                        <span className="text-gray-500">Fecha y Hora</span>
-                        <span className="font-bold text-gray-900">{format(selectedDate, "d MMM", { locale: es })} - {selectedTime}</span>
-                    </div>
-                    <div className="flex justify-between pt-2">
-                        <span className="font-bold text-lg text-gray-900">Total a Pagar</span>
-                        <span className="font-bold text-lg text-barberia-gold">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
-                    </div>
-                </div>
-
-                <button
-                    onClick={handleCreateReservation}
-                    disabled={isSubmitting}
-                    className="w-full md:w-auto inline-flex items-center gap-3 bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-black hover:scale-105 transition-all justify-center"
-                >
-                    {isSubmitting ? (
-                        <>
-                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
-                            Confirmando...
-                        </>
-                    ) : (
-                        "Confirmar Reserva"
-                    )}
-                </button>
-            </div>
-        );
-    };
-
     return (
         <div className="flex flex-col lg:flex-row gap-8 max-w-6xl mx-auto w-full">
             {/* Left Column: Content */}
@@ -760,9 +484,35 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                 )}
 
                 <div className="animate-in fade-in slide-in-from-right-4 duration-300">
-                    {currentStep === "service" && <ServiceSelection />}
-                    {currentStep === "staff" && <StaffSelection />}
-                    {currentStep === "time" && <TimeSelection />}
+                    {currentStep === "service" && (
+                        <ServiceSelection
+                            services={services}
+                            selectedService={selectedService}
+                            setSelectedService={setSelectedService}
+                            setCurrentStep={setCurrentStep}
+                            formatPrice={formatPrice}
+                        />
+                    )}
+                    {currentStep === "staff" && (
+                        <StaffSelection
+                            staff={staff}
+                            selectedService={selectedService}
+                            selectedStaff={selectedStaff}
+                            setSelectedStaff={setSelectedStaff}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
+                    {currentStep === "time" && (
+                        <TimeSelection
+                            selectedDate={selectedDate}
+                            setSelectedDate={setSelectedDate}
+                            selectedStaff={selectedStaff}
+                            selectedService={selectedService}
+                            selectedTime={selectedTime}
+                            setSelectedTime={setSelectedTime}
+                            setCurrentStep={setCurrentStep}
+                        />
+                    )}
                     {currentStep === "client" && (
                         <ClientIdentityStep
                             clientData={clientData}
@@ -773,7 +523,18 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
                             setClientError={setClientError}
                         />
                     )}
-                    {currentStep === "confirm" && <ConfirmationStep />}
+                    {currentStep === "confirm" && (
+                        <ConfirmationStep
+                            reservationId={reservationId}
+                            selectedDate={selectedDate}
+                            selectedTime={selectedTime}
+                            selectedService={selectedService}
+                            selectedStaff={selectedStaff}
+                            isSubmitting={isSubmitting}
+                            handleCreateReservation={handleCreateReservation}
+                            formatPrice={formatPrice}
+                        />
+                    )}
                 </div>
             </div>
 
@@ -837,3 +598,284 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
         </div>
     );
 }
+
+// --- Sub-components moved outside to prevent re-creation on render ---
+
+const ServiceSelection = ({ services, selectedService, setSelectedService, setCurrentStep, formatPrice }: any) => (
+    <div className="space-y-4">
+        <h2 className="text-2xl font-bold mb-6 text-gray-900">Selecciona un Servicio</h2>
+        <div className="grid gap-4">
+            {services.map((service: any) => (
+                <div
+                    key={service.id}
+                    onClick={() => {
+                        setSelectedService(service);
+                        setTimeout(() => setCurrentStep("staff"), 200);
+                    }}
+                    className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex justify-between items-center group
+                        ${selectedService?.id === service.id
+                            ? "border-barberia-gold bg-amber-50"
+                            : "border-gray-100 hover:border-gray-300 bg-white"
+                        }`}
+                >
+                    <div>
+                        <h3 className="font-bold text-lg text-gray-900">{service.nombre}</h3>
+                        <p className="text-sm text-gray-500">{service.duracion_minutos} min</p>
+                        {service.descripcion && <p className="text-sm text-gray-400 mt-1">{service.descripcion}</p>}
+                    </div>
+                    <div className="text-right">
+                        <span className="font-bold text-lg text-gray-900 block">{formatPrice(service.precio)}</span>
+                        <div className={`mt-2 w-6 h-6 rounded-full border-2 flex items-center justify-center ml-auto
+                            ${selectedService?.id === service.id ? "border-barberia-gold bg-barberia-gold text-white" : "border-gray-300"}
+                            `}>
+                            {selectedService?.id === service.id && <FaCheckCircle size={14} />}
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
+    </div>
+);
+
+const StaffSelection = ({ staff, selectedService, selectedStaff, setSelectedStaff, setCurrentStep }: any) => {
+    // Filter logic
+    const relevantStaff = staff.filter((employee: any) => {
+        // Use profesion if available, otherwise role, otherwise empty
+        const jobTitle = (employee.profesion || employee.roles?.nombre || "").toLowerCase();
+        const serviceCategory = (selectedService?.categorias_servicios?.nombre || "").toLowerCase();
+
+        if (serviceCategory.includes("barber")) {
+            return jobTitle.includes("barber") || jobTitle.includes("general");
+        }
+        return true;
+    });
+
+    const displayStaff = relevantStaff.length > 0 ? relevantStaff : staff;
+
+    return (
+        <div className="space-y-4">
+            <h2 className="text-2xl font-bold mb-6 text-black">Elige tu Profesional</h2>
+
+            {/* Option "Any Professional" */}
+            <div
+                onClick={() => {
+                    setSelectedStaff({ id: 'any', nombres: "Cualquier", apellidos: "Profesional", any: true });
+                    setTimeout(() => setCurrentStep("time"), 200);
+                }}
+                className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
+                    ${selectedStaff?.any
+                        ? "border-barberia-gold bg-amber-50"
+                        : "border-gray-100 hover:border-gray-300 bg-white"
+                    }`}
+            >
+                <div className="w-12 h-12 rounded-full bg-barberia-dark text-barberia-gold flex items-center justify-center font-bold">
+                    JV
+                </div>
+                <div>
+                    <h3 className="font-bold text-lg text-gray-900">Cualquier Profesional</h3>
+                    <p className="text-sm text-gray-500">Para máxima disponibilidad</p>
+                </div>
+            </div>
+
+            <div className="grid gap-4">
+                {displayStaff.map((employee: any) => (
+                    <div
+                        key={employee.id}
+                        onClick={() => {
+                            setSelectedStaff(employee);
+                            setTimeout(() => setCurrentStep("time"), 200);
+                        }}
+                        className={`p-4 rounded-xl border-2 cursor-pointer transition-all flex items-center gap-4
+                                ${selectedStaff?.id === employee.id && !selectedStaff?.any
+                                ? "border-barberia-gold bg-amber-50"
+                                : "border-gray-100 hover:border-gray-300 bg-white"
+                            }`}
+                    >
+                        <div className="w-12 h-12 rounded-full bg-gray-200 overflow-hidden relative flex-shrink-0">
+                            <FaUser className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-gray-400" />
+                        </div>
+                        <div>
+                            <div className="flex items-center gap-2">
+                                <h3 className="font-bold text-lg text-gray-900">{employee.nombre_display || employee.nombres}</h3>
+                                <div className="flex text-yellow-400 text-xs gap-0.5">
+                                    <FaStar /><FaStar /><FaStar /><FaStar /><FaStar />
+                                </div>
+                            </div>
+                            <p className="text-sm font-semibold text-gray-600 uppercase tracking-wide">
+                                {employee.profesion || employee.roles?.nombre || "Estilista Profesional"}
+                            </p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+};
+
+const TimeSelection = ({ selectedDate, setSelectedDate, selectedStaff, selectedService, selectedTime, setSelectedTime, setCurrentStep }: any) => {
+    const days = useMemo(() => Array.from({ length: 7 }, (_, i) => addDays(startOfToday(), i)), []);
+    const [slots, setSlots] = useState<string[]>([]);
+    const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        const fetchSlots = async () => {
+            if (!selectedService || !selectedStaff) return;
+            setLoading(true);
+            setSlots([]);
+
+            try {
+                const staffId = selectedStaff.any ? 'any' : selectedStaff.id;
+                const fetchedSlots = await getAvailableTimeSlots(selectedDate, staffId, selectedService.duracion_minutos);
+                setSlots(fetchedSlots);
+            } catch (error) {
+                console.error("Error fetching slots:", error);
+            } finally {
+                setLoading(false);
+            }
+        };
+        fetchSlots();
+    }, [selectedDate, selectedStaff, selectedService]);
+
+    return (
+        <div className="space-y-6">
+            <h2 className="text-2xl font-bold text-gray-900">Fecha y Hora</h2>
+
+            <div className="flex gap-2 overflow-x-auto pb-4 no-scrollbar">
+                {days.map((day) => {
+                    const isSelected = isSameDay(day, selectedDate);
+                    return (
+                        <button
+                            key={day.toISOString()}
+                            onClick={() => { setSelectedDate(day); setSelectedTime(null); }}
+                            className={`flex-shrink-0 w-20 h-24 rounded-xl border-2 flex flex-col items-center justify-center gap-1 transition-all
+                                ${isSelected
+                                    ? "border-barberia-dark bg-barberia-dark text-white shadow-lg scale-105"
+                                    : "border-gray-200 bg-white text-gray-600 hover:border-gray-300"
+                                }`}
+                        >
+                            <span className="text-xs uppercase font-bold">{format(day, "EEE", { locale: es })}</span>
+                            <span className="text-2xl font-bold">{format(day, "d")}</span>
+                            <span className="text-xs opacity-70">{format(day, "MMM", { locale: es })}</span>
+                        </button>
+                    );
+                })}
+            </div>
+
+            <div>
+                <h3 className="font-bold text-gray-700 mb-4">{format(selectedDate, "EEEE d 'de' MMMM", { locale: es })}</h3>
+
+                {loading ? (
+                    <div className="flex items-center gap-2 text-gray-500 py-8 justify-center">
+                        <FaClock className="animate-spin" /> Buscando espacios disponibles...
+                    </div>
+                ) : slots.length === 0 ? (
+                    <div className="text-center py-8 bg-gray-50 rounded-xl border border-dashed border-gray-300">
+                        <p className="text-gray-500">No hay horarios disponibles para esta fecha.</p>
+                        <p className="text-sm text-gray-400 mt-1">Intenta con otra fecha o profesional.</p>
+                    </div>
+                ) : (
+                    <div className="grid grid-cols-3 sm:grid-cols-4 gap-3">
+                        {slots.map((time) => (
+                            <button
+                                key={time}
+                                onClick={() => {
+                                    setSelectedTime(time);
+                                    setTimeout(() => setCurrentStep("client"), 200);
+                                }}
+                                className={`py-3 px-2 rounded-lg border text-sm font-semibold transition-all
+                                    ${selectedTime === time
+                                        ? "bg-barberia-gold border-barberia-gold text-white shadow-md"
+                                        : "bg-white border-gray-200 text-gray-700 hover:border-barberia-gold hover:text-barberia-gold"
+                                    }`}
+                            >
+                                {time}
+                            </button>
+                        ))}
+                    </div>
+                )}
+            </div>
+        </div>
+    );
+};
+
+const ConfirmationStep = ({
+    reservationId,
+    selectedDate,
+    selectedTime,
+    selectedService,
+    selectedStaff,
+    isSubmitting,
+    handleCreateReservation,
+    formatPrice
+}: any) => {
+    if (reservationId) {
+        return (
+            <div className="text-center py-12 animate-in fade-in zoom-in duration-500">
+                <div className="w-24 h-24 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                    <FaCheckCircle className="text-5xl text-green-500" />
+                </div>
+                <h2 className="text-3xl font-bold text-gray-900 mb-4">¡Reserva Confirmada!</h2>
+                <p className="text-gray-600 max-w-md mx-auto mb-8">
+                    Tu cita ha sido agendada con éxito. Te esperamos el <strong>{format(selectedDate, "d 'de' MMMM", { locale: es })}</strong> a las <strong>{selectedTime}</strong>.
+                </p>
+                <div className="bg-gray-50 p-6 rounded-xl border border-gray-100 max-w-sm mx-auto mb-8 text-left">
+                    <p className="text-sm text-gray-500 mb-1">Código de Reserva</p>
+                    <p className="text-xl font-mono font-bold text-gray-900">#{reservationId}</p>
+                </div>
+                <button
+                    onClick={() => window.location.reload()}
+                    className="bg-gray-900 text-white px-8 py-3 rounded-xl font-bold hover:bg-black transition-all"
+                >
+                    Hacer otra reserva
+                </button>
+            </div>
+        );
+    }
+
+    return (
+        <div className="text-center py-8">
+            <div className="w-20 h-20 bg-amber-100 rounded-full flex items-center justify-center mx-auto mb-6">
+                <FaCalendarAlt className="text-4xl text-barberia-gold" />
+            </div>
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Confirmar Detalle</h2>
+            <p className="text-gray-600 max-w-md mx-auto mb-8">
+                Por favor revisa los detalles de tu reserva antes de confirmar.
+            </p>
+
+            <div className="bg-gray-50 p-6 rounded-2xl border border-gray-200 max-w-md mx-auto mb-8 space-y-4">
+                <div className="flex justify-between border-b pb-2 border-gray-200">
+                    <span className="text-gray-500">Servicio</span>
+                    <span className="font-bold text-gray-900">{selectedService?.nombre}</span>
+                </div>
+                <div className="flex justify-between border-b pb-2 border-gray-200">
+                    <span className="text-gray-500">Profesional</span>
+                    <span className="font-bold text-gray-900">{selectedStaff?.any ? "Cualquiera" : (selectedStaff?.nombre_display || selectedStaff?.nombres)}</span>
+                </div>
+                <div className="flex justify-between border-b pb-2 border-gray-200">
+                    <span className="text-gray-500">Fecha y Hora</span>
+                    <span className="font-bold text-gray-900">{format(selectedDate, "d MMM", { locale: es })} - {selectedTime}</span>
+                </div>
+                <div className="flex justify-between pt-2">
+                    <span className="font-bold text-lg text-gray-900">Total a Pagar</span>
+                    <span className="font-bold text-lg text-barberia-gold">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
+                </div>
+            </div>
+
+            <button
+                onClick={handleCreateReservation}
+                disabled={isSubmitting}
+                className="w-full md:w-auto inline-flex items-center gap-3 bg-gray-900 text-white px-12 py-4 rounded-full font-bold text-xl shadow-xl hover:bg-black hover:scale-105 transition-all justify-center"
+            >
+                {isSubmitting ? (
+                    <>
+                        <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                        Confirmando...
+                    </>
+                ) : (
+                    "Confirmar Reserva"
+                )}
+            </button>
+        </div>
+    );
+};
+
