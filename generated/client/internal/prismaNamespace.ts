@@ -413,6 +413,7 @@ export const ModelName = {
   gastos: 'gastos',
   horarios_empleado: 'horarios_empleado',
   horarios_extra: 'horarios_extra',
+  horarios_recurrentes: 'horarios_recurrentes',
   ingresos_academia: 'ingresos_academia',
   marcas: 'marcas',
   membresia_planes: 'membresia_planes',
@@ -460,7 +461,7 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
     omit: GlobalOmitOptions
   }
   meta: {
-    modelProps: "ajustes_pago" | "ausencias_empleado" | "bono_reglas" | "bonos" | "caja_sesiones" | "campanas" | "categorias_gastos" | "categorias_productos" | "categorias_servicios" | "cliente_comunicaciones" | "cliente_membresias" | "clientes" | "colaboradores" | "comisiones" | "configuracion_sistema" | "configuracion_sucursal" | "empleado_sucursales" | "empleados" | "esquema_comisiones" | "estilos" | "gastos" | "horarios_empleado" | "horarios_extra" | "ingresos_academia" | "marcas" | "membresia_planes" | "movimientos_caja" | "movimientos_fondo" | "paquete_servicios_items" | "permisos" | "planillas" | "plantillas_whatsapp" | "productos" | "propinas" | "proveedores" | "reservas" | "rol_permisos" | "roles" | "series_comprobantes" | "servicios" | "sucursales" | "venta_items" | "venta_pagos" | "ventas" | "gift_cards" | "packages" | "package_items" | "compra_items" | "compras" | "crm_config" | "kardex" | "loyalty_rule_services" | "loyalty_rules" | "puntos_historial" | "libro_reclamaciones"
+    modelProps: "ajustes_pago" | "ausencias_empleado" | "bono_reglas" | "bonos" | "caja_sesiones" | "campanas" | "categorias_gastos" | "categorias_productos" | "categorias_servicios" | "cliente_comunicaciones" | "cliente_membresias" | "clientes" | "colaboradores" | "comisiones" | "configuracion_sistema" | "configuracion_sucursal" | "empleado_sucursales" | "empleados" | "esquema_comisiones" | "estilos" | "gastos" | "horarios_empleado" | "horarios_extra" | "horarios_recurrentes" | "ingresos_academia" | "marcas" | "membresia_planes" | "movimientos_caja" | "movimientos_fondo" | "paquete_servicios_items" | "permisos" | "planillas" | "plantillas_whatsapp" | "productos" | "propinas" | "proveedores" | "reservas" | "rol_permisos" | "roles" | "series_comprobantes" | "servicios" | "sucursales" | "venta_items" | "venta_pagos" | "ventas" | "gift_cards" | "packages" | "package_items" | "compra_items" | "compras" | "crm_config" | "kardex" | "loyalty_rule_services" | "loyalty_rules" | "puntos_historial" | "libro_reclamaciones"
     txIsolationLevel: TransactionIsolationLevel
   }
   model: {
@@ -2163,6 +2164,80 @@ export type TypeMap<ExtArgs extends runtime.Types.Extensions.InternalArgs = runt
         count: {
           args: Prisma.horarios_extraCountArgs<ExtArgs>
           result: runtime.Types.Utils.Optional<Prisma.Horarios_extraCountAggregateOutputType> | number
+        }
+      }
+    }
+    horarios_recurrentes: {
+      payload: Prisma.$horarios_recurrentesPayload<ExtArgs>
+      fields: Prisma.horarios_recurrentesFieldRefs
+      operations: {
+        findUnique: {
+          args: Prisma.horarios_recurrentesFindUniqueArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload> | null
+        }
+        findUniqueOrThrow: {
+          args: Prisma.horarios_recurrentesFindUniqueOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        findFirst: {
+          args: Prisma.horarios_recurrentesFindFirstArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload> | null
+        }
+        findFirstOrThrow: {
+          args: Prisma.horarios_recurrentesFindFirstOrThrowArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        findMany: {
+          args: Prisma.horarios_recurrentesFindManyArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>[]
+        }
+        create: {
+          args: Prisma.horarios_recurrentesCreateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        createMany: {
+          args: Prisma.horarios_recurrentesCreateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        createManyAndReturn: {
+          args: Prisma.horarios_recurrentesCreateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>[]
+        }
+        delete: {
+          args: Prisma.horarios_recurrentesDeleteArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        update: {
+          args: Prisma.horarios_recurrentesUpdateArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        deleteMany: {
+          args: Prisma.horarios_recurrentesDeleteManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateMany: {
+          args: Prisma.horarios_recurrentesUpdateManyArgs<ExtArgs>
+          result: BatchPayload
+        }
+        updateManyAndReturn: {
+          args: Prisma.horarios_recurrentesUpdateManyAndReturnArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>[]
+        }
+        upsert: {
+          args: Prisma.horarios_recurrentesUpsertArgs<ExtArgs>
+          result: runtime.Types.Utils.PayloadToResult<Prisma.$horarios_recurrentesPayload>
+        }
+        aggregate: {
+          args: Prisma.Horarios_recurrentesAggregateArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.AggregateHorarios_recurrentes>
+        }
+        groupBy: {
+          args: Prisma.horarios_recurrentesGroupByArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Horarios_recurrentesGroupByOutputType>[]
+        }
+        count: {
+          args: Prisma.horarios_recurrentesCountArgs<ExtArgs>
+          result: runtime.Types.Utils.Optional<Prisma.Horarios_recurrentesCountAggregateOutputType> | number
         }
       }
     }
@@ -4952,6 +5027,19 @@ export const Horarios_extraScalarFieldEnum = {
 export type Horarios_extraScalarFieldEnum = (typeof Horarios_extraScalarFieldEnum)[keyof typeof Horarios_extraScalarFieldEnum]
 
 
+export const Horarios_recurrentesScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  dia_semana: 'dia_semana',
+  hora_inicio: 'hora_inicio',
+  hora_fin: 'hora_fin',
+  fecha_creacion: 'fecha_creacion',
+  fecha_actualizacion: 'fecha_actualizacion'
+} as const
+
+export type Horarios_recurrentesScalarFieldEnum = (typeof Horarios_recurrentesScalarFieldEnum)[keyof typeof Horarios_recurrentesScalarFieldEnum]
+
+
 export const Ingresos_academiaScalarFieldEnum = {
   id: 'id',
   empleado_instructor_id: 'empleado_instructor_id',
@@ -5691,6 +5779,7 @@ export type GlobalOmitConfig = {
   gastos?: Prisma.gastosOmit
   horarios_empleado?: Prisma.horarios_empleadoOmit
   horarios_extra?: Prisma.horarios_extraOmit
+  horarios_recurrentes?: Prisma.horarios_recurrentesOmit
   ingresos_academia?: Prisma.ingresos_academiaOmit
   marcas?: Prisma.marcasOmit
   membresia_planes?: Prisma.membresia_planesOmit

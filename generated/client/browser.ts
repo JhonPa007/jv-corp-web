@@ -133,6 +133,11 @@ export type horarios_empleado = Prisma.horarios_empleadoModel
  */
 export type horarios_extra = Prisma.horarios_extraModel
 /**
+ * Model horarios_recurrentes
+ * 
+ */
+export type horarios_recurrentes = Prisma.horarios_recurrentesModel
+/**
  * Model ingresos_academia
  * 
  */

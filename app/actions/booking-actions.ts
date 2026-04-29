@@ -74,7 +74,7 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         // Assumption: Database uses 0-6 or 1-7?
         // Let's assume standard JS 0-6 or 1-7 mapping. Usually 1=Mon.
         // Let's print out what we get if we can, but for now assume 1=Monday... Wait, let's look at schema logic if possible.
-        // `horarios_empleado` has `dia_semana`.
+        // `horarios_recurrentes` has `dia_semana`.
         // Let's assume 0=Monday for now? OR 1=Monday. JS `getDay()` is 0=Sun, 1=Mon.
         // Common practice: 0=Sun.
 
@@ -99,7 +99,7 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         // Strategy: Iterate generic slots (e.g. 10:00 to 20:00) and check if ANY staff is free.
         // Better: Get min start and max end of all staff.
 
-        const schedules = await prisma.horarios_empleado.findMany({
+        const schedules = await prisma.horarios_recurrentes.findMany({
             where: {
                 empleado_id: { in: targetStaffIds },
                 dia_semana: dayOfWeek // Warning: verify DB mapping
@@ -229,17 +229,34 @@ export async function createReservation(data: {
         const endDateTime = addMinutes(startDateTime, service.duracion_minutos);
 
         if (assignedStaffId === 'any') {
+            const dayOfWeek = reservationDate.getDay();
+
             // Find who is free AT THIS EXACT TIME
-            // Reuse logic? Or just query.
             const allStaff = await prisma.empleados.findMany({
                 where: { activo: true, realiza_servicios: true },
-                select: { id: true }
+                select: { 
+                    id: true,
+                    horarios_recurrentes: {
+                        where: { dia_semana: dayOfWeek }
+                    }
+                }
             });
 
             // Check availability for each
             let foundStaffId = null;
             for (const s of allStaff) {
-                // Check conflict
+                // 1. Check if staff works this day and time
+                const hasSchedule = s.horarios_recurrentes.some(sch => {
+                    const schStart = format(sch.hora_inicio, 'HH:mm:ss');
+                    const schEnd = format(sch.hora_fin, 'HH:mm:ss');
+                    const targetStart = format(startDateTime, 'HH:mm:ss');
+                    const targetEnd = format(endDateTime, 'HH:mm:ss');
+                    return targetStart >= schStart && targetEnd <= schEnd;
+                });
+
+                if (!hasSchedule) continue;
+
+                // 2. Check conflicts in reservations
                 const conflicts = await prisma.reservas.findMany({
                     where: {
                         empleado_id: s.id,
@@ -249,18 +266,44 @@ export async function createReservation(data: {
                     }
                 });
 
-                // Also check schedule... (Skip for MVP efficiency if we trust slot picker? No, verify!)
-                // Assume slot picker did its job, but race conditions/schedule checks apply.
-                // Simple check: conflicts
-
                 if (conflicts.length === 0) {
                     foundStaffId = s.id;
                     break;
                 }
             }
 
-            if (!foundStaffId) throw new Error("Ya no hay disponibilidad para la hora seleccionada.");
+            if (!foundStaffId) throw new Error("Ya no hay disponibilidad para el horario o empleado seleccionado.");
             assignedStaffId = foundStaffId;
+        } else {
+            // Specific staff requested
+            const dayOfWeek = reservationDate.getDay();
+            const staffSchedule = await prisma.horarios_recurrentes.findMany({
+                where: {
+                    empleado_id: assignedStaffId as number,
+                    dia_semana: dayOfWeek
+                }
+            });
+
+            const worksThisTime = staffSchedule.some(sch => {
+                const schStart = format(sch.hora_inicio, 'HH:mm:ss');
+                const schEnd = format(sch.hora_fin, 'HH:mm:ss');
+                const targetStart = format(startDateTime, 'HH:mm:ss');
+                const targetEnd = format(endDateTime, 'HH:mm:ss');
+                return targetStart >= schStart && targetEnd <= schEnd;
+            });
+
+            if (!worksThisTime) throw new Error("El empleado no atiende en el horario seleccionado.");
+
+            const conflicts = await prisma.reservas.findMany({
+                where: {
+                    empleado_id: assignedStaffId as number,
+                    estado: { not: 'Cancelada' },
+                    fecha_hora_inicio: { lt: endDateTime },
+                    fecha_hora_fin: { gt: startDateTime }
+                }
+            });
+
+            if (conflicts.length > 0) throw new Error("El empleado ya tiene una reserva en este horario.");
         }
 
         // 3. Create Reservation

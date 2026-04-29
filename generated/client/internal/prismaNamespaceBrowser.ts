@@ -72,6 +72,7 @@ export const ModelName = {
   gastos: 'gastos',
   horarios_empleado: 'horarios_empleado',
   horarios_extra: 'horarios_extra',
+  horarios_recurrentes: 'horarios_recurrentes',
   ingresos_academia: 'ingresos_academia',
   marcas: 'marcas',
   membresia_planes: 'membresia_planes',
@@ -499,6 +500,19 @@ export const Horarios_extraScalarFieldEnum = {
 } as const
 
 export type Horarios_extraScalarFieldEnum = (typeof Horarios_extraScalarFieldEnum)[keyof typeof Horarios_extraScalarFieldEnum]
+
+
+export const Horarios_recurrentesScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  dia_semana: 'dia_semana',
+  hora_inicio: 'hora_inicio',
+  hora_fin: 'hora_fin',
+  fecha_creacion: 'fecha_creacion',
+  fecha_actualizacion: 'fecha_actualizacion'
+} as const
+
+export type Horarios_recurrentesScalarFieldEnum = (typeof Horarios_recurrentesScalarFieldEnum)[keyof typeof Horarios_recurrentesScalarFieldEnum]
 
 
 export const Ingresos_academiaScalarFieldEnum = {
