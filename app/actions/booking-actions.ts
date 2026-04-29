@@ -3,6 +3,17 @@
 import { prisma } from '../lib/prisma';
 import { startOfDay, endOfDay, addMinutes, format, parse, isSameDay } from 'date-fns';
 
+/**
+ * Helper to get minutes from midnight for a time value
+ * @param d Date object
+ * @param fromDb If true, treats the date as a Prisma TIME (UTC)
+ */
+const getMinutesSinceMidnight = (d: Date, fromDb: boolean = false) => {
+    const hours = fromDb ? d.getUTCHours() : d.getHours();
+    const minutes = fromDb ? d.getUTCMinutes() : d.getMinutes();
+    return hours * 60 + minutes;
+};
+
 export interface ClientRegistrationData {
     nombres: string;
     apellidos?: string;
@@ -102,13 +113,22 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         const schedules = await prisma.horarios_recurrentes.findMany({
             where: {
                 empleado_id: { in: targetStaffIds },
-                dia_semana: dayOfWeek // Warning: verify DB mapping
+                dia_semana: dayOfWeek
             }
         });
 
+        // Add a fallback for Sunday if shop uses 7 instead of 0
+        if (schedules.length === 0 && dayOfWeek === 0) {
+            const sundaySchedules = await prisma.horarios_recurrentes.findMany({
+                where: {
+                    empleado_id: { in: targetStaffIds },
+                    dia_semana: 7
+                }
+            });
+            schedules.push(...sundaySchedules);
+        }
+
         if (schedules.length === 0) {
-            // No custom schedules found? Fallback or Closed?
-            // Let's simple return empty if no schedule found.
             return [];
         }
 
@@ -125,7 +145,6 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         });
 
         // 4. Generate Candidates
-        // Simplified: Fixed range 09:00 to 21:00, check against specific staff schedule.
         const START_HOUR = 9;
         const END_HOUR = 21;
         let currentTime = new Date(queryDateStart);
@@ -134,50 +153,46 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         const endTime = new Date(queryDateStart);
         endTime.setHours(END_HOUR, 0, 0, 0);
 
+        // Helper to compare times consistently
+        // Prisma TIME columns are returned as UTC dates by default
+        const getMinutes = (d: Date, isDbTime: boolean) => getMinutesSinceMidnight(d, isDbTime);
+
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
             const slotEnd = addMinutes(slotStart, serviceDurationMinutes);
 
             if (slotEnd > endTime) break;
 
-            // Check if AT LEAST ONE staff is available for this slot
+            const slotStartMins = getMinutes(slotStart, false);
+            const slotEndMins = getMinutes(slotEnd, false);
+
             let isSlotAvailable = false;
 
             for (const staffId of targetStaffIds) {
                 // Check Schedule
-                const staffSchedule = schedules.find(s => s.empleado_id === staffId);
-                // Schema uses DateTime for time types (Prisma weirdness with Postgres Time).
-                // Usually it relates to a 1970-01-01 date with the time.
-                // We need to extract hours/minutes.
+                const staffSchedules = schedules.filter(s => s.empleado_id === staffId);
+                if (staffSchedules.length === 0) continue;
 
-                if (!staffSchedule) continue; // Staff not working this day
+                // Must be within AT LEAST ONE schedule block for this staff
+                const isWithinWorkingHours = staffSchedules.some(sch => {
+                    const schedStartMins = getMinutes(sch.hora_inicio, true);
+                    const schedEndMins = getMinutes(sch.hora_fin, true);
+                    return slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
+                });
 
-                // Helper to compare times
-                const getMinutesFromTime = (d: Date) => d.getHours() * 60 + d.getMinutes();
-
-                const schedStartMins = getMinutesFromTime(staffSchedule.hora_inicio);
-                const schedEndMins = getMinutesFromTime(staffSchedule.hora_fin);
-
-                const slotStartMins = getMinutesFromTime(slotStart);
-                const slotEndMins = getMinutesFromTime(slotEnd);
-
-                if (slotStartMins < schedStartMins || slotEndMins > schedEndMins) {
-                    continue; // Outside working hours
-                }
+                if (!isWithinWorkingHours) continue;
 
                 // Check Reservations
                 const staffReservations = reservations.filter(r => r.empleado_id === staffId);
                 const hasConflict = staffReservations.some(res => {
                     const resStart = new Date(res.fecha_hora_inicio);
                     const resEnd = new Date(res.fecha_hora_fin);
-
-                    // Overlap logic: (StartA < EndB) and (EndA > StartB)
                     return (slotStart < resEnd && slotEnd > resStart);
                 });
 
                 if (!hasConflict) {
                     isSlotAvailable = true;
-                    break; // Found one staff!
+                    break;
                 }
             }
 
@@ -245,12 +260,21 @@ export async function createReservation(data: {
             // Check availability for each
             let foundStaffId = null;
             for (const s of allStaff) {
+                // Use fallback for Sunday if needed
+                let relevantSchedules = s.horarios_recurrentes;
+                if (relevantSchedules.length === 0 && dayOfWeek === 0) {
+                    const sundaySchedules = await prisma.horarios_recurrentes.findMany({
+                        where: { empleado_id: s.id, dia_semana: 7 }
+                    });
+                    relevantSchedules = sundaySchedules;
+                }
+
                 // 1. Check if staff works this day and time
-                const hasSchedule = s.horarios_recurrentes.some(sch => {
-                    const schStart = format(sch.hora_inicio, 'HH:mm:ss');
-                    const schEnd = format(sch.hora_fin, 'HH:mm:ss');
-                    const targetStart = format(startDateTime, 'HH:mm:ss');
-                    const targetEnd = format(endDateTime, 'HH:mm:ss');
+                const hasSchedule = relevantSchedules.some(sch => {
+                    const schStart = getMinutesSinceMidnight(sch.hora_inicio, true);
+                    const schEnd = getMinutesSinceMidnight(sch.hora_fin, true);
+                    const targetStart = getMinutesSinceMidnight(startDateTime, false);
+                    const targetEnd = getMinutesSinceMidnight(endDateTime, false);
                     return targetStart >= schStart && targetEnd <= schEnd;
                 });
 
@@ -277,18 +301,28 @@ export async function createReservation(data: {
         } else {
             // Specific staff requested
             const dayOfWeek = reservationDate.getDay();
-            const staffSchedule = await prisma.horarios_recurrentes.findMany({
+            let staffSchedule = await prisma.horarios_recurrentes.findMany({
                 where: {
                     empleado_id: assignedStaffId as number,
                     dia_semana: dayOfWeek
                 }
             });
 
+            // Sunday fallback
+            if (staffSchedule.length === 0 && dayOfWeek === 0) {
+                staffSchedule = await prisma.horarios_recurrentes.findMany({
+                    where: {
+                        empleado_id: assignedStaffId as number,
+                        dia_semana: 7
+                    }
+                });
+            }
+
             const worksThisTime = staffSchedule.some(sch => {
-                const schStart = format(sch.hora_inicio, 'HH:mm:ss');
-                const schEnd = format(sch.hora_fin, 'HH:mm:ss');
-                const targetStart = format(startDateTime, 'HH:mm:ss');
-                const targetEnd = format(endDateTime, 'HH:mm:ss');
+                const schStart = getMinutesSinceMidnight(sch.hora_inicio, true);
+                const schEnd = getMinutesSinceMidnight(sch.hora_fin, true);
+                const targetStart = getMinutesSinceMidnight(startDateTime, false);
+                const targetEnd = getMinutesSinceMidnight(endDateTime, false);
                 return targetStart >= schStart && targetEnd <= schEnd;
             });
 
