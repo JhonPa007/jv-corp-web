@@ -146,8 +146,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         });
 
         // 4. Generate Candidates
-        const START_HOUR = 9;
-        const END_HOUR = 21;
+        const START_HOUR = 0; // Temporarily expanded for debugging
+        const END_HOUR = 24;
         let currentTime = new Date(queryDateStart);
         currentTime.setHours(START_HOUR, 0, 0, 0);
 
@@ -155,8 +155,9 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         endTime.setHours(END_HOUR, 0, 0, 0);
 
         // Helper to compare times consistently
-        // Prisma TIME columns are returned as UTC dates by default
         const getMinutes = (d: Date, isDbTime: boolean) => getMinutesSinceMidnight(d, isDbTime);
+
+        console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff count: ${targetStaffIds.length}, schedules found: ${schedules.length}`);
 
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
@@ -170,15 +171,15 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             let isSlotAvailable = false;
 
             for (const staffId of targetStaffIds) {
-                // Check Schedule
                 const staffSchedules = schedules.filter(s => s.empleado_id === staffId);
                 if (staffSchedules.length === 0) continue;
 
-                // Must be within AT LEAST ONE schedule block for this staff
                 const isWithinWorkingHours = staffSchedules.some(sch => {
                     const schedStartMins = getMinutes(sch.hora_inicio, true);
                     const schedEndMins = getMinutes(sch.hora_fin, true);
-                    return slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
+                    const match = slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
+                    if (match) console.log(`[DEBUG] Slot ${format(slotStart, 'HH:mm')} matches schedule for staff ${staffId}`);
+                    return match;
                 });
 
                 if (!isWithinWorkingHours) continue;
