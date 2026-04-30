@@ -111,7 +111,7 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         // Strategy: Iterate generic slots (e.g. 10:00 to 20:00) and check if ANY staff is free.
         // Better: Get min start and max end of all staff.
 
-        const schedules = await prisma.horarios_recurrentes.findMany({
+        const schedules = await prisma.horarios_empleado.findMany({
             where: {
                 empleado_id: { in: targetStaffIds },
                 dia_semana: dayOfWeek
@@ -120,7 +120,7 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
 
         // Add a fallback for Sunday if shop uses 7 instead of 0
         if (schedules.length === 0 && dayOfWeek === 0) {
-            const sundaySchedules = await prisma.horarios_recurrentes.findMany({
+            const sundaySchedules = await prisma.horarios_empleado.findMany({
                 where: {
                     empleado_id: { in: targetStaffIds },
                     dia_semana: 7
@@ -253,7 +253,7 @@ export async function createReservation(data: {
                 where: { activo: true, realiza_servicios: true },
                 select: { 
                     id: true,
-                    horarios_recurrentes: {
+                    horarios_empleado: {
                         where: { dia_semana: dayOfWeek }
                     }
                 }
@@ -263,9 +263,9 @@ export async function createReservation(data: {
             let foundStaffId = null;
             for (const s of allStaff) {
                 // Use fallback for Sunday if needed
-                let relevantSchedules = s.horarios_recurrentes;
-                if (relevantSchedules.length === 0 && dayOfWeek === 0) {
-                    const sundaySchedules = await prisma.horarios_recurrentes.findMany({
+                let relevantSchedules = (s as any).horarios_empleado;
+                if (!relevantSchedules || (relevantSchedules.length === 0 && dayOfWeek === 0)) {
+                    const sundaySchedules = await prisma.horarios_empleado.findMany({
                         where: { empleado_id: s.id, dia_semana: 7 }
                     });
                     relevantSchedules = sundaySchedules;
@@ -303,7 +303,7 @@ export async function createReservation(data: {
         } else {
             // Specific staff requested
             const dayOfWeek = reservationDate.getDay();
-            let staffSchedule = await prisma.horarios_recurrentes.findMany({
+            let staffSchedule = await prisma.horarios_empleado.findMany({
                 where: {
                     empleado_id: assignedStaffId as number,
                     dia_semana: dayOfWeek
@@ -312,7 +312,7 @@ export async function createReservation(data: {
 
             // Sunday fallback
             if (staffSchedule.length === 0 && dayOfWeek === 0) {
-                staffSchedule = await prisma.horarios_recurrentes.findMany({
+                staffSchedule = await prisma.horarios_empleado.findMany({
                     where: {
                         empleado_id: assignedStaffId as number,
                         dia_semana: 7
