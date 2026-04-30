@@ -177,9 +177,10 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
                 const isWithinWorkingHours = staffSchedules.some(sch => {
                     const schedStartMins = getMinutes(sch.hora_inicio, true);
                     const schedEndMins = getMinutes(sch.hora_fin, true);
-                    const match = slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
-                    if (match) console.log(`[DEBUG] Slot ${format(slotStart, 'HH:mm')} matches schedule for staff ${staffId}`);
-                    return match;
+                    const slotStartMins = getMinutes(slotStart, false);
+                    const slotEndMins = getMinutes(slotEnd, false);
+                    
+                    return slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
                 });
 
                 if (!isWithinWorkingHours) continue;
@@ -263,8 +264,8 @@ export async function createReservation(data: {
             let foundStaffId = null;
             for (const s of allStaff) {
                 // Use fallback for Sunday if needed
-                let relevantSchedules = (s as any).horarios_empleado;
-                if (!relevantSchedules || (relevantSchedules.length === 0 && dayOfWeek === 0)) {
+                let relevantSchedules = (s as any).horarios_empleado || [];
+                if (relevantSchedules.length === 0 && dayOfWeek === 0) {
                     const sundaySchedules = await prisma.horarios_empleado.findMany({
                         where: { empleado_id: s.id, dia_semana: 7 }
                     });
