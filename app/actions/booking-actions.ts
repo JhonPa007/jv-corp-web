@@ -273,7 +273,7 @@ export async function createReservation(data: {
                 }
 
                 // 1. Check if staff works this day and time
-                const hasSchedule = relevantSchedules.some(sch => {
+                const hasSchedule = relevantSchedules.some((sch: any) => {
                     const schStart = getMinutesSinceMidnight(sch.hora_inicio, true);
                     const schEnd = getMinutesSinceMidnight(sch.hora_fin, true);
                     const targetStart = getMinutesSinceMidnight(startDateTime, false);
