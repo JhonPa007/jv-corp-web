@@ -84,11 +84,18 @@ export async function registerClientForBooking(data: ClientRegistrationData) {
 
 export async function getAvailableTimeSlots(date: Date, staffId: number | 'any', serviceDurationMinutes: number) {
     try {
-        const queryDateStart = startOfDay(date);
-        const queryDateEnd = endOfDay(date);
-        const dayOfWeek = date.getDay(); // 0 (Sun) - 6 (Sat)
+        // We handle dates in absolute UTC but logically matching Peru (UTC-5)
+        const year = date.getUTCFullYear();
+        const month = date.getUTCMonth();
+        const day = date.getUTCDate();
         
-        console.log(`[DEBUG] getAvailableTimeSlots - Fecha: ${date.toISOString()}, Día JS: ${dayOfWeek}`);
+        // Peru Day boundaries in absolute UTC
+        const queryDateStart = new Date(Date.UTC(year, month, day, 5, 0, 0, 0));
+        const queryDateEnd = new Date(Date.UTC(year, month, day + 1, 4, 59, 59, 999));
+        
+        const dayOfWeek = date.getUTCDay(); // 0 (Sun) - 6 (Sat)
+        
+        console.log(`[DEBUG] getAvailableTimeSlots - Fecha Peru: ${year}-${month+1}-${day}, Día: ${dayOfWeek}`);
 
         // Adjust dayOfWeek to match schema if needed (often 1=Mon, 7=Sun in some systems, check data later if issue. standard JS: 0=Sun)
         // Assumption: Database uses 0-6 or 1-7?
@@ -237,8 +244,13 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             }
 
             if (isSlotAvailable) {
-                // User requested AM/PM format (e.g. "9:00 AM")
-                slots.push(format(slotStart, 'h:mm a'));
+                // Generate "Nominal" Peru time for display
+                // If slotStart is 14:00 UTC, it's 9:00 AM Peru.
+                const hours = (slotStart.getUTCHours() - 5 + 24) % 24;
+                const minutes = slotStart.getUTCMinutes();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                const h12 = hours % 12 || 12;
+                slots.push(`${h12}:${minutes.toString().padStart(2, '0')} ${ampm}`);
             }
 
             // Next slot: 15 min steps as requested
@@ -273,15 +285,25 @@ export async function createReservation(data: {
         let assignedStaffId = data.staffId;
         const reservationDate = new Date(data.date);
 
-        // Parse "9:00 AM" format back to Date
-        // We use the reservationDate as the base to ensure correct day
-        const startDateTime = parse(data.time, 'h:mm a', reservationDate);
-
-        // Validación extra: no permitir reservas en el pasado (ajustado a Perú UTC-5)
-        const now = new Date();
-        const nowPeru = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+        // Parse "9:00 AM" format back to a real UTC Date for Peru
+        // Example: "4:45 PM" -> 16:45 Peru -> 21:45 UTC
+        const [timePart, ampm] = data.time.split(' ');
+        const [hStr, mStr] = timePart.split(':');
+        let hours = parseInt(hStr);
+        const minutes = parseInt(mStr);
         
-        if (startDateTime < nowPeru) {
+        if (ampm === 'PM' && hours < 12) hours += 12;
+        if (ampm === 'AM' && hours === 12) hours = 0;
+        
+        const year = reservationDate.getUTCFullYear();
+        const month = reservationDate.getUTCMonth();
+        const day = reservationDate.getUTCDate();
+        
+        // Convert to absolute UTC (Peru is UTC-5, so add 5 hours)
+        const startDateTime = new Date(Date.UTC(year, month, day, hours + 5, minutes, 0));
+
+        // Validación extra: no permitir reservas en el pasado (comparación absoluta)
+        if (startDateTime < new Date()) {
             throw new Error("No es posible realizar una reserva para una hora que ya pasó.");
         }
 
