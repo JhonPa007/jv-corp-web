@@ -5030,11 +5030,10 @@ export type Horarios_extraScalarFieldEnum = (typeof Horarios_extraScalarFieldEnu
 export const Horarios_recurrentesScalarFieldEnum = {
   id: 'id',
   empleado_id: 'empleado_id',
+  sucursal_id: 'sucursal_id',
   dia_semana: 'dia_semana',
   hora_inicio: 'hora_inicio',
-  hora_fin: 'hora_fin',
-  fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  hora_fin: 'hora_fin'
 } as const
 
 export type Horarios_recurrentesScalarFieldEnum = (typeof Horarios_recurrentesScalarFieldEnum)[keyof typeof Horarios_recurrentesScalarFieldEnum]
