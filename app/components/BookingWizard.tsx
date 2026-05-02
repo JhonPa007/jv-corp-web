@@ -58,6 +58,17 @@ const ClientIdentityStep = ({
         }
     };
 
+    // Determine if email was missing when identity was first shown
+    const [missingEmailOnIdentify, setMissingEmailOnIdentify] = useState(false);
+
+    useEffect(() => {
+        if (mode === 'confirm_identity' && !clientData.email) {
+            setMissingEmailOnIdentify(true);
+        } else if (mode === 'options' || mode === 'search') {
+            setMissingEmailOnIdentify(false);
+        }
+    }, [mode]);
+
     if (mode === 'options') {
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
@@ -141,7 +152,7 @@ const ClientIdentityStep = ({
     }
 
     if (mode === 'confirm_identity') {
-        const needsEmail = !clientData.email;
+        const needsEmail = missingEmailOnIdentify;
 
         return (
             <div className="space-y-6 animate-in fade-in slide-in-from-right-4 duration-300">
@@ -186,12 +197,14 @@ const ClientIdentityStep = ({
 
                 <div className="grid grid-cols-2 gap-4">
                     <button
+                        type="button"
                         onClick={() => setMode('search')}
                         className="p-4 rounded-xl border border-gray-300 text-gray-600 font-bold hover:bg-gray-50"
                     >
                         No soy yo
                     </button>
                     <button
+                        type="button"
                         onClick={onNext}
                         className="p-4 rounded-xl bg-gray-900 text-white font-bold hover:bg-black shadow-lg"
                     >
@@ -399,6 +412,12 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
         // Or validate client data locally first?
         if (!clientData.nombres || !clientData.telefono || !clientData.email) {
             setClientError("Por favor completa los campos obligatorios (*) incluyendo tu correo.");
+            return;
+        }
+
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        if (!emailRegex.test(clientData.email)) {
+            setClientError("Por favor ingresa un correo electrónico válido.");
             return;
         }
 
