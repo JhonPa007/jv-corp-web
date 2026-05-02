@@ -9,12 +9,16 @@ console.log(`[DEBUG] Servidor iniciado - Hora local: ${new Date().toString()} - 
 /**
  * Helper to get minutes from midnight for a time value
  * @param d Date object
- * @param fromDb If true, treats the date as a Prisma TIME (UTC)
+ * @param fromDb If true, treats the date as a Prisma TIME (UTC nominal)
  */
 const getMinutesSinceMidnight = (d: Date, fromDb: boolean = false) => {
-    const hours = fromDb ? d.getUTCHours() : d.getHours();
-    const minutes = fromDb ? d.getUTCMinutes() : d.getMinutes();
-    return hours * 60 + minutes;
+    if (fromDb) {
+        // Prisma Time objects store the nominal time in UTC components (e.g. 09:00:00.000Z)
+        return d.getUTCHours() * 60 + d.getUTCMinutes();
+    }
+    // For a real UTC date, we want its Peru components (UTC-5)
+    const peruTime = new Date(d.getTime() - (5 * 60 * 60 * 1000));
+    return peruTime.getUTCHours() * 60 + peruTime.getUTCMinutes();
 };
 
 export interface ClientRegistrationData {
@@ -142,29 +146,43 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             }
         });
 
-        // 4. Generate Candidates
+        // 4. Get absences/blocks for these staff
+        const absences = await prisma.ausencias_empleado.findMany({
+            where: {
+                empleado_id: { in: targetStaffIds },
+                fecha_hora_inicio: { lt: queryDateEnd },
+                fecha_hora_fin: { gt: queryDateStart }
+            }
+        });
+
+        // 5. Generate Candidates
         const START_HOUR = 9;
         const END_HOUR = 21;
-        let currentTime = new Date(queryDateStart);
-        currentTime.setHours(START_HOUR, 0, 0, 0);
-
-        const endTime = new Date(queryDateStart);
-        endTime.setHours(END_HOUR, 0, 0, 0);
+        
+        // We work with "Real UTC" dates. 
+        // We need to find the absolute UTC time for 9:00 AM Peru on the requested date.
+        // Since Peru is UTC-5, 9:00 AM Peru is 14:00 UTC.
+        
+        // Normalize requested date to Peru midnight (05:00 UTC)
+        const year = date.getUTCFullYear();
+        const month = date.getUTCMonth();
+        const day = date.getUTCDate();
+        
+        let currentTime = new Date(Date.UTC(year, month, day, START_HOUR + 5, 0, 0, 0));
+        const endTime = new Date(Date.UTC(year, month, day, END_HOUR + 5, 0, 0, 0));
 
         // Helper to compare times consistently
         const getMinutes = (d: Date, isDbTime: boolean) => getMinutesSinceMidnight(d, isDbTime);
 
-        console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff count: ${targetStaffIds.length}, schedules found: ${schedules.length}`);
+        console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff: ${targetStaffIds}, schedules: ${schedules.length}, absences: ${absences.length}`);
 
-        // Obtener hora actual en Perú (UTC-5) independientemente de la zona horaria del servidor
         const now = new Date();
-        const nowPeru = new Date(now.getTime() - (5 * 60 * 60 * 1000));
         
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
 
-            // Evitar mostrar horarios que ya pasaron si es el día de hoy (comparando con hora de Perú)
-            if (isSameDay(date, nowPeru) && slotStart < nowPeru) {
+            // Evitar mostrar horarios que ya pasaron (comparación absoluta en UTC)
+            if (slotStart < now) {
                 currentTime = addMinutes(currentTime, 15);
                 continue;
             }
@@ -193,6 +211,16 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             });
 
                 if (!isWithinWorkingHours) continue;
+
+                // Check Absences/Blocks (Lunch, permits, etc.)
+                const staffAbsences = absences.filter(a => a.empleado_id === staffId);
+                const isBlocked = staffAbsences.some(abs => {
+                    const absStart = new Date(abs.fecha_hora_inicio);
+                    const absEnd = new Date(abs.fecha_hora_fin);
+                    return (slotStart < absEnd && slotEnd > absStart);
+                });
+
+                if (isBlocked) continue;
 
                 // Check Reservations
                 const staffReservations = reservations.filter(r => r.empleado_id === staffId);
