@@ -15,7 +15,7 @@ async function getData() {
                     }
                 },
                 include: { categorias_servicios: true },
-                orderBy: { nombre: 'asc' }
+                orderBy: { orden: 'asc' }
             }),
             prisma.empleados.findMany({
                 where: {

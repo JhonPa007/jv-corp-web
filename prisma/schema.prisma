@@ -657,6 +657,8 @@ model servicios {
   es_paquete                                                                     Boolean                   @default(false)
   costo_insumos                                                                  Decimal                   @default(0.00) @db.Decimal(10, 2)
   cargo_fijo_produccion                                                          Decimal?                  @db.Decimal(10, 2)
+  orden                                                                          Int?
+  ciclo_dias                                                                     Int?
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios    paquete_servicios_items[] @relation("paquete_servicios_items_item_servicio_idToservicios")
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios paquete_servicios_items[] @relation("paquete_servicios_items_paquete_servicio_idToservicios")
   reservas                                                                       reservas[]

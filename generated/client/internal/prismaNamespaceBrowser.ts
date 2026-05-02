@@ -748,7 +748,9 @@ export const ServiciosScalarFieldEnum = {
   porcentaje_comision_extra: 'porcentaje_comision_extra',
   es_paquete: 'es_paquete',
   costo_insumos: 'costo_insumos',
-  cargo_fijo_produccion: 'cargo_fijo_produccion'
+  cargo_fijo_produccion: 'cargo_fijo_produccion',
+  orden: 'orden',
+  ciclo_dias: 'ciclo_dias'
 } as const
 
 export type ServiciosScalarFieldEnum = (typeof ServiciosScalarFieldEnum)[keyof typeof ServiciosScalarFieldEnum]

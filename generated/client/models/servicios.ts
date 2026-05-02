@@ -34,6 +34,8 @@ export type ServiciosAvgAggregateOutputType = {
   porcentaje_comision_extra: runtime.Decimal | null
   costo_insumos: runtime.Decimal | null
   cargo_fijo_produccion: runtime.Decimal | null
+  orden: number | null
+  ciclo_dias: number | null
 }
 
 export type ServiciosSumAggregateOutputType = {
@@ -44,6 +46,8 @@ export type ServiciosSumAggregateOutputType = {
   porcentaje_comision_extra: runtime.Decimal | null
   costo_insumos: runtime.Decimal | null
   cargo_fijo_produccion: runtime.Decimal | null
+  orden: number | null
+  ciclo_dias: number | null
 }
 
 export type ServiciosMinAggregateOutputType = {
@@ -60,6 +64,8 @@ export type ServiciosMinAggregateOutputType = {
   es_paquete: boolean | null
   costo_insumos: runtime.Decimal | null
   cargo_fijo_produccion: runtime.Decimal | null
+  orden: number | null
+  ciclo_dias: number | null
 }
 
 export type ServiciosMaxAggregateOutputType = {
@@ -76,6 +82,8 @@ export type ServiciosMaxAggregateOutputType = {
   es_paquete: boolean | null
   costo_insumos: runtime.Decimal | null
   cargo_fijo_produccion: runtime.Decimal | null
+  orden: number | null
+  ciclo_dias: number | null
 }
 
 export type ServiciosCountAggregateOutputType = {
@@ -92,6 +100,8 @@ export type ServiciosCountAggregateOutputType = {
   es_paquete: number
   costo_insumos: number
   cargo_fijo_produccion: number
+  orden: number
+  ciclo_dias: number
   _all: number
 }
 
@@ -104,6 +114,8 @@ export type ServiciosAvgAggregateInputType = {
   porcentaje_comision_extra?: true
   costo_insumos?: true
   cargo_fijo_produccion?: true
+  orden?: true
+  ciclo_dias?: true
 }
 
 export type ServiciosSumAggregateInputType = {
@@ -114,6 +126,8 @@ export type ServiciosSumAggregateInputType = {
   porcentaje_comision_extra?: true
   costo_insumos?: true
   cargo_fijo_produccion?: true
+  orden?: true
+  ciclo_dias?: true
 }
 
 export type ServiciosMinAggregateInputType = {
@@ -130,6 +144,8 @@ export type ServiciosMinAggregateInputType = {
   es_paquete?: true
   costo_insumos?: true
   cargo_fijo_produccion?: true
+  orden?: true
+  ciclo_dias?: true
 }
 
 export type ServiciosMaxAggregateInputType = {
@@ -146,6 +162,8 @@ export type ServiciosMaxAggregateInputType = {
   es_paquete?: true
   costo_insumos?: true
   cargo_fijo_produccion?: true
+  orden?: true
+  ciclo_dias?: true
 }
 
 export type ServiciosCountAggregateInputType = {
@@ -162,6 +180,8 @@ export type ServiciosCountAggregateInputType = {
   es_paquete?: true
   costo_insumos?: true
   cargo_fijo_produccion?: true
+  orden?: true
+  ciclo_dias?: true
   _all?: true
 }
 
@@ -265,6 +285,8 @@ export type ServiciosGroupByOutputType = {
   es_paquete: boolean
   costo_insumos: runtime.Decimal
   cargo_fijo_produccion: runtime.Decimal | null
+  orden: number | null
+  ciclo_dias: number | null
   _count: ServiciosCountAggregateOutputType | null
   _avg: ServiciosAvgAggregateOutputType | null
   _sum: ServiciosSumAggregateOutputType | null
@@ -304,6 +326,8 @@ export type serviciosWhereInput = {
   es_paquete?: Prisma.BoolFilter<"servicios"> | boolean
   costo_insumos?: Prisma.DecimalFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.DecimalNullableFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.IntNullableFilter<"servicios"> | number | null
+  ciclo_dias?: Prisma.IntNullableFilter<"servicios"> | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
@@ -326,6 +350,8 @@ export type serviciosOrderByWithRelationInput = {
   es_paquete?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrderInput | Prisma.SortOrder
+  orden?: Prisma.SortOrderInput | Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrderInput | Prisma.SortOrder
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsOrderByRelationAggregateInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsOrderByRelationAggregateInput
   reservas?: Prisma.reservasOrderByRelationAggregateInput
@@ -351,6 +377,8 @@ export type serviciosWhereUniqueInput = Prisma.AtLeast<{
   es_paquete?: Prisma.BoolFilter<"servicios"> | boolean
   costo_insumos?: Prisma.DecimalFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.DecimalNullableFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.IntNullableFilter<"servicios"> | number | null
+  ciclo_dias?: Prisma.IntNullableFilter<"servicios"> | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
@@ -373,6 +401,8 @@ export type serviciosOrderByWithAggregationInput = {
   es_paquete?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrderInput | Prisma.SortOrder
+  orden?: Prisma.SortOrderInput | Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.serviciosCountOrderByAggregateInput
   _avg?: Prisma.serviciosAvgOrderByAggregateInput
   _max?: Prisma.serviciosMaxOrderByAggregateInput
@@ -397,6 +427,8 @@ export type serviciosScalarWhereWithAggregatesInput = {
   es_paquete?: Prisma.BoolWithAggregatesFilter<"servicios"> | boolean
   costo_insumos?: Prisma.DecimalWithAggregatesFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.DecimalNullableWithAggregatesFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.IntNullableWithAggregatesFilter<"servicios"> | number | null
+  ciclo_dias?: Prisma.IntNullableWithAggregatesFilter<"servicios"> | number | null
 }
 
 export type serviciosCreateInput = {
@@ -411,6 +443,8 @@ export type serviciosCreateInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
@@ -433,6 +467,8 @@ export type serviciosUncheckedCreateInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
@@ -452,6 +488,8 @@ export type serviciosUpdateInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
@@ -474,6 +512,8 @@ export type serviciosUncheckedUpdateInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
@@ -495,6 +535,8 @@ export type serviciosCreateManyInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
 }
 
 export type serviciosUpdateManyMutationInput = {
@@ -509,6 +551,8 @@ export type serviciosUpdateManyMutationInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type serviciosUncheckedUpdateManyInput = {
@@ -525,6 +569,8 @@ export type serviciosUncheckedUpdateManyInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type ServiciosListRelationFilter = {
@@ -556,6 +602,8 @@ export type serviciosCountOrderByAggregateInput = {
   es_paquete?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrder
 }
 
 export type serviciosAvgOrderByAggregateInput = {
@@ -566,6 +614,8 @@ export type serviciosAvgOrderByAggregateInput = {
   porcentaje_comision_extra?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrder
 }
 
 export type serviciosMaxOrderByAggregateInput = {
@@ -582,6 +632,8 @@ export type serviciosMaxOrderByAggregateInput = {
   es_paquete?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrder
 }
 
 export type serviciosMinOrderByAggregateInput = {
@@ -598,6 +650,8 @@ export type serviciosMinOrderByAggregateInput = {
   es_paquete?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrder
 }
 
 export type serviciosSumOrderByAggregateInput = {
@@ -608,6 +662,8 @@ export type serviciosSumOrderByAggregateInput = {
   porcentaje_comision_extra?: Prisma.SortOrder
   costo_insumos?: Prisma.SortOrder
   cargo_fijo_produccion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
+  ciclo_dias?: Prisma.SortOrder
 }
 
 export type ServiciosNullableScalarRelationFilter = {
@@ -741,6 +797,8 @@ export type serviciosCreateWithoutCategorias_serviciosInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
@@ -761,6 +819,8 @@ export type serviciosUncheckedCreateWithoutCategorias_serviciosInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
@@ -811,6 +871,8 @@ export type serviciosScalarWhereInput = {
   es_paquete?: Prisma.BoolFilter<"servicios"> | boolean
   costo_insumos?: Prisma.DecimalFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.DecimalNullableFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.IntNullableFilter<"servicios"> | number | null
+  ciclo_dias?: Prisma.IntNullableFilter<"servicios"> | number | null
 }
 
 export type serviciosCreateWithoutPaquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosInput = {
@@ -825,6 +887,8 @@ export type serviciosCreateWithoutPaquete_servicios_items_paquete_servicios_item
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
@@ -846,6 +910,8 @@ export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servi
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
@@ -869,6 +935,8 @@ export type serviciosCreateWithoutPaquete_servicios_items_paquete_servicios_item
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
@@ -890,6 +958,8 @@ export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servi
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
@@ -924,6 +994,8 @@ export type serviciosUpdateWithoutPaquete_servicios_items_paquete_servicios_item
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
@@ -945,6 +1017,8 @@ export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servi
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
@@ -974,6 +1048,8 @@ export type serviciosUpdateWithoutPaquete_servicios_items_paquete_servicios_item
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
@@ -995,6 +1071,8 @@ export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servi
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1013,6 +1091,8 @@ export type serviciosCreateWithoutReservasInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
@@ -1034,6 +1114,8 @@ export type serviciosUncheckedCreateWithoutReservasInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
@@ -1068,6 +1150,8 @@ export type serviciosUpdateWithoutReservasInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
@@ -1089,6 +1173,8 @@ export type serviciosUncheckedUpdateWithoutReservasInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1107,6 +1193,8 @@ export type serviciosCreateWithoutVenta_itemsInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
@@ -1128,6 +1216,8 @@ export type serviciosUncheckedCreateWithoutVenta_itemsInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
@@ -1162,6 +1252,8 @@ export type serviciosUpdateWithoutVenta_itemsInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
@@ -1183,6 +1275,8 @@ export type serviciosUncheckedUpdateWithoutVenta_itemsInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1201,6 +1295,8 @@ export type serviciosCreateWithoutPackage_itemsInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
@@ -1222,6 +1318,8 @@ export type serviciosUncheckedCreateWithoutPackage_itemsInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
@@ -1256,6 +1354,8 @@ export type serviciosUpdateWithoutPackage_itemsInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
@@ -1277,6 +1377,8 @@ export type serviciosUncheckedUpdateWithoutPackage_itemsInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1296,6 +1398,8 @@ export type serviciosCreateManyCategorias_serviciosInput = {
   es_paquete?: boolean
   costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
 }
 
 export type serviciosUpdateWithoutCategorias_serviciosInput = {
@@ -1310,6 +1414,8 @@ export type serviciosUpdateWithoutCategorias_serviciosInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
@@ -1330,6 +1436,8 @@ export type serviciosUncheckedUpdateWithoutCategorias_serviciosInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1350,6 +1458,8 @@ export type serviciosUncheckedUpdateManyWithoutCategorias_serviciosInput = {
   es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
   costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -1433,6 +1543,8 @@ export type serviciosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   es_paquete?: boolean
   costo_insumos?: boolean
   cargo_fijo_produccion?: boolean
+  orden?: boolean
+  ciclo_dias?: boolean
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs>
   reservas?: boolean | Prisma.servicios$reservasArgs<ExtArgs>
@@ -1456,6 +1568,8 @@ export type serviciosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   es_paquete?: boolean
   costo_insumos?: boolean
   cargo_fijo_produccion?: boolean
+  orden?: boolean
+  ciclo_dias?: boolean
   categorias_servicios?: boolean | Prisma.categorias_serviciosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["servicios"]>
 
@@ -1473,6 +1587,8 @@ export type serviciosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   es_paquete?: boolean
   costo_insumos?: boolean
   cargo_fijo_produccion?: boolean
+  orden?: boolean
+  ciclo_dias?: boolean
   categorias_servicios?: boolean | Prisma.categorias_serviciosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["servicios"]>
 
@@ -1490,9 +1606,11 @@ export type serviciosSelectScalar = {
   es_paquete?: boolean
   costo_insumos?: boolean
   cargo_fijo_produccion?: boolean
+  orden?: boolean
+  ciclo_dias?: boolean
 }
 
-export type serviciosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "duracion_minutos" | "precio" | "categoria_id" | "activo" | "fecha_creacion" | "fecha_actualizacion" | "porcentaje_comision_extra" | "es_paquete" | "costo_insumos" | "cargo_fijo_produccion", ExtArgs["result"]["servicios"]>
+export type serviciosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "duracion_minutos" | "precio" | "categoria_id" | "activo" | "fecha_creacion" | "fecha_actualizacion" | "porcentaje_comision_extra" | "es_paquete" | "costo_insumos" | "cargo_fijo_produccion" | "orden" | "ciclo_dias", ExtArgs["result"]["servicios"]>
 export type serviciosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs>
@@ -1533,6 +1651,8 @@ export type $serviciosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     es_paquete: boolean
     costo_insumos: runtime.Decimal
     cargo_fijo_produccion: runtime.Decimal | null
+    orden: number | null
+    ciclo_dias: number | null
   }, ExtArgs["result"]["servicios"]>
   composites: {}
 }
@@ -1975,6 +2095,8 @@ export interface serviciosFieldRefs {
   readonly es_paquete: Prisma.FieldRef<"servicios", 'Boolean'>
   readonly costo_insumos: Prisma.FieldRef<"servicios", 'Decimal'>
   readonly cargo_fijo_produccion: Prisma.FieldRef<"servicios", 'Decimal'>
+  readonly orden: Prisma.FieldRef<"servicios", 'Int'>
+  readonly ciclo_dias: Prisma.FieldRef<"servicios", 'Int'>
 }
     
 
