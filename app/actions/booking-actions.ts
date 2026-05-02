@@ -156,12 +156,17 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
 
         console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff count: ${targetStaffIds.length}, schedules found: ${schedules.length}`);
 
+        // Obtener hora actual en Perú (UTC-5) independientemente de la zona horaria del servidor
         const now = new Date();
+        const nowPeru = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+        
+        console.log(`[DEBUG] getAvailableTimeSlots - Fecha: ${date.toISOString()}, Día JS: ${dayOfWeek}, Hora Perú: ${nowPeru.toISOString()}`);
+
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
 
-            // Evitar mostrar horarios que ya pasaron si es el día de hoy
-            if (isSameDay(date, now) && slotStart < now) {
+            // Evitar mostrar horarios que ya pasaron si es el día de hoy (comparando con hora de Perú)
+            if (isSameDay(date, nowPeru) && slotStart < nowPeru) {
                 currentTime = addMinutes(currentTime, 15);
                 continue;
             }
@@ -246,8 +251,11 @@ export async function createReservation(data: {
         // We use the reservationDate as the base to ensure correct day
         const startDateTime = parse(data.time, 'h:mm a', reservationDate);
 
-        // Validación extra: no permitir reservas en el pasado
-        if (startDateTime < new Date()) {
+        // Validación extra: no permitir reservas en el pasado (ajustado a Perú UTC-5)
+        const now = new Date();
+        const nowPeru = new Date(now.getTime() - (5 * 60 * 60 * 1000));
+        
+        if (startDateTime < nowPeru) {
             throw new Error("No es posible realizar una reserva para una hora que ya pasó.");
         }
 
