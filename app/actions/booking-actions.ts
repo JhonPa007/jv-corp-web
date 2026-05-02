@@ -156,8 +156,16 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
 
         console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff count: ${targetStaffIds.length}, schedules found: ${schedules.length}`);
 
+        const now = new Date();
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
+
+            // Evitar mostrar horarios que ya pasaron si es el día de hoy
+            if (isSameDay(date, now) && slotStart < now) {
+                currentTime = addMinutes(currentTime, 15);
+                continue;
+            }
+
             const slotEnd = addMinutes(slotStart, serviceDurationMinutes);
 
             if (slotEnd > endTime) break;
@@ -237,6 +245,11 @@ export async function createReservation(data: {
         // Parse "9:00 AM" format back to Date
         // We use the reservationDate as the base to ensure correct day
         const startDateTime = parse(data.time, 'h:mm a', reservationDate);
+
+        // Validación extra: no permitir reservas en el pasado
+        if (startDateTime < new Date()) {
+            throw new Error("No es posible realizar una reserva para una hora que ya pasó.");
+        }
 
         // We need service duration to know end time
         const service = await prisma.servicios.findUnique({ where: { id: data.serviceId } });
