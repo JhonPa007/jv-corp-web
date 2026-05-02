@@ -321,10 +321,10 @@ export async function createReservation(data: {
 
                 // 1. Check if staff works this day and time
                 const hasSchedule = relevantSchedules.some((sch: any) => {
-                    const schStart = getMinutesSinceMidnight(sch.hora_inicio, true);
-                    const schEnd = getMinutesSinceMidnight(sch.hora_fin, true);
-                    const targetStart = getMinutesSinceMidnight(startDateTime, false);
-                    const targetEnd = getMinutesSinceMidnight(endDateTime, false);
+                    const schStart = getMinutesSinceMidnight(sch.hora_inicio);
+                    const schEnd = getMinutesSinceMidnight(sch.hora_fin);
+                    const targetStart = getMinutesSinceMidnight(startDateTime);
+                    const targetEnd = getMinutesSinceMidnight(endDateTime);
                     return targetStart >= schStart && targetEnd <= schEnd;
                 });
 
@@ -341,8 +341,18 @@ export async function createReservation(data: {
                 });
 
                 if (conflicts.length === 0) {
-                    foundStaffId = s.id;
-                    break;
+                    // 3. Check conflicts in absences
+                    const absences = await prisma.ausencias_empleado.findMany({
+                        where: {
+                            empleado_id: s.id,
+                            fecha_hora_inicio: { lt: endDateTime },
+                            fecha_hora_fin: { gt: startDateTime }
+                        }
+                    });
+                    if (absences.length === 0) {
+                        foundStaffId = s.id;
+                        break;
+                    }
                 }
             }
 
@@ -359,10 +369,10 @@ export async function createReservation(data: {
             });
 
             const worksThisTime = staffSchedule.some(sch => {
-                const schStart = getMinutesSinceMidnight(sch.hora_inicio, true);
-                const schEnd = getMinutesSinceMidnight(sch.hora_fin, true);
-                const targetStart = getMinutesSinceMidnight(startDateTime, false);
-                const targetEnd = getMinutesSinceMidnight(endDateTime, false);
+                const schStart = getMinutesSinceMidnight(sch.hora_inicio);
+                const schEnd = getMinutesSinceMidnight(sch.hora_fin);
+                const targetStart = getMinutesSinceMidnight(startDateTime);
+                const targetEnd = getMinutesSinceMidnight(endDateTime);
                 return targetStart >= schStart && targetEnd <= schEnd;
             });
 
@@ -378,6 +388,15 @@ export async function createReservation(data: {
             });
 
             if (conflicts.length > 0) throw new Error("El empleado ya tiene una reserva en este horario.");
+
+            const absences = await prisma.ausencias_empleado.findMany({
+                where: {
+                    empleado_id: assignedStaffId as number,
+                    fecha_hora_inicio: { lt: endDateTime },
+                    fecha_hora_fin: { gt: startDateTime }
+                }
+            });
+            if (absences.length > 0) throw new Error("El empleado tiene un tiempo bloqueado (permiso/almuerzo) en este horario.");
         }
 
         // 3. Create Reservation
