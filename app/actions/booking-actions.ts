@@ -143,8 +143,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         });
 
         // 4. Generate Candidates
-        const START_HOUR = 0; // Temporarily expanded for debugging
-        const END_HOUR = 24;
+        const START_HOUR = 9;
+        const END_HOUR = 21;
         let currentTime = new Date(queryDateStart);
         currentTime.setHours(START_HOUR, 0, 0, 0);
 
@@ -160,8 +160,6 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         const now = new Date();
         const nowPeru = new Date(now.getTime() - (5 * 60 * 60 * 1000));
         
-        console.log(`[DEBUG] getAvailableTimeSlots - Fecha: ${date.toISOString()}, Día JS: ${dayOfWeek}, Hora Perú: ${nowPeru.toISOString()}`);
-
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
 
@@ -190,8 +188,9 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
                     const slotStartMins = getMinutes(slotStart, false);
                     const slotEndMins = getMinutes(slotEnd, false);
                     
-                    return slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
-                });
+                const matches = slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
+                return matches;
+            });
 
                 if (!isWithinWorkingHours) continue;
 
@@ -218,7 +217,6 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             currentTime = addMinutes(currentTime, 15);
         }
 
-        console.log(`[DEBUG] Total de slots generados: ${slots.length}`);
         return slots;
 
     } catch (error) {
