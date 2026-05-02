@@ -887,7 +887,7 @@ const ConfirmationStep = ({
                 </div>
                 <div className="flex justify-between pt-2">
                     <span className="font-bold text-lg text-gray-900">Total a Pagar</span>
-                    <span className="font-bold text-lg text-barberia-gold">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
+                    <span className="font-bold text-lg text-gray-900">{selectedService ? formatPrice(selectedService.precio) : "S/ 0.00"}</span>
                 </div>
             </div>
 
