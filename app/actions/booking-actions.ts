@@ -186,8 +186,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
 
             if (slotEnd > endTime) break;
 
-            const slotStartMins = getMinutes(slotStart, false);
-            const slotEndMins = getMinutes(slotEnd, false);
+            const slotStartMins = getMinutes(slotStart);
+            const slotEndMins = getMinutes(slotEnd);
 
             let isSlotAvailable = false;
 
@@ -196,10 +196,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
                 if (staffSchedules.length === 0) continue;
 
                 const isWithinWorkingHours = staffSchedules.some(sch => {
-                    const schedStartMins = getMinutes(sch.hora_inicio, true);
-                    const schedEndMins = getMinutes(sch.hora_fin, true);
-                    const slotStartMins = getMinutes(slotStart, false);
-                    const slotEndMins = getMinutes(slotEnd, false);
+                    const schedStartMins = getMinutes(sch.hora_inicio);
+                    const schedEndMins = getMinutes(sch.hora_fin);
                     
                 const matches = slotStartMins >= schedStartMins && slotEndMins <= schedEndMins;
                 return matches;
