@@ -171,9 +171,6 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         // Since Peru is UTC-5, 9:00 AM Peru is 14:00 UTC.
         
         // Normalize requested date to Peru midnight (05:00 UTC)
-        const year = date.getUTCFullYear();
-        const month = date.getUTCMonth();
-        const day = date.getUTCDate();
         
         let currentTime = new Date(Date.UTC(year, month, day, START_HOUR + 5, 0, 0, 0));
         const endTime = new Date(Date.UTC(year, month, day, END_HOUR + 5, 0, 0, 0));
