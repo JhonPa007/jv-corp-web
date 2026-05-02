@@ -58,14 +58,17 @@ const ClientIdentityStep = ({
         }
     };
 
-    // Determine if email was missing when identity was first shown
+    // Determine if email or birthday was missing when identity was first shown
     const [missingEmailOnIdentify, setMissingEmailOnIdentify] = useState(false);
+    const [missingBirthdayOnIdentify, setMissingBirthdayOnIdentify] = useState(false);
 
     useEffect(() => {
-        if (mode === 'confirm_identity' && !clientData.email) {
-            setMissingEmailOnIdentify(true);
+        if (mode === 'confirm_identity') {
+            if (!clientData.email) setMissingEmailOnIdentify(true);
+            if (!clientData.fecha_nacimiento) setMissingBirthdayOnIdentify(true);
         } else if (mode === 'options' || mode === 'search') {
             setMissingEmailOnIdentify(false);
+            setMissingBirthdayOnIdentify(false);
         }
     }, [mode]);
 
@@ -189,6 +192,22 @@ const ClientIdentityStep = ({
                     </div>
                 )}
 
+                {missingBirthdayOnIdentify && (
+                    <div className="space-y-3 p-4 bg-blue-50 rounded-xl border border-blue-200 animate-in fade-in zoom-in duration-300">
+                        <label className="block text-sm font-bold text-blue-800">
+                            Fecha de Nacimiento (Opcional):
+                        </label>
+                        <div className="relative">
+                            <input
+                                type="date"
+                                className="w-full p-3 border border-blue-300 rounded-xl focus:ring-2 focus:ring-barberia-gold outline-none transition-all text-gray-900"
+                                value={clientData.fecha_nacimiento}
+                                onChange={e => setClientData({ ...clientData, fecha_nacimiento: e.target.value })}
+                            />
+                        </div>
+                    </div>
+                )}
+
                 {clientError && (
                     <div className="bg-red-50 text-red-600 p-3 rounded-lg text-sm border border-red-200 flex items-center gap-2">
                         <span>⚠️</span> {clientError}
@@ -294,7 +313,7 @@ const ClientRegistrationForm = ({ data, onChange, error, isSubmitting, onSubmit 
                         </div>
                     </div>
                     <div>
-                        <label className="block text-sm font-bold text-gray-700 mb-1">Fecha de Nacimiento *</label>
+                        <label className="block text-sm font-bold text-gray-700 mb-1">Fecha de Nacimiento (Opcional)</label>
                         <div className="relative">
                             <input
                                 type="date"
@@ -421,14 +440,6 @@ export default function BookingWizard({ services, staff }: BookingWizardProps) {
             return;
         }
 
-        // Only validate birthday if NEW client (old clients might not have it and we don't want to force it now unless necessary)
-        // Actually, the previous code had !clientData.fecha_nacimiento as mandatory. 
-        // Let's keep it mandatory for consistency, but if they are an existing client we might need to handle it.
-        // For now, let's just make it clear email is mandatory.
-        if (!clientData.fecha_nacimiento) {
-            setClientError("Por favor ingresa tu fecha de nacimiento.");
-            return;
-        }
         setClientError(null);
         setCurrentStep("confirm");
     };
