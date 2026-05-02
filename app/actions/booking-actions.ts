@@ -8,17 +8,11 @@ console.log(`[DEBUG] Servidor iniciado - Hora local: ${new Date().toString()} - 
 
 /**
  * Helper to get minutes from midnight for a time value
- * @param d Date object
- * @param fromDb If true, treats the date as a Prisma TIME (UTC nominal)
+ * @param d Date object (treated as Nominal UTC)
  */
-const getMinutesSinceMidnight = (d: Date, fromDb: boolean = false) => {
-    if (fromDb) {
-        // Prisma Time objects store the nominal time in UTC components (e.g. 09:00:00.000Z)
-        return d.getUTCHours() * 60 + d.getUTCMinutes();
-    }
-    // For a real UTC date, we want its Peru components (UTC-5)
-    const peruTime = new Date(d.getTime() - (5 * 60 * 60 * 1000));
-    return peruTime.getUTCHours() * 60 + peruTime.getUTCMinutes();
+const getMinutesSinceMidnight = (d: Date) => {
+    // Both DB times and our candidate slots are treated as Nominal UTC
+    return d.getUTCHours() * 60 + d.getUTCMinutes();
 };
 
 export interface ClientRegistrationData {
@@ -84,18 +78,18 @@ export async function registerClientForBooking(data: ClientRegistrationData) {
 
 export async function getAvailableTimeSlots(date: Date, staffId: number | 'any', serviceDurationMinutes: number) {
     try {
-        // We handle dates in absolute UTC but logically matching Peru (UTC-5)
+        // We use "Nominal UTC": Peru Local Time is stored as UTC digits in DB.
+        // Requested 'date' already has the correct UTC digits for the day.
         const year = date.getUTCFullYear();
         const month = date.getUTCMonth();
         const day = date.getUTCDate();
         
-        // Peru Day boundaries in absolute UTC
-        const queryDateStart = new Date(Date.UTC(year, month, day, 5, 0, 0, 0));
-        const queryDateEnd = new Date(Date.UTC(year, month, day + 1, 4, 59, 59, 999));
+        const queryDateStart = new Date(Date.UTC(year, month, day, 0, 0, 0, 0));
+        const queryDateEnd = new Date(Date.UTC(year, month, day, 23, 59, 59, 999));
         
         const dayOfWeek = date.getUTCDay(); // 0 (Sun) - 6 (Sat)
         
-        console.log(`[DEBUG] getAvailableTimeSlots - Fecha Peru: ${year}-${month+1}-${day}, Día: ${dayOfWeek}`);
+        console.log(`[DEBUG] getAvailableTimeSlots - Fecha Nominal: ${year}-${month+1}-${day}, Día: ${dayOfWeek}`);
 
         // Adjust dayOfWeek to match schema if needed (often 1=Mon, 7=Sun in some systems, check data later if issue. standard JS: 0=Sun)
         // Assumption: Database uses 0-6 or 1-7?
@@ -166,27 +160,24 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
         const START_HOUR = 9;
         const END_HOUR = 21;
         
-        // We work with "Real UTC" dates. 
-        // We need to find the absolute UTC time for 9:00 AM Peru on the requested date.
-        // Since Peru is UTC-5, 9:00 AM Peru is 14:00 UTC.
-        
-        // Normalize requested date to Peru midnight (05:00 UTC)
-        
-        let currentTime = new Date(Date.UTC(year, month, day, START_HOUR + 5, 0, 0, 0));
-        const endTime = new Date(Date.UTC(year, month, day, END_HOUR + 5, 0, 0, 0));
+        // Candidate slots in "Nominal UTC" (9:00 AM Peru = 09:00 UTC)
+        let currentTime = new Date(Date.UTC(year, month, day, START_HOUR, 0, 0, 0));
+        const endTime = new Date(Date.UTC(year, month, day, END_HOUR, 0, 0, 0));
 
         // Helper to compare times consistently
-        const getMinutes = (d: Date, isDbTime: boolean) => getMinutesSinceMidnight(d, isDbTime);
+        const getMinutes = (d: Date) => getMinutesSinceMidnight(d);
 
         console.log(`[DEBUG] Generating slots for day ${dayOfWeek}, staff: ${targetStaffIds}, schedules: ${schedules.length}, absences: ${absences.length}`);
 
-        const now = new Date();
+        // Current time in "Nominal UTC" (Peru time digits)
+        const nowReal = new Date();
+        const nowNominal = new Date(nowReal.getTime() - (5 * 60 * 60 * 1000));
         
         while (currentTime < endTime) {
             const slotStart = new Date(currentTime);
 
-            // Evitar mostrar horarios que ya pasaron (comparación absoluta en UTC)
-            if (slotStart < now) {
+            // Evitar mostrar horarios que ya pasaron (comparando dígitos nominales)
+            if (slotStart < nowNominal) {
                 currentTime = addMinutes(currentTime, 15);
                 continue;
             }
@@ -241,9 +232,8 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
             }
 
             if (isSlotAvailable) {
-                // Generate "Nominal" Peru time for display
-                // If slotStart is 14:00 UTC, it's 9:00 AM Peru.
-                const hours = (slotStart.getUTCHours() - 5 + 24) % 24;
+                // Display is simple because slotStart already has the nominal digits
+                const hours = slotStart.getUTCHours();
                 const minutes = slotStart.getUTCMinutes();
                 const ampm = hours >= 12 ? 'PM' : 'AM';
                 const h12 = hours % 12 || 12;
@@ -282,8 +272,7 @@ export async function createReservation(data: {
         let assignedStaffId = data.staffId;
         const reservationDate = new Date(data.date);
 
-        // Parse "9:00 AM" format back to a real UTC Date for Peru
-        // Example: "4:45 PM" -> 16:45 Peru -> 21:45 UTC
+        // Parse "9:00 AM" format to Nominal UTC
         const [timePart, ampm] = data.time.split(' ');
         const [hStr, mStr] = timePart.split(':');
         let hours = parseInt(hStr);
@@ -296,11 +285,14 @@ export async function createReservation(data: {
         const month = reservationDate.getUTCMonth();
         const day = reservationDate.getUTCDate();
         
-        // Convert to absolute UTC (Peru is UTC-5, so add 5 hours)
-        const startDateTime = new Date(Date.UTC(year, month, day, hours + 5, minutes, 0));
+        // Convert to Nominal UTC (Matching existing DB convention)
+        const startDateTime = new Date(Date.UTC(year, month, day, hours, minutes, 0));
 
-        // Validación extra: no permitir reservas en el pasado (comparación absoluta)
-        if (startDateTime < new Date()) {
+        // Validación extra: no permitir reservas en el pasado (comparación nominal)
+        const nowReal = new Date();
+        const nowNominal = new Date(nowReal.getTime() - (5 * 60 * 60 * 1000));
+        
+        if (startDateTime < nowNominal) {
             throw new Error("No es posible realizar una reserva para una hora que ya pasó.");
         }
 
