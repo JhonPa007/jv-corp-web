@@ -173,7 +173,7 @@ const ClientIdentityStep = ({
                             />
                         </div>
                         <p className="text-xs text-amber-700">
-                            Lo usaremos para crear tu usuario en nuestra futura App de clientes. 🚀
+                            Lo usaremos para enviar alertas de tu reserva
                         </p>
                     </div>
                 )}
