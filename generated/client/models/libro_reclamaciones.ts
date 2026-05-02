@@ -37,84 +37,84 @@ export type Libro_reclamacionesSumAggregateOutputType = {
 }
 
 export type Libro_reclamacionesMinAggregateOutputType = {
-  id_reclamo: number | null
-  codigo_seguimiento: string | null
   fecha_registro: Date | null
-  nombre_completo: string | null
-  tipo_documento: string | null
-  numero_documento: string | null
-  direccion_domicilio: string | null
-  email: string | null
-  telefono: string | null
-  nombre_padre_tutor: string | null
-  unidad_negocio: string | null
-  tipo_bien: string | null
-  monto_reclamado: runtime.Decimal | null
-  descripcion_bien: string | null
-  tipo_incidencia: string | null
-  detalle_incidencia: string | null
-  pedido_consumidor: string | null
   estado: string | null
-  respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  codigo_seguimiento: string | null
+  descripcion_bien: string | null
+  detalle_incidencia: string | null
+  direccion_domicilio: string | null
+  email: string | null
+  id_reclamo: number | null
+  monto_reclamado: runtime.Decimal | null
+  nombre_completo: string | null
+  nombre_padre_tutor: string | null
+  numero_documento: string | null
+  pedido_consumidor: string | null
+  respuesta_empresa: string | null
+  telefono: string | null
+  tipo_bien: string | null
+  tipo_documento: string | null
+  tipo_incidencia: string | null
+  unidad_negocio: string | null
   acepto_terminos: boolean | null
-  ip_registro: string | null
   fecha_consentimiento: Date | null
+  ip_registro: string | null
 }
 
 export type Libro_reclamacionesMaxAggregateOutputType = {
-  id_reclamo: number | null
-  codigo_seguimiento: string | null
   fecha_registro: Date | null
-  nombre_completo: string | null
-  tipo_documento: string | null
-  numero_documento: string | null
-  direccion_domicilio: string | null
-  email: string | null
-  telefono: string | null
-  nombre_padre_tutor: string | null
-  unidad_negocio: string | null
-  tipo_bien: string | null
-  monto_reclamado: runtime.Decimal | null
-  descripcion_bien: string | null
-  tipo_incidencia: string | null
-  detalle_incidencia: string | null
-  pedido_consumidor: string | null
   estado: string | null
-  respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  codigo_seguimiento: string | null
+  descripcion_bien: string | null
+  detalle_incidencia: string | null
+  direccion_domicilio: string | null
+  email: string | null
+  id_reclamo: number | null
+  monto_reclamado: runtime.Decimal | null
+  nombre_completo: string | null
+  nombre_padre_tutor: string | null
+  numero_documento: string | null
+  pedido_consumidor: string | null
+  respuesta_empresa: string | null
+  telefono: string | null
+  tipo_bien: string | null
+  tipo_documento: string | null
+  tipo_incidencia: string | null
+  unidad_negocio: string | null
   acepto_terminos: boolean | null
-  ip_registro: string | null
   fecha_consentimiento: Date | null
+  ip_registro: string | null
 }
 
 export type Libro_reclamacionesCountAggregateOutputType = {
-  id_reclamo: number
-  codigo_seguimiento: number
   fecha_registro: number
-  nombre_completo: number
-  tipo_documento: number
-  numero_documento: number
-  direccion_domicilio: number
-  email: number
-  telefono: number
-  nombre_padre_tutor: number
-  unidad_negocio: number
-  tipo_bien: number
-  monto_reclamado: number
-  descripcion_bien: number
-  tipo_incidencia: number
-  detalle_incidencia: number
-  pedido_consumidor: number
   estado: number
-  respuesta_empresa: number
   fecha_respuesta: number
   archivo_sustento: number
+  codigo_seguimiento: number
+  descripcion_bien: number
+  detalle_incidencia: number
+  direccion_domicilio: number
+  email: number
+  id_reclamo: number
+  monto_reclamado: number
+  nombre_completo: number
+  nombre_padre_tutor: number
+  numero_documento: number
+  pedido_consumidor: number
+  respuesta_empresa: number
+  telefono: number
+  tipo_bien: number
+  tipo_documento: number
+  tipo_incidencia: number
+  unidad_negocio: number
   acepto_terminos: number
-  ip_registro: number
   fecha_consentimiento: number
+  ip_registro: number
   _all: number
 }
 
@@ -130,84 +130,84 @@ export type Libro_reclamacionesSumAggregateInputType = {
 }
 
 export type Libro_reclamacionesMinAggregateInputType = {
-  id_reclamo?: true
-  codigo_seguimiento?: true
   fecha_registro?: true
-  nombre_completo?: true
-  tipo_documento?: true
-  numero_documento?: true
-  direccion_domicilio?: true
-  email?: true
-  telefono?: true
-  nombre_padre_tutor?: true
-  unidad_negocio?: true
-  tipo_bien?: true
-  monto_reclamado?: true
-  descripcion_bien?: true
-  tipo_incidencia?: true
-  detalle_incidencia?: true
-  pedido_consumidor?: true
   estado?: true
-  respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  codigo_seguimiento?: true
+  descripcion_bien?: true
+  detalle_incidencia?: true
+  direccion_domicilio?: true
+  email?: true
+  id_reclamo?: true
+  monto_reclamado?: true
+  nombre_completo?: true
+  nombre_padre_tutor?: true
+  numero_documento?: true
+  pedido_consumidor?: true
+  respuesta_empresa?: true
+  telefono?: true
+  tipo_bien?: true
+  tipo_documento?: true
+  tipo_incidencia?: true
+  unidad_negocio?: true
   acepto_terminos?: true
-  ip_registro?: true
   fecha_consentimiento?: true
+  ip_registro?: true
 }
 
 export type Libro_reclamacionesMaxAggregateInputType = {
-  id_reclamo?: true
-  codigo_seguimiento?: true
   fecha_registro?: true
-  nombre_completo?: true
-  tipo_documento?: true
-  numero_documento?: true
-  direccion_domicilio?: true
-  email?: true
-  telefono?: true
-  nombre_padre_tutor?: true
-  unidad_negocio?: true
-  tipo_bien?: true
-  monto_reclamado?: true
-  descripcion_bien?: true
-  tipo_incidencia?: true
-  detalle_incidencia?: true
-  pedido_consumidor?: true
   estado?: true
-  respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  codigo_seguimiento?: true
+  descripcion_bien?: true
+  detalle_incidencia?: true
+  direccion_domicilio?: true
+  email?: true
+  id_reclamo?: true
+  monto_reclamado?: true
+  nombre_completo?: true
+  nombre_padre_tutor?: true
+  numero_documento?: true
+  pedido_consumidor?: true
+  respuesta_empresa?: true
+  telefono?: true
+  tipo_bien?: true
+  tipo_documento?: true
+  tipo_incidencia?: true
+  unidad_negocio?: true
   acepto_terminos?: true
-  ip_registro?: true
   fecha_consentimiento?: true
+  ip_registro?: true
 }
 
 export type Libro_reclamacionesCountAggregateInputType = {
-  id_reclamo?: true
-  codigo_seguimiento?: true
   fecha_registro?: true
-  nombre_completo?: true
-  tipo_documento?: true
-  numero_documento?: true
-  direccion_domicilio?: true
-  email?: true
-  telefono?: true
-  nombre_padre_tutor?: true
-  unidad_negocio?: true
-  tipo_bien?: true
-  monto_reclamado?: true
-  descripcion_bien?: true
-  tipo_incidencia?: true
-  detalle_incidencia?: true
-  pedido_consumidor?: true
   estado?: true
-  respuesta_empresa?: true
   fecha_respuesta?: true
   archivo_sustento?: true
+  codigo_seguimiento?: true
+  descripcion_bien?: true
+  detalle_incidencia?: true
+  direccion_domicilio?: true
+  email?: true
+  id_reclamo?: true
+  monto_reclamado?: true
+  nombre_completo?: true
+  nombre_padre_tutor?: true
+  numero_documento?: true
+  pedido_consumidor?: true
+  respuesta_empresa?: true
+  telefono?: true
+  tipo_bien?: true
+  tipo_documento?: true
+  tipo_incidencia?: true
+  unidad_negocio?: true
   acepto_terminos?: true
-  ip_registro?: true
   fecha_consentimiento?: true
+  ip_registro?: true
   _all?: true
 }
 
@@ -298,30 +298,30 @@ export type libro_reclamacionesGroupByArgs<ExtArgs extends runtime.Types.Extensi
 }
 
 export type Libro_reclamacionesGroupByOutputType = {
-  id_reclamo: number
-  codigo_seguimiento: string
   fecha_registro: Date
-  nombre_completo: string
-  tipo_documento: string
-  numero_documento: string
-  direccion_domicilio: string
-  email: string
-  telefono: string
-  nombre_padre_tutor: string | null
-  unidad_negocio: string
-  tipo_bien: string
-  monto_reclamado: runtime.Decimal | null
-  descripcion_bien: string | null
-  tipo_incidencia: string
-  detalle_incidencia: string
-  pedido_consumidor: string
   estado: string
-  respuesta_empresa: string | null
   fecha_respuesta: Date | null
   archivo_sustento: string | null
+  codigo_seguimiento: string
+  descripcion_bien: string | null
+  detalle_incidencia: string
+  direccion_domicilio: string
+  email: string
+  id_reclamo: number
+  monto_reclamado: runtime.Decimal | null
+  nombre_completo: string
+  nombre_padre_tutor: string | null
+  numero_documento: string
+  pedido_consumidor: string
+  respuesta_empresa: string | null
+  telefono: string
+  tipo_bien: string
+  tipo_documento: string
+  tipo_incidencia: string
+  unidad_negocio: string
   acepto_terminos: boolean
-  ip_registro: string | null
   fecha_consentimiento: Date | null
+  ip_registro: string | null
   _count: Libro_reclamacionesCountAggregateOutputType | null
   _avg: Libro_reclamacionesAvgAggregateOutputType | null
   _sum: Libro_reclamacionesSumAggregateOutputType | null
@@ -348,114 +348,114 @@ export type libro_reclamacionesWhereInput = {
   AND?: Prisma.libro_reclamacionesWhereInput | Prisma.libro_reclamacionesWhereInput[]
   OR?: Prisma.libro_reclamacionesWhereInput[]
   NOT?: Prisma.libro_reclamacionesWhereInput | Prisma.libro_reclamacionesWhereInput[]
-  id_reclamo?: Prisma.IntFilter<"libro_reclamaciones"> | number
-  codigo_seguimiento?: Prisma.StringFilter<"libro_reclamaciones"> | string
   fecha_registro?: Prisma.DateTimeFilter<"libro_reclamaciones"> | Date | string
-  nombre_completo?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  tipo_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  numero_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  direccion_domicilio?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  email?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  telefono?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  nombre_padre_tutor?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
-  unidad_negocio?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  tipo_bien?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  monto_reclamado?: Prisma.DecimalNullableFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
-  tipo_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  detalle_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  pedido_consumidor?: Prisma.StringFilter<"libro_reclamaciones"> | string
   estado?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  codigo_seguimiento?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  descripcion_bien?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  detalle_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  direccion_domicilio?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  email?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  id_reclamo?: Prisma.IntFilter<"libro_reclamaciones"> | number
+  monto_reclamado?: Prisma.DecimalNullableFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  nombre_padre_tutor?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  numero_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  pedido_consumidor?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  telefono?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_bien?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  unidad_negocio?: Prisma.StringFilter<"libro_reclamaciones"> | string
   acepto_terminos?: Prisma.BoolFilter<"libro_reclamaciones"> | boolean
-  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_consentimiento?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
+  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
 }
 
 export type libro_reclamacionesOrderByWithRelationInput = {
-  id_reclamo?: Prisma.SortOrder
-  codigo_seguimiento?: Prisma.SortOrder
   fecha_registro?: Prisma.SortOrder
-  nombre_completo?: Prisma.SortOrder
-  tipo_documento?: Prisma.SortOrder
-  numero_documento?: Prisma.SortOrder
-  direccion_domicilio?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  telefono?: Prisma.SortOrder
-  nombre_padre_tutor?: Prisma.SortOrderInput | Prisma.SortOrder
-  unidad_negocio?: Prisma.SortOrder
-  tipo_bien?: Prisma.SortOrder
-  monto_reclamado?: Prisma.SortOrderInput | Prisma.SortOrder
-  descripcion_bien?: Prisma.SortOrderInput | Prisma.SortOrder
-  tipo_incidencia?: Prisma.SortOrder
-  detalle_incidencia?: Prisma.SortOrder
-  pedido_consumidor?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrderInput | Prisma.SortOrder
+  codigo_seguimiento?: Prisma.SortOrder
+  descripcion_bien?: Prisma.SortOrderInput | Prisma.SortOrder
+  detalle_incidencia?: Prisma.SortOrder
+  direccion_domicilio?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  id_reclamo?: Prisma.SortOrder
+  monto_reclamado?: Prisma.SortOrderInput | Prisma.SortOrder
+  nombre_completo?: Prisma.SortOrder
+  nombre_padre_tutor?: Prisma.SortOrderInput | Prisma.SortOrder
+  numero_documento?: Prisma.SortOrder
+  pedido_consumidor?: Prisma.SortOrder
+  respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
+  telefono?: Prisma.SortOrder
+  tipo_bien?: Prisma.SortOrder
+  tipo_documento?: Prisma.SortOrder
+  tipo_incidencia?: Prisma.SortOrder
+  unidad_negocio?: Prisma.SortOrder
   acepto_terminos?: Prisma.SortOrder
-  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_consentimiento?: Prisma.SortOrderInput | Prisma.SortOrder
+  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
 }
 
 export type libro_reclamacionesWhereUniqueInput = Prisma.AtLeast<{
-  id_reclamo?: number
   codigo_seguimiento?: string
+  id_reclamo?: number
   AND?: Prisma.libro_reclamacionesWhereInput | Prisma.libro_reclamacionesWhereInput[]
   OR?: Prisma.libro_reclamacionesWhereInput[]
   NOT?: Prisma.libro_reclamacionesWhereInput | Prisma.libro_reclamacionesWhereInput[]
   fecha_registro?: Prisma.DateTimeFilter<"libro_reclamaciones"> | Date | string
-  nombre_completo?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  tipo_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  numero_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  direccion_domicilio?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  email?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  telefono?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  nombre_padre_tutor?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
-  unidad_negocio?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  tipo_bien?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  monto_reclamado?: Prisma.DecimalNullableFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
-  tipo_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  detalle_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  pedido_consumidor?: Prisma.StringFilter<"libro_reclamaciones"> | string
   estado?: Prisma.StringFilter<"libro_reclamaciones"> | string
-  respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  descripcion_bien?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  detalle_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  direccion_domicilio?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  email?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  monto_reclamado?: Prisma.DecimalNullableFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  nombre_padre_tutor?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  numero_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  pedido_consumidor?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  respuesta_empresa?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
+  telefono?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_bien?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_documento?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  tipo_incidencia?: Prisma.StringFilter<"libro_reclamaciones"> | string
+  unidad_negocio?: Prisma.StringFilter<"libro_reclamaciones"> | string
   acepto_terminos?: Prisma.BoolFilter<"libro_reclamaciones"> | boolean
-  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
   fecha_consentimiento?: Prisma.DateTimeNullableFilter<"libro_reclamaciones"> | Date | string | null
+  ip_registro?: Prisma.StringNullableFilter<"libro_reclamaciones"> | string | null
 }, "id_reclamo" | "codigo_seguimiento">
 
 export type libro_reclamacionesOrderByWithAggregationInput = {
-  id_reclamo?: Prisma.SortOrder
-  codigo_seguimiento?: Prisma.SortOrder
   fecha_registro?: Prisma.SortOrder
-  nombre_completo?: Prisma.SortOrder
-  tipo_documento?: Prisma.SortOrder
-  numero_documento?: Prisma.SortOrder
-  direccion_domicilio?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  telefono?: Prisma.SortOrder
-  nombre_padre_tutor?: Prisma.SortOrderInput | Prisma.SortOrder
-  unidad_negocio?: Prisma.SortOrder
-  tipo_bien?: Prisma.SortOrder
-  monto_reclamado?: Prisma.SortOrderInput | Prisma.SortOrder
-  descripcion_bien?: Prisma.SortOrderInput | Prisma.SortOrder
-  tipo_incidencia?: Prisma.SortOrder
-  detalle_incidencia?: Prisma.SortOrder
-  pedido_consumidor?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrderInput | Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrderInput | Prisma.SortOrder
+  codigo_seguimiento?: Prisma.SortOrder
+  descripcion_bien?: Prisma.SortOrderInput | Prisma.SortOrder
+  detalle_incidencia?: Prisma.SortOrder
+  direccion_domicilio?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  id_reclamo?: Prisma.SortOrder
+  monto_reclamado?: Prisma.SortOrderInput | Prisma.SortOrder
+  nombre_completo?: Prisma.SortOrder
+  nombre_padre_tutor?: Prisma.SortOrderInput | Prisma.SortOrder
+  numero_documento?: Prisma.SortOrder
+  pedido_consumidor?: Prisma.SortOrder
+  respuesta_empresa?: Prisma.SortOrderInput | Prisma.SortOrder
+  telefono?: Prisma.SortOrder
+  tipo_bien?: Prisma.SortOrder
+  tipo_documento?: Prisma.SortOrder
+  tipo_incidencia?: Prisma.SortOrder
+  unidad_negocio?: Prisma.SortOrder
   acepto_terminos?: Prisma.SortOrder
-  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_consentimiento?: Prisma.SortOrderInput | Prisma.SortOrder
+  ip_registro?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.libro_reclamacionesCountOrderByAggregateInput
   _avg?: Prisma.libro_reclamacionesAvgOrderByAggregateInput
   _max?: Prisma.libro_reclamacionesMaxOrderByAggregateInput
@@ -467,243 +467,243 @@ export type libro_reclamacionesScalarWhereWithAggregatesInput = {
   AND?: Prisma.libro_reclamacionesScalarWhereWithAggregatesInput | Prisma.libro_reclamacionesScalarWhereWithAggregatesInput[]
   OR?: Prisma.libro_reclamacionesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.libro_reclamacionesScalarWhereWithAggregatesInput | Prisma.libro_reclamacionesScalarWhereWithAggregatesInput[]
-  id_reclamo?: Prisma.IntWithAggregatesFilter<"libro_reclamaciones"> | number
-  codigo_seguimiento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
   fecha_registro?: Prisma.DateTimeWithAggregatesFilter<"libro_reclamaciones"> | Date | string
-  nombre_completo?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  tipo_documento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  numero_documento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  direccion_domicilio?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  email?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  telefono?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  nombre_padre_tutor?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
-  unidad_negocio?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  tipo_bien?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  monto_reclamado?: Prisma.DecimalNullableWithAggregatesFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
-  tipo_incidencia?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  detalle_incidencia?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  pedido_consumidor?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
   estado?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
-  respuesta_empresa?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
   fecha_respuesta?: Prisma.DateTimeNullableWithAggregatesFilter<"libro_reclamaciones"> | Date | string | null
   archivo_sustento?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  codigo_seguimiento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  descripcion_bien?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  detalle_incidencia?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  direccion_domicilio?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  email?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  id_reclamo?: Prisma.IntWithAggregatesFilter<"libro_reclamaciones"> | number
+  monto_reclamado?: Prisma.DecimalNullableWithAggregatesFilter<"libro_reclamaciones"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  nombre_padre_tutor?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  numero_documento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  pedido_consumidor?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  respuesta_empresa?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
+  telefono?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  tipo_bien?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  tipo_documento?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  tipo_incidencia?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
+  unidad_negocio?: Prisma.StringWithAggregatesFilter<"libro_reclamaciones"> | string
   acepto_terminos?: Prisma.BoolWithAggregatesFilter<"libro_reclamaciones"> | boolean
-  ip_registro?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
   fecha_consentimiento?: Prisma.DateTimeNullableWithAggregatesFilter<"libro_reclamaciones"> | Date | string | null
+  ip_registro?: Prisma.StringNullableWithAggregatesFilter<"libro_reclamaciones"> | string | null
 }
 
 export type libro_reclamacionesCreateInput = {
-  codigo_seguimiento: string
   fecha_registro?: Date | string
-  nombre_completo: string
-  tipo_documento: string
-  numero_documento: string
-  direccion_domicilio: string
-  email: string
-  telefono: string
-  nombre_padre_tutor?: string | null
-  unidad_negocio: string
-  tipo_bien: string
-  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: string | null
-  tipo_incidencia: string
-  detalle_incidencia: string
-  pedido_consumidor: string
   estado?: string
-  respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  codigo_seguimiento: string
+  descripcion_bien?: string | null
+  detalle_incidencia: string
+  direccion_domicilio: string
+  email: string
+  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo: string
+  nombre_padre_tutor?: string | null
+  numero_documento: string
+  pedido_consumidor: string
+  respuesta_empresa?: string | null
+  telefono: string
+  tipo_bien: string
+  tipo_documento: string
+  tipo_incidencia: string
+  unidad_negocio: string
   acepto_terminos?: boolean
-  ip_registro?: string | null
   fecha_consentimiento?: Date | string | null
+  ip_registro?: string | null
 }
 
 export type libro_reclamacionesUncheckedCreateInput = {
-  id_reclamo?: number
-  codigo_seguimiento: string
   fecha_registro?: Date | string
-  nombre_completo: string
-  tipo_documento: string
-  numero_documento: string
-  direccion_domicilio: string
-  email: string
-  telefono: string
-  nombre_padre_tutor?: string | null
-  unidad_negocio: string
-  tipo_bien: string
-  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: string | null
-  tipo_incidencia: string
-  detalle_incidencia: string
-  pedido_consumidor: string
   estado?: string
-  respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  codigo_seguimiento: string
+  descripcion_bien?: string | null
+  detalle_incidencia: string
+  direccion_domicilio: string
+  email: string
+  id_reclamo?: number
+  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo: string
+  nombre_padre_tutor?: string | null
+  numero_documento: string
+  pedido_consumidor: string
+  respuesta_empresa?: string | null
+  telefono: string
+  tipo_bien: string
+  tipo_documento: string
+  tipo_incidencia: string
+  unidad_negocio: string
   acepto_terminos?: boolean
-  ip_registro?: string | null
   fecha_consentimiento?: Date | string | null
+  ip_registro?: string | null
 }
 
 export type libro_reclamacionesUpdateInput = {
-  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
   fecha_registro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
-  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
-  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
+  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
   acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type libro_reclamacionesUncheckedUpdateInput = {
-  id_reclamo?: Prisma.IntFieldUpdateOperationsInput | number
-  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
   fecha_registro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
-  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
-  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id_reclamo?: Prisma.IntFieldUpdateOperationsInput | number
+  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
+  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
   acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type libro_reclamacionesCreateManyInput = {
-  id_reclamo?: number
-  codigo_seguimiento: string
   fecha_registro?: Date | string
-  nombre_completo: string
-  tipo_documento: string
-  numero_documento: string
-  direccion_domicilio: string
-  email: string
-  telefono: string
-  nombre_padre_tutor?: string | null
-  unidad_negocio: string
-  tipo_bien: string
-  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: string | null
-  tipo_incidencia: string
-  detalle_incidencia: string
-  pedido_consumidor: string
   estado?: string
-  respuesta_empresa?: string | null
   fecha_respuesta?: Date | string | null
   archivo_sustento?: string | null
+  codigo_seguimiento: string
+  descripcion_bien?: string | null
+  detalle_incidencia: string
+  direccion_domicilio: string
+  email: string
+  id_reclamo?: number
+  monto_reclamado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo: string
+  nombre_padre_tutor?: string | null
+  numero_documento: string
+  pedido_consumidor: string
+  respuesta_empresa?: string | null
+  telefono: string
+  tipo_bien: string
+  tipo_documento: string
+  tipo_incidencia: string
+  unidad_negocio: string
   acepto_terminos?: boolean
-  ip_registro?: string | null
   fecha_consentimiento?: Date | string | null
+  ip_registro?: string | null
 }
 
 export type libro_reclamacionesUpdateManyMutationInput = {
-  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
   fecha_registro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
-  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
-  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
+  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
   acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type libro_reclamacionesUncheckedUpdateManyInput = {
-  id_reclamo?: Prisma.IntFieldUpdateOperationsInput | number
-  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
   fecha_registro?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
-  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
-  email?: Prisma.StringFieldUpdateOperationsInput | string
-  telefono?: Prisma.StringFieldUpdateOperationsInput | string
-  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
-  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
-  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
-  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
-  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
-  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_respuesta?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   archivo_sustento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_seguimiento?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion_bien?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  detalle_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion_domicilio?: Prisma.StringFieldUpdateOperationsInput | string
+  email?: Prisma.StringFieldUpdateOperationsInput | string
+  id_reclamo?: Prisma.IntFieldUpdateOperationsInput | number
+  monto_reclamado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  nombre_completo?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_padre_tutor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  pedido_consumidor?: Prisma.StringFieldUpdateOperationsInput | string
+  respuesta_empresa?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_bien?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_documento?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_incidencia?: Prisma.StringFieldUpdateOperationsInput | string
+  unidad_negocio?: Prisma.StringFieldUpdateOperationsInput | string
   acepto_terminos?: Prisma.BoolFieldUpdateOperationsInput | boolean
-  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   fecha_consentimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  ip_registro?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type libro_reclamacionesCountOrderByAggregateInput = {
-  id_reclamo?: Prisma.SortOrder
-  codigo_seguimiento?: Prisma.SortOrder
   fecha_registro?: Prisma.SortOrder
-  nombre_completo?: Prisma.SortOrder
-  tipo_documento?: Prisma.SortOrder
-  numero_documento?: Prisma.SortOrder
-  direccion_domicilio?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  telefono?: Prisma.SortOrder
-  nombre_padre_tutor?: Prisma.SortOrder
-  unidad_negocio?: Prisma.SortOrder
-  tipo_bien?: Prisma.SortOrder
-  monto_reclamado?: Prisma.SortOrder
-  descripcion_bien?: Prisma.SortOrder
-  tipo_incidencia?: Prisma.SortOrder
-  detalle_incidencia?: Prisma.SortOrder
-  pedido_consumidor?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  codigo_seguimiento?: Prisma.SortOrder
+  descripcion_bien?: Prisma.SortOrder
+  detalle_incidencia?: Prisma.SortOrder
+  direccion_domicilio?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  id_reclamo?: Prisma.SortOrder
+  monto_reclamado?: Prisma.SortOrder
+  nombre_completo?: Prisma.SortOrder
+  nombre_padre_tutor?: Prisma.SortOrder
+  numero_documento?: Prisma.SortOrder
+  pedido_consumidor?: Prisma.SortOrder
+  respuesta_empresa?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
+  tipo_bien?: Prisma.SortOrder
+  tipo_documento?: Prisma.SortOrder
+  tipo_incidencia?: Prisma.SortOrder
+  unidad_negocio?: Prisma.SortOrder
   acepto_terminos?: Prisma.SortOrder
-  ip_registro?: Prisma.SortOrder
   fecha_consentimiento?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesAvgOrderByAggregateInput = {
@@ -712,57 +712,57 @@ export type libro_reclamacionesAvgOrderByAggregateInput = {
 }
 
 export type libro_reclamacionesMaxOrderByAggregateInput = {
-  id_reclamo?: Prisma.SortOrder
-  codigo_seguimiento?: Prisma.SortOrder
   fecha_registro?: Prisma.SortOrder
-  nombre_completo?: Prisma.SortOrder
-  tipo_documento?: Prisma.SortOrder
-  numero_documento?: Prisma.SortOrder
-  direccion_domicilio?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  telefono?: Prisma.SortOrder
-  nombre_padre_tutor?: Prisma.SortOrder
-  unidad_negocio?: Prisma.SortOrder
-  tipo_bien?: Prisma.SortOrder
-  monto_reclamado?: Prisma.SortOrder
-  descripcion_bien?: Prisma.SortOrder
-  tipo_incidencia?: Prisma.SortOrder
-  detalle_incidencia?: Prisma.SortOrder
-  pedido_consumidor?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  codigo_seguimiento?: Prisma.SortOrder
+  descripcion_bien?: Prisma.SortOrder
+  detalle_incidencia?: Prisma.SortOrder
+  direccion_domicilio?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  id_reclamo?: Prisma.SortOrder
+  monto_reclamado?: Prisma.SortOrder
+  nombre_completo?: Prisma.SortOrder
+  nombre_padre_tutor?: Prisma.SortOrder
+  numero_documento?: Prisma.SortOrder
+  pedido_consumidor?: Prisma.SortOrder
+  respuesta_empresa?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
+  tipo_bien?: Prisma.SortOrder
+  tipo_documento?: Prisma.SortOrder
+  tipo_incidencia?: Prisma.SortOrder
+  unidad_negocio?: Prisma.SortOrder
   acepto_terminos?: Prisma.SortOrder
-  ip_registro?: Prisma.SortOrder
   fecha_consentimiento?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesMinOrderByAggregateInput = {
-  id_reclamo?: Prisma.SortOrder
-  codigo_seguimiento?: Prisma.SortOrder
   fecha_registro?: Prisma.SortOrder
-  nombre_completo?: Prisma.SortOrder
-  tipo_documento?: Prisma.SortOrder
-  numero_documento?: Prisma.SortOrder
-  direccion_domicilio?: Prisma.SortOrder
-  email?: Prisma.SortOrder
-  telefono?: Prisma.SortOrder
-  nombre_padre_tutor?: Prisma.SortOrder
-  unidad_negocio?: Prisma.SortOrder
-  tipo_bien?: Prisma.SortOrder
-  monto_reclamado?: Prisma.SortOrder
-  descripcion_bien?: Prisma.SortOrder
-  tipo_incidencia?: Prisma.SortOrder
-  detalle_incidencia?: Prisma.SortOrder
-  pedido_consumidor?: Prisma.SortOrder
   estado?: Prisma.SortOrder
-  respuesta_empresa?: Prisma.SortOrder
   fecha_respuesta?: Prisma.SortOrder
   archivo_sustento?: Prisma.SortOrder
+  codigo_seguimiento?: Prisma.SortOrder
+  descripcion_bien?: Prisma.SortOrder
+  detalle_incidencia?: Prisma.SortOrder
+  direccion_domicilio?: Prisma.SortOrder
+  email?: Prisma.SortOrder
+  id_reclamo?: Prisma.SortOrder
+  monto_reclamado?: Prisma.SortOrder
+  nombre_completo?: Prisma.SortOrder
+  nombre_padre_tutor?: Prisma.SortOrder
+  numero_documento?: Prisma.SortOrder
+  pedido_consumidor?: Prisma.SortOrder
+  respuesta_empresa?: Prisma.SortOrder
+  telefono?: Prisma.SortOrder
+  tipo_bien?: Prisma.SortOrder
+  tipo_documento?: Prisma.SortOrder
+  tipo_incidencia?: Prisma.SortOrder
+  unidad_negocio?: Prisma.SortOrder
   acepto_terminos?: Prisma.SortOrder
-  ip_registro?: Prisma.SortOrder
   fecha_consentimiento?: Prisma.SortOrder
+  ip_registro?: Prisma.SortOrder
 }
 
 export type libro_reclamacionesSumOrderByAggregateInput = {
@@ -773,143 +773,143 @@ export type libro_reclamacionesSumOrderByAggregateInput = {
 
 
 export type libro_reclamacionesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id_reclamo?: boolean
-  codigo_seguimiento?: boolean
   fecha_registro?: boolean
-  nombre_completo?: boolean
-  tipo_documento?: boolean
-  numero_documento?: boolean
-  direccion_domicilio?: boolean
-  email?: boolean
-  telefono?: boolean
-  nombre_padre_tutor?: boolean
-  unidad_negocio?: boolean
-  tipo_bien?: boolean
-  monto_reclamado?: boolean
-  descripcion_bien?: boolean
-  tipo_incidencia?: boolean
-  detalle_incidencia?: boolean
-  pedido_consumidor?: boolean
   estado?: boolean
-  respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  codigo_seguimiento?: boolean
+  descripcion_bien?: boolean
+  detalle_incidencia?: boolean
+  direccion_domicilio?: boolean
+  email?: boolean
+  id_reclamo?: boolean
+  monto_reclamado?: boolean
+  nombre_completo?: boolean
+  nombre_padre_tutor?: boolean
+  numero_documento?: boolean
+  pedido_consumidor?: boolean
+  respuesta_empresa?: boolean
+  telefono?: boolean
+  tipo_bien?: boolean
+  tipo_documento?: boolean
+  tipo_incidencia?: boolean
+  unidad_negocio?: boolean
   acepto_terminos?: boolean
-  ip_registro?: boolean
   fecha_consentimiento?: boolean
+  ip_registro?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id_reclamo?: boolean
-  codigo_seguimiento?: boolean
   fecha_registro?: boolean
-  nombre_completo?: boolean
-  tipo_documento?: boolean
-  numero_documento?: boolean
-  direccion_domicilio?: boolean
-  email?: boolean
-  telefono?: boolean
-  nombre_padre_tutor?: boolean
-  unidad_negocio?: boolean
-  tipo_bien?: boolean
-  monto_reclamado?: boolean
-  descripcion_bien?: boolean
-  tipo_incidencia?: boolean
-  detalle_incidencia?: boolean
-  pedido_consumidor?: boolean
   estado?: boolean
-  respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  codigo_seguimiento?: boolean
+  descripcion_bien?: boolean
+  detalle_incidencia?: boolean
+  direccion_domicilio?: boolean
+  email?: boolean
+  id_reclamo?: boolean
+  monto_reclamado?: boolean
+  nombre_completo?: boolean
+  nombre_padre_tutor?: boolean
+  numero_documento?: boolean
+  pedido_consumidor?: boolean
+  respuesta_empresa?: boolean
+  telefono?: boolean
+  tipo_bien?: boolean
+  tipo_documento?: boolean
+  tipo_incidencia?: boolean
+  unidad_negocio?: boolean
   acepto_terminos?: boolean
-  ip_registro?: boolean
   fecha_consentimiento?: boolean
+  ip_registro?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
-  id_reclamo?: boolean
-  codigo_seguimiento?: boolean
   fecha_registro?: boolean
-  nombre_completo?: boolean
-  tipo_documento?: boolean
-  numero_documento?: boolean
-  direccion_domicilio?: boolean
-  email?: boolean
-  telefono?: boolean
-  nombre_padre_tutor?: boolean
-  unidad_negocio?: boolean
-  tipo_bien?: boolean
-  monto_reclamado?: boolean
-  descripcion_bien?: boolean
-  tipo_incidencia?: boolean
-  detalle_incidencia?: boolean
-  pedido_consumidor?: boolean
   estado?: boolean
-  respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  codigo_seguimiento?: boolean
+  descripcion_bien?: boolean
+  detalle_incidencia?: boolean
+  direccion_domicilio?: boolean
+  email?: boolean
+  id_reclamo?: boolean
+  monto_reclamado?: boolean
+  nombre_completo?: boolean
+  nombre_padre_tutor?: boolean
+  numero_documento?: boolean
+  pedido_consumidor?: boolean
+  respuesta_empresa?: boolean
+  telefono?: boolean
+  tipo_bien?: boolean
+  tipo_documento?: boolean
+  tipo_incidencia?: boolean
+  unidad_negocio?: boolean
   acepto_terminos?: boolean
-  ip_registro?: boolean
   fecha_consentimiento?: boolean
+  ip_registro?: boolean
 }, ExtArgs["result"]["libro_reclamaciones"]>
 
 export type libro_reclamacionesSelectScalar = {
-  id_reclamo?: boolean
-  codigo_seguimiento?: boolean
   fecha_registro?: boolean
-  nombre_completo?: boolean
-  tipo_documento?: boolean
-  numero_documento?: boolean
-  direccion_domicilio?: boolean
-  email?: boolean
-  telefono?: boolean
-  nombre_padre_tutor?: boolean
-  unidad_negocio?: boolean
-  tipo_bien?: boolean
-  monto_reclamado?: boolean
-  descripcion_bien?: boolean
-  tipo_incidencia?: boolean
-  detalle_incidencia?: boolean
-  pedido_consumidor?: boolean
   estado?: boolean
-  respuesta_empresa?: boolean
   fecha_respuesta?: boolean
   archivo_sustento?: boolean
+  codigo_seguimiento?: boolean
+  descripcion_bien?: boolean
+  detalle_incidencia?: boolean
+  direccion_domicilio?: boolean
+  email?: boolean
+  id_reclamo?: boolean
+  monto_reclamado?: boolean
+  nombre_completo?: boolean
+  nombre_padre_tutor?: boolean
+  numero_documento?: boolean
+  pedido_consumidor?: boolean
+  respuesta_empresa?: boolean
+  telefono?: boolean
+  tipo_bien?: boolean
+  tipo_documento?: boolean
+  tipo_incidencia?: boolean
+  unidad_negocio?: boolean
   acepto_terminos?: boolean
-  ip_registro?: boolean
   fecha_consentimiento?: boolean
+  ip_registro?: boolean
 }
 
-export type libro_reclamacionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id_reclamo" | "codigo_seguimiento" | "fecha_registro" | "nombre_completo" | "tipo_documento" | "numero_documento" | "direccion_domicilio" | "email" | "telefono" | "nombre_padre_tutor" | "unidad_negocio" | "tipo_bien" | "monto_reclamado" | "descripcion_bien" | "tipo_incidencia" | "detalle_incidencia" | "pedido_consumidor" | "estado" | "respuesta_empresa" | "fecha_respuesta" | "archivo_sustento" | "acepto_terminos" | "ip_registro" | "fecha_consentimiento", ExtArgs["result"]["libro_reclamaciones"]>
+export type libro_reclamacionesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"fecha_registro" | "estado" | "fecha_respuesta" | "archivo_sustento" | "codigo_seguimiento" | "descripcion_bien" | "detalle_incidencia" | "direccion_domicilio" | "email" | "id_reclamo" | "monto_reclamado" | "nombre_completo" | "nombre_padre_tutor" | "numero_documento" | "pedido_consumidor" | "respuesta_empresa" | "telefono" | "tipo_bien" | "tipo_documento" | "tipo_incidencia" | "unidad_negocio" | "acepto_terminos" | "fecha_consentimiento" | "ip_registro", ExtArgs["result"]["libro_reclamaciones"]>
 
 export type $libro_reclamacionesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "libro_reclamaciones"
   objects: {}
   scalars: runtime.Types.Extensions.GetPayloadResult<{
-    id_reclamo: number
-    codigo_seguimiento: string
     fecha_registro: Date
-    nombre_completo: string
-    tipo_documento: string
-    numero_documento: string
-    direccion_domicilio: string
-    email: string
-    telefono: string
-    nombre_padre_tutor: string | null
-    unidad_negocio: string
-    tipo_bien: string
-    monto_reclamado: runtime.Decimal | null
-    descripcion_bien: string | null
-    tipo_incidencia: string
-    detalle_incidencia: string
-    pedido_consumidor: string
     estado: string
-    respuesta_empresa: string | null
     fecha_respuesta: Date | null
     archivo_sustento: string | null
+    codigo_seguimiento: string
+    descripcion_bien: string | null
+    detalle_incidencia: string
+    direccion_domicilio: string
+    email: string
+    id_reclamo: number
+    monto_reclamado: runtime.Decimal | null
+    nombre_completo: string
+    nombre_padre_tutor: string | null
+    numero_documento: string
+    pedido_consumidor: string
+    respuesta_empresa: string | null
+    telefono: string
+    tipo_bien: string
+    tipo_documento: string
+    tipo_incidencia: string
+    unidad_negocio: string
     acepto_terminos: boolean
-    ip_registro: string | null
     fecha_consentimiento: Date | null
+    ip_registro: string | null
   }, ExtArgs["result"]["libro_reclamaciones"]>
   composites: {}
 }
@@ -993,8 +993,8 @@ export interface libro_reclamacionesDelegate<ExtArgs extends runtime.Types.Exten
    * // Get first 10 Libro_reclamaciones
    * const libro_reclamaciones = await prisma.libro_reclamaciones.findMany({ take: 10 })
    * 
-   * // Only select the `id_reclamo`
-   * const libro_reclamacionesWithId_reclamoOnly = await prisma.libro_reclamaciones.findMany({ select: { id_reclamo: true } })
+   * // Only select the `fecha_registro`
+   * const libro_reclamacionesWithFecha_registroOnly = await prisma.libro_reclamaciones.findMany({ select: { fecha_registro: true } })
    * 
    */
   findMany<T extends libro_reclamacionesFindManyArgs>(args?: Prisma.SelectSubset<T, libro_reclamacionesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$libro_reclamacionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
@@ -1038,9 +1038,9 @@ export interface libro_reclamacionesDelegate<ExtArgs extends runtime.Types.Exten
    *   ]
    * })
    * 
-   * // Create many Libro_reclamaciones and only return the `id_reclamo`
-   * const libro_reclamacionesWithId_reclamoOnly = await prisma.libro_reclamaciones.createManyAndReturn({
-   *   select: { id_reclamo: true },
+   * // Create many Libro_reclamaciones and only return the `fecha_registro`
+   * const libro_reclamacionesWithFecha_registroOnly = await prisma.libro_reclamaciones.createManyAndReturn({
+   *   select: { fecha_registro: true },
    *   data: [
    *     // ... provide data here
    *   ]
@@ -1129,9 +1129,9 @@ export interface libro_reclamacionesDelegate<ExtArgs extends runtime.Types.Exten
    *   ]
    * })
    * 
-   * // Update zero or more Libro_reclamaciones and only return the `id_reclamo`
-   * const libro_reclamacionesWithId_reclamoOnly = await prisma.libro_reclamaciones.updateManyAndReturn({
-   *   select: { id_reclamo: true },
+   * // Update zero or more Libro_reclamaciones and only return the `fecha_registro`
+   * const libro_reclamacionesWithFecha_registroOnly = await prisma.libro_reclamaciones.updateManyAndReturn({
+   *   select: { fecha_registro: true },
    *   where: {
    *     // ... provide filter here
    *   },
@@ -1333,30 +1333,30 @@ export interface Prisma__libro_reclamacionesClient<T, Null = never, ExtArgs exte
  * Fields of the libro_reclamaciones model
  */
 export interface libro_reclamacionesFieldRefs {
-  readonly id_reclamo: Prisma.FieldRef<"libro_reclamaciones", 'Int'>
-  readonly codigo_seguimiento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly fecha_registro: Prisma.FieldRef<"libro_reclamaciones", 'DateTime'>
-  readonly nombre_completo: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly tipo_documento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly numero_documento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly direccion_domicilio: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly email: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly telefono: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly nombre_padre_tutor: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly unidad_negocio: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly tipo_bien: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly monto_reclamado: Prisma.FieldRef<"libro_reclamaciones", 'Decimal'>
-  readonly descripcion_bien: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly tipo_incidencia: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly detalle_incidencia: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly pedido_consumidor: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly estado: Prisma.FieldRef<"libro_reclamaciones", 'String'>
-  readonly respuesta_empresa: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly fecha_respuesta: Prisma.FieldRef<"libro_reclamaciones", 'DateTime'>
   readonly archivo_sustento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly codigo_seguimiento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly descripcion_bien: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly detalle_incidencia: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly direccion_domicilio: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly email: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly id_reclamo: Prisma.FieldRef<"libro_reclamaciones", 'Int'>
+  readonly monto_reclamado: Prisma.FieldRef<"libro_reclamaciones", 'Decimal'>
+  readonly nombre_completo: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly nombre_padre_tutor: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly numero_documento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly pedido_consumidor: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly respuesta_empresa: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly telefono: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly tipo_bien: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly tipo_documento: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly tipo_incidencia: Prisma.FieldRef<"libro_reclamaciones", 'String'>
+  readonly unidad_negocio: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly acepto_terminos: Prisma.FieldRef<"libro_reclamaciones", 'Boolean'>
-  readonly ip_registro: Prisma.FieldRef<"libro_reclamaciones", 'String'>
   readonly fecha_consentimiento: Prisma.FieldRef<"libro_reclamaciones", 'DateTime'>
+  readonly ip_registro: Prisma.FieldRef<"libro_reclamaciones", 'String'>
 }
     
 

@@ -294,7 +294,10 @@ export type sucursalesWhereInput = {
   configuracion_sucursal?: Prisma.XOR<Prisma.Configuracion_sucursalNullableScalarRelationFilter, Prisma.configuracion_sucursalWhereInput> | null
   empleado_sucursales?: Prisma.Empleado_sucursalesListRelationFilter
   gastos?: Prisma.GastosListRelationFilter
+  horarios_empleados?: Prisma.Horarios_empleadosListRelationFilter
   horarios_extra?: Prisma.Horarios_extraListRelationFilter
+  horarios_recurrentes?: Prisma.Horarios_recurrentesListRelationFilter
+  reclamaciones?: Prisma.ReclamacionesListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
   series_comprobantes?: Prisma.Series_comprobantesListRelationFilter
   ventas?: Prisma.VentasListRelationFilter
@@ -321,7 +324,10 @@ export type sucursalesOrderByWithRelationInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalOrderByWithRelationInput
   empleado_sucursales?: Prisma.empleado_sucursalesOrderByRelationAggregateInput
   gastos?: Prisma.gastosOrderByRelationAggregateInput
+  horarios_empleados?: Prisma.horarios_empleadosOrderByRelationAggregateInput
   horarios_extra?: Prisma.horarios_extraOrderByRelationAggregateInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesOrderByRelationAggregateInput
+  reclamaciones?: Prisma.reclamacionesOrderByRelationAggregateInput
   reservas?: Prisma.reservasOrderByRelationAggregateInput
   series_comprobantes?: Prisma.series_comprobantesOrderByRelationAggregateInput
   ventas?: Prisma.ventasOrderByRelationAggregateInput
@@ -351,7 +357,10 @@ export type sucursalesWhereUniqueInput = Prisma.AtLeast<{
   configuracion_sucursal?: Prisma.XOR<Prisma.Configuracion_sucursalNullableScalarRelationFilter, Prisma.configuracion_sucursalWhereInput> | null
   empleado_sucursales?: Prisma.Empleado_sucursalesListRelationFilter
   gastos?: Prisma.GastosListRelationFilter
+  horarios_empleados?: Prisma.Horarios_empleadosListRelationFilter
   horarios_extra?: Prisma.Horarios_extraListRelationFilter
+  horarios_recurrentes?: Prisma.Horarios_recurrentesListRelationFilter
+  reclamaciones?: Prisma.ReclamacionesListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
   series_comprobantes?: Prisma.Series_comprobantesListRelationFilter
   ventas?: Prisma.VentasListRelationFilter
@@ -419,7 +428,10 @@ export type sucursalesCreateInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -446,7 +458,10 @@ export type sucursalesUncheckedCreateInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -472,7 +487,10 @@ export type sucursalesUpdateInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -499,7 +517,10 @@ export type sucursalesUncheckedUpdateInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -730,6 +751,22 @@ export type sucursalesUpdateOneWithoutHorarios_extraNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.sucursalesUpdateToOneWithWhereWithoutHorarios_extraInput, Prisma.sucursalesUpdateWithoutHorarios_extraInput>, Prisma.sucursalesUncheckedUpdateWithoutHorarios_extraInput>
 }
 
+export type sucursalesCreateNestedOneWithoutHorarios_recurrentesInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_recurrentesInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutHorarios_recurrentesInput
+  connect?: Prisma.sucursalesWhereUniqueInput
+}
+
+export type sucursalesUpdateOneWithoutHorarios_recurrentesNestedInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_recurrentesInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutHorarios_recurrentesInput
+  upsert?: Prisma.sucursalesUpsertWithoutHorarios_recurrentesInput
+  disconnect?: Prisma.sucursalesWhereInput | boolean
+  delete?: Prisma.sucursalesWhereInput | boolean
+  connect?: Prisma.sucursalesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.sucursalesUpdateToOneWithWhereWithoutHorarios_recurrentesInput, Prisma.sucursalesUpdateWithoutHorarios_recurrentesInput>, Prisma.sucursalesUncheckedUpdateWithoutHorarios_recurrentesInput>
+}
+
 export type sucursalesCreateNestedOneWithoutReservasInput = {
   create?: Prisma.XOR<Prisma.sucursalesCreateWithoutReservasInput, Prisma.sucursalesUncheckedCreateWithoutReservasInput>
   connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutReservasInput
@@ -772,6 +809,38 @@ export type sucursalesUpdateOneRequiredWithoutVentasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.sucursalesUpdateToOneWithWhereWithoutVentasInput, Prisma.sucursalesUpdateWithoutVentasInput>, Prisma.sucursalesUncheckedUpdateWithoutVentasInput>
 }
 
+export type sucursalesCreateNestedOneWithoutHorarios_empleadosInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_empleadosInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutHorarios_empleadosInput
+  connect?: Prisma.sucursalesWhereUniqueInput
+}
+
+export type sucursalesUpdateOneWithoutHorarios_empleadosNestedInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_empleadosInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutHorarios_empleadosInput
+  upsert?: Prisma.sucursalesUpsertWithoutHorarios_empleadosInput
+  disconnect?: Prisma.sucursalesWhereInput | boolean
+  delete?: Prisma.sucursalesWhereInput | boolean
+  connect?: Prisma.sucursalesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.sucursalesUpdateToOneWithWhereWithoutHorarios_empleadosInput, Prisma.sucursalesUpdateWithoutHorarios_empleadosInput>, Prisma.sucursalesUncheckedUpdateWithoutHorarios_empleadosInput>
+}
+
+export type sucursalesCreateNestedOneWithoutReclamacionesInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutReclamacionesInput, Prisma.sucursalesUncheckedCreateWithoutReclamacionesInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutReclamacionesInput
+  connect?: Prisma.sucursalesWhereUniqueInput
+}
+
+export type sucursalesUpdateOneWithoutReclamacionesNestedInput = {
+  create?: Prisma.XOR<Prisma.sucursalesCreateWithoutReclamacionesInput, Prisma.sucursalesUncheckedCreateWithoutReclamacionesInput>
+  connectOrCreate?: Prisma.sucursalesCreateOrConnectWithoutReclamacionesInput
+  upsert?: Prisma.sucursalesUpsertWithoutReclamacionesInput
+  disconnect?: Prisma.sucursalesWhereInput | boolean
+  delete?: Prisma.sucursalesWhereInput | boolean
+  connect?: Prisma.sucursalesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.sucursalesUpdateToOneWithWhereWithoutReclamacionesInput, Prisma.sucursalesUpdateWithoutReclamacionesInput>, Prisma.sucursalesUncheckedUpdateWithoutReclamacionesInput>
+}
+
 export type sucursalesCreateWithoutCaja_sesionesInput = {
   nombre: string
   direccion?: string | null
@@ -791,7 +860,10 @@ export type sucursalesCreateWithoutCaja_sesionesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -817,7 +889,10 @@ export type sucursalesUncheckedCreateWithoutCaja_sesionesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -858,7 +933,10 @@ export type sucursalesUpdateWithoutCaja_sesionesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -884,7 +962,10 @@ export type sucursalesUncheckedUpdateWithoutCaja_sesionesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -909,7 +990,10 @@ export type sucursalesCreateWithoutClientesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -935,7 +1019,10 @@ export type sucursalesUncheckedCreateWithoutClientesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -976,7 +1063,10 @@ export type sucursalesUpdateWithoutClientesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1002,7 +1092,10 @@ export type sucursalesUncheckedUpdateWithoutClientesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1027,7 +1120,10 @@ export type sucursalesCreateWithoutColaboradoresInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -1053,7 +1149,10 @@ export type sucursalesUncheckedCreateWithoutColaboradoresInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -1094,7 +1193,10 @@ export type sucursalesUpdateWithoutColaboradoresInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1120,7 +1222,10 @@ export type sucursalesUncheckedUpdateWithoutColaboradoresInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1145,7 +1250,10 @@ export type sucursalesCreateWithoutConfiguracion_sucursalInput = {
   colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -1171,7 +1279,10 @@ export type sucursalesUncheckedCreateWithoutConfiguracion_sucursalInput = {
   colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -1212,7 +1323,10 @@ export type sucursalesUpdateWithoutConfiguracion_sucursalInput = {
   colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1238,7 +1352,10 @@ export type sucursalesUncheckedUpdateWithoutConfiguracion_sucursalInput = {
   colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1263,7 +1380,10 @@ export type sucursalesCreateWithoutEmpleado_sucursalesInput = {
   colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -1289,7 +1409,10 @@ export type sucursalesUncheckedCreateWithoutEmpleado_sucursalesInput = {
   colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -1330,7 +1453,10 @@ export type sucursalesUpdateWithoutEmpleado_sucursalesInput = {
   colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1356,7 +1482,10 @@ export type sucursalesUncheckedUpdateWithoutEmpleado_sucursalesInput = {
   colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1381,7 +1510,10 @@ export type sucursalesCreateWithoutGastosInput = {
   colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -1407,7 +1539,10 @@ export type sucursalesUncheckedCreateWithoutGastosInput = {
   colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -1448,7 +1583,10 @@ export type sucursalesUpdateWithoutGastosInput = {
   colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1474,7 +1612,10 @@ export type sucursalesUncheckedUpdateWithoutGastosInput = {
   colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1500,6 +1641,9 @@ export type sucursalesCreateWithoutHorarios_extraInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
@@ -1526,6 +1670,9 @@ export type sucursalesUncheckedCreateWithoutHorarios_extraInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
@@ -1567,6 +1714,9 @@ export type sucursalesUpdateWithoutHorarios_extraInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
@@ -1593,6 +1743,139 @@ export type sucursalesUncheckedUpdateWithoutHorarios_extraInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesCreateWithoutHorarios_recurrentesInput = {
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesUncheckedCreateWithoutHorarios_recurrentesInput = {
+  id?: number
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesCreateOrConnectWithoutHorarios_recurrentesInput = {
+  where: Prisma.sucursalesWhereUniqueInput
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_recurrentesInput>
+}
+
+export type sucursalesUpsertWithoutHorarios_recurrentesInput = {
+  update: Prisma.XOR<Prisma.sucursalesUpdateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedUpdateWithoutHorarios_recurrentesInput>
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_recurrentesInput>
+  where?: Prisma.sucursalesWhereInput
+}
+
+export type sucursalesUpdateToOneWithWhereWithoutHorarios_recurrentesInput = {
+  where?: Prisma.sucursalesWhereInput
+  data: Prisma.XOR<Prisma.sucursalesUpdateWithoutHorarios_recurrentesInput, Prisma.sucursalesUncheckedUpdateWithoutHorarios_recurrentesInput>
+}
+
+export type sucursalesUpdateWithoutHorarios_recurrentesInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesUncheckedUpdateWithoutHorarios_recurrentesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUncheckedUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
@@ -1618,7 +1901,10 @@ export type sucursalesCreateWithoutReservasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
 }
@@ -1644,7 +1930,10 @@ export type sucursalesUncheckedCreateWithoutReservasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
 }
@@ -1685,7 +1974,10 @@ export type sucursalesUpdateWithoutReservasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
 }
@@ -1711,7 +2003,10 @@ export type sucursalesUncheckedUpdateWithoutReservasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
 }
@@ -1736,7 +2031,10 @@ export type sucursalesCreateWithoutSeries_comprobantesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
 }
@@ -1762,7 +2060,10 @@ export type sucursalesUncheckedCreateWithoutSeries_comprobantesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
 }
@@ -1803,7 +2104,10 @@ export type sucursalesUpdateWithoutSeries_comprobantesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
 }
@@ -1829,7 +2133,10 @@ export type sucursalesUncheckedUpdateWithoutSeries_comprobantesInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
 }
@@ -1854,7 +2161,10 @@ export type sucursalesCreateWithoutVentasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
 }
@@ -1880,7 +2190,10 @@ export type sucursalesUncheckedCreateWithoutVentasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
 }
@@ -1921,7 +2234,10 @@ export type sucursalesUpdateWithoutVentasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
 }
@@ -1947,9 +2263,272 @@ export type sucursalesUncheckedUpdateWithoutVentasInput = {
   configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
   series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesCreateWithoutHorarios_empleadosInput = {
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesUncheckedCreateWithoutHorarios_empleadosInput = {
+  id?: number
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reclamaciones?: Prisma.reclamacionesUncheckedCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesCreateOrConnectWithoutHorarios_empleadosInput = {
+  where: Prisma.sucursalesWhereUniqueInput
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_empleadosInput>
+}
+
+export type sucursalesUpsertWithoutHorarios_empleadosInput = {
+  update: Prisma.XOR<Prisma.sucursalesUpdateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedUpdateWithoutHorarios_empleadosInput>
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedCreateWithoutHorarios_empleadosInput>
+  where?: Prisma.sucursalesWhereInput
+}
+
+export type sucursalesUpdateToOneWithWhereWithoutHorarios_empleadosInput = {
+  where?: Prisma.sucursalesWhereInput
+  data: Prisma.XOR<Prisma.sucursalesUpdateWithoutHorarios_empleadosInput, Prisma.sucursalesUncheckedUpdateWithoutHorarios_empleadosInput>
+}
+
+export type sucursalesUpdateWithoutHorarios_empleadosInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesUncheckedUpdateWithoutHorarios_empleadosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUncheckedUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reclamaciones?: Prisma.reclamacionesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesCreateWithoutReclamacionesInput = {
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesUncheckedCreateWithoutReclamacionesInput = {
+  id?: number
+  nombre: string
+  direccion?: string | null
+  ciudad?: string | null
+  telefono?: string | null
+  email?: string | null
+  codigo_establecimiento_sunat?: string | null
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  facebook_url?: string | null
+  instagram_url?: string | null
+  tiktok_url?: string | null
+  whatsapp_numero?: string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutSucursalesInput
+  clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutSucursalesInput
+  colaboradores?: Prisma.colaboradoresUncheckedCreateNestedManyWithoutSucursalesInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedCreateNestedOneWithoutSucursalesInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutSucursalesInput
+  gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutSucursalesInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutSucursalesInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedCreateNestedManyWithoutSucursalesInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutSucursalesInput
+}
+
+export type sucursalesCreateOrConnectWithoutReclamacionesInput = {
+  where: Prisma.sucursalesWhereUniqueInput
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutReclamacionesInput, Prisma.sucursalesUncheckedCreateWithoutReclamacionesInput>
+}
+
+export type sucursalesUpsertWithoutReclamacionesInput = {
+  update: Prisma.XOR<Prisma.sucursalesUpdateWithoutReclamacionesInput, Prisma.sucursalesUncheckedUpdateWithoutReclamacionesInput>
+  create: Prisma.XOR<Prisma.sucursalesCreateWithoutReclamacionesInput, Prisma.sucursalesUncheckedCreateWithoutReclamacionesInput>
+  where?: Prisma.sucursalesWhereInput
+}
+
+export type sucursalesUpdateToOneWithWhereWithoutReclamacionesInput = {
+  where?: Prisma.sucursalesWhereInput
+  data: Prisma.XOR<Prisma.sucursalesUpdateWithoutReclamacionesInput, Prisma.sucursalesUncheckedUpdateWithoutReclamacionesInput>
+}
+
+export type sucursalesUpdateWithoutReclamacionesInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutSucursalesNestedInput
+}
+
+export type sucursalesUncheckedUpdateWithoutReclamacionesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  ciudad?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  codigo_establecimiento_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  facebook_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  instagram_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tiktok_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  whatsapp_numero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutSucursalesNestedInput
+  clientes?: Prisma.clientesUncheckedUpdateManyWithoutSucursalesNestedInput
+  colaboradores?: Prisma.colaboradoresUncheckedUpdateManyWithoutSucursalesNestedInput
+  configuracion_sucursal?: Prisma.configuracion_sucursalUncheckedUpdateOneWithoutSucursalesNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutSucursalesNestedInput
+  gastos?: Prisma.gastosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutSucursalesNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutSucursalesNestedInput
+  series_comprobantes?: Prisma.series_comprobantesUncheckedUpdateManyWithoutSucursalesNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutSucursalesNestedInput
 }
 
 
@@ -1963,7 +2542,10 @@ export type SucursalesCountOutputType = {
   colaboradores: number
   empleado_sucursales: number
   gastos: number
+  horarios_empleados: number
   horarios_extra: number
+  horarios_recurrentes: number
+  reclamaciones: number
   reservas: number
   series_comprobantes: number
   ventas: number
@@ -1975,7 +2557,10 @@ export type SucursalesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extens
   colaboradores?: boolean | SucursalesCountOutputTypeCountColaboradoresArgs
   empleado_sucursales?: boolean | SucursalesCountOutputTypeCountEmpleado_sucursalesArgs
   gastos?: boolean | SucursalesCountOutputTypeCountGastosArgs
+  horarios_empleados?: boolean | SucursalesCountOutputTypeCountHorarios_empleadosArgs
   horarios_extra?: boolean | SucursalesCountOutputTypeCountHorarios_extraArgs
+  horarios_recurrentes?: boolean | SucursalesCountOutputTypeCountHorarios_recurrentesArgs
+  reclamaciones?: boolean | SucursalesCountOutputTypeCountReclamacionesArgs
   reservas?: boolean | SucursalesCountOutputTypeCountReservasArgs
   series_comprobantes?: boolean | SucursalesCountOutputTypeCountSeries_comprobantesArgs
   ventas?: boolean | SucursalesCountOutputTypeCountVentasArgs
@@ -2029,8 +2614,29 @@ export type SucursalesCountOutputTypeCountGastosArgs<ExtArgs extends runtime.Typ
 /**
  * SucursalesCountOutputType without action
  */
+export type SucursalesCountOutputTypeCountHorarios_empleadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.horarios_empleadosWhereInput
+}
+
+/**
+ * SucursalesCountOutputType without action
+ */
 export type SucursalesCountOutputTypeCountHorarios_extraArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.horarios_extraWhereInput
+}
+
+/**
+ * SucursalesCountOutputType without action
+ */
+export type SucursalesCountOutputTypeCountHorarios_recurrentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.horarios_recurrentesWhereInput
+}
+
+/**
+ * SucursalesCountOutputType without action
+ */
+export type SucursalesCountOutputTypeCountReclamacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.reclamacionesWhereInput
 }
 
 /**
@@ -2076,7 +2682,10 @@ export type sucursalesSelect<ExtArgs extends runtime.Types.Extensions.InternalAr
   configuracion_sucursal?: boolean | Prisma.sucursales$configuracion_sucursalArgs<ExtArgs>
   empleado_sucursales?: boolean | Prisma.sucursales$empleado_sucursalesArgs<ExtArgs>
   gastos?: boolean | Prisma.sucursales$gastosArgs<ExtArgs>
+  horarios_empleados?: boolean | Prisma.sucursales$horarios_empleadosArgs<ExtArgs>
   horarios_extra?: boolean | Prisma.sucursales$horarios_extraArgs<ExtArgs>
+  horarios_recurrentes?: boolean | Prisma.sucursales$horarios_recurrentesArgs<ExtArgs>
+  reclamaciones?: boolean | Prisma.sucursales$reclamacionesArgs<ExtArgs>
   reservas?: boolean | Prisma.sucursales$reservasArgs<ExtArgs>
   series_comprobantes?: boolean | Prisma.sucursales$series_comprobantesArgs<ExtArgs>
   ventas?: boolean | Prisma.sucursales$ventasArgs<ExtArgs>
@@ -2142,7 +2751,10 @@ export type sucursalesInclude<ExtArgs extends runtime.Types.Extensions.InternalA
   configuracion_sucursal?: boolean | Prisma.sucursales$configuracion_sucursalArgs<ExtArgs>
   empleado_sucursales?: boolean | Prisma.sucursales$empleado_sucursalesArgs<ExtArgs>
   gastos?: boolean | Prisma.sucursales$gastosArgs<ExtArgs>
+  horarios_empleados?: boolean | Prisma.sucursales$horarios_empleadosArgs<ExtArgs>
   horarios_extra?: boolean | Prisma.sucursales$horarios_extraArgs<ExtArgs>
+  horarios_recurrentes?: boolean | Prisma.sucursales$horarios_recurrentesArgs<ExtArgs>
+  reclamaciones?: boolean | Prisma.sucursales$reclamacionesArgs<ExtArgs>
   reservas?: boolean | Prisma.sucursales$reservasArgs<ExtArgs>
   series_comprobantes?: boolean | Prisma.sucursales$series_comprobantesArgs<ExtArgs>
   ventas?: boolean | Prisma.sucursales$ventasArgs<ExtArgs>
@@ -2160,7 +2772,10 @@ export type $sucursalesPayload<ExtArgs extends runtime.Types.Extensions.Internal
     configuracion_sucursal: Prisma.$configuracion_sucursalPayload<ExtArgs> | null
     empleado_sucursales: Prisma.$empleado_sucursalesPayload<ExtArgs>[]
     gastos: Prisma.$gastosPayload<ExtArgs>[]
+    horarios_empleados: Prisma.$horarios_empleadosPayload<ExtArgs>[]
     horarios_extra: Prisma.$horarios_extraPayload<ExtArgs>[]
+    horarios_recurrentes: Prisma.$horarios_recurrentesPayload<ExtArgs>[]
+    reclamaciones: Prisma.$reclamacionesPayload<ExtArgs>[]
     reservas: Prisma.$reservasPayload<ExtArgs>[]
     series_comprobantes: Prisma.$series_comprobantesPayload<ExtArgs>[]
     ventas: Prisma.$ventasPayload<ExtArgs>[]
@@ -2580,7 +3195,10 @@ export interface Prisma__sucursalesClient<T, Null = never, ExtArgs extends runti
   configuracion_sucursal<T extends Prisma.sucursales$configuracion_sucursalArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$configuracion_sucursalArgs<ExtArgs>>): Prisma.Prisma__configuracion_sucursalClient<runtime.Types.Result.GetResult<Prisma.$configuracion_sucursalPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   empleado_sucursales<T extends Prisma.sucursales$empleado_sucursalesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$empleado_sucursalesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_sucursalesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gastos<T extends Prisma.sucursales$gastosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$gastosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gastosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  horarios_empleados<T extends Prisma.sucursales$horarios_empleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$horarios_empleadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_empleadosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   horarios_extra<T extends Prisma.sucursales$horarios_extraArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$horarios_extraArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_extraPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  horarios_recurrentes<T extends Prisma.sucursales$horarios_recurrentesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$horarios_recurrentesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_recurrentesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  reclamaciones<T extends Prisma.sucursales$reclamacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$reclamacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reclamacionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reservas<T extends Prisma.sucursales$reservasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$reservasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reservasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   series_comprobantes<T extends Prisma.sucursales$series_comprobantesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$series_comprobantesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$series_comprobantesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ventas<T extends Prisma.sucursales$ventasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursales$ventasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ventasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -3154,6 +3772,30 @@ export type sucursales$gastosArgs<ExtArgs extends runtime.Types.Extensions.Inter
 }
 
 /**
+ * sucursales.horarios_empleados
+ */
+export type sucursales$horarios_empleadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the horarios_empleados
+   */
+  select?: Prisma.horarios_empleadosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the horarios_empleados
+   */
+  omit?: Prisma.horarios_empleadosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.horarios_empleadosInclude<ExtArgs> | null
+  where?: Prisma.horarios_empleadosWhereInput
+  orderBy?: Prisma.horarios_empleadosOrderByWithRelationInput | Prisma.horarios_empleadosOrderByWithRelationInput[]
+  cursor?: Prisma.horarios_empleadosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Horarios_empleadosScalarFieldEnum | Prisma.Horarios_empleadosScalarFieldEnum[]
+}
+
+/**
  * sucursales.horarios_extra
  */
 export type sucursales$horarios_extraArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -3175,6 +3817,54 @@ export type sucursales$horarios_extraArgs<ExtArgs extends runtime.Types.Extensio
   take?: number
   skip?: number
   distinct?: Prisma.Horarios_extraScalarFieldEnum | Prisma.Horarios_extraScalarFieldEnum[]
+}
+
+/**
+ * sucursales.horarios_recurrentes
+ */
+export type sucursales$horarios_recurrentesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the horarios_recurrentes
+   */
+  select?: Prisma.horarios_recurrentesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the horarios_recurrentes
+   */
+  omit?: Prisma.horarios_recurrentesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.horarios_recurrentesInclude<ExtArgs> | null
+  where?: Prisma.horarios_recurrentesWhereInput
+  orderBy?: Prisma.horarios_recurrentesOrderByWithRelationInput | Prisma.horarios_recurrentesOrderByWithRelationInput[]
+  cursor?: Prisma.horarios_recurrentesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Horarios_recurrentesScalarFieldEnum | Prisma.Horarios_recurrentesScalarFieldEnum[]
+}
+
+/**
+ * sucursales.reclamaciones
+ */
+export type sucursales$reclamacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the reclamaciones
+   */
+  select?: Prisma.reclamacionesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the reclamaciones
+   */
+  omit?: Prisma.reclamacionesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.reclamacionesInclude<ExtArgs> | null
+  where?: Prisma.reclamacionesWhereInput
+  orderBy?: Prisma.reclamacionesOrderByWithRelationInput | Prisma.reclamacionesOrderByWithRelationInput[]
+  cursor?: Prisma.reclamacionesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.ReclamacionesScalarFieldEnum | Prisma.ReclamacionesScalarFieldEnum[]
 }
 
 /**

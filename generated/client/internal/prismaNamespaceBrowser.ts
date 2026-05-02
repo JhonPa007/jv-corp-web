@@ -104,7 +104,23 @@ export const ModelName = {
   loyalty_rule_services: 'loyalty_rule_services',
   loyalty_rules: 'loyalty_rules',
   puntos_historial: 'puntos_historial',
-  libro_reclamaciones: 'libro_reclamaciones'
+  libro_reclamaciones: 'libro_reclamaciones',
+  cliente_historial: 'cliente_historial',
+  empleado_bonos: 'empleado_bonos',
+  empleado_deudas: 'empleado_deudas',
+  empleado_penalidades: 'empleado_penalidades',
+  escuela_alumnos: 'escuela_alumnos',
+  escuela_cuotas: 'escuela_cuotas',
+  escuela_cursos: 'escuela_cursos',
+  escuela_grupos: 'escuela_grupos',
+  escuela_pagos: 'escuela_pagos',
+  escuela_pagos_detalle: 'escuela_pagos_detalle',
+  giftcard_clientes: 'giftcard_clientes',
+  giftcard_servicios: 'giftcard_servicios',
+  giftcard_tarjetas: 'giftcard_tarjetas',
+  giftcard_transacciones: 'giftcard_transacciones',
+  horarios_empleados: 'horarios_empleados',
+  reclamaciones: 'reclamaciones'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -215,7 +231,8 @@ export type CampanasScalarFieldEnum = (typeof CampanasScalarFieldEnum)[keyof typ
 export const Categorias_gastosScalarFieldEnum = {
   id: 'id',
   nombre: 'nombre',
-  descripcion: 'descripcion'
+  descripcion: 'descripcion',
+  requiere_beneficiario: 'requiere_beneficiario'
 } as const
 
 export type Categorias_gastosScalarFieldEnum = (typeof Categorias_gastosScalarFieldEnum)[keyof typeof Categorias_gastosScalarFieldEnum]
@@ -292,7 +309,8 @@ export const ClientesScalarFieldEnum = {
   puntos_acumulados: 'puntos_acumulados',
   apellido_paterno: 'apellido_paterno',
   apellido_materno: 'apellido_materno',
-  saldo_monedero: 'saldo_monedero'
+  saldo_monedero: 'saldo_monedero',
+  notas_especiales: 'notas_especiales'
 } as const
 
 export type ClientesScalarFieldEnum = (typeof ClientesScalarFieldEnum)[keyof typeof ClientesScalarFieldEnum]
@@ -469,7 +487,8 @@ export const GastosScalarFieldEnum = {
   comprobante_razon_social_emisor: 'comprobante_razon_social_emisor',
   deducido_en_planilla_id: 'deducido_en_planilla_id',
   usuario_id: 'usuario_id',
-  tipo: 'tipo'
+  tipo: 'tipo',
+  estado_confirmacion: 'estado_confirmacion'
 } as const
 
 export type GastosScalarFieldEnum = (typeof GastosScalarFieldEnum)[keyof typeof GastosScalarFieldEnum]
@@ -647,7 +666,8 @@ export const ProductosScalarFieldEnum = {
   imagen_url: 'imagen_url',
   activo: 'activo',
   fecha_creacion: 'fecha_creacion',
-  fecha_actualizacion: 'fecha_actualizacion'
+  fecha_actualizacion: 'fecha_actualizacion',
+  orden: 'orden'
 } as const
 
 export type ProductosScalarFieldEnum = (typeof ProductosScalarFieldEnum)[keyof typeof ProductosScalarFieldEnum]
@@ -700,7 +720,12 @@ export const ReservasScalarFieldEnum = {
   notas_internas: 'notas_internas',
   precio_cobrado: 'precio_cobrado',
   fecha_actualizacion: 'fecha_actualizacion',
-  evidencia_url: 'evidencia_url'
+  evidencia_url: 'evidencia_url',
+  origen: 'origen',
+  duracion_minutos: 'duracion_minutos',
+  tipo: 'tipo',
+  subtipo_bloqueo: 'subtipo_bloqueo',
+  reserva_online_permitida: 'reserva_online_permitida'
 } as const
 
 export type ReservasScalarFieldEnum = (typeof ReservasScalarFieldEnum)[keyof typeof ReservasScalarFieldEnum]
@@ -979,33 +1004,264 @@ export type Puntos_historialScalarFieldEnum = (typeof Puntos_historialScalarFiel
 
 
 export const Libro_reclamacionesScalarFieldEnum = {
-  id_reclamo: 'id_reclamo',
-  codigo_seguimiento: 'codigo_seguimiento',
   fecha_registro: 'fecha_registro',
-  nombre_completo: 'nombre_completo',
-  tipo_documento: 'tipo_documento',
-  numero_documento: 'numero_documento',
-  direccion_domicilio: 'direccion_domicilio',
-  email: 'email',
-  telefono: 'telefono',
-  nombre_padre_tutor: 'nombre_padre_tutor',
-  unidad_negocio: 'unidad_negocio',
-  tipo_bien: 'tipo_bien',
-  monto_reclamado: 'monto_reclamado',
-  descripcion_bien: 'descripcion_bien',
-  tipo_incidencia: 'tipo_incidencia',
-  detalle_incidencia: 'detalle_incidencia',
-  pedido_consumidor: 'pedido_consumidor',
   estado: 'estado',
-  respuesta_empresa: 'respuesta_empresa',
   fecha_respuesta: 'fecha_respuesta',
   archivo_sustento: 'archivo_sustento',
+  codigo_seguimiento: 'codigo_seguimiento',
+  descripcion_bien: 'descripcion_bien',
+  detalle_incidencia: 'detalle_incidencia',
+  direccion_domicilio: 'direccion_domicilio',
+  email: 'email',
+  id_reclamo: 'id_reclamo',
+  monto_reclamado: 'monto_reclamado',
+  nombre_completo: 'nombre_completo',
+  nombre_padre_tutor: 'nombre_padre_tutor',
+  numero_documento: 'numero_documento',
+  pedido_consumidor: 'pedido_consumidor',
+  respuesta_empresa: 'respuesta_empresa',
+  telefono: 'telefono',
+  tipo_bien: 'tipo_bien',
+  tipo_documento: 'tipo_documento',
+  tipo_incidencia: 'tipo_incidencia',
+  unidad_negocio: 'unidad_negocio',
   acepto_terminos: 'acepto_terminos',
-  ip_registro: 'ip_registro',
-  fecha_consentimiento: 'fecha_consentimiento'
+  fecha_consentimiento: 'fecha_consentimiento',
+  ip_registro: 'ip_registro'
 } as const
 
 export type Libro_reclamacionesScalarFieldEnum = (typeof Libro_reclamacionesScalarFieldEnum)[keyof typeof Libro_reclamacionesScalarFieldEnum]
+
+
+export const Cliente_historialScalarFieldEnum = {
+  id: 'id',
+  cliente_id: 'cliente_id',
+  venta_id: 'venta_id',
+  empleado_id: 'empleado_id',
+  fecha: 'fecha',
+  servicios_realizados: 'servicios_realizados',
+  monto_pagado: 'monto_pagado',
+  foto_frente: 'foto_frente',
+  foto_lateral_izq: 'foto_lateral_izq',
+  foto_lateral_der: 'foto_lateral_der',
+  foto_atras: 'foto_atras',
+  notas: 'notas'
+} as const
+
+export type Cliente_historialScalarFieldEnum = (typeof Cliente_historialScalarFieldEnum)[keyof typeof Cliente_historialScalarFieldEnum]
+
+
+export const Empleado_bonosScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  motivo: 'motivo',
+  monto: 'monto',
+  fecha_registro: 'fecha_registro',
+  deducido_en_planilla_id: 'deducido_en_planilla_id'
+} as const
+
+export type Empleado_bonosScalarFieldEnum = (typeof Empleado_bonosScalarFieldEnum)[keyof typeof Empleado_bonosScalarFieldEnum]
+
+
+export const Empleado_deudasScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  concepto: 'concepto',
+  monto_total: 'monto_total',
+  monto_pagado: 'monto_pagado',
+  estado: 'estado',
+  fecha_registro: 'fecha_registro'
+} as const
+
+export type Empleado_deudasScalarFieldEnum = (typeof Empleado_deudasScalarFieldEnum)[keyof typeof Empleado_deudasScalarFieldEnum]
+
+
+export const Empleado_penalidadesScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  motivo: 'motivo',
+  monto: 'monto',
+  fecha_registro: 'fecha_registro',
+  deducido_en_planilla_id: 'deducido_en_planilla_id'
+} as const
+
+export type Empleado_penalidadesScalarFieldEnum = (typeof Empleado_penalidadesScalarFieldEnum)[keyof typeof Empleado_penalidadesScalarFieldEnum]
+
+
+export const Escuela_alumnosScalarFieldEnum = {
+  id: 'id',
+  codigo_alumno: 'codigo_alumno',
+  nombres: 'nombres',
+  apellidos: 'apellidos',
+  dni: 'dni',
+  telefono: 'telefono',
+  curso_id: 'curso_id',
+  grupo_id: 'grupo_id',
+  fecha_inscripcion: 'fecha_inscripcion',
+  fecha_inicio_clases: 'fecha_inicio_clases',
+  costo_matricula_acordado: 'costo_matricula_acordado',
+  costo_mensualidad_acordada: 'costo_mensualidad_acordada',
+  estado: 'estado'
+} as const
+
+export type Escuela_alumnosScalarFieldEnum = (typeof Escuela_alumnosScalarFieldEnum)[keyof typeof Escuela_alumnosScalarFieldEnum]
+
+
+export const Escuela_cuotasScalarFieldEnum = {
+  id: 'id',
+  alumno_id: 'alumno_id',
+  concepto: 'concepto',
+  monto_original: 'monto_original',
+  monto_pagado: 'monto_pagado',
+  saldo: 'saldo',
+  fecha_vencimiento: 'fecha_vencimiento',
+  estado: 'estado',
+  orden_pago: 'orden_pago'
+} as const
+
+export type Escuela_cuotasScalarFieldEnum = (typeof Escuela_cuotasScalarFieldEnum)[keyof typeof Escuela_cuotasScalarFieldEnum]
+
+
+export const Escuela_cursosScalarFieldEnum = {
+  id: 'id',
+  nombre: 'nombre',
+  costo_matricula: 'costo_matricula',
+  costo_mensualidad: 'costo_mensualidad',
+  duracion_meses: 'duracion_meses',
+  activo: 'activo'
+} as const
+
+export type Escuela_cursosScalarFieldEnum = (typeof Escuela_cursosScalarFieldEnum)[keyof typeof Escuela_cursosScalarFieldEnum]
+
+
+export const Escuela_gruposScalarFieldEnum = {
+  id: 'id',
+  codigo_grupo: 'codigo_grupo',
+  curso_id: 'curso_id',
+  fecha_inicio: 'fecha_inicio',
+  activo: 'activo',
+  dias_clase: 'dias_clase',
+  hora_inicio: 'hora_inicio',
+  hora_fin: 'hora_fin'
+} as const
+
+export type Escuela_gruposScalarFieldEnum = (typeof Escuela_gruposScalarFieldEnum)[keyof typeof Escuela_gruposScalarFieldEnum]
+
+
+export const Escuela_pagosScalarFieldEnum = {
+  id: 'id',
+  alumno_id: 'alumno_id',
+  monto: 'monto',
+  fecha_pago: 'fecha_pago',
+  metodo_pago: 'metodo_pago',
+  codigo_recibo: 'codigo_recibo',
+  usuario_id: 'usuario_id',
+  observaciones: 'observaciones'
+} as const
+
+export type Escuela_pagosScalarFieldEnum = (typeof Escuela_pagosScalarFieldEnum)[keyof typeof Escuela_pagosScalarFieldEnum]
+
+
+export const Escuela_pagos_detalleScalarFieldEnum = {
+  id: 'id',
+  pago_id: 'pago_id',
+  cuota_id: 'cuota_id',
+  monto_aplicado: 'monto_aplicado'
+} as const
+
+export type Escuela_pagos_detalleScalarFieldEnum = (typeof Escuela_pagos_detalleScalarFieldEnum)[keyof typeof Escuela_pagos_detalleScalarFieldEnum]
+
+
+export const Giftcard_clientesScalarFieldEnum = {
+  id: 'id',
+  dni: 'dni',
+  nombre_completo: 'nombre_completo',
+  email: 'email',
+  codigo_area: 'codigo_area',
+  telefono: 'telefono',
+  created_at: 'created_at'
+} as const
+
+export type Giftcard_clientesScalarFieldEnum = (typeof Giftcard_clientesScalarFieldEnum)[keyof typeof Giftcard_clientesScalarFieldEnum]
+
+
+export const Giftcard_serviciosScalarFieldEnum = {
+  giftcard_id: 'giftcard_id',
+  servicio_id: 'servicio_id'
+} as const
+
+export type Giftcard_serviciosScalarFieldEnum = (typeof Giftcard_serviciosScalarFieldEnum)[keyof typeof Giftcard_serviciosScalarFieldEnum]
+
+
+export const Giftcard_tarjetasScalarFieldEnum = {
+  id: 'id',
+  codigo: 'codigo',
+  monto: 'monto',
+  estado: 'estado',
+  fecha_vencimiento: 'fecha_vencimiento',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  tipo_beneficio: 'tipo_beneficio',
+  valor_descuento: 'valor_descuento',
+  fecha_inicio: 'fecha_inicio',
+  dias_permitidos: 'dias_permitidos',
+  hora_inicio: 'hora_inicio',
+  hora_fin: 'hora_fin',
+  es_campana: 'es_campana'
+} as const
+
+export type Giftcard_tarjetasScalarFieldEnum = (typeof Giftcard_tarjetasScalarFieldEnum)[keyof typeof Giftcard_tarjetasScalarFieldEnum]
+
+
+export const Giftcard_transaccionesScalarFieldEnum = {
+  id: 'id',
+  cliente_id: 'cliente_id',
+  tarjeta_id: 'tarjeta_id',
+  monto_pago: 'monto_pago',
+  forma_pago: 'forma_pago',
+  fecha_compra: 'fecha_compra'
+} as const
+
+export type Giftcard_transaccionesScalarFieldEnum = (typeof Giftcard_transaccionesScalarFieldEnum)[keyof typeof Giftcard_transaccionesScalarFieldEnum]
+
+
+export const Horarios_empleadosScalarFieldEnum = {
+  id: 'id',
+  empleado_id: 'empleado_id',
+  sucursal_id: 'sucursal_id',
+  fecha: 'fecha',
+  hora_inicio: 'hora_inicio',
+  hora_fin: 'hora_fin'
+} as const
+
+export type Horarios_empleadosScalarFieldEnum = (typeof Horarios_empleadosScalarFieldEnum)[keyof typeof Horarios_empleadosScalarFieldEnum]
+
+
+export const ReclamacionesScalarFieldEnum = {
+  id: 'id',
+  numero_hoja: 'numero_hoja',
+  fecha_registro: 'fecha_registro',
+  nombres: 'nombres',
+  apellidos: 'apellidos',
+  tipo_documento: 'tipo_documento',
+  numero_documento: 'numero_documento',
+  direccion: 'direccion',
+  telefono: 'telefono',
+  email: 'email',
+  nombre_representante: 'nombre_representante',
+  tipo_bien: 'tipo_bien',
+  monto_reclamado: 'monto_reclamado',
+  descripcion_bien: 'descripcion_bien',
+  tipo_reclamacion: 'tipo_reclamacion',
+  detalle: 'detalle',
+  pedido_consumidor: 'pedido_consumidor',
+  estado: 'estado',
+  respuesta_proveedor: 'respuesta_proveedor',
+  fecha_respuesta: 'fecha_respuesta',
+  sucursal_id: 'sucursal_id'
+} as const
+
+export type ReclamacionesScalarFieldEnum = (typeof ReclamacionesScalarFieldEnum)[keyof typeof ReclamacionesScalarFieldEnum]
 
 
 export const SortOrder = {

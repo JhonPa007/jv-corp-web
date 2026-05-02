@@ -324,3 +324,83 @@ export type puntos_historial = Prisma.puntos_historialModel
  * 
  */
 export type libro_reclamaciones = Prisma.libro_reclamacionesModel
+/**
+ * Model cliente_historial
+ * 
+ */
+export type cliente_historial = Prisma.cliente_historialModel
+/**
+ * Model empleado_bonos
+ * 
+ */
+export type empleado_bonos = Prisma.empleado_bonosModel
+/**
+ * Model empleado_deudas
+ * 
+ */
+export type empleado_deudas = Prisma.empleado_deudasModel
+/**
+ * Model empleado_penalidades
+ * 
+ */
+export type empleado_penalidades = Prisma.empleado_penalidadesModel
+/**
+ * Model escuela_alumnos
+ * 
+ */
+export type escuela_alumnos = Prisma.escuela_alumnosModel
+/**
+ * Model escuela_cuotas
+ * 
+ */
+export type escuela_cuotas = Prisma.escuela_cuotasModel
+/**
+ * Model escuela_cursos
+ * 
+ */
+export type escuela_cursos = Prisma.escuela_cursosModel
+/**
+ * Model escuela_grupos
+ * 
+ */
+export type escuela_grupos = Prisma.escuela_gruposModel
+/**
+ * Model escuela_pagos
+ * 
+ */
+export type escuela_pagos = Prisma.escuela_pagosModel
+/**
+ * Model escuela_pagos_detalle
+ * 
+ */
+export type escuela_pagos_detalle = Prisma.escuela_pagos_detalleModel
+/**
+ * Model giftcard_clientes
+ * 
+ */
+export type giftcard_clientes = Prisma.giftcard_clientesModel
+/**
+ * Model giftcard_servicios
+ * 
+ */
+export type giftcard_servicios = Prisma.giftcard_serviciosModel
+/**
+ * Model giftcard_tarjetas
+ * This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+ */
+export type giftcard_tarjetas = Prisma.giftcard_tarjetasModel
+/**
+ * Model giftcard_transacciones
+ * 
+ */
+export type giftcard_transacciones = Prisma.giftcard_transaccionesModel
+/**
+ * Model horarios_empleados
+ * 
+ */
+export type horarios_empleados = Prisma.horarios_empleadosModel
+/**
+ * Model reclamaciones
+ * 
+ */
+export type reclamaciones = Prisma.reclamacionesModel

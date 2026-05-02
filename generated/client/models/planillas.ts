@@ -340,6 +340,8 @@ export type planillasWhereInput = {
   fecha_inicio_periodo?: Prisma.DateTimeNullableFilter<"planillas"> | Date | string | null
   fecha_fin_periodo?: Prisma.DateTimeNullableFilter<"planillas"> | Date | string | null
   total_pagado?: Prisma.DecimalNullableFilter<"planillas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.Empleado_bonosListRelationFilter
+  empleado_penalidades?: Prisma.Empleado_penalidadesListRelationFilter
   gastos?: Prisma.GastosListRelationFilter
   empleados?: Prisma.XOR<Prisma.EmpleadosNullableScalarRelationFilter, Prisma.empleadosWhereInput> | null
   ventas?: Prisma.VentasListRelationFilter
@@ -362,6 +364,8 @@ export type planillasOrderByWithRelationInput = {
   fecha_inicio_periodo?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_fin_periodo?: Prisma.SortOrderInput | Prisma.SortOrder
   total_pagado?: Prisma.SortOrderInput | Prisma.SortOrder
+  empleado_bonos?: Prisma.empleado_bonosOrderByRelationAggregateInput
+  empleado_penalidades?: Prisma.empleado_penalidadesOrderByRelationAggregateInput
   gastos?: Prisma.gastosOrderByRelationAggregateInput
   empleados?: Prisma.empleadosOrderByWithRelationInput
   ventas?: Prisma.ventasOrderByRelationAggregateInput
@@ -387,6 +391,8 @@ export type planillasWhereUniqueInput = Prisma.AtLeast<{
   fecha_inicio_periodo?: Prisma.DateTimeNullableFilter<"planillas"> | Date | string | null
   fecha_fin_periodo?: Prisma.DateTimeNullableFilter<"planillas"> | Date | string | null
   total_pagado?: Prisma.DecimalNullableFilter<"planillas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.Empleado_bonosListRelationFilter
+  empleado_penalidades?: Prisma.Empleado_penalidadesListRelationFilter
   gastos?: Prisma.GastosListRelationFilter
   empleados?: Prisma.XOR<Prisma.EmpleadosNullableScalarRelationFilter, Prisma.empleadosWhereInput> | null
   ventas?: Prisma.VentasListRelationFilter
@@ -453,6 +459,8 @@ export type planillasCreateInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosCreateNestedManyWithoutPlanillasInput
   empleados?: Prisma.empleadosCreateNestedOneWithoutPlanillasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutPlanillasInput
@@ -475,6 +483,8 @@ export type planillasUncheckedCreateInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutPlanillasInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutPlanillasInput
 }
@@ -494,6 +504,8 @@ export type planillasUpdateInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutPlanillasNestedInput
   empleados?: Prisma.empleadosUpdateOneWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutPlanillasNestedInput
@@ -516,6 +528,8 @@ export type planillasUncheckedUpdateInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutPlanillasNestedInput
 }
@@ -747,6 +761,38 @@ export type planillasUpdateOneWithoutVentasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.planillasUpdateToOneWithWhereWithoutVentasInput, Prisma.planillasUpdateWithoutVentasInput>, Prisma.planillasUncheckedUpdateWithoutVentasInput>
 }
 
+export type planillasCreateNestedOneWithoutEmpleado_bonosInput = {
+  create?: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedCreateWithoutEmpleado_bonosInput>
+  connectOrCreate?: Prisma.planillasCreateOrConnectWithoutEmpleado_bonosInput
+  connect?: Prisma.planillasWhereUniqueInput
+}
+
+export type planillasUpdateOneWithoutEmpleado_bonosNestedInput = {
+  create?: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedCreateWithoutEmpleado_bonosInput>
+  connectOrCreate?: Prisma.planillasCreateOrConnectWithoutEmpleado_bonosInput
+  upsert?: Prisma.planillasUpsertWithoutEmpleado_bonosInput
+  disconnect?: Prisma.planillasWhereInput | boolean
+  delete?: Prisma.planillasWhereInput | boolean
+  connect?: Prisma.planillasWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.planillasUpdateToOneWithWhereWithoutEmpleado_bonosInput, Prisma.planillasUpdateWithoutEmpleado_bonosInput>, Prisma.planillasUncheckedUpdateWithoutEmpleado_bonosInput>
+}
+
+export type planillasCreateNestedOneWithoutEmpleado_penalidadesInput = {
+  create?: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedCreateWithoutEmpleado_penalidadesInput>
+  connectOrCreate?: Prisma.planillasCreateOrConnectWithoutEmpleado_penalidadesInput
+  connect?: Prisma.planillasWhereUniqueInput
+}
+
+export type planillasUpdateOneWithoutEmpleado_penalidadesNestedInput = {
+  create?: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedCreateWithoutEmpleado_penalidadesInput>
+  connectOrCreate?: Prisma.planillasCreateOrConnectWithoutEmpleado_penalidadesInput
+  upsert?: Prisma.planillasUpsertWithoutEmpleado_penalidadesInput
+  disconnect?: Prisma.planillasWhereInput | boolean
+  delete?: Prisma.planillasWhereInput | boolean
+  connect?: Prisma.planillasWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.planillasUpdateToOneWithWhereWithoutEmpleado_penalidadesInput, Prisma.planillasUpdateWithoutEmpleado_penalidadesInput>, Prisma.planillasUncheckedUpdateWithoutEmpleado_penalidadesInput>
+}
+
 export type planillasCreateWithoutEmpleadosInput = {
   fecha_generacion?: Date | string | null
   periodo_inicio?: Date | string | null
@@ -762,6 +808,8 @@ export type planillasCreateWithoutEmpleadosInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosCreateNestedManyWithoutPlanillasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutPlanillasInput
 }
@@ -782,6 +830,8 @@ export type planillasUncheckedCreateWithoutEmpleadosInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutPlanillasInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutPlanillasInput
 }
@@ -849,6 +899,8 @@ export type planillasCreateWithoutGastosInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutPlanillasInput
   empleados?: Prisma.empleadosCreateNestedOneWithoutPlanillasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutPlanillasInput
 }
@@ -870,6 +922,8 @@ export type planillasUncheckedCreateWithoutGastosInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutPlanillasInput
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutPlanillasInput
 }
 
@@ -904,6 +958,8 @@ export type planillasUpdateWithoutGastosInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutPlanillasNestedInput
   empleados?: Prisma.empleadosUpdateOneWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutPlanillasNestedInput
 }
@@ -925,6 +981,8 @@ export type planillasUncheckedUpdateWithoutGastosInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutPlanillasNestedInput
 }
 
@@ -943,6 +1001,8 @@ export type planillasCreateWithoutVentasInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosCreateNestedManyWithoutPlanillasInput
   empleados?: Prisma.empleadosCreateNestedOneWithoutPlanillasInput
 }
@@ -964,6 +1024,8 @@ export type planillasUncheckedCreateWithoutVentasInput = {
   fecha_inicio_periodo?: Date | string | null
   fecha_fin_periodo?: Date | string | null
   total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutPlanillasInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutPlanillasInput
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutPlanillasInput
 }
 
@@ -998,6 +1060,8 @@ export type planillasUpdateWithoutVentasInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutPlanillasNestedInput
   empleados?: Prisma.empleadosUpdateOneWithoutPlanillasNestedInput
 }
@@ -1019,7 +1083,213 @@ export type planillasUncheckedUpdateWithoutVentasInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutPlanillasNestedInput
+}
+
+export type planillasCreateWithoutEmpleado_bonosInput = {
+  fecha_generacion?: Date | string | null
+  periodo_inicio?: Date | string | null
+  periodo_fin?: Date | string | null
+  total_servicios_vendidos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: string | null
+  fecha_inicio_periodo?: Date | string | null
+  fecha_fin_periodo?: Date | string | null
+  total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutPlanillasInput
+  gastos?: Prisma.gastosCreateNestedManyWithoutPlanillasInput
+  empleados?: Prisma.empleadosCreateNestedOneWithoutPlanillasInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutPlanillasInput
+}
+
+export type planillasUncheckedCreateWithoutEmpleado_bonosInput = {
+  id?: number
+  empleado_id?: number | null
+  fecha_generacion?: Date | string | null
+  periodo_inicio?: Date | string | null
+  periodo_fin?: Date | string | null
+  total_servicios_vendidos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: string | null
+  fecha_inicio_periodo?: Date | string | null
+  fecha_fin_periodo?: Date | string | null
+  total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutPlanillasInput
+  gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutPlanillasInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutPlanillasInput
+}
+
+export type planillasCreateOrConnectWithoutEmpleado_bonosInput = {
+  where: Prisma.planillasWhereUniqueInput
+  create: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedCreateWithoutEmpleado_bonosInput>
+}
+
+export type planillasUpsertWithoutEmpleado_bonosInput = {
+  update: Prisma.XOR<Prisma.planillasUpdateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedUpdateWithoutEmpleado_bonosInput>
+  create: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedCreateWithoutEmpleado_bonosInput>
+  where?: Prisma.planillasWhereInput
+}
+
+export type planillasUpdateToOneWithWhereWithoutEmpleado_bonosInput = {
+  where?: Prisma.planillasWhereInput
+  data: Prisma.XOR<Prisma.planillasUpdateWithoutEmpleado_bonosInput, Prisma.planillasUncheckedUpdateWithoutEmpleado_bonosInput>
+}
+
+export type planillasUpdateWithoutEmpleado_bonosInput = {
+  fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_servicios_vendidos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutPlanillasNestedInput
+  gastos?: Prisma.gastosUpdateManyWithoutPlanillasNestedInput
+  empleados?: Prisma.empleadosUpdateOneWithoutPlanillasNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutPlanillasNestedInput
+}
+
+export type planillasUncheckedUpdateWithoutEmpleado_bonosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_servicios_vendidos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutPlanillasNestedInput
+  gastos?: Prisma.gastosUncheckedUpdateManyWithoutPlanillasNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutPlanillasNestedInput
+}
+
+export type planillasCreateWithoutEmpleado_penalidadesInput = {
+  fecha_generacion?: Date | string | null
+  periodo_inicio?: Date | string | null
+  periodo_fin?: Date | string | null
+  total_servicios_vendidos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: string | null
+  fecha_inicio_periodo?: Date | string | null
+  fecha_fin_periodo?: Date | string | null
+  total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutPlanillasInput
+  gastos?: Prisma.gastosCreateNestedManyWithoutPlanillasInput
+  empleados?: Prisma.empleadosCreateNestedOneWithoutPlanillasInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutPlanillasInput
+}
+
+export type planillasUncheckedCreateWithoutEmpleado_penalidadesInput = {
+  id?: number
+  empleado_id?: number | null
+  fecha_generacion?: Date | string | null
+  periodo_inicio?: Date | string | null
+  periodo_fin?: Date | string | null
+  total_servicios_vendidos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: string | null
+  fecha_inicio_periodo?: Date | string | null
+  fecha_fin_periodo?: Date | string | null
+  total_pagado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutPlanillasInput
+  gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutPlanillasInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutPlanillasInput
+}
+
+export type planillasCreateOrConnectWithoutEmpleado_penalidadesInput = {
+  where: Prisma.planillasWhereUniqueInput
+  create: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedCreateWithoutEmpleado_penalidadesInput>
+}
+
+export type planillasUpsertWithoutEmpleado_penalidadesInput = {
+  update: Prisma.XOR<Prisma.planillasUpdateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedUpdateWithoutEmpleado_penalidadesInput>
+  create: Prisma.XOR<Prisma.planillasCreateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedCreateWithoutEmpleado_penalidadesInput>
+  where?: Prisma.planillasWhereInput
+}
+
+export type planillasUpdateToOneWithWhereWithoutEmpleado_penalidadesInput = {
+  where?: Prisma.planillasWhereInput
+  data: Prisma.XOR<Prisma.planillasUpdateWithoutEmpleado_penalidadesInput, Prisma.planillasUncheckedUpdateWithoutEmpleado_penalidadesInput>
+}
+
+export type planillasUpdateWithoutEmpleado_penalidadesInput = {
+  fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_servicios_vendidos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutPlanillasNestedInput
+  gastos?: Prisma.gastosUpdateManyWithoutPlanillasNestedInput
+  empleados?: Prisma.empleadosUpdateOneWithoutPlanillasNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutPlanillasNestedInput
+}
+
+export type planillasUncheckedUpdateWithoutEmpleado_penalidadesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_generacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_inicio?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  periodo_fin?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_servicios_vendidos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_aplicado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_servicios?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  pago_fijo_o_bonos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  descuentos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  total_a_pagar?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutPlanillasNestedInput
+  gastos?: Prisma.gastosUncheckedUpdateManyWithoutPlanillasNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutPlanillasNestedInput
 }
 
 export type planillasCreateManyEmpleadosInput = {
@@ -1055,6 +1325,8 @@ export type planillasUpdateWithoutEmpleadosInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUpdateManyWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutPlanillasNestedInput
 }
@@ -1075,6 +1347,8 @@ export type planillasUncheckedUpdateWithoutEmpleadosInput = {
   fecha_inicio_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_fin_periodo?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   total_pagado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutPlanillasNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutPlanillasNestedInput
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutPlanillasNestedInput
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutPlanillasNestedInput
 }
@@ -1103,11 +1377,15 @@ export type planillasUncheckedUpdateManyWithoutEmpleadosInput = {
  */
 
 export type PlanillasCountOutputType = {
+  empleado_bonos: number
+  empleado_penalidades: number
   gastos: number
   ventas: number
 }
 
 export type PlanillasCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  empleado_bonos?: boolean | PlanillasCountOutputTypeCountEmpleado_bonosArgs
+  empleado_penalidades?: boolean | PlanillasCountOutputTypeCountEmpleado_penalidadesArgs
   gastos?: boolean | PlanillasCountOutputTypeCountGastosArgs
   ventas?: boolean | PlanillasCountOutputTypeCountVentasArgs
 }
@@ -1120,6 +1398,20 @@ export type PlanillasCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
    * Select specific fields to fetch from the PlanillasCountOutputType
    */
   select?: Prisma.PlanillasCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * PlanillasCountOutputType without action
+ */
+export type PlanillasCountOutputTypeCountEmpleado_bonosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.empleado_bonosWhereInput
+}
+
+/**
+ * PlanillasCountOutputType without action
+ */
+export type PlanillasCountOutputTypeCountEmpleado_penalidadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.empleado_penalidadesWhereInput
 }
 
 /**
@@ -1154,6 +1446,8 @@ export type planillasSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   fecha_inicio_periodo?: boolean
   fecha_fin_periodo?: boolean
   total_pagado?: boolean
+  empleado_bonos?: boolean | Prisma.planillas$empleado_bonosArgs<ExtArgs>
+  empleado_penalidades?: boolean | Prisma.planillas$empleado_penalidadesArgs<ExtArgs>
   gastos?: boolean | Prisma.planillas$gastosArgs<ExtArgs>
   empleados?: boolean | Prisma.planillas$empleadosArgs<ExtArgs>
   ventas?: boolean | Prisma.planillas$ventasArgs<ExtArgs>
@@ -1221,6 +1515,8 @@ export type planillasSelectScalar = {
 
 export type planillasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "empleado_id" | "fecha_generacion" | "periodo_inicio" | "periodo_fin" | "total_servicios_vendidos" | "porcentaje_aplicado" | "pago_servicios" | "pago_productos" | "pago_fijo_o_bonos" | "descuentos" | "total_a_pagar" | "estado" | "fecha_inicio_periodo" | "fecha_fin_periodo" | "total_pagado", ExtArgs["result"]["planillas"]>
 export type planillasInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  empleado_bonos?: boolean | Prisma.planillas$empleado_bonosArgs<ExtArgs>
+  empleado_penalidades?: boolean | Prisma.planillas$empleado_penalidadesArgs<ExtArgs>
   gastos?: boolean | Prisma.planillas$gastosArgs<ExtArgs>
   empleados?: boolean | Prisma.planillas$empleadosArgs<ExtArgs>
   ventas?: boolean | Prisma.planillas$ventasArgs<ExtArgs>
@@ -1236,6 +1532,8 @@ export type planillasIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $planillasPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "planillas"
   objects: {
+    empleado_bonos: Prisma.$empleado_bonosPayload<ExtArgs>[]
+    empleado_penalidades: Prisma.$empleado_penalidadesPayload<ExtArgs>[]
     gastos: Prisma.$gastosPayload<ExtArgs>[]
     empleados: Prisma.$empleadosPayload<ExtArgs> | null
     ventas: Prisma.$ventasPayload<ExtArgs>[]
@@ -1651,6 +1949,8 @@ readonly fields: planillasFieldRefs;
  */
 export interface Prisma__planillasClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  empleado_bonos<T extends Prisma.planillas$empleado_bonosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.planillas$empleado_bonosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_bonosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  empleado_penalidades<T extends Prisma.planillas$empleado_penalidadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.planillas$empleado_penalidadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_penalidadesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gastos<T extends Prisma.planillas$gastosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.planillas$gastosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gastosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   empleados<T extends Prisma.planillas$empleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.planillas$empleadosArgs<ExtArgs>>): Prisma.Prisma__empleadosClient<runtime.Types.Result.GetResult<Prisma.$empleadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   ventas<T extends Prisma.planillas$ventasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.planillas$ventasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ventasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2092,6 +2392,54 @@ export type planillasDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
    * Limit how many planillas to delete.
    */
   limit?: number
+}
+
+/**
+ * planillas.empleado_bonos
+ */
+export type planillas$empleado_bonosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleado_bonos
+   */
+  select?: Prisma.empleado_bonosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleado_bonos
+   */
+  omit?: Prisma.empleado_bonosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleado_bonosInclude<ExtArgs> | null
+  where?: Prisma.empleado_bonosWhereInput
+  orderBy?: Prisma.empleado_bonosOrderByWithRelationInput | Prisma.empleado_bonosOrderByWithRelationInput[]
+  cursor?: Prisma.empleado_bonosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Empleado_bonosScalarFieldEnum | Prisma.Empleado_bonosScalarFieldEnum[]
+}
+
+/**
+ * planillas.empleado_penalidades
+ */
+export type planillas$empleado_penalidadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleado_penalidades
+   */
+  select?: Prisma.empleado_penalidadesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleado_penalidades
+   */
+  omit?: Prisma.empleado_penalidadesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleado_penalidadesInclude<ExtArgs> | null
+  where?: Prisma.empleado_penalidadesWhereInput
+  orderBy?: Prisma.empleado_penalidadesOrderByWithRelationInput | Prisma.empleado_penalidadesOrderByWithRelationInput[]
+  cursor?: Prisma.empleado_penalidadesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Empleado_penalidadesScalarFieldEnum | Prisma.Empleado_penalidadesScalarFieldEnum[]
 }
 
 /**

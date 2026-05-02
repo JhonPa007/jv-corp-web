@@ -70,6 +70,7 @@ export type GastosMinAggregateOutputType = {
   deducido_en_planilla_id: number | null
   usuario_id: number | null
   tipo: string | null
+  estado_confirmacion: string | null
 }
 
 export type GastosMaxAggregateOutputType = {
@@ -92,6 +93,7 @@ export type GastosMaxAggregateOutputType = {
   deducido_en_planilla_id: number | null
   usuario_id: number | null
   tipo: string | null
+  estado_confirmacion: string | null
 }
 
 export type GastosCountAggregateOutputType = {
@@ -114,6 +116,7 @@ export type GastosCountAggregateOutputType = {
   deducido_en_planilla_id: number
   usuario_id: number
   tipo: number
+  estado_confirmacion: number
   _all: number
 }
 
@@ -162,6 +165,7 @@ export type GastosMinAggregateInputType = {
   deducido_en_planilla_id?: true
   usuario_id?: true
   tipo?: true
+  estado_confirmacion?: true
 }
 
 export type GastosMaxAggregateInputType = {
@@ -184,6 +188,7 @@ export type GastosMaxAggregateInputType = {
   deducido_en_planilla_id?: true
   usuario_id?: true
   tipo?: true
+  estado_confirmacion?: true
 }
 
 export type GastosCountAggregateInputType = {
@@ -206,6 +211,7 @@ export type GastosCountAggregateInputType = {
   deducido_en_planilla_id?: true
   usuario_id?: true
   tipo?: true
+  estado_confirmacion?: true
   _all?: true
 }
 
@@ -315,6 +321,7 @@ export type GastosGroupByOutputType = {
   deducido_en_planilla_id: number | null
   usuario_id: number | null
   tipo: string | null
+  estado_confirmacion: string | null
   _count: GastosCountAggregateOutputType | null
   _avg: GastosAvgAggregateOutputType | null
   _sum: GastosSumAggregateOutputType | null
@@ -360,6 +367,7 @@ export type gastosWhereInput = {
   deducido_en_planilla_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   usuario_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   tipo?: Prisma.StringNullableFilter<"gastos"> | string | null
+  estado_confirmacion?: Prisma.StringNullableFilter<"gastos"> | string | null
   caja_sesiones?: Prisma.XOR<Prisma.Caja_sesionesNullableScalarRelationFilter, Prisma.caja_sesionesWhereInput> | null
   categorias_gastos?: Prisma.XOR<Prisma.Categorias_gastosScalarRelationFilter, Prisma.categorias_gastosWhereInput>
   planillas?: Prisma.XOR<Prisma.PlanillasNullableScalarRelationFilter, Prisma.planillasWhereInput> | null
@@ -389,6 +397,7 @@ export type gastosOrderByWithRelationInput = {
   deducido_en_planilla_id?: Prisma.SortOrderInput | Prisma.SortOrder
   usuario_id?: Prisma.SortOrderInput | Prisma.SortOrder
   tipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  estado_confirmacion?: Prisma.SortOrderInput | Prisma.SortOrder
   caja_sesiones?: Prisma.caja_sesionesOrderByWithRelationInput
   categorias_gastos?: Prisma.categorias_gastosOrderByWithRelationInput
   planillas?: Prisma.planillasOrderByWithRelationInput
@@ -421,6 +430,7 @@ export type gastosWhereUniqueInput = Prisma.AtLeast<{
   deducido_en_planilla_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   usuario_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   tipo?: Prisma.StringNullableFilter<"gastos"> | string | null
+  estado_confirmacion?: Prisma.StringNullableFilter<"gastos"> | string | null
   caja_sesiones?: Prisma.XOR<Prisma.Caja_sesionesNullableScalarRelationFilter, Prisma.caja_sesionesWhereInput> | null
   categorias_gastos?: Prisma.XOR<Prisma.Categorias_gastosScalarRelationFilter, Prisma.categorias_gastosWhereInput>
   planillas?: Prisma.XOR<Prisma.PlanillasNullableScalarRelationFilter, Prisma.planillasWhereInput> | null
@@ -450,6 +460,7 @@ export type gastosOrderByWithAggregationInput = {
   deducido_en_planilla_id?: Prisma.SortOrderInput | Prisma.SortOrder
   usuario_id?: Prisma.SortOrderInput | Prisma.SortOrder
   tipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  estado_confirmacion?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.gastosCountOrderByAggregateInput
   _avg?: Prisma.gastosAvgOrderByAggregateInput
   _max?: Prisma.gastosMaxOrderByAggregateInput
@@ -480,6 +491,7 @@ export type gastosScalarWhereWithAggregatesInput = {
   deducido_en_planilla_id?: Prisma.IntNullableWithAggregatesFilter<"gastos"> | number | null
   usuario_id?: Prisma.IntNullableWithAggregatesFilter<"gastos"> | number | null
   tipo?: Prisma.StringNullableWithAggregatesFilter<"gastos"> | string | null
+  estado_confirmacion?: Prisma.StringNullableWithAggregatesFilter<"gastos"> | string | null
 }
 
 export type gastosCreateInput = {
@@ -494,6 +506,7 @@ export type gastosCreateInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
@@ -523,6 +536,7 @@ export type gastosUncheckedCreateInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateInput = {
@@ -537,6 +551,7 @@ export type gastosUpdateInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
@@ -566,6 +581,7 @@ export type gastosUncheckedUpdateInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosCreateManyInput = {
@@ -588,6 +604,7 @@ export type gastosCreateManyInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateManyMutationInput = {
@@ -602,6 +619,7 @@ export type gastosUpdateManyMutationInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyInput = {
@@ -624,6 +642,7 @@ export type gastosUncheckedUpdateManyInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type GastosListRelationFilter = {
@@ -656,6 +675,7 @@ export type gastosCountOrderByAggregateInput = {
   deducido_en_planilla_id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
+  estado_confirmacion?: Prisma.SortOrder
 }
 
 export type gastosAvgOrderByAggregateInput = {
@@ -690,6 +710,7 @@ export type gastosMaxOrderByAggregateInput = {
   deducido_en_planilla_id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
+  estado_confirmacion?: Prisma.SortOrder
 }
 
 export type gastosMinOrderByAggregateInput = {
@@ -712,6 +733,7 @@ export type gastosMinOrderByAggregateInput = {
   deducido_en_planilla_id?: Prisma.SortOrder
   usuario_id?: Prisma.SortOrder
   tipo?: Prisma.SortOrder
+  estado_confirmacion?: Prisma.SortOrder
 }
 
 export type gastosSumOrderByAggregateInput = {
@@ -1032,6 +1054,7 @@ export type gastosCreateWithoutCaja_sesionesInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosCreateNestedOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosInput
@@ -1059,6 +1082,7 @@ export type gastosUncheckedCreateWithoutCaja_sesionesInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutCaja_sesionesInput = {
@@ -1110,6 +1134,7 @@ export type gastosScalarWhereInput = {
   deducido_en_planilla_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   usuario_id?: Prisma.IntNullableFilter<"gastos"> | number | null
   tipo?: Prisma.StringNullableFilter<"gastos"> | string | null
+  estado_confirmacion?: Prisma.StringNullableFilter<"gastos"> | string | null
 }
 
 export type gastosCreateWithoutCategorias_gastosInput = {
@@ -1124,6 +1149,7 @@ export type gastosCreateWithoutCategorias_gastosInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosCreateNestedOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosInput
@@ -1151,6 +1177,7 @@ export type gastosUncheckedCreateWithoutCategorias_gastosInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutCategorias_gastosInput = {
@@ -1191,6 +1218,7 @@ export type gastosCreateWithoutEmpleados_gastos_empleado_beneficiario_idToemplea
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
@@ -1218,6 +1246,7 @@ export type gastosUncheckedCreateWithoutEmpleados_gastos_empleado_beneficiario_i
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput = {
@@ -1242,6 +1271,7 @@ export type gastosCreateWithoutEmpleados_gastos_registrado_por_colaborador_idToe
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
@@ -1269,6 +1299,7 @@ export type gastosUncheckedCreateWithoutEmpleados_gastos_registrado_por_colabora
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput = {
@@ -1293,6 +1324,7 @@ export type gastosCreateWithoutEmpleados_gastos_usuario_idToempleadosInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
@@ -1320,6 +1352,7 @@ export type gastosUncheckedCreateWithoutEmpleados_gastos_usuario_idToempleadosIn
   comprobante_razon_social_emisor?: string | null
   deducido_en_planilla_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutEmpleados_gastos_usuario_idToempleadosInput = {
@@ -1392,6 +1425,7 @@ export type gastosCreateWithoutPlanillasInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosCreateNestedOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosInput
@@ -1419,6 +1453,7 @@ export type gastosUncheckedCreateWithoutPlanillasInput = {
   comprobante_razon_social_emisor?: string | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutPlanillasInput = {
@@ -1459,6 +1494,7 @@ export type gastosCreateWithoutSucursalesInput = {
   comprobante_ruc_emisor?: string | null
   comprobante_razon_social_emisor?: string | null
   tipo?: string | null
+  estado_confirmacion?: string | null
   caja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutGastosInput
   categorias_gastos: Prisma.categorias_gastosCreateNestedOneWithoutGastosInput
   planillas?: Prisma.planillasCreateNestedOneWithoutGastosInput
@@ -1486,6 +1522,7 @@ export type gastosUncheckedCreateWithoutSucursalesInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateOrConnectWithoutSucursalesInput = {
@@ -1533,6 +1570,7 @@ export type gastosCreateManyCaja_sesionesInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateWithoutCaja_sesionesInput = {
@@ -1547,6 +1585,7 @@ export type gastosUpdateWithoutCaja_sesionesInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosUpdateOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosNestedInput
@@ -1574,6 +1613,7 @@ export type gastosUncheckedUpdateWithoutCaja_sesionesInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutCaja_sesionesInput = {
@@ -1595,6 +1635,7 @@ export type gastosUncheckedUpdateManyWithoutCaja_sesionesInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosCreateManyCategorias_gastosInput = {
@@ -1616,6 +1657,7 @@ export type gastosCreateManyCategorias_gastosInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateWithoutCategorias_gastosInput = {
@@ -1630,6 +1672,7 @@ export type gastosUpdateWithoutCategorias_gastosInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosUpdateOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosNestedInput
@@ -1657,6 +1700,7 @@ export type gastosUncheckedUpdateWithoutCategorias_gastosInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutCategorias_gastosInput = {
@@ -1678,6 +1722,7 @@ export type gastosUncheckedUpdateManyWithoutCategorias_gastosInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosCreateManyEmpleados_gastos_empleado_beneficiario_idToempleadosInput = {
@@ -1699,6 +1744,7 @@ export type gastosCreateManyEmpleados_gastos_empleado_beneficiario_idToempleados
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateManyEmpleados_gastos_registrado_por_colaborador_idToempleadosInput = {
@@ -1720,6 +1766,7 @@ export type gastosCreateManyEmpleados_gastos_registrado_por_colaborador_idToempl
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosCreateManyEmpleados_gastos_usuario_idToempleadosInput = {
@@ -1741,6 +1788,7 @@ export type gastosCreateManyEmpleados_gastos_usuario_idToempleadosInput = {
   comprobante_razon_social_emisor?: string | null
   deducido_en_planilla_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput = {
@@ -1755,6 +1803,7 @@ export type gastosUpdateWithoutEmpleados_gastos_empleado_beneficiario_idToemplea
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
@@ -1782,6 +1831,7 @@ export type gastosUncheckedUpdateWithoutEmpleados_gastos_empleado_beneficiario_i
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput = {
@@ -1803,6 +1853,7 @@ export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiar
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUpdateWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput = {
@@ -1817,6 +1868,7 @@ export type gastosUpdateWithoutEmpleados_gastos_registrado_por_colaborador_idToe
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
@@ -1844,6 +1896,7 @@ export type gastosUncheckedUpdateWithoutEmpleados_gastos_registrado_por_colabora
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput = {
@@ -1865,6 +1918,7 @@ export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_cola
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUpdateWithoutEmpleados_gastos_usuario_idToempleadosInput = {
@@ -1879,6 +1933,7 @@ export type gastosUpdateWithoutEmpleados_gastos_usuario_idToempleadosInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
@@ -1906,6 +1961,7 @@ export type gastosUncheckedUpdateWithoutEmpleados_gastos_usuario_idToempleadosIn
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosInput = {
@@ -1927,6 +1983,7 @@ export type gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToemplead
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosCreateManyPlanillasInput = {
@@ -1948,6 +2005,7 @@ export type gastosCreateManyPlanillasInput = {
   comprobante_razon_social_emisor?: string | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateWithoutPlanillasInput = {
@@ -1962,6 +2020,7 @@ export type gastosUpdateWithoutPlanillasInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   empleados_gastos_empleado_beneficiario_idToempleados?: Prisma.empleadosUpdateOneWithoutGastos_gastos_empleado_beneficiario_idToempleadosNestedInput
@@ -1989,6 +2048,7 @@ export type gastosUncheckedUpdateWithoutPlanillasInput = {
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutPlanillasInput = {
@@ -2010,6 +2070,7 @@ export type gastosUncheckedUpdateManyWithoutPlanillasInput = {
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosCreateManySucursalesInput = {
@@ -2031,6 +2092,7 @@ export type gastosCreateManySucursalesInput = {
   deducido_en_planilla_id?: number | null
   usuario_id?: number | null
   tipo?: string | null
+  estado_confirmacion?: string | null
 }
 
 export type gastosUpdateWithoutSucursalesInput = {
@@ -2045,6 +2107,7 @@ export type gastosUpdateWithoutSucursalesInput = {
   comprobante_ruc_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   comprobante_razon_social_emisor?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutGastosNestedInput
   categorias_gastos?: Prisma.categorias_gastosUpdateOneRequiredWithoutGastosNestedInput
   planillas?: Prisma.planillasUpdateOneWithoutGastosNestedInput
@@ -2072,6 +2135,7 @@ export type gastosUncheckedUpdateWithoutSucursalesInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type gastosUncheckedUpdateManyWithoutSucursalesInput = {
@@ -2093,6 +2157,7 @@ export type gastosUncheckedUpdateManyWithoutSucursalesInput = {
   deducido_en_planilla_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   usuario_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado_confirmacion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -2117,6 +2182,7 @@ export type gastosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   deducido_en_planilla_id?: boolean
   usuario_id?: boolean
   tipo?: boolean
+  estado_confirmacion?: boolean
   caja_sesiones?: boolean | Prisma.gastos$caja_sesionesArgs<ExtArgs>
   categorias_gastos?: boolean | Prisma.categorias_gastosDefaultArgs<ExtArgs>
   planillas?: boolean | Prisma.gastos$planillasArgs<ExtArgs>
@@ -2146,6 +2212,7 @@ export type gastosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extens
   deducido_en_planilla_id?: boolean
   usuario_id?: boolean
   tipo?: boolean
+  estado_confirmacion?: boolean
   caja_sesiones?: boolean | Prisma.gastos$caja_sesionesArgs<ExtArgs>
   categorias_gastos?: boolean | Prisma.categorias_gastosDefaultArgs<ExtArgs>
   planillas?: boolean | Prisma.gastos$planillasArgs<ExtArgs>
@@ -2175,6 +2242,7 @@ export type gastosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extens
   deducido_en_planilla_id?: boolean
   usuario_id?: boolean
   tipo?: boolean
+  estado_confirmacion?: boolean
   caja_sesiones?: boolean | Prisma.gastos$caja_sesionesArgs<ExtArgs>
   categorias_gastos?: boolean | Prisma.categorias_gastosDefaultArgs<ExtArgs>
   planillas?: boolean | Prisma.gastos$planillasArgs<ExtArgs>
@@ -2204,9 +2272,10 @@ export type gastosSelectScalar = {
   deducido_en_planilla_id?: boolean
   usuario_id?: boolean
   tipo?: boolean
+  estado_confirmacion?: boolean
 }
 
-export type gastosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sucursal_id" | "categoria_gasto_id" | "caja_sesion_id" | "fecha" | "descripcion" | "monto" | "metodo_pago" | "comprobante_tipo" | "comprobante_serie" | "comprobante_numero" | "registrado_por_colaborador_id" | "fecha_registro" | "empleado_beneficiario_id" | "comprobante_ruc_emisor" | "comprobante_razon_social_emisor" | "deducido_en_planilla_id" | "usuario_id" | "tipo", ExtArgs["result"]["gastos"]>
+export type gastosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "sucursal_id" | "categoria_gasto_id" | "caja_sesion_id" | "fecha" | "descripcion" | "monto" | "metodo_pago" | "comprobante_tipo" | "comprobante_serie" | "comprobante_numero" | "registrado_por_colaborador_id" | "fecha_registro" | "empleado_beneficiario_id" | "comprobante_ruc_emisor" | "comprobante_razon_social_emisor" | "deducido_en_planilla_id" | "usuario_id" | "tipo" | "estado_confirmacion", ExtArgs["result"]["gastos"]>
 export type gastosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   caja_sesiones?: boolean | Prisma.gastos$caja_sesionesArgs<ExtArgs>
   categorias_gastos?: boolean | Prisma.categorias_gastosDefaultArgs<ExtArgs>
@@ -2266,6 +2335,7 @@ export type $gastosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs
     deducido_en_planilla_id: number | null
     usuario_id: number | null
     tipo: string | null
+    estado_confirmacion: string | null
   }, ExtArgs["result"]["gastos"]>
   composites: {}
 }
@@ -2715,6 +2785,7 @@ export interface gastosFieldRefs {
   readonly deducido_en_planilla_id: Prisma.FieldRef<"gastos", 'Int'>
   readonly usuario_id: Prisma.FieldRef<"gastos", 'Int'>
   readonly tipo: Prisma.FieldRef<"gastos", 'String'>
+  readonly estado_confirmacion: Prisma.FieldRef<"gastos", 'String'>
 }
     
 

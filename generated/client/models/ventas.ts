@@ -452,6 +452,7 @@ export type ventasWhereInput = {
   caja_id?: Prisma.IntNullableFilter<"ventas"> | number | null
   estado?: Prisma.StringNullableFilter<"ventas"> | string | null
   pago_nomina_id?: Prisma.IntNullableFilter<"ventas"> | number | null
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   cliente_membresias?: Prisma.Cliente_membresiasListRelationFilter
   propinas?: Prisma.PropinasListRelationFilter
   venta_items?: Prisma.Venta_itemsListRelationFilter
@@ -495,6 +496,7 @@ export type ventasOrderByWithRelationInput = {
   caja_id?: Prisma.SortOrderInput | Prisma.SortOrder
   estado?: Prisma.SortOrderInput | Prisma.SortOrder
   pago_nomina_id?: Prisma.SortOrderInput | Prisma.SortOrder
+  cliente_historial?: Prisma.cliente_historialOrderByRelationAggregateInput
   cliente_membresias?: Prisma.cliente_membresiasOrderByRelationAggregateInput
   propinas?: Prisma.propinasOrderByRelationAggregateInput
   venta_items?: Prisma.venta_itemsOrderByRelationAggregateInput
@@ -541,6 +543,7 @@ export type ventasWhereUniqueInput = Prisma.AtLeast<{
   caja_id?: Prisma.IntNullableFilter<"ventas"> | number | null
   estado?: Prisma.StringNullableFilter<"ventas"> | string | null
   pago_nomina_id?: Prisma.IntNullableFilter<"ventas"> | number | null
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   cliente_membresias?: Prisma.Cliente_membresiasListRelationFilter
   propinas?: Prisma.PropinasListRelationFilter
   venta_items?: Prisma.Venta_itemsListRelationFilter
@@ -642,6 +645,7 @@ export type ventasCreateInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -685,6 +689,7 @@ export type ventasUncheckedCreateInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -709,6 +714,7 @@ export type ventasUpdateInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -752,6 +758,7 @@ export type ventasUncheckedUpdateInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -1422,6 +1429,22 @@ export type ventasUpdateOneRequiredWithoutVenta_pagosNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.ventasUpdateToOneWithWhereWithoutVenta_pagosInput, Prisma.ventasUpdateWithoutVenta_pagosInput>, Prisma.ventasUncheckedUpdateWithoutVenta_pagosInput>
 }
 
+export type ventasCreateNestedOneWithoutCliente_historialInput = {
+  create?: Prisma.XOR<Prisma.ventasCreateWithoutCliente_historialInput, Prisma.ventasUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.ventasCreateOrConnectWithoutCliente_historialInput
+  connect?: Prisma.ventasWhereUniqueInput
+}
+
+export type ventasUpdateOneWithoutCliente_historialNestedInput = {
+  create?: Prisma.XOR<Prisma.ventasCreateWithoutCliente_historialInput, Prisma.ventasUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.ventasCreateOrConnectWithoutCliente_historialInput
+  upsert?: Prisma.ventasUpsertWithoutCliente_historialInput
+  disconnect?: Prisma.ventasWhereInput | boolean
+  delete?: Prisma.ventasWhereInput | boolean
+  connect?: Prisma.ventasWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.ventasUpdateToOneWithWhereWithoutCliente_historialInput, Prisma.ventasUpdateWithoutCliente_historialInput>, Prisma.ventasUncheckedUpdateWithoutCliente_historialInput>
+}
+
 export type ventasCreateWithoutCaja_sesiones_ventas_caja_idTocaja_sesionesInput = {
   fecha_venta?: Date | string
   monto_final_venta: runtime.Decimal | runtime.DecimalJsLike | number | string
@@ -1440,6 +1463,7 @@ export type ventasCreateWithoutCaja_sesiones_ventas_caja_idTocaja_sesionesInput 
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -1481,6 +1505,7 @@ export type ventasUncheckedCreateWithoutCaja_sesiones_ventas_caja_idTocaja_sesio
   notas_venta?: string | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -1515,6 +1540,7 @@ export type ventasCreateWithoutCaja_sesiones_ventas_caja_sesion_idTocaja_sesione
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -1556,6 +1582,7 @@ export type ventasUncheckedCreateWithoutCaja_sesiones_ventas_caja_sesion_idTocaj
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -1655,6 +1682,7 @@ export type ventasCreateWithoutCampanasInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -1696,6 +1724,7 @@ export type ventasUncheckedCreateWithoutCampanasInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -1746,6 +1775,7 @@ export type ventasCreateWithoutCliente_membresiasInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosCreateNestedManyWithoutVentasInput
@@ -1788,6 +1818,7 @@ export type ventasUncheckedCreateWithoutCliente_membresiasInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosUncheckedCreateNestedManyWithoutVentasInput
@@ -1827,6 +1858,7 @@ export type ventasUpdateWithoutCliente_membresiasInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUpdateManyWithoutVentasNestedInput
@@ -1869,6 +1901,7 @@ export type ventasUncheckedUpdateWithoutCliente_membresiasInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUncheckedUpdateManyWithoutVentasNestedInput
@@ -1892,6 +1925,7 @@ export type ventasCreateWithoutClientes_ventas_cliente_receptor_idToclientesInpu
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -1933,6 +1967,7 @@ export type ventasUncheckedCreateWithoutClientes_ventas_cliente_receptor_idTocli
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -1967,6 +2002,7 @@ export type ventasCreateWithoutClientes_ventas_cliente_facturacion_idToclientesI
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2008,6 +2044,7 @@ export type ventasUncheckedCreateWithoutClientes_ventas_cliente_facturacion_idTo
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2074,6 +2111,7 @@ export type ventasCreateWithoutEmpleadosInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2115,6 +2153,7 @@ export type ventasUncheckedCreateWithoutEmpleadosInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2165,6 +2204,7 @@ export type ventasCreateWithoutPlanillasInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2206,6 +2246,7 @@ export type ventasUncheckedCreateWithoutPlanillasInput = {
   notas_venta?: string | null
   caja_id?: number | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2256,6 +2297,7 @@ export type ventasCreateWithoutPropinasInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosCreateNestedManyWithoutVentasInput
@@ -2298,6 +2340,7 @@ export type ventasUncheckedCreateWithoutPropinasInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosUncheckedCreateNestedManyWithoutVentasInput
@@ -2337,6 +2380,7 @@ export type ventasUpdateWithoutPropinasInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUpdateManyWithoutVentasNestedInput
@@ -2379,6 +2423,7 @@ export type ventasUncheckedUpdateWithoutPropinasInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUncheckedUpdateManyWithoutVentasNestedInput
@@ -2402,6 +2447,7 @@ export type ventasCreateWithoutReservasInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2443,6 +2489,7 @@ export type ventasUncheckedCreateWithoutReservasInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2493,6 +2540,7 @@ export type ventasCreateWithoutSucursalesInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2534,6 +2582,7 @@ export type ventasUncheckedCreateWithoutSucursalesInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2584,6 +2633,7 @@ export type ventasCreateWithoutVenta_itemsInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosCreateNestedManyWithoutVentasInput
@@ -2626,6 +2676,7 @@ export type ventasUncheckedCreateWithoutVenta_itemsInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_pagos?: Prisma.venta_pagosUncheckedCreateNestedManyWithoutVentasInput
@@ -2665,6 +2716,7 @@ export type ventasUpdateWithoutVenta_itemsInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUpdateManyWithoutVentasNestedInput
@@ -2707,6 +2759,7 @@ export type ventasUncheckedUpdateWithoutVenta_itemsInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_pagos?: Prisma.venta_pagosUncheckedUpdateManyWithoutVentasNestedInput
@@ -2730,6 +2783,7 @@ export type ventasCreateWithoutVenta_pagosInput = {
   xml_firmado_hash?: string | null
   notas_venta?: string | null
   estado?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
@@ -2772,6 +2826,7 @@ export type ventasUncheckedCreateWithoutVenta_pagosInput = {
   caja_id?: number | null
   estado?: string | null
   pago_nomina_id?: number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutVentasInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
   propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
@@ -2811,6 +2866,7 @@ export type ventasUpdateWithoutVenta_pagosInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -2853,9 +2909,160 @@ export type ventasUncheckedUpdateWithoutVenta_pagosInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
+}
+
+export type ventasCreateWithoutCliente_historialInput = {
+  fecha_venta?: Date | string
+  monto_final_venta: runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_pago?: string
+  tipo_comprobante?: string | null
+  serie_comprobante?: string | null
+  numero_comprobante?: string | null
+  fecha_actualizacion?: Date | string | null
+  nota_venta_origen_id?: number | null
+  subtotal_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  descuento_monto?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  monto_impuestos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_sunat?: string | null
+  cdr_sunat_path?: string | null
+  xml_firmado_hash?: string | null
+  notas_venta?: string | null
+  estado?: string | null
+  cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutVentasInput
+  propinas?: Prisma.propinasCreateNestedManyWithoutVentasInput
+  venta_items?: Prisma.venta_itemsCreateNestedManyWithoutVentasInput
+  venta_pagos?: Prisma.venta_pagosCreateNestedManyWithoutVentasInput
+  clientes_ventas_cliente_receptor_idToclientes?: Prisma.clientesCreateNestedOneWithoutVentas_ventas_cliente_receptor_idToclientesInput
+  empleados: Prisma.empleadosCreateNestedOneWithoutVentasInput
+  reservas?: Prisma.reservasCreateNestedOneWithoutVentasInput
+  sucursales: Prisma.sucursalesCreateNestedOneWithoutVentasInput
+  caja_sesiones_ventas_caja_idTocaja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutVentas_ventas_caja_idTocaja_sesionesInput
+  caja_sesiones_ventas_caja_sesion_idTocaja_sesiones?: Prisma.caja_sesionesCreateNestedOneWithoutVentas_ventas_caja_sesion_idTocaja_sesionesInput
+  campanas?: Prisma.campanasCreateNestedOneWithoutVentasInput
+  clientes_ventas_cliente_facturacion_idToclientes?: Prisma.clientesCreateNestedOneWithoutVentas_ventas_cliente_facturacion_idToclientesInput
+  planillas?: Prisma.planillasCreateNestedOneWithoutVentasInput
+}
+
+export type ventasUncheckedCreateWithoutCliente_historialInput = {
+  id?: number
+  reserva_id?: number | null
+  cliente_receptor_id?: number | null
+  empleado_id: number
+  sucursal_id: number
+  fecha_venta?: Date | string
+  monto_final_venta: runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_pago?: string
+  tipo_comprobante?: string | null
+  serie_comprobante?: string | null
+  numero_comprobante?: string | null
+  fecha_actualizacion?: Date | string | null
+  nota_venta_origen_id?: number | null
+  subtotal_servicios?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  cliente_facturacion_id?: number | null
+  descuento_monto?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  monto_impuestos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  campana_id?: number | null
+  estado_sunat?: string | null
+  cdr_sunat_path?: string | null
+  xml_firmado_hash?: string | null
+  caja_sesion_id?: number | null
+  notas_venta?: string | null
+  caja_id?: number | null
+  estado?: string | null
+  pago_nomina_id?: number | null
+  cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutVentasInput
+  propinas?: Prisma.propinasUncheckedCreateNestedManyWithoutVentasInput
+  venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutVentasInput
+  venta_pagos?: Prisma.venta_pagosUncheckedCreateNestedManyWithoutVentasInput
+}
+
+export type ventasCreateOrConnectWithoutCliente_historialInput = {
+  where: Prisma.ventasWhereUniqueInput
+  create: Prisma.XOR<Prisma.ventasCreateWithoutCliente_historialInput, Prisma.ventasUncheckedCreateWithoutCliente_historialInput>
+}
+
+export type ventasUpsertWithoutCliente_historialInput = {
+  update: Prisma.XOR<Prisma.ventasUpdateWithoutCliente_historialInput, Prisma.ventasUncheckedUpdateWithoutCliente_historialInput>
+  create: Prisma.XOR<Prisma.ventasCreateWithoutCliente_historialInput, Prisma.ventasUncheckedCreateWithoutCliente_historialInput>
+  where?: Prisma.ventasWhereInput
+}
+
+export type ventasUpdateToOneWithWhereWithoutCliente_historialInput = {
+  where?: Prisma.ventasWhereInput
+  data: Prisma.XOR<Prisma.ventasUpdateWithoutCliente_historialInput, Prisma.ventasUncheckedUpdateWithoutCliente_historialInput>
+}
+
+export type ventasUpdateWithoutCliente_historialInput = {
+  fecha_venta?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monto_final_venta?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_pago?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serie_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nota_venta_origen_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subtotal_servicios?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal_productos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  descuento_monto?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  monto_impuestos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cdr_sunat_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
+  propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
+  venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
+  venta_pagos?: Prisma.venta_pagosUpdateManyWithoutVentasNestedInput
+  clientes_ventas_cliente_receptor_idToclientes?: Prisma.clientesUpdateOneWithoutVentas_ventas_cliente_receptor_idToclientesNestedInput
+  empleados?: Prisma.empleadosUpdateOneRequiredWithoutVentasNestedInput
+  reservas?: Prisma.reservasUpdateOneWithoutVentasNestedInput
+  sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutVentasNestedInput
+  caja_sesiones_ventas_caja_idTocaja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutVentas_ventas_caja_idTocaja_sesionesNestedInput
+  caja_sesiones_ventas_caja_sesion_idTocaja_sesiones?: Prisma.caja_sesionesUpdateOneWithoutVentas_ventas_caja_sesion_idTocaja_sesionesNestedInput
+  campanas?: Prisma.campanasUpdateOneWithoutVentasNestedInput
+  clientes_ventas_cliente_facturacion_idToclientes?: Prisma.clientesUpdateOneWithoutVentas_ventas_cliente_facturacion_idToclientesNestedInput
+  planillas?: Prisma.planillasUpdateOneWithoutVentasNestedInput
+}
+
+export type ventasUncheckedUpdateWithoutCliente_historialInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  reserva_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_receptor_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
+  sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
+  fecha_venta?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  monto_final_venta?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  estado_pago?: Prisma.StringFieldUpdateOperationsInput | string
+  tipo_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  serie_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_comprobante?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  nota_venta_origen_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  subtotal_servicios?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  subtotal_productos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  cliente_facturacion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  descuento_monto?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  monto_impuestos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  campana_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  estado_sunat?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cdr_sunat_path?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_sesion_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
+  propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
+  venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
+  venta_pagos?: Prisma.venta_pagosUncheckedUpdateManyWithoutVentasNestedInput
 }
 
 export type ventasCreateManyCaja_sesiones_ventas_caja_idTocaja_sesionesInput = {
@@ -2934,6 +3141,7 @@ export type ventasUpdateWithoutCaja_sesiones_ventas_caja_idTocaja_sesionesInput 
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -2975,6 +3183,7 @@ export type ventasUncheckedUpdateWithoutCaja_sesiones_ventas_caja_idTocaja_sesio
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3028,6 +3237,7 @@ export type ventasUpdateWithoutCaja_sesiones_ventas_caja_sesion_idTocaja_sesione
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3069,6 +3279,7 @@ export type ventasUncheckedUpdateWithoutCaja_sesiones_ventas_caja_sesion_idTocaj
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3151,6 +3362,7 @@ export type ventasUpdateWithoutCampanasInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3192,6 +3404,7 @@ export type ventasUncheckedUpdateWithoutCampanasInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3303,6 +3516,7 @@ export type ventasUpdateWithoutClientes_ventas_cliente_receptor_idToclientesInpu
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3344,6 +3558,7 @@ export type ventasUncheckedUpdateWithoutClientes_ventas_cliente_receptor_idTocli
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3397,6 +3612,7 @@ export type ventasUpdateWithoutClientes_ventas_cliente_facturacion_idToclientesI
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3438,6 +3654,7 @@ export type ventasUncheckedUpdateWithoutClientes_ventas_cliente_facturacion_idTo
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3520,6 +3737,7 @@ export type ventasUpdateWithoutEmpleadosInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3561,6 +3779,7 @@ export type ventasUncheckedUpdateWithoutEmpleadosInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3643,6 +3862,7 @@ export type ventasUpdateWithoutPlanillasInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3684,6 +3904,7 @@ export type ventasUncheckedUpdateWithoutPlanillasInput = {
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3766,6 +3987,7 @@ export type ventasUpdateWithoutReservasInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3807,6 +4029,7 @@ export type ventasUncheckedUpdateWithoutReservasInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3889,6 +4112,7 @@ export type ventasUpdateWithoutSucursalesInput = {
   xml_firmado_hash?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   notas_venta?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutVentasNestedInput
@@ -3930,6 +4154,7 @@ export type ventasUncheckedUpdateWithoutSucursalesInput = {
   caja_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   estado?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pago_nomina_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutVentasNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutVentasNestedInput
   propinas?: Prisma.propinasUncheckedUpdateManyWithoutVentasNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutVentasNestedInput
@@ -3971,6 +4196,7 @@ export type ventasUncheckedUpdateManyWithoutSucursalesInput = {
  */
 
 export type VentasCountOutputType = {
+  cliente_historial: number
   cliente_membresias: number
   propinas: number
   venta_items: number
@@ -3978,6 +4204,7 @@ export type VentasCountOutputType = {
 }
 
 export type VentasCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  cliente_historial?: boolean | VentasCountOutputTypeCountCliente_historialArgs
   cliente_membresias?: boolean | VentasCountOutputTypeCountCliente_membresiasArgs
   propinas?: boolean | VentasCountOutputTypeCountPropinasArgs
   venta_items?: boolean | VentasCountOutputTypeCountVenta_itemsArgs
@@ -3992,6 +4219,13 @@ export type VentasCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Exten
    * Select specific fields to fetch from the VentasCountOutputType
    */
   select?: Prisma.VentasCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * VentasCountOutputType without action
+ */
+export type VentasCountOutputTypeCountCliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.cliente_historialWhereInput
 }
 
 /**
@@ -4051,6 +4285,7 @@ export type ventasSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs =
   caja_id?: boolean
   estado?: boolean
   pago_nomina_id?: boolean
+  cliente_historial?: boolean | Prisma.ventas$cliente_historialArgs<ExtArgs>
   cliente_membresias?: boolean | Prisma.ventas$cliente_membresiasArgs<ExtArgs>
   propinas?: boolean | Prisma.ventas$propinasArgs<ExtArgs>
   venta_items?: boolean | Prisma.ventas$venta_itemsArgs<ExtArgs>
@@ -4177,6 +4412,7 @@ export type ventasSelectScalar = {
 
 export type ventasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "reserva_id" | "cliente_receptor_id" | "empleado_id" | "sucursal_id" | "fecha_venta" | "monto_final_venta" | "estado_pago" | "tipo_comprobante" | "serie_comprobante" | "numero_comprobante" | "fecha_actualizacion" | "nota_venta_origen_id" | "subtotal_servicios" | "subtotal_productos" | "cliente_facturacion_id" | "descuento_monto" | "monto_impuestos" | "campana_id" | "estado_sunat" | "cdr_sunat_path" | "xml_firmado_hash" | "caja_sesion_id" | "notas_venta" | "caja_id" | "estado" | "pago_nomina_id", ExtArgs["result"]["ventas"]>
 export type ventasInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  cliente_historial?: boolean | Prisma.ventas$cliente_historialArgs<ExtArgs>
   cliente_membresias?: boolean | Prisma.ventas$cliente_membresiasArgs<ExtArgs>
   propinas?: boolean | Prisma.ventas$propinasArgs<ExtArgs>
   venta_items?: boolean | Prisma.ventas$venta_itemsArgs<ExtArgs>
@@ -4218,6 +4454,7 @@ export type ventasIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Exten
 export type $ventasPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "ventas"
   objects: {
+    cliente_historial: Prisma.$cliente_historialPayload<ExtArgs>[]
     cliente_membresias: Prisma.$cliente_membresiasPayload<ExtArgs>[]
     propinas: Prisma.$propinasPayload<ExtArgs>[]
     venta_items: Prisma.$venta_itemsPayload<ExtArgs>[]
@@ -4654,6 +4891,7 @@ readonly fields: ventasFieldRefs;
  */
 export interface Prisma__ventasClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  cliente_historial<T extends Prisma.ventas$cliente_historialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ventas$cliente_historialArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cliente_membresias<T extends Prisma.ventas$cliente_membresiasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ventas$cliente_membresiasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_membresiasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   propinas<T extends Prisma.ventas$propinasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ventas$propinasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$propinasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   venta_items<T extends Prisma.ventas$venta_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.ventas$venta_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$venta_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -5116,6 +5354,30 @@ export type ventasDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Intern
    * Limit how many ventas to delete.
    */
   limit?: number
+}
+
+/**
+ * ventas.cliente_historial
+ */
+export type ventas$cliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the cliente_historial
+   */
+  select?: Prisma.cliente_historialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the cliente_historial
+   */
+  omit?: Prisma.cliente_historialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.cliente_historialInclude<ExtArgs> | null
+  where?: Prisma.cliente_historialWhereInput
+  orderBy?: Prisma.cliente_historialOrderByWithRelationInput | Prisma.cliente_historialOrderByWithRelationInput[]
+  cursor?: Prisma.cliente_historialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Cliente_historialScalarFieldEnum | Prisma.Cliente_historialScalarFieldEnum[]
 }
 
 /**

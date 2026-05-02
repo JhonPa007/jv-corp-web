@@ -199,7 +199,7 @@ export type horarios_recurrentesGroupByArgs<ExtArgs extends runtime.Types.Extens
 
 export type Horarios_recurrentesGroupByOutputType = {
   id: number
-  empleado_id: number
+  empleado_id: number | null
   sucursal_id: number | null
   dia_semana: number
   hora_inicio: Date
@@ -231,22 +231,24 @@ export type horarios_recurrentesWhereInput = {
   OR?: Prisma.horarios_recurrentesWhereInput[]
   NOT?: Prisma.horarios_recurrentesWhereInput | Prisma.horarios_recurrentesWhereInput[]
   id?: Prisma.IntFilter<"horarios_recurrentes"> | number
-  empleado_id?: Prisma.IntFilter<"horarios_recurrentes"> | number
+  empleado_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   sucursal_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   dia_semana?: Prisma.IntFilter<"horarios_recurrentes"> | number
   hora_inicio?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
   hora_fin?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
-  empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
+  empleados?: Prisma.XOR<Prisma.EmpleadosNullableScalarRelationFilter, Prisma.empleadosWhereInput> | null
+  sucursales?: Prisma.XOR<Prisma.SucursalesNullableScalarRelationFilter, Prisma.sucursalesWhereInput> | null
 }
 
 export type horarios_recurrentesOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  empleado_id?: Prisma.SortOrder
+  empleado_id?: Prisma.SortOrderInput | Prisma.SortOrder
   sucursal_id?: Prisma.SortOrderInput | Prisma.SortOrder
   dia_semana?: Prisma.SortOrder
   hora_inicio?: Prisma.SortOrder
   hora_fin?: Prisma.SortOrder
   empleados?: Prisma.empleadosOrderByWithRelationInput
+  sucursales?: Prisma.sucursalesOrderByWithRelationInput
 }
 
 export type horarios_recurrentesWhereUniqueInput = Prisma.AtLeast<{
@@ -254,17 +256,18 @@ export type horarios_recurrentesWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.horarios_recurrentesWhereInput | Prisma.horarios_recurrentesWhereInput[]
   OR?: Prisma.horarios_recurrentesWhereInput[]
   NOT?: Prisma.horarios_recurrentesWhereInput | Prisma.horarios_recurrentesWhereInput[]
-  empleado_id?: Prisma.IntFilter<"horarios_recurrentes"> | number
+  empleado_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   sucursal_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   dia_semana?: Prisma.IntFilter<"horarios_recurrentes"> | number
   hora_inicio?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
   hora_fin?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
-  empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
+  empleados?: Prisma.XOR<Prisma.EmpleadosNullableScalarRelationFilter, Prisma.empleadosWhereInput> | null
+  sucursales?: Prisma.XOR<Prisma.SucursalesNullableScalarRelationFilter, Prisma.sucursalesWhereInput> | null
 }, "id">
 
 export type horarios_recurrentesOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  empleado_id?: Prisma.SortOrder
+  empleado_id?: Prisma.SortOrderInput | Prisma.SortOrder
   sucursal_id?: Prisma.SortOrderInput | Prisma.SortOrder
   dia_semana?: Prisma.SortOrder
   hora_inicio?: Prisma.SortOrder
@@ -281,7 +284,7 @@ export type horarios_recurrentesScalarWhereWithAggregatesInput = {
   OR?: Prisma.horarios_recurrentesScalarWhereWithAggregatesInput[]
   NOT?: Prisma.horarios_recurrentesScalarWhereWithAggregatesInput | Prisma.horarios_recurrentesScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"horarios_recurrentes"> | number
-  empleado_id?: Prisma.IntWithAggregatesFilter<"horarios_recurrentes"> | number
+  empleado_id?: Prisma.IntNullableWithAggregatesFilter<"horarios_recurrentes"> | number | null
   sucursal_id?: Prisma.IntNullableWithAggregatesFilter<"horarios_recurrentes"> | number | null
   dia_semana?: Prisma.IntWithAggregatesFilter<"horarios_recurrentes"> | number
   hora_inicio?: Prisma.DateTimeWithAggregatesFilter<"horarios_recurrentes"> | Date | string
@@ -289,16 +292,16 @@ export type horarios_recurrentesScalarWhereWithAggregatesInput = {
 }
 
 export type horarios_recurrentesCreateInput = {
-  sucursal_id?: number | null
   dia_semana: number
   hora_inicio: Date | string
   hora_fin: Date | string
-  empleados: Prisma.empleadosCreateNestedOneWithoutHorarios_recurrentesInput
+  empleados?: Prisma.empleadosCreateNestedOneWithoutHorarios_recurrentesInput
+  sucursales?: Prisma.sucursalesCreateNestedOneWithoutHorarios_recurrentesInput
 }
 
 export type horarios_recurrentesUncheckedCreateInput = {
   id?: number
-  empleado_id: number
+  empleado_id?: number | null
   sucursal_id?: number | null
   dia_semana: number
   hora_inicio: Date | string
@@ -306,16 +309,16 @@ export type horarios_recurrentesUncheckedCreateInput = {
 }
 
 export type horarios_recurrentesUpdateInput = {
-  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
   hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
-  empleados?: Prisma.empleadosUpdateOneRequiredWithoutHorarios_recurrentesNestedInput
+  empleados?: Prisma.empleadosUpdateOneWithoutHorarios_recurrentesNestedInput
+  sucursales?: Prisma.sucursalesUpdateOneWithoutHorarios_recurrentesNestedInput
 }
 
 export type horarios_recurrentesUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
   hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -324,7 +327,7 @@ export type horarios_recurrentesUncheckedUpdateInput = {
 
 export type horarios_recurrentesCreateManyInput = {
   id?: number
-  empleado_id: number
+  empleado_id?: number | null
   sucursal_id?: number | null
   dia_semana: number
   hora_inicio: Date | string
@@ -332,7 +335,6 @@ export type horarios_recurrentesCreateManyInput = {
 }
 
 export type horarios_recurrentesUpdateManyMutationInput = {
-  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
   hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -340,7 +342,7 @@ export type horarios_recurrentesUpdateManyMutationInput = {
 
 export type horarios_recurrentesUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
   hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -440,11 +442,53 @@ export type horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput =
   deleteMany?: Prisma.horarios_recurrentesScalarWhereInput | Prisma.horarios_recurrentesScalarWhereInput[]
 }
 
+export type horarios_recurrentesCreateNestedManyWithoutSucursalesInput = {
+  create?: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput> | Prisma.horarios_recurrentesCreateWithoutSucursalesInput[] | Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput[]
+  connectOrCreate?: Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput | Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput[]
+  createMany?: Prisma.horarios_recurrentesCreateManySucursalesInputEnvelope
+  connect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+}
+
+export type horarios_recurrentesUncheckedCreateNestedManyWithoutSucursalesInput = {
+  create?: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput> | Prisma.horarios_recurrentesCreateWithoutSucursalesInput[] | Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput[]
+  connectOrCreate?: Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput | Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput[]
+  createMany?: Prisma.horarios_recurrentesCreateManySucursalesInputEnvelope
+  connect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+}
+
+export type horarios_recurrentesUpdateManyWithoutSucursalesNestedInput = {
+  create?: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput> | Prisma.horarios_recurrentesCreateWithoutSucursalesInput[] | Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput[]
+  connectOrCreate?: Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput | Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput[]
+  upsert?: Prisma.horarios_recurrentesUpsertWithWhereUniqueWithoutSucursalesInput | Prisma.horarios_recurrentesUpsertWithWhereUniqueWithoutSucursalesInput[]
+  createMany?: Prisma.horarios_recurrentesCreateManySucursalesInputEnvelope
+  set?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  disconnect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  delete?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  connect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  update?: Prisma.horarios_recurrentesUpdateWithWhereUniqueWithoutSucursalesInput | Prisma.horarios_recurrentesUpdateWithWhereUniqueWithoutSucursalesInput[]
+  updateMany?: Prisma.horarios_recurrentesUpdateManyWithWhereWithoutSucursalesInput | Prisma.horarios_recurrentesUpdateManyWithWhereWithoutSucursalesInput[]
+  deleteMany?: Prisma.horarios_recurrentesScalarWhereInput | Prisma.horarios_recurrentesScalarWhereInput[]
+}
+
+export type horarios_recurrentesUncheckedUpdateManyWithoutSucursalesNestedInput = {
+  create?: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput> | Prisma.horarios_recurrentesCreateWithoutSucursalesInput[] | Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput[]
+  connectOrCreate?: Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput | Prisma.horarios_recurrentesCreateOrConnectWithoutSucursalesInput[]
+  upsert?: Prisma.horarios_recurrentesUpsertWithWhereUniqueWithoutSucursalesInput | Prisma.horarios_recurrentesUpsertWithWhereUniqueWithoutSucursalesInput[]
+  createMany?: Prisma.horarios_recurrentesCreateManySucursalesInputEnvelope
+  set?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  disconnect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  delete?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  connect?: Prisma.horarios_recurrentesWhereUniqueInput | Prisma.horarios_recurrentesWhereUniqueInput[]
+  update?: Prisma.horarios_recurrentesUpdateWithWhereUniqueWithoutSucursalesInput | Prisma.horarios_recurrentesUpdateWithWhereUniqueWithoutSucursalesInput[]
+  updateMany?: Prisma.horarios_recurrentesUpdateManyWithWhereWithoutSucursalesInput | Prisma.horarios_recurrentesUpdateManyWithWhereWithoutSucursalesInput[]
+  deleteMany?: Prisma.horarios_recurrentesScalarWhereInput | Prisma.horarios_recurrentesScalarWhereInput[]
+}
+
 export type horarios_recurrentesCreateWithoutEmpleadosInput = {
-  sucursal_id?: number | null
   dia_semana: number
   hora_inicio: Date | string
   hora_fin: Date | string
+  sucursales?: Prisma.sucursalesCreateNestedOneWithoutHorarios_recurrentesInput
 }
 
 export type horarios_recurrentesUncheckedCreateWithoutEmpleadosInput = {
@@ -486,11 +530,52 @@ export type horarios_recurrentesScalarWhereInput = {
   OR?: Prisma.horarios_recurrentesScalarWhereInput[]
   NOT?: Prisma.horarios_recurrentesScalarWhereInput | Prisma.horarios_recurrentesScalarWhereInput[]
   id?: Prisma.IntFilter<"horarios_recurrentes"> | number
-  empleado_id?: Prisma.IntFilter<"horarios_recurrentes"> | number
+  empleado_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   sucursal_id?: Prisma.IntNullableFilter<"horarios_recurrentes"> | number | null
   dia_semana?: Prisma.IntFilter<"horarios_recurrentes"> | number
   hora_inicio?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
   hora_fin?: Prisma.DateTimeFilter<"horarios_recurrentes"> | Date | string
+}
+
+export type horarios_recurrentesCreateWithoutSucursalesInput = {
+  dia_semana: number
+  hora_inicio: Date | string
+  hora_fin: Date | string
+  empleados?: Prisma.empleadosCreateNestedOneWithoutHorarios_recurrentesInput
+}
+
+export type horarios_recurrentesUncheckedCreateWithoutSucursalesInput = {
+  id?: number
+  empleado_id?: number | null
+  dia_semana: number
+  hora_inicio: Date | string
+  hora_fin: Date | string
+}
+
+export type horarios_recurrentesCreateOrConnectWithoutSucursalesInput = {
+  where: Prisma.horarios_recurrentesWhereUniqueInput
+  create: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput>
+}
+
+export type horarios_recurrentesCreateManySucursalesInputEnvelope = {
+  data: Prisma.horarios_recurrentesCreateManySucursalesInput | Prisma.horarios_recurrentesCreateManySucursalesInput[]
+  skipDuplicates?: boolean
+}
+
+export type horarios_recurrentesUpsertWithWhereUniqueWithoutSucursalesInput = {
+  where: Prisma.horarios_recurrentesWhereUniqueInput
+  update: Prisma.XOR<Prisma.horarios_recurrentesUpdateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedUpdateWithoutSucursalesInput>
+  create: Prisma.XOR<Prisma.horarios_recurrentesCreateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedCreateWithoutSucursalesInput>
+}
+
+export type horarios_recurrentesUpdateWithWhereUniqueWithoutSucursalesInput = {
+  where: Prisma.horarios_recurrentesWhereUniqueInput
+  data: Prisma.XOR<Prisma.horarios_recurrentesUpdateWithoutSucursalesInput, Prisma.horarios_recurrentesUncheckedUpdateWithoutSucursalesInput>
+}
+
+export type horarios_recurrentesUpdateManyWithWhereWithoutSucursalesInput = {
+  where: Prisma.horarios_recurrentesScalarWhereInput
+  data: Prisma.XOR<Prisma.horarios_recurrentesUpdateManyMutationInput, Prisma.horarios_recurrentesUncheckedUpdateManyWithoutSucursalesInput>
 }
 
 export type horarios_recurrentesCreateManyEmpleadosInput = {
@@ -502,10 +587,10 @@ export type horarios_recurrentesCreateManyEmpleadosInput = {
 }
 
 export type horarios_recurrentesUpdateWithoutEmpleadosInput = {
-  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
   hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  sucursales?: Prisma.sucursalesUpdateOneWithoutHorarios_recurrentesNestedInput
 }
 
 export type horarios_recurrentesUncheckedUpdateWithoutEmpleadosInput = {
@@ -524,6 +609,37 @@ export type horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosInput = {
   hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
 }
 
+export type horarios_recurrentesCreateManySucursalesInput = {
+  id?: number
+  empleado_id?: number | null
+  dia_semana: number
+  hora_inicio: Date | string
+  hora_fin: Date | string
+}
+
+export type horarios_recurrentesUpdateWithoutSucursalesInput = {
+  dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
+  hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  empleados?: Prisma.empleadosUpdateOneWithoutHorarios_recurrentesNestedInput
+}
+
+export type horarios_recurrentesUncheckedUpdateWithoutSucursalesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
+  hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
+export type horarios_recurrentesUncheckedUpdateManyWithoutSucursalesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  empleado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  dia_semana?: Prisma.IntFieldUpdateOperationsInput | number
+  hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+}
+
 
 
 export type horarios_recurrentesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -533,7 +649,8 @@ export type horarios_recurrentesSelect<ExtArgs extends runtime.Types.Extensions.
   dia_semana?: boolean
   hora_inicio?: boolean
   hora_fin?: boolean
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }, ExtArgs["result"]["horarios_recurrentes"]>
 
 export type horarios_recurrentesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -543,7 +660,8 @@ export type horarios_recurrentesSelectCreateManyAndReturn<ExtArgs extends runtim
   dia_semana?: boolean
   hora_inicio?: boolean
   hora_fin?: boolean
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }, ExtArgs["result"]["horarios_recurrentes"]>
 
 export type horarios_recurrentesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
@@ -553,7 +671,8 @@ export type horarios_recurrentesSelectUpdateManyAndReturn<ExtArgs extends runtim
   dia_semana?: boolean
   hora_inicio?: boolean
   hora_fin?: boolean
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }, ExtArgs["result"]["horarios_recurrentes"]>
 
 export type horarios_recurrentesSelectScalar = {
@@ -567,23 +686,27 @@ export type horarios_recurrentesSelectScalar = {
 
 export type horarios_recurrentesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "empleado_id" | "sucursal_id" | "dia_semana" | "hora_inicio" | "hora_fin", ExtArgs["result"]["horarios_recurrentes"]>
 export type horarios_recurrentesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }
 export type horarios_recurrentesIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }
 export type horarios_recurrentesIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
+  empleados?: boolean | Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>
+  sucursales?: boolean | Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>
 }
 
 export type $horarios_recurrentesPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "horarios_recurrentes"
   objects: {
-    empleados: Prisma.$empleadosPayload<ExtArgs>
+    empleados: Prisma.$empleadosPayload<ExtArgs> | null
+    sucursales: Prisma.$sucursalesPayload<ExtArgs> | null
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    empleado_id: number
+    empleado_id: number | null
     sucursal_id: number | null
     dia_semana: number
     hora_inicio: Date
@@ -982,7 +1105,8 @@ readonly fields: horarios_recurrentesFieldRefs;
  */
 export interface Prisma__horarios_recurrentesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  empleados<T extends Prisma.empleadosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleadosDefaultArgs<ExtArgs>>): Prisma.Prisma__empleadosClient<runtime.Types.Result.GetResult<Prisma.$empleadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  empleados<T extends Prisma.horarios_recurrentes$empleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.horarios_recurrentes$empleadosArgs<ExtArgs>>): Prisma.Prisma__empleadosClient<runtime.Types.Result.GetResult<Prisma.$empleadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  sucursales<T extends Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.horarios_recurrentes$sucursalesArgs<ExtArgs>>): Prisma.Prisma__sucursalesClient<runtime.Types.Result.GetResult<Prisma.$sucursalesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -1411,6 +1535,44 @@ export type horarios_recurrentesDeleteManyArgs<ExtArgs extends runtime.Types.Ext
    * Limit how many horarios_recurrentes to delete.
    */
   limit?: number
+}
+
+/**
+ * horarios_recurrentes.empleados
+ */
+export type horarios_recurrentes$empleadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleados
+   */
+  select?: Prisma.empleadosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleados
+   */
+  omit?: Prisma.empleadosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleadosInclude<ExtArgs> | null
+  where?: Prisma.empleadosWhereInput
+}
+
+/**
+ * horarios_recurrentes.sucursales
+ */
+export type horarios_recurrentes$sucursalesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the sucursales
+   */
+  select?: Prisma.sucursalesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the sucursales
+   */
+  omit?: Prisma.sucursalesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.sucursalesInclude<ExtArgs> | null
+  where?: Prisma.sucursalesWhereInput
 }
 
 /**

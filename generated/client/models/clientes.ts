@@ -67,6 +67,7 @@ export type ClientesMinAggregateOutputType = {
   apellido_paterno: string | null
   apellido_materno: string | null
   saldo_monedero: runtime.Decimal | null
+  notas_especiales: string | null
 }
 
 export type ClientesMaxAggregateOutputType = {
@@ -92,6 +93,7 @@ export type ClientesMaxAggregateOutputType = {
   apellido_paterno: string | null
   apellido_materno: string | null
   saldo_monedero: runtime.Decimal | null
+  notas_especiales: string | null
 }
 
 export type ClientesCountAggregateOutputType = {
@@ -117,6 +119,7 @@ export type ClientesCountAggregateOutputType = {
   apellido_paterno: number
   apellido_materno: number
   saldo_monedero: number
+  notas_especiales: number
   _all: number
 }
 
@@ -162,6 +165,7 @@ export type ClientesMinAggregateInputType = {
   apellido_paterno?: true
   apellido_materno?: true
   saldo_monedero?: true
+  notas_especiales?: true
 }
 
 export type ClientesMaxAggregateInputType = {
@@ -187,6 +191,7 @@ export type ClientesMaxAggregateInputType = {
   apellido_paterno?: true
   apellido_materno?: true
   saldo_monedero?: true
+  notas_especiales?: true
 }
 
 export type ClientesCountAggregateInputType = {
@@ -212,6 +217,7 @@ export type ClientesCountAggregateInputType = {
   apellido_paterno?: true
   apellido_materno?: true
   saldo_monedero?: true
+  notas_especiales?: true
   _all?: true
 }
 
@@ -324,6 +330,7 @@ export type ClientesGroupByOutputType = {
   apellido_paterno: string | null
   apellido_materno: string | null
   saldo_monedero: runtime.Decimal | null
+  notas_especiales: string | null
   _count: ClientesCountAggregateOutputType | null
   _avg: ClientesAvgAggregateOutputType | null
   _sum: ClientesSumAggregateOutputType | null
@@ -372,7 +379,9 @@ export type clientesWhereInput = {
   apellido_paterno?: Prisma.StringNullableFilter<"clientes"> | string | null
   apellido_materno?: Prisma.StringNullableFilter<"clientes"> | string | null
   saldo_monedero?: Prisma.DecimalNullableFilter<"clientes"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.StringNullableFilter<"clientes"> | string | null
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   cliente_membresias?: Prisma.Cliente_membresiasListRelationFilter
   clientes?: Prisma.XOR<Prisma.ClientesNullableScalarRelationFilter, Prisma.clientesWhereInput> | null
   other_clientes?: Prisma.ClientesListRelationFilter
@@ -405,7 +414,9 @@ export type clientesOrderByWithRelationInput = {
   apellido_paterno?: Prisma.SortOrderInput | Prisma.SortOrder
   apellido_materno?: Prisma.SortOrderInput | Prisma.SortOrder
   saldo_monedero?: Prisma.SortOrderInput | Prisma.SortOrder
+  notas_especiales?: Prisma.SortOrderInput | Prisma.SortOrder
   cliente_comunicaciones?: Prisma.cliente_comunicacionesOrderByRelationAggregateInput
+  cliente_historial?: Prisma.cliente_historialOrderByRelationAggregateInput
   cliente_membresias?: Prisma.cliente_membresiasOrderByRelationAggregateInput
   clientes?: Prisma.clientesOrderByWithRelationInput
   other_clientes?: Prisma.clientesOrderByRelationAggregateInput
@@ -441,7 +452,9 @@ export type clientesWhereUniqueInput = Prisma.AtLeast<{
   apellido_paterno?: Prisma.StringNullableFilter<"clientes"> | string | null
   apellido_materno?: Prisma.StringNullableFilter<"clientes"> | string | null
   saldo_monedero?: Prisma.DecimalNullableFilter<"clientes"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.StringNullableFilter<"clientes"> | string | null
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   cliente_membresias?: Prisma.Cliente_membresiasListRelationFilter
   clientes?: Prisma.XOR<Prisma.ClientesNullableScalarRelationFilter, Prisma.clientesWhereInput> | null
   other_clientes?: Prisma.ClientesListRelationFilter
@@ -474,6 +487,7 @@ export type clientesOrderByWithAggregationInput = {
   apellido_paterno?: Prisma.SortOrderInput | Prisma.SortOrder
   apellido_materno?: Prisma.SortOrderInput | Prisma.SortOrder
   saldo_monedero?: Prisma.SortOrderInput | Prisma.SortOrder
+  notas_especiales?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.clientesCountOrderByAggregateInput
   _avg?: Prisma.clientesAvgOrderByAggregateInput
   _max?: Prisma.clientesMaxOrderByAggregateInput
@@ -507,6 +521,7 @@ export type clientesScalarWhereWithAggregatesInput = {
   apellido_paterno?: Prisma.StringNullableWithAggregatesFilter<"clientes"> | string | null
   apellido_materno?: Prisma.StringNullableWithAggregatesFilter<"clientes"> | string | null
   saldo_monedero?: Prisma.DecimalNullableWithAggregatesFilter<"clientes"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.StringNullableWithAggregatesFilter<"clientes"> | string | null
 }
 
 export type clientesCreateInput = {
@@ -529,7 +544,9 @@ export type clientesCreateInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -562,7 +579,9 @@ export type clientesUncheckedCreateInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -590,7 +609,9 @@ export type clientesUpdateInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -623,7 +644,9 @@ export type clientesUncheckedUpdateInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
@@ -654,6 +677,7 @@ export type clientesCreateManyInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
 }
 
 export type clientesUpdateManyMutationInput = {
@@ -676,6 +700,7 @@ export type clientesUpdateManyMutationInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type clientesUncheckedUpdateManyInput = {
@@ -701,6 +726,7 @@ export type clientesUncheckedUpdateManyInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type ClientesScalarRelationFilter = {
@@ -746,6 +772,7 @@ export type clientesCountOrderByAggregateInput = {
   apellido_paterno?: Prisma.SortOrder
   apellido_materno?: Prisma.SortOrder
   saldo_monedero?: Prisma.SortOrder
+  notas_especiales?: Prisma.SortOrder
 }
 
 export type clientesAvgOrderByAggregateInput = {
@@ -780,6 +807,7 @@ export type clientesMaxOrderByAggregateInput = {
   apellido_paterno?: Prisma.SortOrder
   apellido_materno?: Prisma.SortOrder
   saldo_monedero?: Prisma.SortOrder
+  notas_especiales?: Prisma.SortOrder
 }
 
 export type clientesMinOrderByAggregateInput = {
@@ -805,6 +833,7 @@ export type clientesMinOrderByAggregateInput = {
   apellido_paterno?: Prisma.SortOrder
   apellido_materno?: Prisma.SortOrder
   saldo_monedero?: Prisma.SortOrder
+  notas_especiales?: Prisma.SortOrder
 }
 
 export type clientesSumOrderByAggregateInput = {
@@ -908,10 +937,12 @@ export type clientesCreateNestedOneWithoutReservasInput = {
   connect?: Prisma.clientesWhereUniqueInput
 }
 
-export type clientesUpdateOneRequiredWithoutReservasNestedInput = {
+export type clientesUpdateOneWithoutReservasNestedInput = {
   create?: Prisma.XOR<Prisma.clientesCreateWithoutReservasInput, Prisma.clientesUncheckedCreateWithoutReservasInput>
   connectOrCreate?: Prisma.clientesCreateOrConnectWithoutReservasInput
   upsert?: Prisma.clientesUpsertWithoutReservasInput
+  disconnect?: Prisma.clientesWhereInput | boolean
+  delete?: Prisma.clientesWhereInput | boolean
   connect?: Prisma.clientesWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.clientesUpdateToOneWithWhereWithoutReservasInput, Prisma.clientesUpdateWithoutReservasInput>, Prisma.clientesUncheckedUpdateWithoutReservasInput>
 }
@@ -990,6 +1021,22 @@ export type clientesUpdateOneWithoutVentas_ventas_cliente_facturacion_idToclient
   update?: Prisma.XOR<Prisma.XOR<Prisma.clientesUpdateToOneWithWhereWithoutVentas_ventas_cliente_facturacion_idToclientesInput, Prisma.clientesUpdateWithoutVentas_ventas_cliente_facturacion_idToclientesInput>, Prisma.clientesUncheckedUpdateWithoutVentas_ventas_cliente_facturacion_idToclientesInput>
 }
 
+export type clientesCreateNestedOneWithoutCliente_historialInput = {
+  create?: Prisma.XOR<Prisma.clientesCreateWithoutCliente_historialInput, Prisma.clientesUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.clientesCreateOrConnectWithoutCliente_historialInput
+  connect?: Prisma.clientesWhereUniqueInput
+}
+
+export type clientesUpdateOneWithoutCliente_historialNestedInput = {
+  create?: Prisma.XOR<Prisma.clientesCreateWithoutCliente_historialInput, Prisma.clientesUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.clientesCreateOrConnectWithoutCliente_historialInput
+  upsert?: Prisma.clientesUpsertWithoutCliente_historialInput
+  disconnect?: Prisma.clientesWhereInput | boolean
+  delete?: Prisma.clientesWhereInput | boolean
+  connect?: Prisma.clientesWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.clientesUpdateToOneWithWhereWithoutCliente_historialInput, Prisma.clientesUpdateWithoutCliente_historialInput>, Prisma.clientesUncheckedUpdateWithoutCliente_historialInput>
+}
+
 export type clientesCreateWithoutCliente_comunicacionesInput = {
   razon_social_nombres: string
   apellidos?: string | null
@@ -1010,6 +1057,8 @@ export type clientesCreateWithoutCliente_comunicacionesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -1042,6 +1091,8 @@ export type clientesUncheckedCreateWithoutCliente_comunicacionesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -1085,6 +1136,8 @@ export type clientesUpdateWithoutCliente_comunicacionesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -1117,6 +1170,8 @@ export type clientesUncheckedUpdateWithoutCliente_comunicacionesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
@@ -1144,7 +1199,9 @@ export type clientesCreateWithoutCliente_membresiasInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
   sucursales?: Prisma.sucursalesCreateNestedOneWithoutClientesInput
@@ -1176,7 +1233,9 @@ export type clientesUncheckedCreateWithoutCliente_membresiasInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedCreateNestedManyWithoutClientes_ventas_cliente_receptor_idToclientesInput
@@ -1219,7 +1278,9 @@ export type clientesUpdateWithoutCliente_membresiasInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
   sucursales?: Prisma.sucursalesUpdateOneWithoutClientesNestedInput
@@ -1251,7 +1312,9 @@ export type clientesUncheckedUpdateWithoutCliente_membresiasInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
@@ -1278,7 +1341,9 @@ export type clientesCreateWithoutOther_clientesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   sucursales?: Prisma.sucursalesCreateNestedOneWithoutClientesInput
@@ -1310,7 +1375,9 @@ export type clientesUncheckedCreateWithoutOther_clientesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedCreateNestedManyWithoutClientes_ventas_cliente_receptor_idToclientesInput
@@ -1342,7 +1409,9 @@ export type clientesCreateWithoutClientesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
   sucursales?: Prisma.sucursalesCreateNestedOneWithoutClientesInput
@@ -1373,7 +1442,9 @@ export type clientesUncheckedCreateWithoutClientesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -1422,7 +1493,9 @@ export type clientesUpdateWithoutOther_clientesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   sucursales?: Prisma.sucursalesUpdateOneWithoutClientesNestedInput
@@ -1454,7 +1527,9 @@ export type clientesUncheckedUpdateWithoutOther_clientesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
@@ -1503,6 +1578,7 @@ export type clientesScalarWhereInput = {
   apellido_paterno?: Prisma.StringNullableFilter<"clientes"> | string | null
   apellido_materno?: Prisma.StringNullableFilter<"clientes"> | string | null
   saldo_monedero?: Prisma.DecimalNullableFilter<"clientes"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.StringNullableFilter<"clientes"> | string | null
 }
 
 export type clientesCreateWithoutReservasInput = {
@@ -1525,7 +1601,9 @@ export type clientesCreateWithoutReservasInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -1557,7 +1635,9 @@ export type clientesUncheckedCreateWithoutReservasInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedCreateNestedManyWithoutClientes_ventas_cliente_receptor_idToclientesInput
@@ -1600,7 +1680,9 @@ export type clientesUpdateWithoutReservasInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -1632,7 +1714,9 @@ export type clientesUncheckedUpdateWithoutReservasInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
@@ -1659,7 +1743,9 @@ export type clientesCreateWithoutSucursalesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -1690,7 +1776,9 @@ export type clientesUncheckedCreateWithoutSucursalesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -1744,7 +1832,9 @@ export type clientesCreateWithoutVentas_ventas_cliente_receptor_idToclientesInpu
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -1776,7 +1866,9 @@ export type clientesUncheckedCreateWithoutVentas_ventas_cliente_receptor_idTocli
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -1808,7 +1900,9 @@ export type clientesCreateWithoutVentas_ventas_cliente_facturacion_idToclientesI
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
   clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
   other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
@@ -1840,7 +1934,9 @@ export type clientesUncheckedCreateWithoutVentas_ventas_cliente_facturacion_idTo
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutClientesInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
   other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
@@ -1883,7 +1979,9 @@ export type clientesUpdateWithoutVentas_ventas_cliente_receptor_idToclientesInpu
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -1915,7 +2013,9 @@ export type clientesUncheckedUpdateWithoutVentas_ventas_cliente_receptor_idTocli
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
@@ -1953,7 +2053,9 @@ export type clientesUpdateWithoutVentas_ventas_cliente_facturacion_idToclientesI
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -1985,11 +2087,155 @@ export type clientesUncheckedUpdateWithoutVentas_ventas_cliente_facturacion_idTo
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
+  other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
+  ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
+}
+
+export type clientesCreateWithoutCliente_historialInput = {
+  razon_social_nombres: string
+  apellidos?: string | null
+  tipo_documento?: string | null
+  numero_documento?: string | null
+  email?: string | null
+  telefono?: string | null
+  direccion?: string | null
+  fecha_nacimiento?: Date | string | null
+  notas_adicionales?: string | null
+  puntos_fidelidad?: number | null
+  fecha_registro?: Date | string | null
+  genero?: string | null
+  preferencia_servicio?: string | null
+  cumpleanos_validado?: boolean | null
+  rechazo_dato_cumpleanos?: boolean | null
+  puntos_acumulados?: number | null
+  apellido_paterno?: string | null
+  apellido_materno?: string | null
+  saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutClientesInput
+  cliente_membresias?: Prisma.cliente_membresiasCreateNestedManyWithoutClientesInput
+  clientes?: Prisma.clientesCreateNestedOneWithoutOther_clientesInput
+  other_clientes?: Prisma.clientesCreateNestedManyWithoutClientesInput
+  sucursales?: Prisma.sucursalesCreateNestedOneWithoutClientesInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutClientesInput
+  ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasCreateNestedManyWithoutClientes_ventas_cliente_receptor_idToclientesInput
+  ventas_ventas_cliente_facturacion_idToclientes?: Prisma.ventasCreateNestedManyWithoutClientes_ventas_cliente_facturacion_idToclientesInput
+}
+
+export type clientesUncheckedCreateWithoutCliente_historialInput = {
+  id?: number
+  razon_social_nombres: string
+  apellidos?: string | null
+  tipo_documento?: string | null
+  numero_documento?: string | null
+  email?: string | null
+  telefono?: string | null
+  direccion?: string | null
+  fecha_nacimiento?: Date | string | null
+  notas_adicionales?: string | null
+  puntos_fidelidad?: number | null
+  fecha_registro?: Date | string | null
+  apoderado_id?: number | null
+  genero?: string | null
+  preferencia_servicio?: string | null
+  sucursal_id?: number | null
+  cumpleanos_validado?: boolean | null
+  rechazo_dato_cumpleanos?: boolean | null
+  puntos_acumulados?: number | null
+  apellido_paterno?: string | null
+  apellido_materno?: string | null
+  saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutClientesInput
+  cliente_membresias?: Prisma.cliente_membresiasUncheckedCreateNestedManyWithoutClientesInput
+  other_clientes?: Prisma.clientesUncheckedCreateNestedManyWithoutClientesInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutClientesInput
+  ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedCreateNestedManyWithoutClientes_ventas_cliente_receptor_idToclientesInput
+  ventas_ventas_cliente_facturacion_idToclientes?: Prisma.ventasUncheckedCreateNestedManyWithoutClientes_ventas_cliente_facturacion_idToclientesInput
+}
+
+export type clientesCreateOrConnectWithoutCliente_historialInput = {
+  where: Prisma.clientesWhereUniqueInput
+  create: Prisma.XOR<Prisma.clientesCreateWithoutCliente_historialInput, Prisma.clientesUncheckedCreateWithoutCliente_historialInput>
+}
+
+export type clientesUpsertWithoutCliente_historialInput = {
+  update: Prisma.XOR<Prisma.clientesUpdateWithoutCliente_historialInput, Prisma.clientesUncheckedUpdateWithoutCliente_historialInput>
+  create: Prisma.XOR<Prisma.clientesCreateWithoutCliente_historialInput, Prisma.clientesUncheckedCreateWithoutCliente_historialInput>
+  where?: Prisma.clientesWhereInput
+}
+
+export type clientesUpdateToOneWithWhereWithoutCliente_historialInput = {
+  where?: Prisma.clientesWhereInput
+  data: Prisma.XOR<Prisma.clientesUpdateWithoutCliente_historialInput, Prisma.clientesUncheckedUpdateWithoutCliente_historialInput>
+}
+
+export type clientesUpdateWithoutCliente_historialInput = {
+  razon_social_nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_documento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notas_adicionales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  puntos_fidelidad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_registro?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  genero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferencia_servicio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cumpleanos_validado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  rechazo_dato_cumpleanos?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  puntos_acumulados?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
+  clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
+  other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
+  sucursales?: Prisma.sucursalesUpdateOneWithoutClientesNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutClientesNestedInput
+  ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
+  ventas_ventas_cliente_facturacion_idToclientes?: Prisma.ventasUpdateManyWithoutClientes_ventas_cliente_facturacion_idToclientesNestedInput
+}
+
+export type clientesUncheckedUpdateWithoutCliente_historialInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  razon_social_nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_documento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  numero_documento?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  direccion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  notas_adicionales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  puntos_fidelidad?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_registro?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  apoderado_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  genero?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  preferencia_servicio?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  cumpleanos_validado?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  rechazo_dato_cumpleanos?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  puntos_acumulados?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
   ventas_ventas_cliente_receptor_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_receptor_idToclientesNestedInput
+  ventas_ventas_cliente_facturacion_idToclientes?: Prisma.ventasUncheckedUpdateManyWithoutClientes_ventas_cliente_facturacion_idToclientesNestedInput
 }
 
 export type clientesCreateManyClientesInput = {
@@ -2014,6 +2260,7 @@ export type clientesCreateManyClientesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
 }
 
 export type clientesUpdateWithoutClientesInput = {
@@ -2036,7 +2283,9 @@ export type clientesUpdateWithoutClientesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
   sucursales?: Prisma.sucursalesUpdateOneWithoutClientesNestedInput
@@ -2067,7 +2316,9 @@ export type clientesUncheckedUpdateWithoutClientesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
@@ -2097,6 +2348,7 @@ export type clientesUncheckedUpdateManyWithoutClientesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type clientesCreateManySucursalesInput = {
@@ -2121,6 +2373,7 @@ export type clientesCreateManySucursalesInput = {
   apellido_paterno?: string | null
   apellido_materno?: string | null
   saldo_monedero?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: string | null
 }
 
 export type clientesUpdateWithoutSucursalesInput = {
@@ -2143,7 +2396,9 @@ export type clientesUpdateWithoutSucursalesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUpdateManyWithoutClientesNestedInput
   clientes?: Prisma.clientesUpdateOneWithoutOther_clientesNestedInput
   other_clientes?: Prisma.clientesUpdateManyWithoutClientesNestedInput
@@ -2174,7 +2429,9 @@ export type clientesUncheckedUpdateWithoutSucursalesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutClientesNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutClientesNestedInput
   cliente_membresias?: Prisma.cliente_membresiasUncheckedUpdateManyWithoutClientesNestedInput
   other_clientes?: Prisma.clientesUncheckedUpdateManyWithoutClientesNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutClientesNestedInput
@@ -2204,6 +2461,7 @@ export type clientesUncheckedUpdateManyWithoutSucursalesInput = {
   apellido_paterno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   apellido_materno?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   saldo_monedero?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  notas_especiales?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 
@@ -2213,6 +2471,7 @@ export type clientesUncheckedUpdateManyWithoutSucursalesInput = {
 
 export type ClientesCountOutputType = {
   cliente_comunicaciones: number
+  cliente_historial: number
   cliente_membresias: number
   other_clientes: number
   reservas: number
@@ -2222,6 +2481,7 @@ export type ClientesCountOutputType = {
 
 export type ClientesCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cliente_comunicaciones?: boolean | ClientesCountOutputTypeCountCliente_comunicacionesArgs
+  cliente_historial?: boolean | ClientesCountOutputTypeCountCliente_historialArgs
   cliente_membresias?: boolean | ClientesCountOutputTypeCountCliente_membresiasArgs
   other_clientes?: boolean | ClientesCountOutputTypeCountOther_clientesArgs
   reservas?: boolean | ClientesCountOutputTypeCountReservasArgs
@@ -2244,6 +2504,13 @@ export type ClientesCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ext
  */
 export type ClientesCountOutputTypeCountCliente_comunicacionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.cliente_comunicacionesWhereInput
+}
+
+/**
+ * ClientesCountOutputType without action
+ */
+export type ClientesCountOutputTypeCountCliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.cliente_historialWhereInput
 }
 
 /**
@@ -2305,7 +2572,9 @@ export type clientesSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   apellido_paterno?: boolean
   apellido_materno?: boolean
   saldo_monedero?: boolean
+  notas_especiales?: boolean
   cliente_comunicaciones?: boolean | Prisma.clientes$cliente_comunicacionesArgs<ExtArgs>
+  cliente_historial?: boolean | Prisma.clientes$cliente_historialArgs<ExtArgs>
   cliente_membresias?: boolean | Prisma.clientes$cliente_membresiasArgs<ExtArgs>
   clientes?: boolean | Prisma.clientes$clientesArgs<ExtArgs>
   other_clientes?: boolean | Prisma.clientes$other_clientesArgs<ExtArgs>
@@ -2339,6 +2608,7 @@ export type clientesSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   apellido_paterno?: boolean
   apellido_materno?: boolean
   saldo_monedero?: boolean
+  notas_especiales?: boolean
   clientes?: boolean | Prisma.clientes$clientesArgs<ExtArgs>
   sucursales?: boolean | Prisma.clientes$sucursalesArgs<ExtArgs>
 }, ExtArgs["result"]["clientes"]>
@@ -2366,6 +2636,7 @@ export type clientesSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   apellido_paterno?: boolean
   apellido_materno?: boolean
   saldo_monedero?: boolean
+  notas_especiales?: boolean
   clientes?: boolean | Prisma.clientes$clientesArgs<ExtArgs>
   sucursales?: boolean | Prisma.clientes$sucursalesArgs<ExtArgs>
 }, ExtArgs["result"]["clientes"]>
@@ -2393,11 +2664,13 @@ export type clientesSelectScalar = {
   apellido_paterno?: boolean
   apellido_materno?: boolean
   saldo_monedero?: boolean
+  notas_especiales?: boolean
 }
 
-export type clientesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "razon_social_nombres" | "apellidos" | "tipo_documento" | "numero_documento" | "email" | "telefono" | "direccion" | "fecha_nacimiento" | "notas_adicionales" | "puntos_fidelidad" | "fecha_registro" | "apoderado_id" | "genero" | "preferencia_servicio" | "sucursal_id" | "cumpleanos_validado" | "rechazo_dato_cumpleanos" | "puntos_acumulados" | "apellido_paterno" | "apellido_materno" | "saldo_monedero", ExtArgs["result"]["clientes"]>
+export type clientesOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "razon_social_nombres" | "apellidos" | "tipo_documento" | "numero_documento" | "email" | "telefono" | "direccion" | "fecha_nacimiento" | "notas_adicionales" | "puntos_fidelidad" | "fecha_registro" | "apoderado_id" | "genero" | "preferencia_servicio" | "sucursal_id" | "cumpleanos_validado" | "rechazo_dato_cumpleanos" | "puntos_acumulados" | "apellido_paterno" | "apellido_materno" | "saldo_monedero" | "notas_especiales", ExtArgs["result"]["clientes"]>
 export type clientesInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   cliente_comunicaciones?: boolean | Prisma.clientes$cliente_comunicacionesArgs<ExtArgs>
+  cliente_historial?: boolean | Prisma.clientes$cliente_historialArgs<ExtArgs>
   cliente_membresias?: boolean | Prisma.clientes$cliente_membresiasArgs<ExtArgs>
   clientes?: boolean | Prisma.clientes$clientesArgs<ExtArgs>
   other_clientes?: boolean | Prisma.clientes$other_clientesArgs<ExtArgs>
@@ -2420,6 +2693,7 @@ export type $clientesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
   name: "clientes"
   objects: {
     cliente_comunicaciones: Prisma.$cliente_comunicacionesPayload<ExtArgs>[]
+    cliente_historial: Prisma.$cliente_historialPayload<ExtArgs>[]
     cliente_membresias: Prisma.$cliente_membresiasPayload<ExtArgs>[]
     clientes: Prisma.$clientesPayload<ExtArgs> | null
     other_clientes: Prisma.$clientesPayload<ExtArgs>[]
@@ -2451,6 +2725,7 @@ export type $clientesPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     apellido_paterno: string | null
     apellido_materno: string | null
     saldo_monedero: runtime.Decimal | null
+    notas_especiales: string | null
   }, ExtArgs["result"]["clientes"]>
   composites: {}
 }
@@ -2846,6 +3121,7 @@ readonly fields: clientesFieldRefs;
 export interface Prisma__clientesClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
   cliente_comunicaciones<T extends Prisma.clientes$cliente_comunicacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientes$cliente_comunicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_comunicacionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cliente_historial<T extends Prisma.clientes$cliente_historialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientes$cliente_historialArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cliente_membresias<T extends Prisma.clientes$cliente_membresiasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientes$cliente_membresiasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_membresiasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   clientes<T extends Prisma.clientes$clientesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientes$clientesArgs<ExtArgs>>): Prisma.Prisma__clientesClient<runtime.Types.Result.GetResult<Prisma.$clientesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   other_clientes<T extends Prisma.clientes$other_clientesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientes$other_clientesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$clientesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -2904,6 +3180,7 @@ export interface clientesFieldRefs {
   readonly apellido_paterno: Prisma.FieldRef<"clientes", 'String'>
   readonly apellido_materno: Prisma.FieldRef<"clientes", 'String'>
   readonly saldo_monedero: Prisma.FieldRef<"clientes", 'Decimal'>
+  readonly notas_especiales: Prisma.FieldRef<"clientes", 'String'>
 }
     
 
@@ -3321,6 +3598,30 @@ export type clientes$cliente_comunicacionesArgs<ExtArgs extends runtime.Types.Ex
   take?: number
   skip?: number
   distinct?: Prisma.Cliente_comunicacionesScalarFieldEnum | Prisma.Cliente_comunicacionesScalarFieldEnum[]
+}
+
+/**
+ * clientes.cliente_historial
+ */
+export type clientes$cliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the cliente_historial
+   */
+  select?: Prisma.cliente_historialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the cliente_historial
+   */
+  omit?: Prisma.cliente_historialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.cliente_historialInclude<ExtArgs> | null
+  where?: Prisma.cliente_historialWhereInput
+  orderBy?: Prisma.cliente_historialOrderByWithRelationInput | Prisma.cliente_historialOrderByWithRelationInput[]
+  cursor?: Prisma.cliente_historialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Cliente_historialScalarFieldEnum | Prisma.Cliente_historialScalarFieldEnum[]
 }
 
 /**

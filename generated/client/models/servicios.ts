@@ -328,12 +328,13 @@ export type serviciosWhereInput = {
   cargo_fijo_produccion?: Prisma.DecimalNullableFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.IntNullableFilter<"servicios"> | number | null
   ciclo_dias?: Prisma.IntNullableFilter<"servicios"> | number | null
+  giftcard_servicios?: Prisma.Giftcard_serviciosListRelationFilter
+  package_items?: Prisma.Package_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
   categorias_servicios?: Prisma.XOR<Prisma.Categorias_serviciosScalarRelationFilter, Prisma.categorias_serviciosWhereInput>
   venta_items?: Prisma.Venta_itemsListRelationFilter
-  package_items?: Prisma.Package_itemsListRelationFilter
 }
 
 export type serviciosOrderByWithRelationInput = {
@@ -352,12 +353,13 @@ export type serviciosOrderByWithRelationInput = {
   cargo_fijo_produccion?: Prisma.SortOrderInput | Prisma.SortOrder
   orden?: Prisma.SortOrderInput | Prisma.SortOrder
   ciclo_dias?: Prisma.SortOrderInput | Prisma.SortOrder
+  giftcard_servicios?: Prisma.giftcard_serviciosOrderByRelationAggregateInput
+  package_items?: Prisma.package_itemsOrderByRelationAggregateInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsOrderByRelationAggregateInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsOrderByRelationAggregateInput
   reservas?: Prisma.reservasOrderByRelationAggregateInput
   categorias_servicios?: Prisma.categorias_serviciosOrderByWithRelationInput
   venta_items?: Prisma.venta_itemsOrderByRelationAggregateInput
-  package_items?: Prisma.package_itemsOrderByRelationAggregateInput
 }
 
 export type serviciosWhereUniqueInput = Prisma.AtLeast<{
@@ -379,12 +381,13 @@ export type serviciosWhereUniqueInput = Prisma.AtLeast<{
   cargo_fijo_produccion?: Prisma.DecimalNullableFilter<"servicios"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.IntNullableFilter<"servicios"> | number | null
   ciclo_dias?: Prisma.IntNullableFilter<"servicios"> | number | null
+  giftcard_servicios?: Prisma.Giftcard_serviciosListRelationFilter
+  package_items?: Prisma.Package_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.Paquete_servicios_itemsListRelationFilter
   reservas?: Prisma.ReservasListRelationFilter
   categorias_servicios?: Prisma.XOR<Prisma.Categorias_serviciosScalarRelationFilter, Prisma.categorias_serviciosWhereInput>
   venta_items?: Prisma.Venta_itemsListRelationFilter
-  package_items?: Prisma.Package_itemsListRelationFilter
 }, "id">
 
 export type serviciosOrderByWithAggregationInput = {
@@ -445,12 +448,13 @@ export type serviciosCreateInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateInput = {
@@ -469,11 +473,12 @@ export type serviciosUncheckedCreateInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUpdateInput = {
@@ -490,12 +495,13 @@ export type serviciosUpdateInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateInput = {
@@ -514,11 +520,12 @@ export type serviciosUncheckedUpdateInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosCreateManyInput = {
@@ -586,6 +593,11 @@ export type serviciosOrderByRelationAggregateInput = {
 export type ServiciosScalarRelationFilter = {
   is?: Prisma.serviciosWhereInput
   isNot?: Prisma.serviciosWhereInput
+}
+
+export type ServiciosNullableScalarRelationFilter = {
+  is?: Prisma.serviciosWhereInput | null
+  isNot?: Prisma.serviciosWhereInput | null
 }
 
 export type serviciosCountOrderByAggregateInput = {
@@ -666,11 +678,6 @@ export type serviciosSumOrderByAggregateInput = {
   ciclo_dias?: Prisma.SortOrder
 }
 
-export type ServiciosNullableScalarRelationFilter = {
-  is?: Prisma.serviciosWhereInput | null
-  isNot?: Prisma.serviciosWhereInput | null
-}
-
 export type serviciosCreateNestedManyWithoutCategorias_serviciosInput = {
   create?: Prisma.XOR<Prisma.serviciosCreateWithoutCategorias_serviciosInput, Prisma.serviciosUncheckedCreateWithoutCategorias_serviciosInput> | Prisma.serviciosCreateWithoutCategorias_serviciosInput[] | Prisma.serviciosUncheckedCreateWithoutCategorias_serviciosInput[]
   connectOrCreate?: Prisma.serviciosCreateOrConnectWithoutCategorias_serviciosInput | Prisma.serviciosCreateOrConnectWithoutCategorias_serviciosInput[]
@@ -747,10 +754,12 @@ export type serviciosCreateNestedOneWithoutReservasInput = {
   connect?: Prisma.serviciosWhereUniqueInput
 }
 
-export type serviciosUpdateOneRequiredWithoutReservasNestedInput = {
+export type serviciosUpdateOneWithoutReservasNestedInput = {
   create?: Prisma.XOR<Prisma.serviciosCreateWithoutReservasInput, Prisma.serviciosUncheckedCreateWithoutReservasInput>
   connectOrCreate?: Prisma.serviciosCreateOrConnectWithoutReservasInput
   upsert?: Prisma.serviciosUpsertWithoutReservasInput
+  disconnect?: Prisma.serviciosWhereInput | boolean
+  delete?: Prisma.serviciosWhereInput | boolean
   connect?: Prisma.serviciosWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.serviciosUpdateToOneWithWhereWithoutReservasInput, Prisma.serviciosUpdateWithoutReservasInput>, Prisma.serviciosUncheckedUpdateWithoutReservasInput>
 }
@@ -785,6 +794,20 @@ export type serviciosUpdateOneRequiredWithoutPackage_itemsNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.serviciosUpdateToOneWithWhereWithoutPackage_itemsInput, Prisma.serviciosUpdateWithoutPackage_itemsInput>, Prisma.serviciosUncheckedUpdateWithoutPackage_itemsInput>
 }
 
+export type serviciosCreateNestedOneWithoutGiftcard_serviciosInput = {
+  create?: Prisma.XOR<Prisma.serviciosCreateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedCreateWithoutGiftcard_serviciosInput>
+  connectOrCreate?: Prisma.serviciosCreateOrConnectWithoutGiftcard_serviciosInput
+  connect?: Prisma.serviciosWhereUniqueInput
+}
+
+export type serviciosUpdateOneRequiredWithoutGiftcard_serviciosNestedInput = {
+  create?: Prisma.XOR<Prisma.serviciosCreateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedCreateWithoutGiftcard_serviciosInput>
+  connectOrCreate?: Prisma.serviciosCreateOrConnectWithoutGiftcard_serviciosInput
+  upsert?: Prisma.serviciosUpsertWithoutGiftcard_serviciosInput
+  connect?: Prisma.serviciosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.serviciosUpdateToOneWithWhereWithoutGiftcard_serviciosInput, Prisma.serviciosUpdateWithoutGiftcard_serviciosInput>, Prisma.serviciosUncheckedUpdateWithoutGiftcard_serviciosInput>
+}
+
 export type serviciosCreateWithoutCategorias_serviciosInput = {
   nombre: string
   descripcion?: string | null
@@ -799,11 +822,12 @@ export type serviciosCreateWithoutCategorias_serviciosInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateWithoutCategorias_serviciosInput = {
@@ -821,11 +845,12 @@ export type serviciosUncheckedCreateWithoutCategorias_serviciosInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosCreateOrConnectWithoutCategorias_serviciosInput = {
@@ -889,11 +914,12 @@ export type serviciosCreateWithoutPaquete_servicios_items_paquete_servicios_item
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosInput = {
@@ -912,10 +938,11 @@ export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servi
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosCreateOrConnectWithoutPaquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosInput = {
@@ -937,11 +964,12 @@ export type serviciosCreateWithoutPaquete_servicios_items_paquete_servicios_item
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosInput = {
@@ -960,10 +988,11 @@ export type serviciosUncheckedCreateWithoutPaquete_servicios_items_paquete_servi
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosCreateOrConnectWithoutPaquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosInput = {
@@ -996,11 +1025,12 @@ export type serviciosUpdateWithoutPaquete_servicios_items_paquete_servicios_item
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosInput = {
@@ -1019,10 +1049,11 @@ export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servi
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUpsertWithoutPaquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosInput = {
@@ -1050,11 +1081,12 @@ export type serviciosUpdateWithoutPaquete_servicios_items_paquete_servicios_item
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosInput = {
@@ -1073,10 +1105,11 @@ export type serviciosUncheckedUpdateWithoutPaquete_servicios_items_paquete_servi
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosCreateWithoutReservasInput = {
@@ -1093,11 +1126,12 @@ export type serviciosCreateWithoutReservasInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateWithoutReservasInput = {
@@ -1116,10 +1150,11 @@ export type serviciosUncheckedCreateWithoutReservasInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosCreateOrConnectWithoutReservasInput = {
@@ -1152,11 +1187,12 @@ export type serviciosUpdateWithoutReservasInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateWithoutReservasInput = {
@@ -1175,10 +1211,11 @@ export type serviciosUncheckedUpdateWithoutReservasInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosCreateWithoutVenta_itemsInput = {
@@ -1195,11 +1232,12 @@ export type serviciosCreateWithoutVenta_itemsInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
   categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
-  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosUncheckedCreateWithoutVenta_itemsInput = {
@@ -1218,10 +1256,11 @@ export type serviciosUncheckedCreateWithoutVenta_itemsInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
-  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
 }
 
 export type serviciosCreateOrConnectWithoutVenta_itemsInput = {
@@ -1254,11 +1293,12 @@ export type serviciosUpdateWithoutVenta_itemsInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateWithoutVenta_itemsInput = {
@@ -1277,10 +1317,11 @@ export type serviciosUncheckedUpdateWithoutVenta_itemsInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosCreateWithoutPackage_itemsInput = {
@@ -1297,6 +1338,7 @@ export type serviciosCreateWithoutPackage_itemsInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
@@ -1320,6 +1362,7 @@ export type serviciosUncheckedCreateWithoutPackage_itemsInput = {
   cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: number | null
   ciclo_dias?: number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedCreateNestedManyWithoutServiciosInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
   reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
@@ -1356,6 +1399,7 @@ export type serviciosUpdateWithoutPackage_itemsInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
@@ -1379,6 +1423,113 @@ export type serviciosUncheckedUpdateWithoutPackage_itemsInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
+  paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
+  venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
+}
+
+export type serviciosCreateWithoutGiftcard_serviciosInput = {
+  nombre: string
+  descripcion?: string | null
+  duracion_minutos: number
+  precio: runtime.Decimal | runtime.DecimalJsLike | number | string
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  porcentaje_comision_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  es_paquete?: boolean
+  costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
+  package_items?: Prisma.package_itemsCreateNestedManyWithoutServiciosInput
+  paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
+  paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutServiciosInput
+  categorias_servicios: Prisma.categorias_serviciosCreateNestedOneWithoutServiciosInput
+  venta_items?: Prisma.venta_itemsCreateNestedManyWithoutServiciosInput
+}
+
+export type serviciosUncheckedCreateWithoutGiftcard_serviciosInput = {
+  id?: number
+  nombre: string
+  descripcion?: string | null
+  duracion_minutos: number
+  precio: runtime.Decimal | runtime.DecimalJsLike | number | string
+  categoria_id: number
+  activo?: boolean | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  porcentaje_comision_extra?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  es_paquete?: boolean
+  costo_insumos?: runtime.Decimal | runtime.DecimalJsLike | number | string
+  cargo_fijo_produccion?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: number | null
+  ciclo_dias?: number | null
+  package_items?: Prisma.package_itemsUncheckedCreateNestedManyWithoutServiciosInput
+  paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosInput
+  paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedCreateNestedManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutServiciosInput
+  venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutServiciosInput
+}
+
+export type serviciosCreateOrConnectWithoutGiftcard_serviciosInput = {
+  where: Prisma.serviciosWhereUniqueInput
+  create: Prisma.XOR<Prisma.serviciosCreateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedCreateWithoutGiftcard_serviciosInput>
+}
+
+export type serviciosUpsertWithoutGiftcard_serviciosInput = {
+  update: Prisma.XOR<Prisma.serviciosUpdateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedUpdateWithoutGiftcard_serviciosInput>
+  create: Prisma.XOR<Prisma.serviciosCreateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedCreateWithoutGiftcard_serviciosInput>
+  where?: Prisma.serviciosWhereInput
+}
+
+export type serviciosUpdateToOneWithWhereWithoutGiftcard_serviciosInput = {
+  where?: Prisma.serviciosWhereInput
+  data: Prisma.XOR<Prisma.serviciosUpdateWithoutGiftcard_serviciosInput, Prisma.serviciosUncheckedUpdateWithoutGiftcard_serviciosInput>
+}
+
+export type serviciosUpdateWithoutGiftcard_serviciosInput = {
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.IntFieldUpdateOperationsInput | number
+  precio?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje_comision_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
+  paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
+  paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
+  categorias_servicios?: Prisma.categorias_serviciosUpdateOneRequiredWithoutServiciosNestedInput
+  venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
+}
+
+export type serviciosUncheckedUpdateWithoutGiftcard_serviciosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombre?: Prisma.StringFieldUpdateOperationsInput | string
+  descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.IntFieldUpdateOperationsInput | number
+  precio?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  categoria_id?: Prisma.IntFieldUpdateOperationsInput | number
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  porcentaje_comision_extra?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  es_paquete?: Prisma.BoolFieldUpdateOperationsInput | boolean
+  costo_insumos?: Prisma.DecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string
+  cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
@@ -1416,11 +1567,12 @@ export type serviciosUpdateWithoutCategorias_serviciosInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateWithoutCategorias_serviciosInput = {
@@ -1438,11 +1590,12 @@ export type serviciosUncheckedUpdateWithoutCategorias_serviciosInput = {
   cargo_fijo_produccion?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   ciclo_dias?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  giftcard_servicios?: Prisma.giftcard_serviciosUncheckedUpdateManyWithoutServiciosNestedInput
+  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_item_servicio_idToserviciosNestedInput
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: Prisma.paquete_servicios_itemsUncheckedUpdateManyWithoutServicios_paquete_servicios_items_paquete_servicio_idToserviciosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutServiciosNestedInput
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutServiciosNestedInput
-  package_items?: Prisma.package_itemsUncheckedUpdateManyWithoutServiciosNestedInput
 }
 
 export type serviciosUncheckedUpdateManyWithoutCategorias_serviciosInput = {
@@ -1468,19 +1621,21 @@ export type serviciosUncheckedUpdateManyWithoutCategorias_serviciosInput = {
  */
 
 export type ServiciosCountOutputType = {
+  giftcard_servicios: number
+  package_items: number
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios: number
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios: number
   reservas: number
   venta_items: number
-  package_items: number
 }
 
 export type ServiciosCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  giftcard_servicios?: boolean | ServiciosCountOutputTypeCountGiftcard_serviciosArgs
+  package_items?: boolean | ServiciosCountOutputTypeCountPackage_itemsArgs
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: boolean | ServiciosCountOutputTypeCountPaquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: boolean | ServiciosCountOutputTypeCountPaquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs
   reservas?: boolean | ServiciosCountOutputTypeCountReservasArgs
   venta_items?: boolean | ServiciosCountOutputTypeCountVenta_itemsArgs
-  package_items?: boolean | ServiciosCountOutputTypeCountPackage_itemsArgs
 }
 
 /**
@@ -1491,6 +1646,20 @@ export type ServiciosCountOutputTypeDefaultArgs<ExtArgs extends runtime.Types.Ex
    * Select specific fields to fetch from the ServiciosCountOutputType
    */
   select?: Prisma.ServiciosCountOutputTypeSelect<ExtArgs> | null
+}
+
+/**
+ * ServiciosCountOutputType without action
+ */
+export type ServiciosCountOutputTypeCountGiftcard_serviciosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.giftcard_serviciosWhereInput
+}
+
+/**
+ * ServiciosCountOutputType without action
+ */
+export type ServiciosCountOutputTypeCountPackage_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.package_itemsWhereInput
 }
 
 /**
@@ -1521,13 +1690,6 @@ export type ServiciosCountOutputTypeCountVenta_itemsArgs<ExtArgs extends runtime
   where?: Prisma.venta_itemsWhereInput
 }
 
-/**
- * ServiciosCountOutputType without action
- */
-export type ServiciosCountOutputTypeCountPackage_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  where?: Prisma.package_itemsWhereInput
-}
-
 
 export type serviciosSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
@@ -1545,12 +1707,13 @@ export type serviciosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   cargo_fijo_produccion?: boolean
   orden?: boolean
   ciclo_dias?: boolean
+  giftcard_servicios?: boolean | Prisma.servicios$giftcard_serviciosArgs<ExtArgs>
+  package_items?: boolean | Prisma.servicios$package_itemsArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs>
   reservas?: boolean | Prisma.servicios$reservasArgs<ExtArgs>
   categorias_servicios?: boolean | Prisma.categorias_serviciosDefaultArgs<ExtArgs>
   venta_items?: boolean | Prisma.servicios$venta_itemsArgs<ExtArgs>
-  package_items?: boolean | Prisma.servicios$package_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiciosCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["servicios"]>
 
@@ -1612,12 +1775,13 @@ export type serviciosSelectScalar = {
 
 export type serviciosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "duracion_minutos" | "precio" | "categoria_id" | "activo" | "fecha_creacion" | "fecha_actualizacion" | "porcentaje_comision_extra" | "es_paquete" | "costo_insumos" | "cargo_fijo_produccion" | "orden" | "ciclo_dias", ExtArgs["result"]["servicios"]>
 export type serviciosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  giftcard_servicios?: boolean | Prisma.servicios$giftcard_serviciosArgs<ExtArgs>
+  package_items?: boolean | Prisma.servicios$package_itemsArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs>
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios?: boolean | Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs>
   reservas?: boolean | Prisma.servicios$reservasArgs<ExtArgs>
   categorias_servicios?: boolean | Prisma.categorias_serviciosDefaultArgs<ExtArgs>
   venta_items?: boolean | Prisma.servicios$venta_itemsArgs<ExtArgs>
-  package_items?: boolean | Prisma.servicios$package_itemsArgs<ExtArgs>
   _count?: boolean | Prisma.ServiciosCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type serviciosIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -1630,12 +1794,13 @@ export type serviciosIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ex
 export type $serviciosPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "servicios"
   objects: {
+    giftcard_servicios: Prisma.$giftcard_serviciosPayload<ExtArgs>[]
+    package_items: Prisma.$package_itemsPayload<ExtArgs>[]
     paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios: Prisma.$paquete_servicios_itemsPayload<ExtArgs>[]
     paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios: Prisma.$paquete_servicios_itemsPayload<ExtArgs>[]
     reservas: Prisma.$reservasPayload<ExtArgs>[]
     categorias_servicios: Prisma.$categorias_serviciosPayload<ExtArgs>
     venta_items: Prisma.$venta_itemsPayload<ExtArgs>[]
-    package_items: Prisma.$package_itemsPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
@@ -2047,12 +2212,13 @@ readonly fields: serviciosFieldRefs;
  */
 export interface Prisma__serviciosClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
+  giftcard_servicios<T extends Prisma.servicios$giftcard_serviciosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$giftcard_serviciosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$giftcard_serviciosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  package_items<T extends Prisma.servicios$package_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$package_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$package_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios<T extends Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$paquete_servicios_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios<T extends Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToserviciosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$paquete_servicios_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   reservas<T extends Prisma.servicios$reservasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$reservasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$reservasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   categorias_servicios<T extends Prisma.categorias_serviciosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.categorias_serviciosDefaultArgs<ExtArgs>>): Prisma.Prisma__categorias_serviciosClient<runtime.Types.Result.GetResult<Prisma.$categorias_serviciosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   venta_items<T extends Prisma.servicios$venta_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$venta_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$venta_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-  package_items<T extends Prisma.servicios$package_itemsArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.servicios$package_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$package_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   /**
    * Attaches callbacks for the resolution and/or rejection of the Promise.
    * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -2493,6 +2659,54 @@ export type serviciosDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Int
 }
 
 /**
+ * servicios.giftcard_servicios
+ */
+export type servicios$giftcard_serviciosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the giftcard_servicios
+   */
+  select?: Prisma.giftcard_serviciosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the giftcard_servicios
+   */
+  omit?: Prisma.giftcard_serviciosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.giftcard_serviciosInclude<ExtArgs> | null
+  where?: Prisma.giftcard_serviciosWhereInput
+  orderBy?: Prisma.giftcard_serviciosOrderByWithRelationInput | Prisma.giftcard_serviciosOrderByWithRelationInput[]
+  cursor?: Prisma.giftcard_serviciosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Giftcard_serviciosScalarFieldEnum | Prisma.Giftcard_serviciosScalarFieldEnum[]
+}
+
+/**
+ * servicios.package_items
+ */
+export type servicios$package_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the package_items
+   */
+  select?: Prisma.package_itemsSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the package_items
+   */
+  omit?: Prisma.package_itemsOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.package_itemsInclude<ExtArgs> | null
+  where?: Prisma.package_itemsWhereInput
+  orderBy?: Prisma.package_itemsOrderByWithRelationInput | Prisma.package_itemsOrderByWithRelationInput[]
+  cursor?: Prisma.package_itemsWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Package_itemsScalarFieldEnum | Prisma.Package_itemsScalarFieldEnum[]
+}
+
+/**
  * servicios.paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios
  */
 export type servicios$paquete_servicios_items_paquete_servicios_items_item_servicio_idToserviciosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -2586,30 +2800,6 @@ export type servicios$venta_itemsArgs<ExtArgs extends runtime.Types.Extensions.I
   take?: number
   skip?: number
   distinct?: Prisma.Venta_itemsScalarFieldEnum | Prisma.Venta_itemsScalarFieldEnum[]
-}
-
-/**
- * servicios.package_items
- */
-export type servicios$package_itemsArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  /**
-   * Select specific fields to fetch from the package_items
-   */
-  select?: Prisma.package_itemsSelect<ExtArgs> | null
-  /**
-   * Omit specific fields from the package_items
-   */
-  omit?: Prisma.package_itemsOmit<ExtArgs> | null
-  /**
-   * Choose, which related nodes to fetch as well
-   */
-  include?: Prisma.package_itemsInclude<ExtArgs> | null
-  where?: Prisma.package_itemsWhereInput
-  orderBy?: Prisma.package_itemsOrderByWithRelationInput | Prisma.package_itemsOrderByWithRelationInput[]
-  cursor?: Prisma.package_itemsWhereUniqueInput
-  take?: number
-  skip?: number
-  distinct?: Prisma.Package_itemsScalarFieldEnum | Prisma.Package_itemsScalarFieldEnum[]
 }
 
 /**

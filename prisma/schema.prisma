@@ -99,10 +99,11 @@ model campanas {
 }
 
 model categorias_gastos {
-  id          Int      @id @default(autoincrement())
-  nombre      String   @unique @db.VarChar(100)
-  descripcion String?
-  gastos      gastos[]
+  id                    Int      @id @default(autoincrement())
+  nombre                String   @unique @db.VarChar(100)
+  descripcion           String?
+  requiere_beneficiario Boolean? @default(false)
+  gastos                gastos[]
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -175,7 +176,9 @@ model clientes {
   apellido_paterno                               String?                  @db.VarChar(100)
   apellido_materno                               String?                  @db.VarChar(100)
   saldo_monedero                                 Decimal?                 @default(0.00) @db.Decimal(12, 2)
+  notas_especiales                               String?
   cliente_comunicaciones                         cliente_comunicaciones[]
+  cliente_historial                              cliente_historial[]
   cliente_membresias                             cliente_membresias[]
   clientes                                       clientes?                @relation("clientesToclientes", fields: [apoderado_id], references: [id], onUpdate: NoAction)
   other_clientes                                 clientes[]               @relation("clientesToclientes")
@@ -318,13 +321,18 @@ model empleados {
   ausencias_empleado                                                   ausencias_empleado[]
   caja_sesiones                                                        caja_sesiones[]
   cliente_comunicaciones                                               cliente_comunicaciones[]
+  cliente_historial                                                    cliente_historial[]
   comisiones                                                           comisiones[]
+  empleado_bonos                                                       empleado_bonos[]
+  empleado_deudas                                                      empleado_deudas[]
+  empleado_penalidades                                                 empleado_penalidades[]
   empleado_sucursales                                                  empleado_sucursales[]
   roles                                                                roles?                   @relation(fields: [rol_id], references: [id], onUpdate: NoAction)
   gastos_gastos_empleado_beneficiario_idToempleados                    gastos[]                 @relation("gastos_empleado_beneficiario_idToempleados")
   gastos_gastos_registrado_por_colaborador_idToempleados               gastos[]                 @relation("gastos_registrado_por_colaborador_idToempleados")
   gastos_gastos_usuario_idToempleados                                  gastos[]                 @relation("gastos_usuario_idToempleados")
   horarios_empleado                                                    horarios_empleado[]
+  horarios_empleados                                                   horarios_empleados[]
   horarios_extra                                                       horarios_extra[]
   horarios_recurrentes                                                 horarios_recurrentes[]
   ingresos_academia                                                    ingresos_academia[]
@@ -376,6 +384,7 @@ model gastos {
   deducido_en_planilla_id                                   Int?
   usuario_id                                                Int?
   tipo                                                      String?           @db.VarChar(50)
+  estado_confirmacion                                       String?           @default("Confirmado") @db.VarChar(20)
   caja_sesiones                                             caja_sesiones?    @relation(fields: [caja_sesion_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   categorias_gastos                                         categorias_gastos @relation(fields: [categoria_gasto_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   planillas                                                 planillas?        @relation(fields: [deducido_en_planilla_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
@@ -411,13 +420,14 @@ model horarios_extra {
 }
 
 model horarios_recurrentes {
-  id                  Int       @id @default(autoincrement())
-  empleado_id         Int
-  sucursal_id         Int?
-  dia_semana          Int
-  hora_inicio         DateTime  @db.Time(6)
-  hora_fin            DateTime  @db.Time(6)
-  empleados           empleados @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  id          Int         @id @default(autoincrement())
+  empleado_id Int?
+  sucursal_id Int?
+  dia_semana  Int
+  hora_inicio DateTime    @db.Time(6)
+  hora_fin    DateTime    @db.Time(6)
+  empleados   empleados?  @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  sucursales  sucursales? @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }
 
 model ingresos_academia {
@@ -500,24 +510,26 @@ model permisos {
 }
 
 model planillas {
-  id                       Int        @id @default(autoincrement())
+  id                       Int                    @id @default(autoincrement())
   empleado_id              Int?
-  fecha_generacion         DateTime?  @default(now()) @db.Timestamp(6)
-  periodo_inicio           DateTime?  @db.Date
-  periodo_fin              DateTime?  @db.Date
-  total_servicios_vendidos Decimal?   @db.Decimal(10, 2)
-  porcentaje_aplicado      Decimal?   @db.Decimal(5, 2)
-  pago_servicios           Decimal?   @db.Decimal(10, 2)
-  pago_productos           Decimal?   @db.Decimal(10, 2)
-  pago_fijo_o_bonos        Decimal?   @db.Decimal(10, 2)
-  descuentos               Decimal?   @db.Decimal(10, 2)
-  total_a_pagar            Decimal?   @db.Decimal(10, 2)
-  estado                   String?    @default("Pendiente") @db.VarChar(20)
-  fecha_inicio_periodo     DateTime?  @db.Date
-  fecha_fin_periodo        DateTime?  @db.Date
-  total_pagado             Decimal?   @db.Decimal(10, 2)
+  fecha_generacion         DateTime?              @default(now()) @db.Timestamp(6)
+  periodo_inicio           DateTime?              @db.Date
+  periodo_fin              DateTime?              @db.Date
+  total_servicios_vendidos Decimal?               @db.Decimal(10, 2)
+  porcentaje_aplicado      Decimal?               @db.Decimal(5, 2)
+  pago_servicios           Decimal?               @db.Decimal(10, 2)
+  pago_productos           Decimal?               @db.Decimal(10, 2)
+  pago_fijo_o_bonos        Decimal?               @db.Decimal(10, 2)
+  descuentos               Decimal?               @db.Decimal(10, 2)
+  total_a_pagar            Decimal?               @db.Decimal(10, 2)
+  estado                   String?                @default("Pendiente") @db.VarChar(20)
+  fecha_inicio_periodo     DateTime?              @db.Date
+  fecha_fin_periodo        DateTime?              @db.Date
+  total_pagado             Decimal?               @db.Decimal(10, 2)
+  empleado_bonos           empleado_bonos[]
+  empleado_penalidades     empleado_penalidades[]
   gastos                   gastos[]
-  empleados                empleados? @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  empleados                empleados?             @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
   ventas                   ventas[]
 }
 
@@ -548,6 +560,7 @@ model productos {
   activo                  Boolean?             @default(true)
   fecha_creacion          DateTime?            @default(now()) @db.Timestamp(6)
   fecha_actualizacion     DateTime?            @default(now()) @db.Timestamp(6)
+  orden                   Int?                 @default(0)
   categorias_productos    categorias_productos @relation(fields: [categoria_id], references: [id], onUpdate: NoAction, map: "fk_producto_categoria_prod")
   marcas                  marcas?              @relation(fields: [marca_id], references: [id], onUpdate: NoAction, map: "fk_producto_marca")
   proveedores             proveedores?         @relation(fields: [proveedor_id], references: [id], onUpdate: NoAction, map: "fk_producto_proveedor")
@@ -589,24 +602,29 @@ model proveedores {
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
 model reservas {
-  id                  Int        @id @default(autoincrement())
-  cliente_id          Int
-  empleado_id         Int
-  servicio_id         Int
-  sucursal_id         Int
-  fecha_hora_inicio   DateTime   @db.Timestamp(6)
-  fecha_hora_fin      DateTime   @db.Timestamp(6)
-  estado              String     @default("Programada") @db.VarChar(50)
-  notas_cliente       String?
-  notas_internas      String?
-  precio_cobrado      Decimal?   @db.Decimal(10, 2)
-  fecha_actualizacion DateTime?  @default(now()) @db.Timestamp(6)
-  evidencia_url       String?    @db.VarChar(255)
-  clientes            clientes   @relation(fields: [cliente_id], references: [id], onUpdate: NoAction, map: "fk_reserva_cliente")
-  servicios           servicios  @relation(fields: [servicio_id], references: [id], onUpdate: NoAction, map: "fk_reserva_servicio")
-  sucursales          sucursales @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_reserva_sucursal")
-  empleados           empleados  @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservas_empleados")
-  ventas              ventas[]
+  id                       Int        @id @default(autoincrement())
+  cliente_id               Int?
+  empleado_id              Int
+  servicio_id              Int?
+  sucursal_id              Int
+  fecha_hora_inicio        DateTime   @db.Timestamp(6)
+  fecha_hora_fin           DateTime   @db.Timestamp(6)
+  estado                   String     @default("Programada") @db.VarChar(50)
+  notas_cliente            String?
+  notas_internas           String?
+  precio_cobrado           Decimal?   @db.Decimal(10, 2)
+  fecha_actualizacion      DateTime?  @default(now()) @db.Timestamp(6)
+  evidencia_url            String?    @db.VarChar(255)
+  origen                   String?    @default("POS") @db.VarChar(20)
+  duracion_minutos         Int?       @default(30)
+  tipo                     String?    @default("CITA") @db.VarChar(50)
+  subtipo_bloqueo          String?    @db.VarChar(100)
+  reserva_online_permitida Boolean?   @default(false)
+  clientes                 clientes?  @relation(fields: [cliente_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_reserva_cliente")
+  servicios                servicios? @relation(fields: [servicio_id], references: [id], onDelete: Restrict, onUpdate: NoAction, map: "fk_reserva_servicio")
+  sucursales               sucursales @relation(fields: [sucursal_id], references: [id], onUpdate: NoAction, map: "fk_reserva_sucursal")
+  empleados                empleados  @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_reservas_empleados")
+  ventas                   ventas[]
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -657,14 +675,15 @@ model servicios {
   es_paquete                                                                     Boolean                   @default(false)
   costo_insumos                                                                  Decimal                   @default(0.00) @db.Decimal(10, 2)
   cargo_fijo_produccion                                                          Decimal?                  @db.Decimal(10, 2)
-  orden                                                                          Int?
-  ciclo_dias                                                                     Int?
+  orden                                                                          Int?                      @default(0)
+  ciclo_dias                                                                     Int?                      @default(0)
+  giftcard_servicios                                                             giftcard_servicios[]
+  package_items                                                                  package_items[]
   paquete_servicios_items_paquete_servicios_items_item_servicio_idToservicios    paquete_servicios_items[] @relation("paquete_servicios_items_item_servicio_idToservicios")
   paquete_servicios_items_paquete_servicios_items_paquete_servicio_idToservicios paquete_servicios_items[] @relation("paquete_servicios_items_paquete_servicio_idToservicios")
   reservas                                                                       reservas[]
   categorias_servicios                                                           categorias_servicios      @relation(fields: [categoria_id], references: [id], onUpdate: NoAction, map: "fk_servicio_categoria")
   venta_items                                                                    venta_items[]
-  package_items                                                                  package_items[]
 }
 
 /// This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
@@ -689,7 +708,10 @@ model sucursales {
   configuracion_sucursal       configuracion_sucursal?
   empleado_sucursales          empleado_sucursales[]
   gastos                       gastos[]
+  horarios_empleados           horarios_empleados[]
   horarios_extra               horarios_extra[]
+  horarios_recurrentes         horarios_recurrentes[]
+  reclamaciones                reclamaciones[]
   reservas                     reservas[]
   series_comprobantes          series_comprobantes[]
   ventas                       ventas[]
@@ -764,6 +786,7 @@ model ventas {
   caja_id                                            Int?
   estado                                             String?              @default("Completada") @db.VarChar(20)
   pago_nomina_id                                     Int?
+  cliente_historial                                  cliente_historial[]
   cliente_membresias                                 cliente_membresias[]
   propinas                                           propinas[]
   venta_items                                        venta_items[]
@@ -814,8 +837,8 @@ model packages {
 model package_items {
   package_id Int
   service_id Int
-  quantity   Int      @default(1)
-  packages   packages @relation(fields: [package_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  quantity   Int       @default(1)
+  packages   packages  @relation(fields: [package_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
   servicios  servicios @relation(fields: [service_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 
   @@id([package_id, service_id])
@@ -906,40 +929,248 @@ model puntos_historial {
 }
 
 model libro_reclamaciones {
-  id_reclamo           Int      @id @default(autoincrement())
-  codigo_seguimiento   String   @unique @db.VarChar(20) // Ej: RE-2026-0001
-  fecha_registro       DateTime @default(now()) @db.Timestamp(6)
-
-  // Datos del Consumidor
-  nombre_completo      String   @db.VarChar(150)
-  tipo_documento       String   @db.VarChar(20) // DNI, CE, Pasaporte (Prisma handles enums better as strings or defined enums)
-  numero_documento     String   @db.VarChar(15)
-  direccion_domicilio  String   @db.Text
-  email                String   @db.VarChar(100)
-  telefono             String   @db.VarChar(15)
-  nombre_padre_tutor   String?  @db.VarChar(150) // Obligatorio si es menor de edad
-
-  // Detalle del Bien Contratado
-  unidad_negocio       String   @db.VarChar(20) // Studio, School, Comercial
-  tipo_bien            String   @db.VarChar(20) // Producto, Servicio
-  monto_reclamado      Decimal? @db.Decimal(10, 2)
-  descripcion_bien     String?  @db.Text
-
-  // Detalle de la Disconformidad
-  tipo_incidencia      String   @db.VarChar(20) // Reclamo, Queja
-  detalle_incidencia   String   @db.Text
-  pedido_consumidor    String   @db.Text
-
-  // Gestión Interna (Auditable)
-  estado               String   @default("Pendiente") @db.VarChar(20) // Pendiente, En Proceso, Resuelto
-  respuesta_empresa    String?  @db.Text
+  fecha_registro       DateTime  @default(now()) @db.Timestamp(6)
+  estado               String    @default("Pendiente") @db.VarChar(20)
   fecha_respuesta      DateTime? @db.Timestamp(6)
-  archivo_sustento     String?  @db.VarChar(255) // Ruta de PDF de respuesta enviada
-
-  // Blindaje de Datos Personales (Ley N° 29733)
-  acepto_terminos      Boolean  @default(false)
-  ip_registro          String?  @db.VarChar(45)
+  archivo_sustento     String?   @db.VarChar(255)
+  codigo_seguimiento   String    @unique @db.VarChar(20)
+  descripcion_bien     String?
+  detalle_incidencia   String
+  direccion_domicilio  String
+  email                String    @db.VarChar(100)
+  id_reclamo           Int       @id @default(autoincrement())
+  monto_reclamado      Decimal?  @db.Decimal(10, 2)
+  nombre_completo      String    @db.VarChar(150)
+  nombre_padre_tutor   String?   @db.VarChar(150)
+  numero_documento     String    @db.VarChar(15)
+  pedido_consumidor    String
+  respuesta_empresa    String?
+  telefono             String    @db.VarChar(15)
+  tipo_bien            String    @db.VarChar(20)
+  tipo_documento       String    @db.VarChar(20)
+  tipo_incidencia      String    @db.VarChar(20)
+  unidad_negocio       String    @db.VarChar(20)
+  acepto_terminos      Boolean   @default(false)
   fecha_consentimiento DateTime? @default(now()) @db.Timestamp(6)
+  ip_registro          String?   @db.VarChar(45)
 
   @@index([codigo_seguimiento])
+}
+
+model cliente_historial {
+  id                   Int        @id @default(autoincrement())
+  cliente_id           Int?
+  venta_id             Int?
+  empleado_id          Int?
+  fecha                DateTime?  @default(now()) @db.Timestamp(6)
+  servicios_realizados String
+  monto_pagado         Decimal?   @default(0.00) @db.Decimal(10, 2)
+  foto_frente          String?
+  foto_lateral_izq     String?
+  foto_lateral_der     String?
+  foto_atras           String?
+  notas                String?
+  clientes             clientes?  @relation(fields: [cliente_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  empleados            empleados? @relation(fields: [empleado_id], references: [id], onUpdate: NoAction)
+  ventas               ventas?    @relation(fields: [venta_id], references: [id], onUpdate: NoAction)
+}
+
+model empleado_bonos {
+  id                      Int        @id @default(autoincrement())
+  empleado_id             Int?
+  motivo                  String     @db.VarChar(255)
+  monto                   Decimal    @db.Decimal(10, 2)
+  fecha_registro          DateTime?  @default(now()) @db.Timestamp(6)
+  deducido_en_planilla_id Int?
+  planillas               planillas? @relation(fields: [deducido_en_planilla_id], references: [id], onUpdate: NoAction)
+  empleados               empleados? @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model empleado_deudas {
+  id             Int        @id @default(autoincrement())
+  empleado_id    Int?
+  concepto       String     @db.VarChar(255)
+  monto_total    Decimal    @db.Decimal(10, 2)
+  monto_pagado   Decimal?   @default(0.00) @db.Decimal(10, 2)
+  estado         String?    @default("Pendiente") @db.VarChar(50)
+  fecha_registro DateTime?  @default(now()) @db.Timestamp(6)
+  empleados      empleados? @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model empleado_penalidades {
+  id                      Int        @id @default(autoincrement())
+  empleado_id             Int?
+  motivo                  String     @db.VarChar(255)
+  monto                   Decimal    @db.Decimal(10, 2)
+  fecha_registro          DateTime?  @default(now()) @db.Timestamp(6)
+  deducido_en_planilla_id Int?
+  planillas               planillas? @relation(fields: [deducido_en_planilla_id], references: [id], onUpdate: NoAction)
+  empleados               empleados? @relation(fields: [empleado_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model escuela_alumnos {
+  id                         Int              @id @default(autoincrement())
+  codigo_alumno              String?          @unique @db.VarChar(50)
+  nombres                    String           @db.VarChar(100)
+  apellidos                  String?          @db.VarChar(100)
+  dni                        String?          @db.VarChar(20)
+  telefono                   String?          @db.VarChar(20)
+  curso_id                   Int?
+  grupo_id                   Int?
+  fecha_inscripcion          DateTime?        @default(now()) @db.Timestamp(6)
+  fecha_inicio_clases        DateTime?        @db.Date
+  costo_matricula_acordado   Decimal?         @db.Decimal(10, 2)
+  costo_mensualidad_acordada Decimal?         @db.Decimal(10, 2)
+  estado                     String?          @default("Activo") @db.VarChar(20)
+  escuela_cursos             escuela_cursos?  @relation(fields: [curso_id], references: [id], onUpdate: NoAction)
+  escuela_grupos             escuela_grupos?  @relation(fields: [grupo_id], references: [id], onUpdate: NoAction)
+  escuela_cuotas             escuela_cuotas[]
+  escuela_pagos              escuela_pagos[]
+}
+
+model escuela_cuotas {
+  id                    Int                     @id @default(autoincrement())
+  alumno_id             Int?
+  concepto              String                  @db.VarChar(100)
+  monto_original        Decimal                 @db.Decimal(10, 2)
+  monto_pagado          Decimal?                @default(0.00) @db.Decimal(10, 2)
+  saldo                 Decimal?                @default(0.00) @db.Decimal(10, 2)
+  fecha_vencimiento     DateTime?               @db.Date
+  estado                String?                 @default("Pendiente") @db.VarChar(20)
+  orden_pago            Int?                    @default(0)
+  escuela_alumnos       escuela_alumnos?        @relation(fields: [alumno_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  escuela_pagos_detalle escuela_pagos_detalle[]
+}
+
+model escuela_cursos {
+  id                Int               @id @default(autoincrement())
+  nombre            String            @db.VarChar(100)
+  costo_matricula   Decimal           @default(0.00) @db.Decimal(10, 2)
+  costo_mensualidad Decimal           @default(0.00) @db.Decimal(10, 2)
+  duracion_meses    Int               @default(1)
+  activo            Boolean?          @default(true)
+  escuela_alumnos   escuela_alumnos[]
+  escuela_grupos    escuela_grupos[]
+}
+
+model escuela_grupos {
+  id              Int               @id @default(autoincrement())
+  codigo_grupo    String            @unique @db.VarChar(50)
+  curso_id        Int?
+  fecha_inicio    DateTime?         @db.Date
+  activo          Boolean?          @default(true)
+  dias_clase      String?           @db.VarChar(100)
+  hora_inicio     String?           @db.VarChar(20)
+  hora_fin        String?           @db.VarChar(20)
+  escuela_alumnos escuela_alumnos[]
+  escuela_cursos  escuela_cursos?   @relation(fields: [curso_id], references: [id], onUpdate: NoAction)
+}
+
+model escuela_pagos {
+  id                    Int                     @id @default(autoincrement())
+  alumno_id             Int?
+  monto                 Decimal                 @db.Decimal(10, 2)
+  fecha_pago            DateTime?               @default(now()) @db.Timestamp(6)
+  metodo_pago           String?                 @db.VarChar(50)
+  codigo_recibo         String?                 @unique @db.VarChar(50)
+  usuario_id            Int?
+  observaciones         String?
+  escuela_alumnos       escuela_alumnos?        @relation(fields: [alumno_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  escuela_pagos_detalle escuela_pagos_detalle[]
+}
+
+model escuela_pagos_detalle {
+  id             Int             @id @default(autoincrement())
+  pago_id        Int?
+  cuota_id       Int?
+  monto_aplicado Decimal         @db.Decimal(10, 2)
+  escuela_cuotas escuela_cuotas? @relation(fields: [cuota_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  escuela_pagos  escuela_pagos?  @relation(fields: [pago_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+}
+
+model giftcard_clientes {
+  id                     Int                      @id @default(autoincrement())
+  dni                    String?                  @unique @db.VarChar(20)
+  nombre_completo        String                   @db.VarChar(255)
+  email                  String?                  @db.VarChar(100)
+  codigo_area            String?                  @db.VarChar(10)
+  telefono               String?                  @db.VarChar(20)
+  created_at             DateTime?                @default(now()) @db.Timestamp(6)
+  giftcard_transacciones giftcard_transacciones[]
+}
+
+model giftcard_servicios {
+  giftcard_id       Int
+  servicio_id       Int
+  giftcard_tarjetas giftcard_tarjetas @relation(fields: [giftcard_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+  servicios         servicios         @relation(fields: [servicio_id], references: [id], onDelete: Cascade, onUpdate: NoAction)
+
+  @@id([giftcard_id, servicio_id])
+}
+
+/// This table contains check constraints and requires additional setup for migrations. Visit https://pris.ly/d/check-constraints for more info.
+model giftcard_tarjetas {
+  id                     Int                      @id @default(autoincrement())
+  codigo                 String                   @unique @db.VarChar(50)
+  monto                  Decimal?                 @default(0.00) @db.Decimal(10, 2)
+  estado                 String?                  @default("activa") @db.VarChar(20)
+  fecha_vencimiento      DateTime                 @db.Timestamp(6)
+  created_at             DateTime?                @default(now()) @db.Timestamp(6)
+  updated_at             DateTime?                @default(now()) @db.Timestamp(6)
+  tipo_beneficio         String?                  @default("monto") @db.VarChar(20)
+  valor_descuento        Decimal?                 @db.Decimal(10, 2)
+  fecha_inicio           DateTime?                @default(now()) @db.Timestamp(6)
+  dias_permitidos        String?                  @db.VarChar(50)
+  hora_inicio            DateTime?                @db.Time(6)
+  hora_fin               DateTime?                @db.Time(6)
+  es_campana             Boolean?                 @default(false)
+  giftcard_servicios     giftcard_servicios[]
+  giftcard_transacciones giftcard_transacciones[]
+}
+
+model giftcard_transacciones {
+  id                Int                @id @default(autoincrement())
+  cliente_id        Int?
+  tarjeta_id        Int?
+  monto_pago        Decimal?           @default(0.00) @db.Decimal(10, 2)
+  forma_pago        String             @db.VarChar(50)
+  fecha_compra      DateTime?          @default(now()) @db.Timestamp(6)
+  giftcard_clientes giftcard_clientes? @relation(fields: [cliente_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  giftcard_tarjetas giftcard_tarjetas? @relation(fields: [tarjeta_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model horarios_empleados {
+  id          Int         @id @default(autoincrement())
+  empleado_id Int?
+  sucursal_id Int?
+  fecha       DateTime    @db.Date
+  hora_inicio DateTime    @db.Time(6)
+  hora_fin    DateTime    @db.Time(6)
+  empleados   empleados?  @relation(fields: [empleado_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+  sucursales  sucursales? @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
+}
+
+model reclamaciones {
+  id                   Int         @id @default(autoincrement())
+  numero_hoja          String      @unique @db.VarChar(20)
+  fecha_registro       DateTime?   @default(now()) @db.Timestamp(6)
+  nombres              String      @db.VarChar(100)
+  apellidos            String      @db.VarChar(100)
+  tipo_documento       String      @db.VarChar(20)
+  numero_documento     String      @db.VarChar(20)
+  direccion            String
+  telefono             String?     @db.VarChar(20)
+  email                String      @db.VarChar(100)
+  nombre_representante String?     @db.VarChar(200)
+  tipo_bien            String      @db.VarChar(20)
+  monto_reclamado      Decimal?    @db.Decimal(10, 2)
+  descripcion_bien     String
+  tipo_reclamacion     String      @db.VarChar(20)
+  detalle              String
+  pedido_consumidor    String
+  estado               String?     @default("Pendiente") @db.VarChar(20)
+  respuesta_proveedor  String?
+  fecha_respuesta      DateTime?   @db.Timestamp(6)
+  sucursal_id          Int?
+  sucursales           sucursales? @relation(fields: [sucursal_id], references: [id], onDelete: NoAction, onUpdate: NoAction)
 }

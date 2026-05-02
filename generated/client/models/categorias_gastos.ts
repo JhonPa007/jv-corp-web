@@ -38,18 +38,21 @@ export type Categorias_gastosMinAggregateOutputType = {
   id: number | null
   nombre: string | null
   descripcion: string | null
+  requiere_beneficiario: boolean | null
 }
 
 export type Categorias_gastosMaxAggregateOutputType = {
   id: number | null
   nombre: string | null
   descripcion: string | null
+  requiere_beneficiario: boolean | null
 }
 
 export type Categorias_gastosCountAggregateOutputType = {
   id: number
   nombre: number
   descripcion: number
+  requiere_beneficiario: number
   _all: number
 }
 
@@ -66,18 +69,21 @@ export type Categorias_gastosMinAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
+  requiere_beneficiario?: true
 }
 
 export type Categorias_gastosMaxAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
+  requiere_beneficiario?: true
 }
 
 export type Categorias_gastosCountAggregateInputType = {
   id?: true
   nombre?: true
   descripcion?: true
+  requiere_beneficiario?: true
   _all?: true
 }
 
@@ -171,6 +177,7 @@ export type Categorias_gastosGroupByOutputType = {
   id: number
   nombre: string
   descripcion: string | null
+  requiere_beneficiario: boolean | null
   _count: Categorias_gastosCountAggregateOutputType | null
   _avg: Categorias_gastosAvgAggregateOutputType | null
   _sum: Categorias_gastosSumAggregateOutputType | null
@@ -200,6 +207,7 @@ export type categorias_gastosWhereInput = {
   id?: Prisma.IntFilter<"categorias_gastos"> | number
   nombre?: Prisma.StringFilter<"categorias_gastos"> | string
   descripcion?: Prisma.StringNullableFilter<"categorias_gastos"> | string | null
+  requiere_beneficiario?: Prisma.BoolNullableFilter<"categorias_gastos"> | boolean | null
   gastos?: Prisma.GastosListRelationFilter
 }
 
@@ -207,6 +215,7 @@ export type categorias_gastosOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
+  requiere_beneficiario?: Prisma.SortOrderInput | Prisma.SortOrder
   gastos?: Prisma.gastosOrderByRelationAggregateInput
 }
 
@@ -217,6 +226,7 @@ export type categorias_gastosWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.categorias_gastosWhereInput[]
   NOT?: Prisma.categorias_gastosWhereInput | Prisma.categorias_gastosWhereInput[]
   descripcion?: Prisma.StringNullableFilter<"categorias_gastos"> | string | null
+  requiere_beneficiario?: Prisma.BoolNullableFilter<"categorias_gastos"> | boolean | null
   gastos?: Prisma.GastosListRelationFilter
 }, "id" | "nombre">
 
@@ -224,6 +234,7 @@ export type categorias_gastosOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrderInput | Prisma.SortOrder
+  requiere_beneficiario?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.categorias_gastosCountOrderByAggregateInput
   _avg?: Prisma.categorias_gastosAvgOrderByAggregateInput
   _max?: Prisma.categorias_gastosMaxOrderByAggregateInput
@@ -238,11 +249,13 @@ export type categorias_gastosScalarWhereWithAggregatesInput = {
   id?: Prisma.IntWithAggregatesFilter<"categorias_gastos"> | number
   nombre?: Prisma.StringWithAggregatesFilter<"categorias_gastos"> | string
   descripcion?: Prisma.StringNullableWithAggregatesFilter<"categorias_gastos"> | string | null
+  requiere_beneficiario?: Prisma.BoolNullableWithAggregatesFilter<"categorias_gastos"> | boolean | null
 }
 
 export type categorias_gastosCreateInput = {
   nombre: string
   descripcion?: string | null
+  requiere_beneficiario?: boolean | null
   gastos?: Prisma.gastosCreateNestedManyWithoutCategorias_gastosInput
 }
 
@@ -250,12 +263,14 @@ export type categorias_gastosUncheckedCreateInput = {
   id?: number
   nombre: string
   descripcion?: string | null
+  requiere_beneficiario?: boolean | null
   gastos?: Prisma.gastosUncheckedCreateNestedManyWithoutCategorias_gastosInput
 }
 
 export type categorias_gastosUpdateInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   gastos?: Prisma.gastosUpdateManyWithoutCategorias_gastosNestedInput
 }
 
@@ -263,6 +278,7 @@ export type categorias_gastosUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   gastos?: Prisma.gastosUncheckedUpdateManyWithoutCategorias_gastosNestedInput
 }
 
@@ -270,23 +286,27 @@ export type categorias_gastosCreateManyInput = {
   id?: number
   nombre: string
   descripcion?: string | null
+  requiere_beneficiario?: boolean | null
 }
 
 export type categorias_gastosUpdateManyMutationInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type categorias_gastosUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type categorias_gastosCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
+  requiere_beneficiario?: Prisma.SortOrder
 }
 
 export type categorias_gastosAvgOrderByAggregateInput = {
@@ -297,12 +317,14 @@ export type categorias_gastosMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
+  requiere_beneficiario?: Prisma.SortOrder
 }
 
 export type categorias_gastosMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   nombre?: Prisma.SortOrder
   descripcion?: Prisma.SortOrder
+  requiere_beneficiario?: Prisma.SortOrder
 }
 
 export type categorias_gastosSumOrderByAggregateInput = {
@@ -331,12 +353,14 @@ export type categorias_gastosUpdateOneRequiredWithoutGastosNestedInput = {
 export type categorias_gastosCreateWithoutGastosInput = {
   nombre: string
   descripcion?: string | null
+  requiere_beneficiario?: boolean | null
 }
 
 export type categorias_gastosUncheckedCreateWithoutGastosInput = {
   id?: number
   nombre: string
   descripcion?: string | null
+  requiere_beneficiario?: boolean | null
 }
 
 export type categorias_gastosCreateOrConnectWithoutGastosInput = {
@@ -358,12 +382,14 @@ export type categorias_gastosUpdateToOneWithWhereWithoutGastosInput = {
 export type categorias_gastosUpdateWithoutGastosInput = {
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type categorias_gastosUncheckedUpdateWithoutGastosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   nombre?: Prisma.StringFieldUpdateOperationsInput | string
   descripcion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  requiere_beneficiario?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 
@@ -401,6 +427,7 @@ export type categorias_gastosSelect<ExtArgs extends runtime.Types.Extensions.Int
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
+  requiere_beneficiario?: boolean
   gastos?: boolean | Prisma.categorias_gastos$gastosArgs<ExtArgs>
   _count?: boolean | Prisma.Categorias_gastosCountOutputTypeDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["categorias_gastos"]>
@@ -409,21 +436,24 @@ export type categorias_gastosSelectCreateManyAndReturn<ExtArgs extends runtime.T
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
+  requiere_beneficiario?: boolean
 }, ExtArgs["result"]["categorias_gastos"]>
 
 export type categorias_gastosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
+  requiere_beneficiario?: boolean
 }, ExtArgs["result"]["categorias_gastos"]>
 
 export type categorias_gastosSelectScalar = {
   id?: boolean
   nombre?: boolean
   descripcion?: boolean
+  requiere_beneficiario?: boolean
 }
 
-export type categorias_gastosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion", ExtArgs["result"]["categorias_gastos"]>
+export type categorias_gastosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "requiere_beneficiario", ExtArgs["result"]["categorias_gastos"]>
 export type categorias_gastosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   gastos?: boolean | Prisma.categorias_gastos$gastosArgs<ExtArgs>
   _count?: boolean | Prisma.Categorias_gastosCountOutputTypeDefaultArgs<ExtArgs>
@@ -440,6 +470,7 @@ export type $categorias_gastosPayload<ExtArgs extends runtime.Types.Extensions.I
     id: number
     nombre: string
     descripcion: string | null
+    requiere_beneficiario: boolean | null
   }, ExtArgs["result"]["categorias_gastos"]>
   composites: {}
 }
@@ -867,6 +898,7 @@ export interface categorias_gastosFieldRefs {
   readonly id: Prisma.FieldRef<"categorias_gastos", 'Int'>
   readonly nombre: Prisma.FieldRef<"categorias_gastos", 'String'>
   readonly descripcion: Prisma.FieldRef<"categorias_gastos", 'String'>
+  readonly requiere_beneficiario: Prisma.FieldRef<"categorias_gastos", 'Boolean'>
 }
     
 

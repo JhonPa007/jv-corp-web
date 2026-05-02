@@ -479,13 +479,18 @@ export type empleadosWhereInput = {
   ausencias_empleado?: Prisma.Ausencias_empleadoListRelationFilter
   caja_sesiones?: Prisma.Caja_sesionesListRelationFilter
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   comisiones?: Prisma.ComisionesListRelationFilter
+  empleado_bonos?: Prisma.Empleado_bonosListRelationFilter
+  empleado_deudas?: Prisma.Empleado_deudasListRelationFilter
+  empleado_penalidades?: Prisma.Empleado_penalidadesListRelationFilter
   empleado_sucursales?: Prisma.Empleado_sucursalesListRelationFilter
   roles?: Prisma.XOR<Prisma.RolesNullableScalarRelationFilter, Prisma.rolesWhereInput> | null
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.GastosListRelationFilter
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.GastosListRelationFilter
   gastos_gastos_usuario_idToempleados?: Prisma.GastosListRelationFilter
   horarios_empleado?: Prisma.Horarios_empleadoListRelationFilter
+  horarios_empleados?: Prisma.Horarios_empleadosListRelationFilter
   horarios_extra?: Prisma.Horarios_extraListRelationFilter
   horarios_recurrentes?: Prisma.Horarios_recurrentesListRelationFilter
   ingresos_academia?: Prisma.Ingresos_academiaListRelationFilter
@@ -536,13 +541,18 @@ export type empleadosOrderByWithRelationInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoOrderByRelationAggregateInput
   caja_sesiones?: Prisma.caja_sesionesOrderByRelationAggregateInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesOrderByRelationAggregateInput
+  cliente_historial?: Prisma.cliente_historialOrderByRelationAggregateInput
   comisiones?: Prisma.comisionesOrderByRelationAggregateInput
+  empleado_bonos?: Prisma.empleado_bonosOrderByRelationAggregateInput
+  empleado_deudas?: Prisma.empleado_deudasOrderByRelationAggregateInput
+  empleado_penalidades?: Prisma.empleado_penalidadesOrderByRelationAggregateInput
   empleado_sucursales?: Prisma.empleado_sucursalesOrderByRelationAggregateInput
   roles?: Prisma.rolesOrderByWithRelationInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosOrderByRelationAggregateInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosOrderByRelationAggregateInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosOrderByRelationAggregateInput
   horarios_empleado?: Prisma.horarios_empleadoOrderByRelationAggregateInput
+  horarios_empleados?: Prisma.horarios_empleadosOrderByRelationAggregateInput
   horarios_extra?: Prisma.horarios_extraOrderByRelationAggregateInput
   horarios_recurrentes?: Prisma.horarios_recurrentesOrderByRelationAggregateInput
   ingresos_academia?: Prisma.ingresos_academiaOrderByRelationAggregateInput
@@ -596,13 +606,18 @@ export type empleadosWhereUniqueInput = Prisma.AtLeast<{
   ausencias_empleado?: Prisma.Ausencias_empleadoListRelationFilter
   caja_sesiones?: Prisma.Caja_sesionesListRelationFilter
   cliente_comunicaciones?: Prisma.Cliente_comunicacionesListRelationFilter
+  cliente_historial?: Prisma.Cliente_historialListRelationFilter
   comisiones?: Prisma.ComisionesListRelationFilter
+  empleado_bonos?: Prisma.Empleado_bonosListRelationFilter
+  empleado_deudas?: Prisma.Empleado_deudasListRelationFilter
+  empleado_penalidades?: Prisma.Empleado_penalidadesListRelationFilter
   empleado_sucursales?: Prisma.Empleado_sucursalesListRelationFilter
   roles?: Prisma.XOR<Prisma.RolesNullableScalarRelationFilter, Prisma.rolesWhereInput> | null
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.GastosListRelationFilter
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.GastosListRelationFilter
   gastos_gastos_usuario_idToempleados?: Prisma.GastosListRelationFilter
   horarios_empleado?: Prisma.Horarios_empleadoListRelationFilter
+  horarios_empleados?: Prisma.Horarios_empleadosListRelationFilter
   horarios_extra?: Prisma.Horarios_extraListRelationFilter
   horarios_recurrentes?: Prisma.Horarios_recurrentesListRelationFilter
   ingresos_academia?: Prisma.Ingresos_academiaListRelationFilter
@@ -731,13 +746,18 @@ export type empleadosCreateInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -788,12 +808,17 @@ export type empleadosUncheckedCreateInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -842,13 +867,18 @@ export type empleadosUpdateInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -899,12 +929,17 @@ export type empleadosUncheckedUpdateInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -1330,10 +1365,12 @@ export type empleadosCreateNestedOneWithoutHorarios_recurrentesInput = {
   connect?: Prisma.empleadosWhereUniqueInput
 }
 
-export type empleadosUpdateOneRequiredWithoutHorarios_recurrentesNestedInput = {
+export type empleadosUpdateOneWithoutHorarios_recurrentesNestedInput = {
   create?: Prisma.XOR<Prisma.empleadosCreateWithoutHorarios_recurrentesInput, Prisma.empleadosUncheckedCreateWithoutHorarios_recurrentesInput>
   connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutHorarios_recurrentesInput
   upsert?: Prisma.empleadosUpsertWithoutHorarios_recurrentesInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
   connect?: Prisma.empleadosWhereUniqueInput
   update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutHorarios_recurrentesInput, Prisma.empleadosUpdateWithoutHorarios_recurrentesInput>, Prisma.empleadosUncheckedUpdateWithoutHorarios_recurrentesInput>
 }
@@ -1520,6 +1557,86 @@ export type empleadosUpdateOneRequiredWithoutVentasNestedInput = {
   update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutVentasInput, Prisma.empleadosUpdateWithoutVentasInput>, Prisma.empleadosUncheckedUpdateWithoutVentasInput>
 }
 
+export type empleadosCreateNestedOneWithoutCliente_historialInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutCliente_historialInput, Prisma.empleadosUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutCliente_historialInput
+  connect?: Prisma.empleadosWhereUniqueInput
+}
+
+export type empleadosUpdateOneWithoutCliente_historialNestedInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutCliente_historialInput, Prisma.empleadosUncheckedCreateWithoutCliente_historialInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutCliente_historialInput
+  upsert?: Prisma.empleadosUpsertWithoutCliente_historialInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
+  connect?: Prisma.empleadosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutCliente_historialInput, Prisma.empleadosUpdateWithoutCliente_historialInput>, Prisma.empleadosUncheckedUpdateWithoutCliente_historialInput>
+}
+
+export type empleadosCreateNestedOneWithoutEmpleado_bonosInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_bonosInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_bonosInput
+  connect?: Prisma.empleadosWhereUniqueInput
+}
+
+export type empleadosUpdateOneWithoutEmpleado_bonosNestedInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_bonosInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_bonosInput
+  upsert?: Prisma.empleadosUpsertWithoutEmpleado_bonosInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
+  connect?: Prisma.empleadosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutEmpleado_bonosInput, Prisma.empleadosUpdateWithoutEmpleado_bonosInput>, Prisma.empleadosUncheckedUpdateWithoutEmpleado_bonosInput>
+}
+
+export type empleadosCreateNestedOneWithoutEmpleado_deudasInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_deudasInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_deudasInput
+  connect?: Prisma.empleadosWhereUniqueInput
+}
+
+export type empleadosUpdateOneWithoutEmpleado_deudasNestedInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_deudasInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_deudasInput
+  upsert?: Prisma.empleadosUpsertWithoutEmpleado_deudasInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
+  connect?: Prisma.empleadosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutEmpleado_deudasInput, Prisma.empleadosUpdateWithoutEmpleado_deudasInput>, Prisma.empleadosUncheckedUpdateWithoutEmpleado_deudasInput>
+}
+
+export type empleadosCreateNestedOneWithoutEmpleado_penalidadesInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_penalidadesInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_penalidadesInput
+  connect?: Prisma.empleadosWhereUniqueInput
+}
+
+export type empleadosUpdateOneWithoutEmpleado_penalidadesNestedInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_penalidadesInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutEmpleado_penalidadesInput
+  upsert?: Prisma.empleadosUpsertWithoutEmpleado_penalidadesInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
+  connect?: Prisma.empleadosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutEmpleado_penalidadesInput, Prisma.empleadosUpdateWithoutEmpleado_penalidadesInput>, Prisma.empleadosUncheckedUpdateWithoutEmpleado_penalidadesInput>
+}
+
+export type empleadosCreateNestedOneWithoutHorarios_empleadosInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedCreateWithoutHorarios_empleadosInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutHorarios_empleadosInput
+  connect?: Prisma.empleadosWhereUniqueInput
+}
+
+export type empleadosUpdateOneWithoutHorarios_empleadosNestedInput = {
+  create?: Prisma.XOR<Prisma.empleadosCreateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedCreateWithoutHorarios_empleadosInput>
+  connectOrCreate?: Prisma.empleadosCreateOrConnectWithoutHorarios_empleadosInput
+  upsert?: Prisma.empleadosUpsertWithoutHorarios_empleadosInput
+  disconnect?: Prisma.empleadosWhereInput | boolean
+  delete?: Prisma.empleadosWhereInput | boolean
+  connect?: Prisma.empleadosWhereUniqueInput
+  update?: Prisma.XOR<Prisma.XOR<Prisma.empleadosUpdateToOneWithWhereWithoutHorarios_empleadosInput, Prisma.empleadosUpdateWithoutHorarios_empleadosInput>, Prisma.empleadosUncheckedUpdateWithoutHorarios_empleadosInput>
+}
+
 export type empleadosCreateWithoutAusencias_empleadoInput = {
   nombres: string
   apellidos: string
@@ -1554,13 +1671,18 @@ export type empleadosCreateWithoutAusencias_empleadoInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -1610,12 +1732,17 @@ export type empleadosUncheckedCreateWithoutAusencias_empleadoInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -1679,13 +1806,18 @@ export type empleadosUpdateWithoutAusencias_empleadoInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -1735,12 +1867,17 @@ export type empleadosUncheckedUpdateWithoutAusencias_empleadoInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -1788,13 +1925,18 @@ export type empleadosCreateWithoutCaja_sesionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -1844,12 +1986,17 @@ export type empleadosUncheckedCreateWithoutCaja_sesionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -1913,13 +2060,18 @@ export type empleadosUpdateWithoutCaja_sesionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -1969,12 +2121,17 @@ export type empleadosUncheckedUpdateWithoutCaja_sesionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2022,13 +2179,18 @@ export type empleadosCreateWithoutCliente_comunicacionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -2078,12 +2240,17 @@ export type empleadosUncheckedCreateWithoutCliente_comunicacionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2147,13 +2314,18 @@ export type empleadosUpdateWithoutCliente_comunicacionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -2203,12 +2375,17 @@ export type empleadosUncheckedUpdateWithoutCliente_comunicacionesInput = {
   configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2257,12 +2434,17 @@ export type empleadosCreateWithoutComisionesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -2313,11 +2495,16 @@ export type empleadosUncheckedCreateWithoutComisionesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2382,12 +2569,17 @@ export type empleadosUpdateWithoutComisionesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -2438,11 +2630,16 @@ export type empleadosUncheckedUpdateWithoutComisionesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2491,12 +2688,17 @@ export type empleadosCreateWithoutEmpleado_sucursalesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -2547,11 +2749,16 @@ export type empleadosUncheckedCreateWithoutEmpleado_sucursalesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2616,12 +2823,17 @@ export type empleadosUpdateWithoutEmpleado_sucursalesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -2672,11 +2884,16 @@ export type empleadosUncheckedUpdateWithoutEmpleado_sucursalesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -2725,12 +2942,17 @@ export type empleadosCreateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -2781,11 +3003,16 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_empleado_beneficiario_i
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2839,12 +3066,17 @@ export type empleadosCreateWithoutGastos_gastos_registrado_por_colaborador_idToe
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -2895,11 +3127,16 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_registrado_por_colabora
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -2953,12 +3190,17 @@ export type empleadosCreateWithoutGastos_gastos_usuario_idToempleadosInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -3009,11 +3251,16 @@ export type empleadosUncheckedCreateWithoutGastos_gastos_usuario_idToempleadosIn
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3078,12 +3325,17 @@ export type empleadosUpdateWithoutGastos_gastos_empleado_beneficiario_idToemplea
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -3134,11 +3386,16 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_empleado_beneficiario_i
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3198,12 +3455,17 @@ export type empleadosUpdateWithoutGastos_gastos_registrado_por_colaborador_idToe
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -3254,11 +3516,16 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_registrado_por_colabora
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3318,12 +3585,17 @@ export type empleadosUpdateWithoutGastos_gastos_usuario_idToempleadosInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -3374,11 +3646,16 @@ export type empleadosUncheckedUpdateWithoutGastos_gastos_usuario_idToempleadosIn
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3427,12 +3704,17 @@ export type empleadosCreateWithoutHorarios_empleadoInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -3483,11 +3765,16 @@ export type empleadosUncheckedCreateWithoutHorarios_empleadoInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3552,12 +3839,17 @@ export type empleadosUpdateWithoutHorarios_empleadoInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -3608,11 +3900,16 @@ export type empleadosUncheckedUpdateWithoutHorarios_empleadoInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3661,13 +3958,18 @@ export type empleadosCreateWithoutHorarios_extraInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
@@ -3717,12 +4019,17 @@ export type empleadosUncheckedCreateWithoutHorarios_extraInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -3786,13 +4093,18 @@ export type empleadosUpdateWithoutHorarios_extraInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
@@ -3842,12 +4154,17 @@ export type empleadosUncheckedUpdateWithoutHorarios_extraInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -3895,13 +4212,18 @@ export type empleadosCreateWithoutHorarios_recurrentesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
@@ -3951,12 +4273,17 @@ export type empleadosUncheckedCreateWithoutHorarios_recurrentesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4020,13 +4347,18 @@ export type empleadosUpdateWithoutHorarios_recurrentesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
@@ -4076,12 +4408,17 @@ export type empleadosUncheckedUpdateWithoutHorarios_recurrentesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4129,13 +4466,18 @@ export type empleadosCreateWithoutIngresos_academiaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
@@ -4185,12 +4527,17 @@ export type empleadosUncheckedCreateWithoutIngresos_academiaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4254,13 +4601,18 @@ export type empleadosUpdateWithoutIngresos_academiaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
@@ -4310,12 +4662,17 @@ export type empleadosUncheckedUpdateWithoutIngresos_academiaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4363,13 +4720,18 @@ export type empleadosCreateWithoutMovimientos_cajaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -4419,12 +4781,17 @@ export type empleadosUncheckedCreateWithoutMovimientos_cajaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4488,13 +4855,18 @@ export type empleadosUpdateWithoutMovimientos_cajaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -4544,12 +4916,17 @@ export type empleadosUncheckedUpdateWithoutMovimientos_cajaInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4597,13 +4974,18 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -4653,12 +5035,17 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_c
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4711,13 +5098,18 @@ export type empleadosCreateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -4767,12 +5159,17 @@ export type empleadosUncheckedCreateWithoutMovimientos_fondo_movimientos_fondo_e
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -4836,13 +5233,18 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_creado_por
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -4892,12 +5294,17 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_c
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -4956,13 +5363,18 @@ export type empleadosUpdateWithoutMovimientos_fondo_movimientos_fondo_empleado_i
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -5012,12 +5424,17 @@ export type empleadosUncheckedUpdateWithoutMovimientos_fondo_movimientos_fondo_e
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5065,13 +5482,18 @@ export type empleadosCreateWithoutPlanillasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -5121,12 +5543,17 @@ export type empleadosUncheckedCreateWithoutPlanillasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5190,13 +5617,18 @@ export type empleadosUpdateWithoutPlanillasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -5246,12 +5678,17 @@ export type empleadosUncheckedUpdateWithoutPlanillasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5299,13 +5736,18 @@ export type empleadosCreateWithoutPropinas_propinas_empleado_idToempleadosInput 
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -5355,12 +5797,17 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_empleado_idToemplea
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5413,13 +5860,18 @@ export type empleadosCreateWithoutPropinas_propinas_registrado_porToempleadosInp
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -5469,12 +5921,17 @@ export type empleadosUncheckedCreateWithoutPropinas_propinas_registrado_porToemp
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5538,13 +5995,18 @@ export type empleadosUpdateWithoutPropinas_propinas_empleado_idToempleadosInput 
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -5594,12 +6056,17 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_empleado_idToemplea
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5658,13 +6125,18 @@ export type empleadosUpdateWithoutPropinas_propinas_registrado_porToempleadosInp
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -5714,12 +6186,17 @@ export type empleadosUncheckedUpdateWithoutPropinas_propinas_registrado_porToemp
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -5767,13 +6244,18 @@ export type empleadosCreateWithoutReservasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -5823,12 +6305,17 @@ export type empleadosUncheckedCreateWithoutReservasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -5892,13 +6379,18 @@ export type empleadosUpdateWithoutReservasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -5948,12 +6440,17 @@ export type empleadosUncheckedUpdateWithoutReservasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -6001,12 +6498,17 @@ export type empleadosCreateWithoutRolesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -6056,12 +6558,17 @@ export type empleadosUncheckedCreateWithoutRolesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -6175,13 +6682,18 @@ export type empleadosCreateWithoutVentasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
   roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
@@ -6231,12 +6743,17 @@ export type empleadosUncheckedCreateWithoutVentasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
   comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
@@ -6300,13 +6817,18 @@ export type empleadosUpdateWithoutVentasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -6356,7 +6878,1281 @@ export type empleadosUncheckedUpdateWithoutVentasInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosCreateWithoutCliente_historialInput = {
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
+  roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosUncheckedCreateWithoutCliente_historialInput = {
+  id?: number
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  rol_id?: number | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasUncheckedCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosCreateOrConnectWithoutCliente_historialInput = {
+  where: Prisma.empleadosWhereUniqueInput
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutCliente_historialInput, Prisma.empleadosUncheckedCreateWithoutCliente_historialInput>
+}
+
+export type empleadosUpsertWithoutCliente_historialInput = {
+  update: Prisma.XOR<Prisma.empleadosUpdateWithoutCliente_historialInput, Prisma.empleadosUncheckedUpdateWithoutCliente_historialInput>
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutCliente_historialInput, Prisma.empleadosUncheckedCreateWithoutCliente_historialInput>
+  where?: Prisma.empleadosWhereInput
+}
+
+export type empleadosUpdateToOneWithWhereWithoutCliente_historialInput = {
+  where?: Prisma.empleadosWhereInput
+  data: Prisma.XOR<Prisma.empleadosUpdateWithoutCliente_historialInput, Prisma.empleadosUncheckedUpdateWithoutCliente_historialInput>
+}
+
+export type empleadosUpdateWithoutCliente_historialInput = {
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
+  roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosUncheckedUpdateWithoutCliente_historialInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosCreateWithoutEmpleado_bonosInput = {
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
+  roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosUncheckedCreateWithoutEmpleado_bonosInput = {
+  id?: number
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  rol_id?: number | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasUncheckedCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosCreateOrConnectWithoutEmpleado_bonosInput = {
+  where: Prisma.empleadosWhereUniqueInput
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_bonosInput>
+}
+
+export type empleadosUpsertWithoutEmpleado_bonosInput = {
+  update: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_bonosInput>
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_bonosInput>
+  where?: Prisma.empleadosWhereInput
+}
+
+export type empleadosUpdateToOneWithWhereWithoutEmpleado_bonosInput = {
+  where?: Prisma.empleadosWhereInput
+  data: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_bonosInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_bonosInput>
+}
+
+export type empleadosUpdateWithoutEmpleado_bonosInput = {
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
+  roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosUncheckedUpdateWithoutEmpleado_bonosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosCreateWithoutEmpleado_deudasInput = {
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
+  roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosUncheckedCreateWithoutEmpleado_deudasInput = {
+  id?: number
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  rol_id?: number | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasUncheckedCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosCreateOrConnectWithoutEmpleado_deudasInput = {
+  where: Prisma.empleadosWhereUniqueInput
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_deudasInput>
+}
+
+export type empleadosUpsertWithoutEmpleado_deudasInput = {
+  update: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_deudasInput>
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_deudasInput>
+  where?: Prisma.empleadosWhereInput
+}
+
+export type empleadosUpdateToOneWithWhereWithoutEmpleado_deudasInput = {
+  where?: Prisma.empleadosWhereInput
+  data: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_deudasInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_deudasInput>
+}
+
+export type empleadosUpdateWithoutEmpleado_deudasInput = {
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
+  roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosUncheckedUpdateWithoutEmpleado_deudasInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosCreateWithoutEmpleado_penalidadesInput = {
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
+  roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosUncheckedCreateWithoutEmpleado_penalidadesInput = {
+  id?: number
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  rol_id?: number | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasUncheckedCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosCreateOrConnectWithoutEmpleado_penalidadesInput = {
+  where: Prisma.empleadosWhereUniqueInput
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_penalidadesInput>
+}
+
+export type empleadosUpsertWithoutEmpleado_penalidadesInput = {
+  update: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_penalidadesInput>
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedCreateWithoutEmpleado_penalidadesInput>
+  where?: Prisma.empleadosWhereInput
+}
+
+export type empleadosUpdateToOneWithWhereWithoutEmpleado_penalidadesInput = {
+  where?: Prisma.empleadosWhereInput
+  data: Prisma.XOR<Prisma.empleadosUpdateWithoutEmpleado_penalidadesInput, Prisma.empleadosUncheckedUpdateWithoutEmpleado_penalidadesInput>
+}
+
+export type empleadosUpdateWithoutEmpleado_penalidadesInput = {
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
+  roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosUncheckedUpdateWithoutEmpleado_penalidadesInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosCreateWithoutHorarios_empleadosInput = {
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesCreateNestedManyWithoutEmpleadosInput
+  roles?: Prisma.rolesCreateNestedOneWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosUncheckedCreateWithoutHorarios_empleadosInput = {
+  id?: number
+  nombres: string
+  apellidos: string
+  nombre_display?: string | null
+  email?: string | null
+  rol_id?: number | null
+  password?: string | null
+  telefono?: string | null
+  sueldo_base?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: number | null
+  sucursal_id?: number | null
+  fecha_contratacion?: Date | string | null
+  activo?: boolean | null
+  notas?: string | null
+  fecha_creacion?: Date | string | null
+  fecha_actualizacion?: Date | string | null
+  dni?: string | null
+  fecha_nacimiento?: Date | string | null
+  realiza_servicios?: boolean | null
+  tipo_salario?: string | null
+  meta_activacion_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: string | null
+  modalidad_pago?: string | null
+  sueldo_fijo_mensual?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: string | null
+  profesion?: string | null
+  tipo_contrato?: string | null
+  realiza_ventas?: boolean | null
+  porcentaje_comision_productos?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  cliente_historial?: Prisma.cliente_historialUncheckedCreateNestedManyWithoutEmpleadosInput
+  comisiones?: Prisma.comisionesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedCreateNestedManyWithoutEmpleadosInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUncheckedCreateNestedManyWithoutEmpleadosInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedCreateNestedManyWithoutEmpleados_gastos_usuario_idToempleadosInput
+  horarios_empleado?: Prisma.horarios_empleadoUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_extra?: Prisma.horarios_extraUncheckedCreateNestedManyWithoutEmpleadosInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedCreateNestedManyWithoutEmpleadosInput
+  ingresos_academia?: Prisma.ingresos_academiaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_caja?: Prisma.movimientos_cajaUncheckedCreateNestedManyWithoutEmpleadosInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUncheckedCreateNestedManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosInput
+  planillas?: Prisma.planillasUncheckedCreateNestedManyWithoutEmpleadosInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_empleado_idToempleadosInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedCreateNestedManyWithoutEmpleados_propinas_registrado_porToempleadosInput
+  reservas?: Prisma.reservasUncheckedCreateNestedManyWithoutEmpleadosInput
+  ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutEmpleadosInput
+}
+
+export type empleadosCreateOrConnectWithoutHorarios_empleadosInput = {
+  where: Prisma.empleadosWhereUniqueInput
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedCreateWithoutHorarios_empleadosInput>
+}
+
+export type empleadosUpsertWithoutHorarios_empleadosInput = {
+  update: Prisma.XOR<Prisma.empleadosUpdateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedUpdateWithoutHorarios_empleadosInput>
+  create: Prisma.XOR<Prisma.empleadosCreateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedCreateWithoutHorarios_empleadosInput>
+  where?: Prisma.empleadosWhereInput
+}
+
+export type empleadosUpdateToOneWithWhereWithoutHorarios_empleadosInput = {
+  where?: Prisma.empleadosWhereInput
+  data: Prisma.XOR<Prisma.empleadosUpdateWithoutHorarios_empleadosInput, Prisma.empleadosUncheckedUpdateWithoutHorarios_empleadosInput>
+}
+
+export type empleadosUpdateWithoutHorarios_empleadosInput = {
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
+  empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
+  roles?: Prisma.rolesUpdateOneWithoutEmpleadosNestedInput
+  gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
+  gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
+  gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
+  horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
+  horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
+  ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_caja?: Prisma.movimientos_cajaUpdateManyWithoutEmpleadosNestedInput
+  movimientos_fondo_movimientos_fondo_creado_por_usuario_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_creado_por_usuario_idToempleadosNestedInput
+  movimientos_fondo_movimientos_fondo_empleado_idToempleados?: Prisma.movimientos_fondoUpdateManyWithoutEmpleados_movimientos_fondo_empleado_idToempleadosNestedInput
+  planillas?: Prisma.planillasUpdateManyWithoutEmpleadosNestedInput
+  propinas_propinas_empleado_idToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
+  propinas_propinas_registrado_porToempleados?: Prisma.propinasUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
+  reservas?: Prisma.reservasUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUpdateManyWithoutEmpleadosNestedInput
+}
+
+export type empleadosUncheckedUpdateWithoutHorarios_empleadosInput = {
+  id?: Prisma.IntFieldUpdateOperationsInput | number
+  nombres?: Prisma.StringFieldUpdateOperationsInput | string
+  apellidos?: Prisma.StringFieldUpdateOperationsInput | string
+  nombre_display?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  email?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  rol_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  password?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  telefono?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_base?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  contrato_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  sucursal_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  fecha_contratacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  notas?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  dni?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  fecha_nacimiento?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  realiza_servicios?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  tipo_salario?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  meta_activacion_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_fondo?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  saldo_fondo_acumulado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  estado_fondo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  modalidad_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  sueldo_fijo_mensual?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  porcentaje_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  frecuencia_pago?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  profesion?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  tipo_contrato?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  realiza_ventas?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  porcentaje_comision_productos?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
+  configuracion_comision?: Prisma.NullableJsonNullValueInput | runtime.InputJsonValue
+  ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
+  comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
@@ -6372,6 +8168,7 @@ export type empleadosUncheckedUpdateWithoutVentasInput = {
   propinas_propinas_empleado_idToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_empleado_idToempleadosNestedInput
   propinas_propinas_registrado_porToempleados?: Prisma.propinasUncheckedUpdateManyWithoutEmpleados_propinas_registrado_porToempleadosNestedInput
   reservas?: Prisma.reservasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  ventas?: Prisma.ventasUncheckedUpdateManyWithoutEmpleadosNestedInput
 }
 
 export type empleadosCreateManyRolesInput = {
@@ -6444,12 +8241,17 @@ export type empleadosUpdateWithoutRolesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUpdateManyWithoutEmpleadosNestedInput
@@ -6499,12 +8301,17 @@ export type empleadosUncheckedUpdateWithoutRolesInput = {
   ausencias_empleado?: Prisma.ausencias_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
   caja_sesiones?: Prisma.caja_sesionesUncheckedUpdateManyWithoutEmpleadosNestedInput
   cliente_comunicaciones?: Prisma.cliente_comunicacionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  cliente_historial?: Prisma.cliente_historialUncheckedUpdateManyWithoutEmpleadosNestedInput
   comisiones?: Prisma.comisionesUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_bonos?: Prisma.empleado_bonosUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_deudas?: Prisma.empleado_deudasUncheckedUpdateManyWithoutEmpleadosNestedInput
+  empleado_penalidades?: Prisma.empleado_penalidadesUncheckedUpdateManyWithoutEmpleadosNestedInput
   empleado_sucursales?: Prisma.empleado_sucursalesUncheckedUpdateManyWithoutEmpleadosNestedInput
   gastos_gastos_empleado_beneficiario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_empleado_beneficiario_idToempleadosNestedInput
   gastos_gastos_registrado_por_colaborador_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_registrado_por_colaborador_idToempleadosNestedInput
   gastos_gastos_usuario_idToempleados?: Prisma.gastosUncheckedUpdateManyWithoutEmpleados_gastos_usuario_idToempleadosNestedInput
   horarios_empleado?: Prisma.horarios_empleadoUncheckedUpdateManyWithoutEmpleadosNestedInput
+  horarios_empleados?: Prisma.horarios_empleadosUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_extra?: Prisma.horarios_extraUncheckedUpdateManyWithoutEmpleadosNestedInput
   horarios_recurrentes?: Prisma.horarios_recurrentesUncheckedUpdateManyWithoutEmpleadosNestedInput
   ingresos_academia?: Prisma.ingresos_academiaUncheckedUpdateManyWithoutEmpleadosNestedInput
@@ -6562,12 +8369,17 @@ export type EmpleadosCountOutputType = {
   ausencias_empleado: number
   caja_sesiones: number
   cliente_comunicaciones: number
+  cliente_historial: number
   comisiones: number
+  empleado_bonos: number
+  empleado_deudas: number
+  empleado_penalidades: number
   empleado_sucursales: number
   gastos_gastos_empleado_beneficiario_idToempleados: number
   gastos_gastos_registrado_por_colaborador_idToempleados: number
   gastos_gastos_usuario_idToempleados: number
   horarios_empleado: number
+  horarios_empleados: number
   horarios_extra: number
   horarios_recurrentes: number
   ingresos_academia: number
@@ -6585,12 +8397,17 @@ export type EmpleadosCountOutputTypeSelect<ExtArgs extends runtime.Types.Extensi
   ausencias_empleado?: boolean | EmpleadosCountOutputTypeCountAusencias_empleadoArgs
   caja_sesiones?: boolean | EmpleadosCountOutputTypeCountCaja_sesionesArgs
   cliente_comunicaciones?: boolean | EmpleadosCountOutputTypeCountCliente_comunicacionesArgs
+  cliente_historial?: boolean | EmpleadosCountOutputTypeCountCliente_historialArgs
   comisiones?: boolean | EmpleadosCountOutputTypeCountComisionesArgs
+  empleado_bonos?: boolean | EmpleadosCountOutputTypeCountEmpleado_bonosArgs
+  empleado_deudas?: boolean | EmpleadosCountOutputTypeCountEmpleado_deudasArgs
+  empleado_penalidades?: boolean | EmpleadosCountOutputTypeCountEmpleado_penalidadesArgs
   empleado_sucursales?: boolean | EmpleadosCountOutputTypeCountEmpleado_sucursalesArgs
   gastos_gastos_empleado_beneficiario_idToempleados?: boolean | EmpleadosCountOutputTypeCountGastos_gastos_empleado_beneficiario_idToempleadosArgs
   gastos_gastos_registrado_por_colaborador_idToempleados?: boolean | EmpleadosCountOutputTypeCountGastos_gastos_registrado_por_colaborador_idToempleadosArgs
   gastos_gastos_usuario_idToempleados?: boolean | EmpleadosCountOutputTypeCountGastos_gastos_usuario_idToempleadosArgs
   horarios_empleado?: boolean | EmpleadosCountOutputTypeCountHorarios_empleadoArgs
+  horarios_empleados?: boolean | EmpleadosCountOutputTypeCountHorarios_empleadosArgs
   horarios_extra?: boolean | EmpleadosCountOutputTypeCountHorarios_extraArgs
   horarios_recurrentes?: boolean | EmpleadosCountOutputTypeCountHorarios_recurrentesArgs
   ingresos_academia?: boolean | EmpleadosCountOutputTypeCountIngresos_academiaArgs
@@ -6638,8 +8455,36 @@ export type EmpleadosCountOutputTypeCountCliente_comunicacionesArgs<ExtArgs exte
 /**
  * EmpleadosCountOutputType without action
  */
+export type EmpleadosCountOutputTypeCountCliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.cliente_historialWhereInput
+}
+
+/**
+ * EmpleadosCountOutputType without action
+ */
 export type EmpleadosCountOutputTypeCountComisionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.comisionesWhereInput
+}
+
+/**
+ * EmpleadosCountOutputType without action
+ */
+export type EmpleadosCountOutputTypeCountEmpleado_bonosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.empleado_bonosWhereInput
+}
+
+/**
+ * EmpleadosCountOutputType without action
+ */
+export type EmpleadosCountOutputTypeCountEmpleado_deudasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.empleado_deudasWhereInput
+}
+
+/**
+ * EmpleadosCountOutputType without action
+ */
+export type EmpleadosCountOutputTypeCountEmpleado_penalidadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.empleado_penalidadesWhereInput
 }
 
 /**
@@ -6675,6 +8520,13 @@ export type EmpleadosCountOutputTypeCountGastos_gastos_usuario_idToempleadosArgs
  */
 export type EmpleadosCountOutputTypeCountHorarios_empleadoArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   where?: Prisma.horarios_empleadoWhereInput
+}
+
+/**
+ * EmpleadosCountOutputType without action
+ */
+export type EmpleadosCountOutputTypeCountHorarios_empleadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  where?: Prisma.horarios_empleadosWhereInput
 }
 
 /**
@@ -6792,13 +8644,18 @@ export type empleadosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   ausencias_empleado?: boolean | Prisma.empleados$ausencias_empleadoArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.empleados$caja_sesionesArgs<ExtArgs>
   cliente_comunicaciones?: boolean | Prisma.empleados$cliente_comunicacionesArgs<ExtArgs>
+  cliente_historial?: boolean | Prisma.empleados$cliente_historialArgs<ExtArgs>
   comisiones?: boolean | Prisma.empleados$comisionesArgs<ExtArgs>
+  empleado_bonos?: boolean | Prisma.empleados$empleado_bonosArgs<ExtArgs>
+  empleado_deudas?: boolean | Prisma.empleados$empleado_deudasArgs<ExtArgs>
+  empleado_penalidades?: boolean | Prisma.empleados$empleado_penalidadesArgs<ExtArgs>
   empleado_sucursales?: boolean | Prisma.empleados$empleado_sucursalesArgs<ExtArgs>
   roles?: boolean | Prisma.empleados$rolesArgs<ExtArgs>
   gastos_gastos_empleado_beneficiario_idToempleados?: boolean | Prisma.empleados$gastos_gastos_empleado_beneficiario_idToempleadosArgs<ExtArgs>
   gastos_gastos_registrado_por_colaborador_idToempleados?: boolean | Prisma.empleados$gastos_gastos_registrado_por_colaborador_idToempleadosArgs<ExtArgs>
   gastos_gastos_usuario_idToempleados?: boolean | Prisma.empleados$gastos_gastos_usuario_idToempleadosArgs<ExtArgs>
   horarios_empleado?: boolean | Prisma.empleados$horarios_empleadoArgs<ExtArgs>
+  horarios_empleados?: boolean | Prisma.empleados$horarios_empleadosArgs<ExtArgs>
   horarios_extra?: boolean | Prisma.empleados$horarios_extraArgs<ExtArgs>
   horarios_recurrentes?: boolean | Prisma.empleados$horarios_recurrentesArgs<ExtArgs>
   ingresos_academia?: boolean | Prisma.empleados$ingresos_academiaArgs<ExtArgs>
@@ -6928,13 +8785,18 @@ export type empleadosInclude<ExtArgs extends runtime.Types.Extensions.InternalAr
   ausencias_empleado?: boolean | Prisma.empleados$ausencias_empleadoArgs<ExtArgs>
   caja_sesiones?: boolean | Prisma.empleados$caja_sesionesArgs<ExtArgs>
   cliente_comunicaciones?: boolean | Prisma.empleados$cliente_comunicacionesArgs<ExtArgs>
+  cliente_historial?: boolean | Prisma.empleados$cliente_historialArgs<ExtArgs>
   comisiones?: boolean | Prisma.empleados$comisionesArgs<ExtArgs>
+  empleado_bonos?: boolean | Prisma.empleados$empleado_bonosArgs<ExtArgs>
+  empleado_deudas?: boolean | Prisma.empleados$empleado_deudasArgs<ExtArgs>
+  empleado_penalidades?: boolean | Prisma.empleados$empleado_penalidadesArgs<ExtArgs>
   empleado_sucursales?: boolean | Prisma.empleados$empleado_sucursalesArgs<ExtArgs>
   roles?: boolean | Prisma.empleados$rolesArgs<ExtArgs>
   gastos_gastos_empleado_beneficiario_idToempleados?: boolean | Prisma.empleados$gastos_gastos_empleado_beneficiario_idToempleadosArgs<ExtArgs>
   gastos_gastos_registrado_por_colaborador_idToempleados?: boolean | Prisma.empleados$gastos_gastos_registrado_por_colaborador_idToempleadosArgs<ExtArgs>
   gastos_gastos_usuario_idToempleados?: boolean | Prisma.empleados$gastos_gastos_usuario_idToempleadosArgs<ExtArgs>
   horarios_empleado?: boolean | Prisma.empleados$horarios_empleadoArgs<ExtArgs>
+  horarios_empleados?: boolean | Prisma.empleados$horarios_empleadosArgs<ExtArgs>
   horarios_extra?: boolean | Prisma.empleados$horarios_extraArgs<ExtArgs>
   horarios_recurrentes?: boolean | Prisma.empleados$horarios_recurrentesArgs<ExtArgs>
   ingresos_academia?: boolean | Prisma.empleados$ingresos_academiaArgs<ExtArgs>
@@ -6961,13 +8823,18 @@ export type $empleadosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     ausencias_empleado: Prisma.$ausencias_empleadoPayload<ExtArgs>[]
     caja_sesiones: Prisma.$caja_sesionesPayload<ExtArgs>[]
     cliente_comunicaciones: Prisma.$cliente_comunicacionesPayload<ExtArgs>[]
+    cliente_historial: Prisma.$cliente_historialPayload<ExtArgs>[]
     comisiones: Prisma.$comisionesPayload<ExtArgs>[]
+    empleado_bonos: Prisma.$empleado_bonosPayload<ExtArgs>[]
+    empleado_deudas: Prisma.$empleado_deudasPayload<ExtArgs>[]
+    empleado_penalidades: Prisma.$empleado_penalidadesPayload<ExtArgs>[]
     empleado_sucursales: Prisma.$empleado_sucursalesPayload<ExtArgs>[]
     roles: Prisma.$rolesPayload<ExtArgs> | null
     gastos_gastos_empleado_beneficiario_idToempleados: Prisma.$gastosPayload<ExtArgs>[]
     gastos_gastos_registrado_por_colaborador_idToempleados: Prisma.$gastosPayload<ExtArgs>[]
     gastos_gastos_usuario_idToempleados: Prisma.$gastosPayload<ExtArgs>[]
     horarios_empleado: Prisma.$horarios_empleadoPayload<ExtArgs>[]
+    horarios_empleados: Prisma.$horarios_empleadosPayload<ExtArgs>[]
     horarios_extra: Prisma.$horarios_extraPayload<ExtArgs>[]
     horarios_recurrentes: Prisma.$horarios_recurrentesPayload<ExtArgs>[]
     ingresos_academia: Prisma.$ingresos_academiaPayload<ExtArgs>[]
@@ -7411,13 +9278,18 @@ export interface Prisma__empleadosClient<T, Null = never, ExtArgs extends runtim
   ausencias_empleado<T extends Prisma.empleados$ausencias_empleadoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$ausencias_empleadoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ausencias_empleadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   caja_sesiones<T extends Prisma.empleados$caja_sesionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$caja_sesionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$caja_sesionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   cliente_comunicaciones<T extends Prisma.empleados$cliente_comunicacionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$cliente_comunicacionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_comunicacionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  cliente_historial<T extends Prisma.empleados$cliente_historialArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$cliente_historialArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$cliente_historialPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   comisiones<T extends Prisma.empleados$comisionesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$comisionesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$comisionesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  empleado_bonos<T extends Prisma.empleados$empleado_bonosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$empleado_bonosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_bonosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  empleado_deudas<T extends Prisma.empleados$empleado_deudasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$empleado_deudasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_deudasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  empleado_penalidades<T extends Prisma.empleados$empleado_penalidadesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$empleado_penalidadesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_penalidadesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   empleado_sucursales<T extends Prisma.empleados$empleado_sucursalesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$empleado_sucursalesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$empleado_sucursalesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   roles<T extends Prisma.empleados$rolesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$rolesArgs<ExtArgs>>): Prisma.Prisma__rolesClient<runtime.Types.Result.GetResult<Prisma.$rolesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   gastos_gastos_empleado_beneficiario_idToempleados<T extends Prisma.empleados$gastos_gastos_empleado_beneficiario_idToempleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$gastos_gastos_empleado_beneficiario_idToempleadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gastosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gastos_gastos_registrado_por_colaborador_idToempleados<T extends Prisma.empleados$gastos_gastos_registrado_por_colaborador_idToempleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$gastos_gastos_registrado_por_colaborador_idToempleadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gastosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   gastos_gastos_usuario_idToempleados<T extends Prisma.empleados$gastos_gastos_usuario_idToempleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$gastos_gastos_usuario_idToempleadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$gastosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   horarios_empleado<T extends Prisma.empleados$horarios_empleadoArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$horarios_empleadoArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_empleadoPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+  horarios_empleados<T extends Prisma.empleados$horarios_empleadosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$horarios_empleadosArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_empleadosPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   horarios_extra<T extends Prisma.empleados$horarios_extraArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$horarios_extraArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_extraPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   horarios_recurrentes<T extends Prisma.empleados$horarios_recurrentesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$horarios_recurrentesArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$horarios_recurrentesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
   ingresos_academia<T extends Prisma.empleados$ingresos_academiaArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleados$ingresos_academiaArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ingresos_academiaPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -7959,6 +9831,30 @@ export type empleados$cliente_comunicacionesArgs<ExtArgs extends runtime.Types.E
 }
 
 /**
+ * empleados.cliente_historial
+ */
+export type empleados$cliente_historialArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the cliente_historial
+   */
+  select?: Prisma.cliente_historialSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the cliente_historial
+   */
+  omit?: Prisma.cliente_historialOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.cliente_historialInclude<ExtArgs> | null
+  where?: Prisma.cliente_historialWhereInput
+  orderBy?: Prisma.cliente_historialOrderByWithRelationInput | Prisma.cliente_historialOrderByWithRelationInput[]
+  cursor?: Prisma.cliente_historialWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Cliente_historialScalarFieldEnum | Prisma.Cliente_historialScalarFieldEnum[]
+}
+
+/**
  * empleados.comisiones
  */
 export type empleados$comisionesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
@@ -7980,6 +9876,78 @@ export type empleados$comisionesArgs<ExtArgs extends runtime.Types.Extensions.In
   take?: number
   skip?: number
   distinct?: Prisma.ComisionesScalarFieldEnum | Prisma.ComisionesScalarFieldEnum[]
+}
+
+/**
+ * empleados.empleado_bonos
+ */
+export type empleados$empleado_bonosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleado_bonos
+   */
+  select?: Prisma.empleado_bonosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleado_bonos
+   */
+  omit?: Prisma.empleado_bonosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleado_bonosInclude<ExtArgs> | null
+  where?: Prisma.empleado_bonosWhereInput
+  orderBy?: Prisma.empleado_bonosOrderByWithRelationInput | Prisma.empleado_bonosOrderByWithRelationInput[]
+  cursor?: Prisma.empleado_bonosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Empleado_bonosScalarFieldEnum | Prisma.Empleado_bonosScalarFieldEnum[]
+}
+
+/**
+ * empleados.empleado_deudas
+ */
+export type empleados$empleado_deudasArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleado_deudas
+   */
+  select?: Prisma.empleado_deudasSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleado_deudas
+   */
+  omit?: Prisma.empleado_deudasOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleado_deudasInclude<ExtArgs> | null
+  where?: Prisma.empleado_deudasWhereInput
+  orderBy?: Prisma.empleado_deudasOrderByWithRelationInput | Prisma.empleado_deudasOrderByWithRelationInput[]
+  cursor?: Prisma.empleado_deudasWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Empleado_deudasScalarFieldEnum | Prisma.Empleado_deudasScalarFieldEnum[]
+}
+
+/**
+ * empleados.empleado_penalidades
+ */
+export type empleados$empleado_penalidadesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the empleado_penalidades
+   */
+  select?: Prisma.empleado_penalidadesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the empleado_penalidades
+   */
+  omit?: Prisma.empleado_penalidadesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.empleado_penalidadesInclude<ExtArgs> | null
+  where?: Prisma.empleado_penalidadesWhereInput
+  orderBy?: Prisma.empleado_penalidadesOrderByWithRelationInput | Prisma.empleado_penalidadesOrderByWithRelationInput[]
+  cursor?: Prisma.empleado_penalidadesWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Empleado_penalidadesScalarFieldEnum | Prisma.Empleado_penalidadesScalarFieldEnum[]
 }
 
 /**
@@ -8119,6 +10087,30 @@ export type empleados$horarios_empleadoArgs<ExtArgs extends runtime.Types.Extens
   take?: number
   skip?: number
   distinct?: Prisma.Horarios_empleadoScalarFieldEnum | Prisma.Horarios_empleadoScalarFieldEnum[]
+}
+
+/**
+ * empleados.horarios_empleados
+ */
+export type empleados$horarios_empleadosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the horarios_empleados
+   */
+  select?: Prisma.horarios_empleadosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the horarios_empleados
+   */
+  omit?: Prisma.horarios_empleadosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.horarios_empleadosInclude<ExtArgs> | null
+  where?: Prisma.horarios_empleadosWhereInput
+  orderBy?: Prisma.horarios_empleadosOrderByWithRelationInput | Prisma.horarios_empleadosOrderByWithRelationInput[]
+  cursor?: Prisma.horarios_empleadosWhereUniqueInput
+  take?: number
+  skip?: number
+  distinct?: Prisma.Horarios_empleadosScalarFieldEnum | Prisma.Horarios_empleadosScalarFieldEnum[]
 }
 
 /**

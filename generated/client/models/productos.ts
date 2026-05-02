@@ -37,6 +37,7 @@ export type ProductosAvgAggregateOutputType = {
   stock_minimo: number | null
   proveedor_id: number | null
   contenido_neto_valor: runtime.Decimal | null
+  orden: number | null
 }
 
 export type ProductosSumAggregateOutputType = {
@@ -50,6 +51,7 @@ export type ProductosSumAggregateOutputType = {
   stock_minimo: number | null
   proveedor_id: number | null
   contenido_neto_valor: runtime.Decimal | null
+  orden: number | null
 }
 
 export type ProductosMinAggregateOutputType = {
@@ -71,6 +73,7 @@ export type ProductosMinAggregateOutputType = {
   activo: boolean | null
   fecha_creacion: Date | null
   fecha_actualizacion: Date | null
+  orden: number | null
 }
 
 export type ProductosMaxAggregateOutputType = {
@@ -92,6 +95,7 @@ export type ProductosMaxAggregateOutputType = {
   activo: boolean | null
   fecha_creacion: Date | null
   fecha_actualizacion: Date | null
+  orden: number | null
 }
 
 export type ProductosCountAggregateOutputType = {
@@ -113,6 +117,7 @@ export type ProductosCountAggregateOutputType = {
   activo: number
   fecha_creacion: number
   fecha_actualizacion: number
+  orden: number
   _all: number
 }
 
@@ -128,6 +133,7 @@ export type ProductosAvgAggregateInputType = {
   stock_minimo?: true
   proveedor_id?: true
   contenido_neto_valor?: true
+  orden?: true
 }
 
 export type ProductosSumAggregateInputType = {
@@ -141,6 +147,7 @@ export type ProductosSumAggregateInputType = {
   stock_minimo?: true
   proveedor_id?: true
   contenido_neto_valor?: true
+  orden?: true
 }
 
 export type ProductosMinAggregateInputType = {
@@ -162,6 +169,7 @@ export type ProductosMinAggregateInputType = {
   activo?: true
   fecha_creacion?: true
   fecha_actualizacion?: true
+  orden?: true
 }
 
 export type ProductosMaxAggregateInputType = {
@@ -183,6 +191,7 @@ export type ProductosMaxAggregateInputType = {
   activo?: true
   fecha_creacion?: true
   fecha_actualizacion?: true
+  orden?: true
 }
 
 export type ProductosCountAggregateInputType = {
@@ -204,6 +213,7 @@ export type ProductosCountAggregateInputType = {
   activo?: true
   fecha_creacion?: true
   fecha_actualizacion?: true
+  orden?: true
   _all?: true
 }
 
@@ -312,6 +322,7 @@ export type ProductosGroupByOutputType = {
   activo: boolean | null
   fecha_creacion: Date | null
   fecha_actualizacion: Date | null
+  orden: number | null
   _count: ProductosCountAggregateOutputType | null
   _avg: ProductosAvgAggregateOutputType | null
   _sum: ProductosSumAggregateOutputType | null
@@ -356,6 +367,7 @@ export type productosWhereInput = {
   activo?: Prisma.BoolNullableFilter<"productos"> | boolean | null
   fecha_creacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
+  orden?: Prisma.IntNullableFilter<"productos"> | number | null
   categorias_productos?: Prisma.XOR<Prisma.Categorias_productosScalarRelationFilter, Prisma.categorias_productosWhereInput>
   marcas?: Prisma.XOR<Prisma.MarcasNullableScalarRelationFilter, Prisma.marcasWhereInput> | null
   proveedores?: Prisma.XOR<Prisma.ProveedoresNullableScalarRelationFilter, Prisma.proveedoresWhereInput> | null
@@ -381,6 +393,7 @@ export type productosOrderByWithRelationInput = {
   activo?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
+  orden?: Prisma.SortOrderInput | Prisma.SortOrder
   categorias_productos?: Prisma.categorias_productosOrderByWithRelationInput
   marcas?: Prisma.marcasOrderByWithRelationInput
   proveedores?: Prisma.proveedoresOrderByWithRelationInput
@@ -409,6 +422,7 @@ export type productosWhereUniqueInput = Prisma.AtLeast<{
   activo?: Prisma.BoolNullableFilter<"productos"> | boolean | null
   fecha_creacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
+  orden?: Prisma.IntNullableFilter<"productos"> | number | null
   categorias_productos?: Prisma.XOR<Prisma.Categorias_productosScalarRelationFilter, Prisma.categorias_productosWhereInput>
   marcas?: Prisma.XOR<Prisma.MarcasNullableScalarRelationFilter, Prisma.marcasWhereInput> | null
   proveedores?: Prisma.XOR<Prisma.ProveedoresNullableScalarRelationFilter, Prisma.proveedoresWhereInput> | null
@@ -434,6 +448,7 @@ export type productosOrderByWithAggregationInput = {
   activo?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
+  orden?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.productosCountOrderByAggregateInput
   _avg?: Prisma.productosAvgOrderByAggregateInput
   _max?: Prisma.productosMaxOrderByAggregateInput
@@ -463,6 +478,7 @@ export type productosScalarWhereWithAggregatesInput = {
   activo?: Prisma.BoolNullableWithAggregatesFilter<"productos"> | boolean | null
   fecha_creacion?: Prisma.DateTimeNullableWithAggregatesFilter<"productos"> | Date | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableWithAggregatesFilter<"productos"> | Date | string | null
+  orden?: Prisma.IntNullableWithAggregatesFilter<"productos"> | number | null
 }
 
 export type productosCreateInput = {
@@ -480,6 +496,7 @@ export type productosCreateInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   categorias_productos: Prisma.categorias_productosCreateNestedOneWithoutProductosInput
   marcas?: Prisma.marcasCreateNestedOneWithoutProductosInput
   proveedores?: Prisma.proveedoresCreateNestedOneWithoutProductosInput
@@ -505,6 +522,7 @@ export type productosUncheckedCreateInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutProductosInput
 }
 
@@ -523,6 +541,7 @@ export type productosUpdateInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categorias_productos?: Prisma.categorias_productosUpdateOneRequiredWithoutProductosNestedInput
   marcas?: Prisma.marcasUpdateOneWithoutProductosNestedInput
   proveedores?: Prisma.proveedoresUpdateOneWithoutProductosNestedInput
@@ -548,6 +567,7 @@ export type productosUncheckedUpdateInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutProductosNestedInput
 }
 
@@ -570,6 +590,7 @@ export type productosCreateManyInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
 }
 
 export type productosUpdateManyMutationInput = {
@@ -587,6 +608,7 @@ export type productosUpdateManyMutationInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type productosUncheckedUpdateManyInput = {
@@ -608,6 +630,7 @@ export type productosUncheckedUpdateManyInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type ProductosListRelationFilter = {
@@ -639,6 +662,7 @@ export type productosCountOrderByAggregateInput = {
   activo?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
 }
 
 export type productosAvgOrderByAggregateInput = {
@@ -652,6 +676,7 @@ export type productosAvgOrderByAggregateInput = {
   stock_minimo?: Prisma.SortOrder
   proveedor_id?: Prisma.SortOrder
   contenido_neto_valor?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
 }
 
 export type productosMaxOrderByAggregateInput = {
@@ -673,6 +698,7 @@ export type productosMaxOrderByAggregateInput = {
   activo?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
 }
 
 export type productosMinOrderByAggregateInput = {
@@ -694,6 +720,7 @@ export type productosMinOrderByAggregateInput = {
   activo?: Prisma.SortOrder
   fecha_creacion?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
 }
 
 export type productosSumOrderByAggregateInput = {
@@ -707,6 +734,7 @@ export type productosSumOrderByAggregateInput = {
   stock_minimo?: Prisma.SortOrder
   proveedor_id?: Prisma.SortOrder
   contenido_neto_valor?: Prisma.SortOrder
+  orden?: Prisma.SortOrder
 }
 
 export type ProductosNullableScalarRelationFilter = {
@@ -871,6 +899,7 @@ export type productosCreateWithoutCategorias_productosInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   marcas?: Prisma.marcasCreateNestedOneWithoutProductosInput
   proveedores?: Prisma.proveedoresCreateNestedOneWithoutProductosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutProductosInput
@@ -894,6 +923,7 @@ export type productosUncheckedCreateWithoutCategorias_productosInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutProductosInput
 }
 
@@ -945,6 +975,7 @@ export type productosScalarWhereInput = {
   activo?: Prisma.BoolNullableFilter<"productos"> | boolean | null
   fecha_creacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"productos"> | Date | string | null
+  orden?: Prisma.IntNullableFilter<"productos"> | number | null
 }
 
 export type productosCreateWithoutMarcasInput = {
@@ -962,6 +993,7 @@ export type productosCreateWithoutMarcasInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   categorias_productos: Prisma.categorias_productosCreateNestedOneWithoutProductosInput
   proveedores?: Prisma.proveedoresCreateNestedOneWithoutProductosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutProductosInput
@@ -985,6 +1017,7 @@ export type productosUncheckedCreateWithoutMarcasInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutProductosInput
 }
 
@@ -1029,6 +1062,7 @@ export type productosCreateWithoutProveedoresInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   categorias_productos: Prisma.categorias_productosCreateNestedOneWithoutProductosInput
   marcas?: Prisma.marcasCreateNestedOneWithoutProductosInput
   venta_items?: Prisma.venta_itemsCreateNestedManyWithoutProductosInput
@@ -1052,6 +1086,7 @@ export type productosUncheckedCreateWithoutProveedoresInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   venta_items?: Prisma.venta_itemsUncheckedCreateNestedManyWithoutProductosInput
 }
 
@@ -1096,6 +1131,7 @@ export type productosCreateWithoutVenta_itemsInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
   categorias_productos: Prisma.categorias_productosCreateNestedOneWithoutProductosInput
   marcas?: Prisma.marcasCreateNestedOneWithoutProductosInput
   proveedores?: Prisma.proveedoresCreateNestedOneWithoutProductosInput
@@ -1120,6 +1156,7 @@ export type productosUncheckedCreateWithoutVenta_itemsInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
 }
 
 export type productosCreateOrConnectWithoutVenta_itemsInput = {
@@ -1153,6 +1190,7 @@ export type productosUpdateWithoutVenta_itemsInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categorias_productos?: Prisma.categorias_productosUpdateOneRequiredWithoutProductosNestedInput
   marcas?: Prisma.marcasUpdateOneWithoutProductosNestedInput
   proveedores?: Prisma.proveedoresUpdateOneWithoutProductosNestedInput
@@ -1177,6 +1215,7 @@ export type productosUncheckedUpdateWithoutVenta_itemsInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type productosCreateManyCategorias_productosInput = {
@@ -1197,6 +1236,7 @@ export type productosCreateManyCategorias_productosInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
 }
 
 export type productosUpdateWithoutCategorias_productosInput = {
@@ -1214,6 +1254,7 @@ export type productosUpdateWithoutCategorias_productosInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   marcas?: Prisma.marcasUpdateOneWithoutProductosNestedInput
   proveedores?: Prisma.proveedoresUpdateOneWithoutProductosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutProductosNestedInput
@@ -1237,6 +1278,7 @@ export type productosUncheckedUpdateWithoutCategorias_productosInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutProductosNestedInput
 }
 
@@ -1258,6 +1300,7 @@ export type productosUncheckedUpdateManyWithoutCategorias_productosInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type productosCreateManyMarcasInput = {
@@ -1278,6 +1321,7 @@ export type productosCreateManyMarcasInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
 }
 
 export type productosUpdateWithoutMarcasInput = {
@@ -1295,6 +1339,7 @@ export type productosUpdateWithoutMarcasInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categorias_productos?: Prisma.categorias_productosUpdateOneRequiredWithoutProductosNestedInput
   proveedores?: Prisma.proveedoresUpdateOneWithoutProductosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutProductosNestedInput
@@ -1318,6 +1363,7 @@ export type productosUncheckedUpdateWithoutMarcasInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutProductosNestedInput
 }
 
@@ -1339,6 +1385,7 @@ export type productosUncheckedUpdateManyWithoutMarcasInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 export type productosCreateManyProveedoresInput = {
@@ -1359,6 +1406,7 @@ export type productosCreateManyProveedoresInput = {
   activo?: boolean | null
   fecha_creacion?: Date | string | null
   fecha_actualizacion?: Date | string | null
+  orden?: number | null
 }
 
 export type productosUpdateWithoutProveedoresInput = {
@@ -1376,6 +1424,7 @@ export type productosUpdateWithoutProveedoresInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   categorias_productos?: Prisma.categorias_productosUpdateOneRequiredWithoutProductosNestedInput
   marcas?: Prisma.marcasUpdateOneWithoutProductosNestedInput
   venta_items?: Prisma.venta_itemsUpdateManyWithoutProductosNestedInput
@@ -1399,6 +1448,7 @@ export type productosUncheckedUpdateWithoutProveedoresInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   venta_items?: Prisma.venta_itemsUncheckedUpdateManyWithoutProductosNestedInput
 }
 
@@ -1420,6 +1470,7 @@ export type productosUncheckedUpdateManyWithoutProveedoresInput = {
   activo?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   fecha_creacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  orden?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
 }
 
 
@@ -1472,6 +1523,7 @@ export type productosSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
   activo?: boolean
   fecha_creacion?: boolean
   fecha_actualizacion?: boolean
+  orden?: boolean
   categorias_productos?: boolean | Prisma.categorias_productosDefaultArgs<ExtArgs>
   marcas?: boolean | Prisma.productos$marcasArgs<ExtArgs>
   proveedores?: boolean | Prisma.productos$proveedoresArgs<ExtArgs>
@@ -1498,6 +1550,7 @@ export type productosSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
   activo?: boolean
   fecha_creacion?: boolean
   fecha_actualizacion?: boolean
+  orden?: boolean
   categorias_productos?: boolean | Prisma.categorias_productosDefaultArgs<ExtArgs>
   marcas?: boolean | Prisma.productos$marcasArgs<ExtArgs>
   proveedores?: boolean | Prisma.productos$proveedoresArgs<ExtArgs>
@@ -1522,6 +1575,7 @@ export type productosSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
   activo?: boolean
   fecha_creacion?: boolean
   fecha_actualizacion?: boolean
+  orden?: boolean
   categorias_productos?: boolean | Prisma.categorias_productosDefaultArgs<ExtArgs>
   marcas?: boolean | Prisma.productos$marcasArgs<ExtArgs>
   proveedores?: boolean | Prisma.productos$proveedoresArgs<ExtArgs>
@@ -1546,9 +1600,10 @@ export type productosSelectScalar = {
   activo?: boolean
   fecha_creacion?: boolean
   fecha_actualizacion?: boolean
+  orden?: boolean
 }
 
-export type productosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "marca_id" | "codigo_barras" | "categoria_id" | "precio_compra" | "precio_venta" | "comision_vendedor_monto" | "stock_actual" | "stock_minimo" | "unidad_medida" | "proveedor_id" | "contenido_neto_valor" | "imagen_url" | "activo" | "fecha_creacion" | "fecha_actualizacion", ExtArgs["result"]["productos"]>
+export type productosOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "nombre" | "descripcion" | "marca_id" | "codigo_barras" | "categoria_id" | "precio_compra" | "precio_venta" | "comision_vendedor_monto" | "stock_actual" | "stock_minimo" | "unidad_medida" | "proveedor_id" | "contenido_neto_valor" | "imagen_url" | "activo" | "fecha_creacion" | "fecha_actualizacion" | "orden", ExtArgs["result"]["productos"]>
 export type productosInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   categorias_productos?: boolean | Prisma.categorias_productosDefaultArgs<ExtArgs>
   marcas?: boolean | Prisma.productos$marcasArgs<ExtArgs>
@@ -1594,6 +1649,7 @@ export type $productosPayload<ExtArgs extends runtime.Types.Extensions.InternalA
     activo: boolean | null
     fecha_creacion: Date | null
     fecha_actualizacion: Date | null
+    orden: number | null
   }, ExtArgs["result"]["productos"]>
   composites: {}
 }
@@ -2039,6 +2095,7 @@ export interface productosFieldRefs {
   readonly activo: Prisma.FieldRef<"productos", 'Boolean'>
   readonly fecha_creacion: Prisma.FieldRef<"productos", 'DateTime'>
   readonly fecha_actualizacion: Prisma.FieldRef<"productos", 'DateTime'>
+  readonly orden: Prisma.FieldRef<"productos", 'Int'>
 }
     
 

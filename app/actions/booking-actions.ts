@@ -215,12 +215,21 @@ export async function getAvailableTimeSlots(date: Date, staffId: number | 'any',
 
                 if (isBlocked) continue;
 
-                // Check Reservations
+                // Check Reservations (and Blocks)
                 const staffReservations = reservations.filter(r => r.empleado_id === staffId);
                 const hasConflict = staffReservations.some(res => {
                     const resStart = new Date(res.fecha_hora_inicio);
                     const resEnd = new Date(res.fecha_hora_fin);
-                    return (slotStart < resEnd && slotEnd > resStart);
+                    const isOverlap = (slotStart < resEnd && slotEnd > resStart);
+
+                    if (!isOverlap) return false;
+
+                    // Si es un BLOQUEO, verificar si permite reserva online
+                    if ((res as any).tipo === 'BLOQUEO' && (res as any).reserva_online_permitida === true) {
+                        return false;
+                    }
+
+                    return true;
                 });
 
                 if (!hasConflict) {
@@ -330,13 +339,18 @@ export async function createReservation(data: {
 
                 if (!hasSchedule) continue;
 
-                // 2. Check conflicts in reservations
+                // 2. Check conflicts in reservations (and Blocks)
                 const conflicts = await prisma.reservas.findMany({
                     where: {
                         empleado_id: s.id,
                         estado: { not: 'Cancelada' },
                         fecha_hora_inicio: { lt: endDateTime },
-                        fecha_hora_fin: { gt: startDateTime }
+                        fecha_hora_fin: { gt: startDateTime },
+                        // Si es BLOQUEO, solo es conflicto si NO permite reserva online
+                        NOT: {
+                            tipo: 'BLOQUEO',
+                            reserva_online_permitida: true
+                        }
                     }
                 });
 
@@ -383,7 +397,12 @@ export async function createReservation(data: {
                     empleado_id: assignedStaffId as number,
                     estado: { not: 'Cancelada' },
                     fecha_hora_inicio: { lt: endDateTime },
-                    fecha_hora_fin: { gt: startDateTime }
+                    fecha_hora_fin: { gt: startDateTime },
+                    // Si es BLOQUEO, solo es conflicto si NO permite reserva online
+                    NOT: {
+                        tipo: 'BLOQUEO',
+                        reserva_online_permitida: true
+                    }
                 }
             });
 

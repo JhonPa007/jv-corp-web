@@ -33,6 +33,7 @@ export type ReservasAvgAggregateOutputType = {
   servicio_id: number | null
   sucursal_id: number | null
   precio_cobrado: runtime.Decimal | null
+  duracion_minutos: number | null
 }
 
 export type ReservasSumAggregateOutputType = {
@@ -42,6 +43,7 @@ export type ReservasSumAggregateOutputType = {
   servicio_id: number | null
   sucursal_id: number | null
   precio_cobrado: runtime.Decimal | null
+  duracion_minutos: number | null
 }
 
 export type ReservasMinAggregateOutputType = {
@@ -58,6 +60,11 @@ export type ReservasMinAggregateOutputType = {
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
   evidencia_url: string | null
+  origen: string | null
+  duracion_minutos: number | null
+  tipo: string | null
+  subtipo_bloqueo: string | null
+  reserva_online_permitida: boolean | null
 }
 
 export type ReservasMaxAggregateOutputType = {
@@ -74,6 +81,11 @@ export type ReservasMaxAggregateOutputType = {
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
   evidencia_url: string | null
+  origen: string | null
+  duracion_minutos: number | null
+  tipo: string | null
+  subtipo_bloqueo: string | null
+  reserva_online_permitida: boolean | null
 }
 
 export type ReservasCountAggregateOutputType = {
@@ -90,6 +102,11 @@ export type ReservasCountAggregateOutputType = {
   precio_cobrado: number
   fecha_actualizacion: number
   evidencia_url: number
+  origen: number
+  duracion_minutos: number
+  tipo: number
+  subtipo_bloqueo: number
+  reserva_online_permitida: number
   _all: number
 }
 
@@ -101,6 +118,7 @@ export type ReservasAvgAggregateInputType = {
   servicio_id?: true
   sucursal_id?: true
   precio_cobrado?: true
+  duracion_minutos?: true
 }
 
 export type ReservasSumAggregateInputType = {
@@ -110,6 +128,7 @@ export type ReservasSumAggregateInputType = {
   servicio_id?: true
   sucursal_id?: true
   precio_cobrado?: true
+  duracion_minutos?: true
 }
 
 export type ReservasMinAggregateInputType = {
@@ -126,6 +145,11 @@ export type ReservasMinAggregateInputType = {
   precio_cobrado?: true
   fecha_actualizacion?: true
   evidencia_url?: true
+  origen?: true
+  duracion_minutos?: true
+  tipo?: true
+  subtipo_bloqueo?: true
+  reserva_online_permitida?: true
 }
 
 export type ReservasMaxAggregateInputType = {
@@ -142,6 +166,11 @@ export type ReservasMaxAggregateInputType = {
   precio_cobrado?: true
   fecha_actualizacion?: true
   evidencia_url?: true
+  origen?: true
+  duracion_minutos?: true
+  tipo?: true
+  subtipo_bloqueo?: true
+  reserva_online_permitida?: true
 }
 
 export type ReservasCountAggregateInputType = {
@@ -158,6 +187,11 @@ export type ReservasCountAggregateInputType = {
   precio_cobrado?: true
   fecha_actualizacion?: true
   evidencia_url?: true
+  origen?: true
+  duracion_minutos?: true
+  tipo?: true
+  subtipo_bloqueo?: true
+  reserva_online_permitida?: true
   _all?: true
 }
 
@@ -249,9 +283,9 @@ export type reservasGroupByArgs<ExtArgs extends runtime.Types.Extensions.Interna
 
 export type ReservasGroupByOutputType = {
   id: number
-  cliente_id: number
+  cliente_id: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id: number | null
   sucursal_id: number
   fecha_hora_inicio: Date
   fecha_hora_fin: Date
@@ -261,6 +295,11 @@ export type ReservasGroupByOutputType = {
   precio_cobrado: runtime.Decimal | null
   fecha_actualizacion: Date | null
   evidencia_url: string | null
+  origen: string | null
+  duracion_minutos: number | null
+  tipo: string | null
+  subtipo_bloqueo: string | null
+  reserva_online_permitida: boolean | null
   _count: ReservasCountAggregateOutputType | null
   _avg: ReservasAvgAggregateOutputType | null
   _sum: ReservasSumAggregateOutputType | null
@@ -288,9 +327,9 @@ export type reservasWhereInput = {
   OR?: Prisma.reservasWhereInput[]
   NOT?: Prisma.reservasWhereInput | Prisma.reservasWhereInput[]
   id?: Prisma.IntFilter<"reservas"> | number
-  cliente_id?: Prisma.IntFilter<"reservas"> | number
+  cliente_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   empleado_id?: Prisma.IntFilter<"reservas"> | number
-  servicio_id?: Prisma.IntFilter<"reservas"> | number
+  servicio_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   sucursal_id?: Prisma.IntFilter<"reservas"> | number
   fecha_hora_inicio?: Prisma.DateTimeFilter<"reservas"> | Date | string
   fecha_hora_fin?: Prisma.DateTimeFilter<"reservas"> | Date | string
@@ -300,8 +339,13 @@ export type reservasWhereInput = {
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
   evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
-  clientes?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.clientesWhereInput>
-  servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
+  origen?: Prisma.StringNullableFilter<"reservas"> | string | null
+  duracion_minutos?: Prisma.IntNullableFilter<"reservas"> | number | null
+  tipo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  subtipo_bloqueo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  reserva_online_permitida?: Prisma.BoolNullableFilter<"reservas"> | boolean | null
+  clientes?: Prisma.XOR<Prisma.ClientesNullableScalarRelationFilter, Prisma.clientesWhereInput> | null
+  servicios?: Prisma.XOR<Prisma.ServiciosNullableScalarRelationFilter, Prisma.serviciosWhereInput> | null
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
   empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
   ventas?: Prisma.VentasListRelationFilter
@@ -309,9 +353,9 @@ export type reservasWhereInput = {
 
 export type reservasOrderByWithRelationInput = {
   id?: Prisma.SortOrder
-  cliente_id?: Prisma.SortOrder
+  cliente_id?: Prisma.SortOrderInput | Prisma.SortOrder
   empleado_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  servicio_id?: Prisma.SortOrderInput | Prisma.SortOrder
   sucursal_id?: Prisma.SortOrder
   fecha_hora_inicio?: Prisma.SortOrder
   fecha_hora_fin?: Prisma.SortOrder
@@ -321,6 +365,11 @@ export type reservasOrderByWithRelationInput = {
   precio_cobrado?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   evidencia_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  origen?: Prisma.SortOrderInput | Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  subtipo_bloqueo?: Prisma.SortOrderInput | Prisma.SortOrder
+  reserva_online_permitida?: Prisma.SortOrderInput | Prisma.SortOrder
   clientes?: Prisma.clientesOrderByWithRelationInput
   servicios?: Prisma.serviciosOrderByWithRelationInput
   sucursales?: Prisma.sucursalesOrderByWithRelationInput
@@ -333,9 +382,9 @@ export type reservasWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.reservasWhereInput | Prisma.reservasWhereInput[]
   OR?: Prisma.reservasWhereInput[]
   NOT?: Prisma.reservasWhereInput | Prisma.reservasWhereInput[]
-  cliente_id?: Prisma.IntFilter<"reservas"> | number
+  cliente_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   empleado_id?: Prisma.IntFilter<"reservas"> | number
-  servicio_id?: Prisma.IntFilter<"reservas"> | number
+  servicio_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   sucursal_id?: Prisma.IntFilter<"reservas"> | number
   fecha_hora_inicio?: Prisma.DateTimeFilter<"reservas"> | Date | string
   fecha_hora_fin?: Prisma.DateTimeFilter<"reservas"> | Date | string
@@ -345,8 +394,13 @@ export type reservasWhereUniqueInput = Prisma.AtLeast<{
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
   evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
-  clientes?: Prisma.XOR<Prisma.ClientesScalarRelationFilter, Prisma.clientesWhereInput>
-  servicios?: Prisma.XOR<Prisma.ServiciosScalarRelationFilter, Prisma.serviciosWhereInput>
+  origen?: Prisma.StringNullableFilter<"reservas"> | string | null
+  duracion_minutos?: Prisma.IntNullableFilter<"reservas"> | number | null
+  tipo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  subtipo_bloqueo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  reserva_online_permitida?: Prisma.BoolNullableFilter<"reservas"> | boolean | null
+  clientes?: Prisma.XOR<Prisma.ClientesNullableScalarRelationFilter, Prisma.clientesWhereInput> | null
+  servicios?: Prisma.XOR<Prisma.ServiciosNullableScalarRelationFilter, Prisma.serviciosWhereInput> | null
   sucursales?: Prisma.XOR<Prisma.SucursalesScalarRelationFilter, Prisma.sucursalesWhereInput>
   empleados?: Prisma.XOR<Prisma.EmpleadosScalarRelationFilter, Prisma.empleadosWhereInput>
   ventas?: Prisma.VentasListRelationFilter
@@ -354,9 +408,9 @@ export type reservasWhereUniqueInput = Prisma.AtLeast<{
 
 export type reservasOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
-  cliente_id?: Prisma.SortOrder
+  cliente_id?: Prisma.SortOrderInput | Prisma.SortOrder
   empleado_id?: Prisma.SortOrder
-  servicio_id?: Prisma.SortOrder
+  servicio_id?: Prisma.SortOrderInput | Prisma.SortOrder
   sucursal_id?: Prisma.SortOrder
   fecha_hora_inicio?: Prisma.SortOrder
   fecha_hora_fin?: Prisma.SortOrder
@@ -366,6 +420,11 @@ export type reservasOrderByWithAggregationInput = {
   precio_cobrado?: Prisma.SortOrderInput | Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrderInput | Prisma.SortOrder
   evidencia_url?: Prisma.SortOrderInput | Prisma.SortOrder
+  origen?: Prisma.SortOrderInput | Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrderInput | Prisma.SortOrder
+  tipo?: Prisma.SortOrderInput | Prisma.SortOrder
+  subtipo_bloqueo?: Prisma.SortOrderInput | Prisma.SortOrder
+  reserva_online_permitida?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.reservasCountOrderByAggregateInput
   _avg?: Prisma.reservasAvgOrderByAggregateInput
   _max?: Prisma.reservasMaxOrderByAggregateInput
@@ -378,9 +437,9 @@ export type reservasScalarWhereWithAggregatesInput = {
   OR?: Prisma.reservasScalarWhereWithAggregatesInput[]
   NOT?: Prisma.reservasScalarWhereWithAggregatesInput | Prisma.reservasScalarWhereWithAggregatesInput[]
   id?: Prisma.IntWithAggregatesFilter<"reservas"> | number
-  cliente_id?: Prisma.IntWithAggregatesFilter<"reservas"> | number
+  cliente_id?: Prisma.IntNullableWithAggregatesFilter<"reservas"> | number | null
   empleado_id?: Prisma.IntWithAggregatesFilter<"reservas"> | number
-  servicio_id?: Prisma.IntWithAggregatesFilter<"reservas"> | number
+  servicio_id?: Prisma.IntNullableWithAggregatesFilter<"reservas"> | number | null
   sucursal_id?: Prisma.IntWithAggregatesFilter<"reservas"> | number
   fecha_hora_inicio?: Prisma.DateTimeWithAggregatesFilter<"reservas"> | Date | string
   fecha_hora_fin?: Prisma.DateTimeWithAggregatesFilter<"reservas"> | Date | string
@@ -390,6 +449,11 @@ export type reservasScalarWhereWithAggregatesInput = {
   precio_cobrado?: Prisma.DecimalNullableWithAggregatesFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableWithAggregatesFilter<"reservas"> | Date | string | null
   evidencia_url?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
+  origen?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
+  duracion_minutos?: Prisma.IntNullableWithAggregatesFilter<"reservas"> | number | null
+  tipo?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
+  subtipo_bloqueo?: Prisma.StringNullableWithAggregatesFilter<"reservas"> | string | null
+  reserva_online_permitida?: Prisma.BoolNullableWithAggregatesFilter<"reservas"> | boolean | null
 }
 
 export type reservasCreateInput = {
@@ -401,8 +465,13 @@ export type reservasCreateInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
-  servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  clientes?: Prisma.clientesCreateNestedOneWithoutReservasInput
+  servicios?: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutReservasInput
@@ -410,9 +479,9 @@ export type reservasCreateInput = {
 
 export type reservasUncheckedCreateInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -422,6 +491,11 @@ export type reservasUncheckedCreateInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -434,8 +508,13 @@ export type reservasUpdateInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
-  servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientes?: Prisma.clientesUpdateOneWithoutReservasNestedInput
+  servicios?: Prisma.serviciosUpdateOneWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutReservasNestedInput
@@ -443,9 +522,9 @@ export type reservasUpdateInput = {
 
 export type reservasUncheckedUpdateInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -455,14 +534,19 @@ export type reservasUncheckedUpdateInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasCreateManyInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -472,6 +556,11 @@ export type reservasCreateManyInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasUpdateManyMutationInput = {
@@ -483,13 +572,18 @@ export type reservasUpdateManyMutationInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type reservasUncheckedUpdateManyInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -499,6 +593,11 @@ export type reservasUncheckedUpdateManyInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type ReservasListRelationFilter = {
@@ -525,6 +624,11 @@ export type reservasCountOrderByAggregateInput = {
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
   evidencia_url?: Prisma.SortOrder
+  origen?: Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrder
+  tipo?: Prisma.SortOrder
+  subtipo_bloqueo?: Prisma.SortOrder
+  reserva_online_permitida?: Prisma.SortOrder
 }
 
 export type reservasAvgOrderByAggregateInput = {
@@ -534,6 +638,7 @@ export type reservasAvgOrderByAggregateInput = {
   servicio_id?: Prisma.SortOrder
   sucursal_id?: Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrder
 }
 
 export type reservasMaxOrderByAggregateInput = {
@@ -550,6 +655,11 @@ export type reservasMaxOrderByAggregateInput = {
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
   evidencia_url?: Prisma.SortOrder
+  origen?: Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrder
+  tipo?: Prisma.SortOrder
+  subtipo_bloqueo?: Prisma.SortOrder
+  reserva_online_permitida?: Prisma.SortOrder
 }
 
 export type reservasMinOrderByAggregateInput = {
@@ -566,6 +676,11 @@ export type reservasMinOrderByAggregateInput = {
   precio_cobrado?: Prisma.SortOrder
   fecha_actualizacion?: Prisma.SortOrder
   evidencia_url?: Prisma.SortOrder
+  origen?: Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrder
+  tipo?: Prisma.SortOrder
+  subtipo_bloqueo?: Prisma.SortOrder
+  reserva_online_permitida?: Prisma.SortOrder
 }
 
 export type reservasSumOrderByAggregateInput = {
@@ -575,6 +690,7 @@ export type reservasSumOrderByAggregateInput = {
   servicio_id?: Prisma.SortOrder
   sucursal_id?: Prisma.SortOrder
   precio_cobrado?: Prisma.SortOrder
+  duracion_minutos?: Prisma.SortOrder
 }
 
 export type ReservasNullableScalarRelationFilter = {
@@ -775,7 +891,12 @@ export type reservasCreateWithoutClientesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  servicios?: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutReservasInput
@@ -784,7 +905,7 @@ export type reservasCreateWithoutClientesInput = {
 export type reservasUncheckedCreateWithoutClientesInput = {
   id?: number
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -794,6 +915,11 @@ export type reservasUncheckedCreateWithoutClientesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -828,9 +954,9 @@ export type reservasScalarWhereInput = {
   OR?: Prisma.reservasScalarWhereInput[]
   NOT?: Prisma.reservasScalarWhereInput | Prisma.reservasScalarWhereInput[]
   id?: Prisma.IntFilter<"reservas"> | number
-  cliente_id?: Prisma.IntFilter<"reservas"> | number
+  cliente_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   empleado_id?: Prisma.IntFilter<"reservas"> | number
-  servicio_id?: Prisma.IntFilter<"reservas"> | number
+  servicio_id?: Prisma.IntNullableFilter<"reservas"> | number | null
   sucursal_id?: Prisma.IntFilter<"reservas"> | number
   fecha_hora_inicio?: Prisma.DateTimeFilter<"reservas"> | Date | string
   fecha_hora_fin?: Prisma.DateTimeFilter<"reservas"> | Date | string
@@ -840,6 +966,11 @@ export type reservasScalarWhereInput = {
   precio_cobrado?: Prisma.DecimalNullableFilter<"reservas"> | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.DateTimeNullableFilter<"reservas"> | Date | string | null
   evidencia_url?: Prisma.StringNullableFilter<"reservas"> | string | null
+  origen?: Prisma.StringNullableFilter<"reservas"> | string | null
+  duracion_minutos?: Prisma.IntNullableFilter<"reservas"> | number | null
+  tipo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  subtipo_bloqueo?: Prisma.StringNullableFilter<"reservas"> | string | null
+  reserva_online_permitida?: Prisma.BoolNullableFilter<"reservas"> | boolean | null
 }
 
 export type reservasCreateWithoutEmpleadosInput = {
@@ -851,16 +982,21 @@ export type reservasCreateWithoutEmpleadosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
-  servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  clientes?: Prisma.clientesCreateNestedOneWithoutReservasInput
+  servicios?: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutReservasInput
 }
 
 export type reservasUncheckedCreateWithoutEmpleadosInput = {
   id?: number
-  cliente_id: number
-  servicio_id: number
+  cliente_id?: number | null
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -870,6 +1006,11 @@ export type reservasUncheckedCreateWithoutEmpleadosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -908,7 +1049,12 @@ export type reservasCreateWithoutServiciosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  clientes?: Prisma.clientesCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutReservasInput
@@ -916,7 +1062,7 @@ export type reservasCreateWithoutServiciosInput = {
 
 export type reservasUncheckedCreateWithoutServiciosInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
   sucursal_id: number
   fecha_hora_inicio: Date | string
@@ -927,6 +1073,11 @@ export type reservasUncheckedCreateWithoutServiciosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -965,17 +1116,22 @@ export type reservasCreateWithoutSucursalesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
-  servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  clientes?: Prisma.clientesCreateNestedOneWithoutReservasInput
+  servicios?: Prisma.serviciosCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
   ventas?: Prisma.ventasCreateNestedManyWithoutReservasInput
 }
 
 export type reservasUncheckedCreateWithoutSucursalesInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
   estado?: string
@@ -984,6 +1140,11 @@ export type reservasUncheckedCreateWithoutSucursalesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
   ventas?: Prisma.ventasUncheckedCreateNestedManyWithoutReservasInput
 }
 
@@ -1022,17 +1183,22 @@ export type reservasCreateWithoutVentasInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
-  clientes: Prisma.clientesCreateNestedOneWithoutReservasInput
-  servicios: Prisma.serviciosCreateNestedOneWithoutReservasInput
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
+  clientes?: Prisma.clientesCreateNestedOneWithoutReservasInput
+  servicios?: Prisma.serviciosCreateNestedOneWithoutReservasInput
   sucursales: Prisma.sucursalesCreateNestedOneWithoutReservasInput
   empleados: Prisma.empleadosCreateNestedOneWithoutReservasInput
 }
 
 export type reservasUncheckedCreateWithoutVentasInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -1042,6 +1208,11 @@ export type reservasUncheckedCreateWithoutVentasInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasCreateOrConnectWithoutVentasInput = {
@@ -1069,17 +1240,22 @@ export type reservasUpdateWithoutVentasInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
-  servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientes?: Prisma.clientesUpdateOneWithoutReservasNestedInput
+  servicios?: Prisma.serviciosUpdateOneWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateWithoutVentasInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1089,12 +1265,17 @@ export type reservasUncheckedUpdateWithoutVentasInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type reservasCreateManyClientesInput = {
   id?: number
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -1104,6 +1285,11 @@ export type reservasCreateManyClientesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasUpdateWithoutClientesInput = {
@@ -1115,7 +1301,12 @@ export type reservasUpdateWithoutClientesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  servicios?: Prisma.serviciosUpdateOneWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutReservasNestedInput
@@ -1124,7 +1315,7 @@ export type reservasUpdateWithoutClientesInput = {
 export type reservasUncheckedUpdateWithoutClientesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1134,13 +1325,18 @@ export type reservasUncheckedUpdateWithoutClientesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateManyWithoutClientesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1150,12 +1346,17 @@ export type reservasUncheckedUpdateManyWithoutClientesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type reservasCreateManyEmpleadosInput = {
   id?: number
-  cliente_id: number
-  servicio_id: number
+  cliente_id?: number | null
+  servicio_id?: number | null
   sucursal_id: number
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
@@ -1165,6 +1366,11 @@ export type reservasCreateManyEmpleadosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasUpdateWithoutEmpleadosInput = {
@@ -1176,16 +1382,21 @@ export type reservasUpdateWithoutEmpleadosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
-  servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientes?: Prisma.clientesUpdateOneWithoutReservasNestedInput
+  servicios?: Prisma.serviciosUpdateOneWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateWithoutEmpleadosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1195,13 +1406,18 @@ export type reservasUncheckedUpdateWithoutEmpleadosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateManyWithoutEmpleadosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1211,11 +1427,16 @@ export type reservasUncheckedUpdateManyWithoutEmpleadosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type reservasCreateManyServiciosInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
   sucursal_id: number
   fecha_hora_inicio: Date | string
@@ -1226,6 +1447,11 @@ export type reservasCreateManyServiciosInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasUpdateWithoutServiciosInput = {
@@ -1237,7 +1463,12 @@ export type reservasUpdateWithoutServiciosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientes?: Prisma.clientesUpdateOneWithoutReservasNestedInput
   sucursales?: Prisma.sucursalesUpdateOneRequiredWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutReservasNestedInput
@@ -1245,7 +1476,7 @@ export type reservasUpdateWithoutServiciosInput = {
 
 export type reservasUncheckedUpdateWithoutServiciosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1256,12 +1487,17 @@ export type reservasUncheckedUpdateWithoutServiciosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateManyWithoutServiciosInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
   sucursal_id?: Prisma.IntFieldUpdateOperationsInput | number
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -1272,13 +1508,18 @@ export type reservasUncheckedUpdateManyWithoutServiciosInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 export type reservasCreateManySucursalesInput = {
   id?: number
-  cliente_id: number
+  cliente_id?: number | null
   empleado_id: number
-  servicio_id: number
+  servicio_id?: number | null
   fecha_hora_inicio: Date | string
   fecha_hora_fin: Date | string
   estado?: string
@@ -1287,6 +1528,11 @@ export type reservasCreateManySucursalesInput = {
   precio_cobrado?: runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Date | string | null
   evidencia_url?: string | null
+  origen?: string | null
+  duracion_minutos?: number | null
+  tipo?: string | null
+  subtipo_bloqueo?: string | null
+  reserva_online_permitida?: boolean | null
 }
 
 export type reservasUpdateWithoutSucursalesInput = {
@@ -1298,17 +1544,22 @@ export type reservasUpdateWithoutSucursalesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
-  clientes?: Prisma.clientesUpdateOneRequiredWithoutReservasNestedInput
-  servicios?: Prisma.serviciosUpdateOneRequiredWithoutReservasNestedInput
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
+  clientes?: Prisma.clientesUpdateOneWithoutReservasNestedInput
+  servicios?: Prisma.serviciosUpdateOneWithoutReservasNestedInput
   empleados?: Prisma.empleadosUpdateOneRequiredWithoutReservasNestedInput
   ventas?: Prisma.ventasUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateWithoutSucursalesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1317,14 +1568,19 @@ export type reservasUncheckedUpdateWithoutSucursalesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
   ventas?: Prisma.ventasUncheckedUpdateManyWithoutReservasNestedInput
 }
 
 export type reservasUncheckedUpdateManyWithoutSucursalesInput = {
   id?: Prisma.IntFieldUpdateOperationsInput | number
-  cliente_id?: Prisma.IntFieldUpdateOperationsInput | number
+  cliente_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   empleado_id?: Prisma.IntFieldUpdateOperationsInput | number
-  servicio_id?: Prisma.IntFieldUpdateOperationsInput | number
+  servicio_id?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
   fecha_hora_inicio?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   fecha_hora_fin?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   estado?: Prisma.StringFieldUpdateOperationsInput | string
@@ -1333,6 +1589,11 @@ export type reservasUncheckedUpdateManyWithoutSucursalesInput = {
   precio_cobrado?: Prisma.NullableDecimalFieldUpdateOperationsInput | runtime.Decimal | runtime.DecimalJsLike | number | string | null
   fecha_actualizacion?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   evidencia_url?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  origen?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  duracion_minutos?: Prisma.NullableIntFieldUpdateOperationsInput | number | null
+  tipo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  subtipo_bloqueo?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
+  reserva_online_permitida?: Prisma.NullableBoolFieldUpdateOperationsInput | boolean | null
 }
 
 
@@ -1380,8 +1641,13 @@ export type reservasSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
   evidencia_url?: boolean
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  origen?: boolean
+  duracion_minutos?: boolean
+  tipo?: boolean
+  subtipo_bloqueo?: boolean
+  reserva_online_permitida?: boolean
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   ventas?: boolean | Prisma.reservas$ventasArgs<ExtArgs>
@@ -1402,8 +1668,13 @@ export type reservasSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Exte
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
   evidencia_url?: boolean
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  origen?: boolean
+  duracion_minutos?: boolean
+  tipo?: boolean
+  subtipo_bloqueo?: boolean
+  reserva_online_permitida?: boolean
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["reservas"]>
@@ -1422,8 +1693,13 @@ export type reservasSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Exte
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
   evidencia_url?: boolean
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  origen?: boolean
+  duracion_minutos?: boolean
+  tipo?: boolean
+  subtipo_bloqueo?: boolean
+  reserva_online_permitida?: boolean
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
 }, ExtArgs["result"]["reservas"]>
@@ -1442,26 +1718,31 @@ export type reservasSelectScalar = {
   precio_cobrado?: boolean
   fecha_actualizacion?: boolean
   evidencia_url?: boolean
+  origen?: boolean
+  duracion_minutos?: boolean
+  tipo?: boolean
+  subtipo_bloqueo?: boolean
+  reserva_online_permitida?: boolean
 }
 
-export type reservasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cliente_id" | "empleado_id" | "servicio_id" | "sucursal_id" | "fecha_hora_inicio" | "fecha_hora_fin" | "estado" | "notas_cliente" | "notas_internas" | "precio_cobrado" | "fecha_actualizacion" | "evidencia_url", ExtArgs["result"]["reservas"]>
+export type reservasOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "cliente_id" | "empleado_id" | "servicio_id" | "sucursal_id" | "fecha_hora_inicio" | "fecha_hora_fin" | "estado" | "notas_cliente" | "notas_internas" | "precio_cobrado" | "fecha_actualizacion" | "evidencia_url" | "origen" | "duracion_minutos" | "tipo" | "subtipo_bloqueo" | "reserva_online_permitida", ExtArgs["result"]["reservas"]>
 export type reservasInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
   ventas?: boolean | Prisma.reservas$ventasArgs<ExtArgs>
   _count?: boolean | Prisma.ReservasCountOutputTypeDefaultArgs<ExtArgs>
 }
 export type reservasIncludeCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
 }
 export type reservasIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
-  clientes?: boolean | Prisma.clientesDefaultArgs<ExtArgs>
-  servicios?: boolean | Prisma.serviciosDefaultArgs<ExtArgs>
+  clientes?: boolean | Prisma.reservas$clientesArgs<ExtArgs>
+  servicios?: boolean | Prisma.reservas$serviciosArgs<ExtArgs>
   sucursales?: boolean | Prisma.sucursalesDefaultArgs<ExtArgs>
   empleados?: boolean | Prisma.empleadosDefaultArgs<ExtArgs>
 }
@@ -1469,17 +1750,17 @@ export type reservasIncludeUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type $reservasPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   name: "reservas"
   objects: {
-    clientes: Prisma.$clientesPayload<ExtArgs>
-    servicios: Prisma.$serviciosPayload<ExtArgs>
+    clientes: Prisma.$clientesPayload<ExtArgs> | null
+    servicios: Prisma.$serviciosPayload<ExtArgs> | null
     sucursales: Prisma.$sucursalesPayload<ExtArgs>
     empleados: Prisma.$empleadosPayload<ExtArgs>
     ventas: Prisma.$ventasPayload<ExtArgs>[]
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: number
-    cliente_id: number
+    cliente_id: number | null
     empleado_id: number
-    servicio_id: number
+    servicio_id: number | null
     sucursal_id: number
     fecha_hora_inicio: Date
     fecha_hora_fin: Date
@@ -1489,6 +1770,11 @@ export type $reservasPayload<ExtArgs extends runtime.Types.Extensions.InternalAr
     precio_cobrado: runtime.Decimal | null
     fecha_actualizacion: Date | null
     evidencia_url: string | null
+    origen: string | null
+    duracion_minutos: number | null
+    tipo: string | null
+    subtipo_bloqueo: string | null
+    reserva_online_permitida: boolean | null
   }, ExtArgs["result"]["reservas"]>
   composites: {}
 }
@@ -1883,8 +2169,8 @@ readonly fields: reservasFieldRefs;
  */
 export interface Prisma__reservasClient<T, Null = never, ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
   readonly [Symbol.toStringTag]: "PrismaPromise"
-  clientes<T extends Prisma.clientesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.clientesDefaultArgs<ExtArgs>>): Prisma.Prisma__clientesClient<runtime.Types.Result.GetResult<Prisma.$clientesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-  servicios<T extends Prisma.serviciosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.serviciosDefaultArgs<ExtArgs>>): Prisma.Prisma__serviciosClient<runtime.Types.Result.GetResult<Prisma.$serviciosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+  clientes<T extends Prisma.reservas$clientesArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.reservas$clientesArgs<ExtArgs>>): Prisma.Prisma__clientesClient<runtime.Types.Result.GetResult<Prisma.$clientesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+  servicios<T extends Prisma.reservas$serviciosArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.reservas$serviciosArgs<ExtArgs>>): Prisma.Prisma__serviciosClient<runtime.Types.Result.GetResult<Prisma.$serviciosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
   sucursales<T extends Prisma.sucursalesDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.sucursalesDefaultArgs<ExtArgs>>): Prisma.Prisma__sucursalesClient<runtime.Types.Result.GetResult<Prisma.$sucursalesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   empleados<T extends Prisma.empleadosDefaultArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.empleadosDefaultArgs<ExtArgs>>): Prisma.Prisma__empleadosClient<runtime.Types.Result.GetResult<Prisma.$empleadosPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
   ventas<T extends Prisma.reservas$ventasArgs<ExtArgs> = {}>(args?: Prisma.Subset<T, Prisma.reservas$ventasArgs<ExtArgs>>): Prisma.PrismaPromise<runtime.Types.Result.GetResult<Prisma.$ventasPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -1930,6 +2216,11 @@ export interface reservasFieldRefs {
   readonly precio_cobrado: Prisma.FieldRef<"reservas", 'Decimal'>
   readonly fecha_actualizacion: Prisma.FieldRef<"reservas", 'DateTime'>
   readonly evidencia_url: Prisma.FieldRef<"reservas", 'String'>
+  readonly origen: Prisma.FieldRef<"reservas", 'String'>
+  readonly duracion_minutos: Prisma.FieldRef<"reservas", 'Int'>
+  readonly tipo: Prisma.FieldRef<"reservas", 'String'>
+  readonly subtipo_bloqueo: Prisma.FieldRef<"reservas", 'String'>
+  readonly reserva_online_permitida: Prisma.FieldRef<"reservas", 'Boolean'>
 }
     
 
@@ -2323,6 +2614,44 @@ export type reservasDeleteManyArgs<ExtArgs extends runtime.Types.Extensions.Inte
    * Limit how many reservas to delete.
    */
   limit?: number
+}
+
+/**
+ * reservas.clientes
+ */
+export type reservas$clientesArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the clientes
+   */
+  select?: Prisma.clientesSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the clientes
+   */
+  omit?: Prisma.clientesOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.clientesInclude<ExtArgs> | null
+  where?: Prisma.clientesWhereInput
+}
+
+/**
+ * reservas.servicios
+ */
+export type reservas$serviciosArgs<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
+  /**
+   * Select specific fields to fetch from the servicios
+   */
+  select?: Prisma.serviciosSelect<ExtArgs> | null
+  /**
+   * Omit specific fields from the servicios
+   */
+  omit?: Prisma.serviciosOmit<ExtArgs> | null
+  /**
+   * Choose, which related nodes to fetch as well
+   */
+  include?: Prisma.serviciosInclude<ExtArgs> | null
+  where?: Prisma.serviciosWhereInput
 }
 
 /**
